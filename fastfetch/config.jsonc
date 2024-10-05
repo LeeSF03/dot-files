@@ -1,0 +1,132 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "source": "C:\\Users\\shuen\\.config\\fastfetch\\kitty2.1.txt",
+    // "height": 12,
+    "padding": {
+      "left": 5,
+      "top": 1,
+      "right": 5
+    },
+    "color": {
+      "1": "magenta"
+    }
+  },
+  "display": {
+    // "separator": "  »  ",
+    "separator": "",
+    "color": "magenta",
+    "size": {
+      "maxPrefix": "MB",
+      "ndigits": 1
+    },
+    "bar": {
+      "width": 10,
+      // "border": false,
+      "charTotal": "-",
+      "charElapsed": "╸"
+    },
+    "percent": {
+      "type": 6
+    },
+    "noBuffer": true
+  },
+  "modules": [
+    "break",
+    {
+      "type": "title",
+      "fqdn": false,
+      "color": {
+        "user": "blue",
+        "at": "default",
+        "host": "blue"
+      },
+      // "key": "User"
+      "key": "\uf007",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    // "break",
+    {
+      "type": "separator",
+      "string": "─"
+    },
+    {
+      "type": "os",
+      "format": "{4}",
+      "key": "\uf17a",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "kernel",
+      "key": "\uf013",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "host",
+      "format": "{1}",
+      "key": "\udb80\udf79",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    // {
+    //   "type": "uptime",
+    //   "key": "up",
+    //   "format": "{}d {2}h {3}m"
+    // },
+    {
+      "type": "shell",
+      "key": "\uea85",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    // {
+    //   "type": "wm",
+    //   "format": "{1}",
+    //   "key": "wm"
+    // },
+    {
+      "type": "packages",
+      // "format": "{2}",
+      "key": "\udb80\udfd3",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "battery",
+      "key": "\udb80\udc79",
+      "format": "{4}",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "cpu",
+      "key": "\uf4bc",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "memory",
+      "key": "\uefc5",
+      "format": "{2} {3}",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "physicaldisk",
+      "key": "\uf0c7",
+      "format": "{1} {3}",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    "break",
+    {
+      "type": "colors",
+      "symbol": "square"
+    },
+    "break"
+  ]
+}
