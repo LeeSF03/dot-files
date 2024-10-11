@@ -85,7 +85,7 @@ end
 config.default_prog = { "C:\\Users\\shuen\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe", '-NoLogo' }
 
 -- Colorscheme
-config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte
+config.color_scheme = "Catppuccin Mocha"
 
 -- Font
 config.font = wezterm.font_with_fallback {
