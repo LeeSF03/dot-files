@@ -75,13 +75,13 @@
       "segments": [
         {
           "style": "plain",
-          "template": "\u2570\u2500\u2500",
+          "template": "\u2570\u2500\u2500\u2500",
           "type": "text"
         },
         {
           "style": "plain",
           "foreground": "lightBlue",
-          "template": "\uf105\uf105",
+          "template": "\uf105",
           "type": "text"
         }
       ],
