@@ -1,0 +1,28 @@
+use_nerdfont = true
+notify = true
+
+[notification_format]
+title = " %title"
+body = "%artists"
+
+[theme]
+background = "#1E1E2E"
+primary = "#00FF5A"
+secondary = "#EA76CB"
+title = "#CBA6F7"
+playing = "#FFFFFF"
+playing_selected = "#136C33"
+playing_bg = "#1F332C"
+highlight = "#1E1E2E"
+highlight_bg = "#00FF5A"
+error = "#B8C0E0"
+error_bg = "#1E1E2E"
+statusbar = "#1E1E2E"
+statusbar_progress = "#EA76CB"
+statusbar_bg = "#EA76CB"
+cmdline = "#1E1E2E"
+cmdline_bg = "#EA76CB"
+
+[credentials]
+username_cmd = "echo 1q69du0ryrzhi5q4i6jvnp4y8"
+password_cmd = "echo eK89e6%9JzT,"
