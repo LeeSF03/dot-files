@@ -34,41 +34,48 @@
   },
   "modules": [
     "break",
-    {
-      "type": "title",
-      "fqdn": false,
-      "color": {
-        "user": "blue",
-        "at": "default",
-        "host": "blue"
-      },
-      // "key": "User"
-      "key": "\uf007",
-      "keyWidth": 4,
-      "keyColor": "magenta"
-    },
+    // {
+    //   "type": "title",
+    //   "fqdn": false,
+    //   "color": {
+    //     "user": "blue",
+    //     "at": "default",
+    //     "host": "blue"
+    //   },
+    //   // "key": "User"
+    //   "key": "\uf007",
+    //   "keyWidth": 4,
+    //   "keyColor": "magenta"
+    // },
+    // {
+    //   "type": "custom",
+    //   "keyColor": "blue",
+    //   "format": "                 LeeSF                 "
+    // },
     // "break",
     {
-      "type": "separator",
-      "string": "─"
+      "type": "custom",
+      "outputColor": "blue",
+      "format": "\u256d────System───────────────────────────\u256e"
     },
     {
       "type": "os",
-      "format": "{4}",
-      "key": "\uf17a",
+      "format": " {4}",
+      "key": " \uf17a",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
     {
       "type": "kernel",
-      "key": "\uf013",
+      "format": " {1} {4} ({5})",
+      "key": " \uf013",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
     {
       "type": "host",
-      "format": "{1}",
-      "key": "\udb80\udf79",
+      "format": " {1}",
+      "key": " \udb80\udf79",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
@@ -79,7 +86,8 @@
     // },
     {
       "type": "shell",
-      "key": "\uea85",
+      "format": " {6} {4}",
+      "key": " \uea85",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
@@ -90,42 +98,62 @@
     // },
     {
       "type": "packages",
-      // "format": "{2}",
-      "key": "\udb80\udfd3",
+      "format": " {20} (scoop), {21} (choco)",
+      "key": " \udb80\udfd3",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
     {
-      "type": "battery",
-      "key": "\udb80\udc79",
-      "format": "{4}",
-      "keyWidth": 4,
-      "keyColor": "magenta"
+      "type": "custom",
+      "format": "\u2570─────────────────────────────────────\u256f"
+    },
+    {
+      "type": "custom",
+      "format": "\u256d───Hardware──────────────────────────\u256e"
     },
     {
       "type": "cpu",
-      "key": "\uf4bc",
+      "format": " {1} ({4}) @ {7}",
+      "key": " \uf4bc",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "gpu",
+      "format": " {2}",
+      "key": " \uec17",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
     {
       "type": "memory",
-      "key": "\uefc5",
-      "format": "{2} {3}",
+      "key": " \uefc5",
+      "format": " {2} {3}",
+      "keyWidth": 4,
+      "keyColor": "magenta"
+    },
+    {
+      "type": "battery",
+      "key": " \udb80\udc79",
+      "format": " {4}",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
     {
       "type": "physicaldisk",
-      "key": "\uf0c7",
-      "format": "{1} {3}",
+      "key": " \uf0c7",
+      "format": " {1} {3}",
       "keyWidth": 4,
       "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "\u2570─────────────────────────────────────\u256f"
     },
     "break",
     {
       "type": "colors",
-      "symbol": "square"
+      "symbol": "circle"
     },
     "break"
   ]
