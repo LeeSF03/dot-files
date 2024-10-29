@@ -5,9 +5,9 @@
     "source": "C:\\Users\\shuen\\.config\\fastfetch\\kitty2.1.txt",
     // "height": 12,
     "padding": {
-      "left": 5,
+      "left": 3,
       "top": 1,
-      "right": 5
+      "right": 3
     },
     "color": {
       "1": "magenta"
@@ -121,14 +121,14 @@
     {
       "type": "gpu",
       "format": " {2}",
-      "key": " \uec17",
+      "key": " \uf11b",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
     {
       "type": "memory",
       "key": " \uefc5",
-      "format": " {2} {3}",
+      "format": " {2}",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
