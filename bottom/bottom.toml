@@ -53,3 +53,5 @@ type = "net"
 [[row.child]]
 type = "proc"
 default = true
+[processes]
+columns = ["pid", "cpu%", "mem%", "name", "user", "gmem%", "gpu%"]
