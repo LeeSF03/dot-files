@@ -39,7 +39,6 @@ bars:
     widgets:
       left:
         [
-          "win_button",
           "komorebi_workspaces",
           "komorebi_active_layout",
           "active_window"
@@ -53,9 +52,9 @@ bars:
           "media",
           "wifi",
           "cpu",
-          "weather",
           "memory",
           "volume",
+          "battery",
           "power_menu"
         ]
 widgets:
@@ -111,12 +110,12 @@ widgets:
       charging_options:
         icon_format: "{charging_icon}"
       status_icons:
-        icon_charging: "\ue83e"
-        icon_critical: "\ue851"
-        icon_low: "\ue852"
-        icon_medium: "\ue855"
-        icon_high: "\ue858"
-        icon_full: "\ue83f"
+        icon_charging: "\udb85\udc0b"
+        icon_critical: "\uf244"
+        icon_low: "\uf243"
+        icon_medium: "\uf242"
+        icon_high: "\uf241"
+        icon_full: "\uf240"
 
   clock:
     type: "yasb.clock.ClockWidget"
