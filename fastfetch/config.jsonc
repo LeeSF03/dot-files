@@ -38,25 +38,11 @@
   },
   "modules": [
     "break",
-    // {
-    //   "type": "title",
-    //   "fqdn": false,
-    //   "color": {
-    //     "user": "blue",
-    //     "at": "default",
-    //     "host": "blue"
-    //   },
-    //   // "key": "User"
-    //   "key": "\uf007",
-    //   "keyWidth": 4,
-    //   "keyColor": "magenta"
-    // },
-    // {
-    //   "type": "custom",
-    //   "keyColor": "blue",
-    //   "format": "                 LeeSF                 "
-    // },
-    // "break",
+    {
+      "type": "custom",
+      "keyColor": "white",
+      "format": "     李\uf444 炫\uf444 辉"
+    },
     {
       "type": "custom",
       "outputColor": "blue",
@@ -113,7 +99,7 @@
     },
     {
       "type": "custom",
-      "format": "\u256d───Hardware──────────────────────────\u256e"
+      "format": "\u256d────Hardware─────────────────────────\u256e"
     },
     {
       "type": "cpu",
