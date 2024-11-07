@@ -6,6 +6,16 @@ local act = wezterm.action
 -- wezterm.on("load_state", function() workspace_saver.load_state() end)
 -- wezterm.on("restore_state", function(window) workspace_saver.restore_state(window) end)
 
+wezterm.on('toggle-opacity', function(window, pane)
+    local overrides = window:get_config_overrides() or {}
+    if not overrides.window_background_opacity then
+      overrides.window_background_opacity = 1
+    else
+      overrides.window_background_opacity = nil
+    end
+    window:set_config_overrides(overrides)
+  end)
+
 -- Functions
 local get_last_folder_segment = function(cwd)
     if cwd == nil then
@@ -215,8 +225,8 @@ end)
 
 -- Panes
 config.inactive_pane_hsb = {
-    saturation = 0.4,
-    brightness = 0.5
+    -- saturation = 0.4,
+    brightness = 0.6
 }
 
 -- Keys
@@ -357,7 +367,11 @@ config.keys = { -- This will create a new split and run the `top` program inside
         key = 'h',
         mods = 'CTRL|SHIFT',
         action = act.Hide
-    }
+    }, {
+        key = 'B',
+        mods = 'CTRL|SHIFT',
+        action = act.EmitEvent('toggle-opacity'),
+    },
 }
 
 config.key_tables = {
