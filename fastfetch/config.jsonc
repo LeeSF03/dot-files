@@ -58,14 +58,14 @@
     {
       "type": "kernel",
       "format": " {1} {4} ({5})",
-      "key": " \uf013",
+      "key": " \udb82\udcd6",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
     {
       "type": "host",
       "format": " {1}",
-      "key": " \udb80\udf79",
+      "key": " \udb80\udf22",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
@@ -124,7 +124,7 @@
     },
     {
       "type": "battery",
-      "key": " \udb80\udc79",
+      "key": " \uf240",
       "format": " {4}",
       "keyWidth": 4,
       "keyColor": "magenta"
