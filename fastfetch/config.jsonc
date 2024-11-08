@@ -1,28 +1,28 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  "logo": {
-    "type": "iterm",
-    "source": "C:\\Users\\shuen\\.config\\fastfetch\\pixel_omen.png",
-    "height": 10,
-    "width": 20,
-    // "type": "auto",
-    // "source": "C:\\Users\\shuen\\.config\\fastfetch\\kitty2.1.txt",
-    "padding": {
-      "left": 3,
-      "top": 3,
-      // "top": 1,
-      "right": 3
-    },
-    "color": {
-      "1": "magenta"
-    }
-  },
+  // "logo": {
+  //   "type": "iterm",
+  //   "source": "C:\\Users\\shuen\\.config\\fastfetch\\images\\omen.png",
+  //   "height": 10,
+  //   "width": 20,
+  //   // "type": "auto",
+  //   // "source": "C:\\Users\\shuen\\.config\\fastfetch\\ascii\\kitty2.1.txt",
+  //   "padding": {
+  //     "left": 3,
+  //     "top": 3,
+  //     // "top": 1,
+  //     "right": 3
+  //   },
+  //   "color": {
+  //     "1": "magenta"
+  //   }
+  // },
   "display": {
     // "separator": "  »  ",
     "separator": "",
     "color": "magenta",
     "size": {
-      "maxPrefix": "MB",
+      "maxPrefix": "GB",
       "ndigits": 1
     },
     "bar": {
@@ -130,9 +130,9 @@
       "keyColor": "magenta"
     },
     {
-      "type": "physicaldisk",
-      "key": " \uf0c7",
-      "format": " {1} {3}",
+      "type": "disk",
+      "key": " \udb80\udeca",
+      "format": "{1} / {2} ({3})",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
