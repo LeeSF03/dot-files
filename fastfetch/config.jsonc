@@ -46,7 +46,7 @@
     {
       "type": "custom",
       "outputColor": "blue",
-      "format": "\u256d────System───────────────────────────\u256e"
+      "format": "\u256d────{#37}System{#34}───────────────────────────\u256e"
     },
     {
       "type": "os",
@@ -99,7 +99,7 @@
     },
     {
       "type": "custom",
-      "format": "\u256d────Hardware─────────────────────────\u256e"
+      "format": "\u256d────{#37}Hardware{#34}─────────────────────────\u256e"
     },
     {
       "type": "cpu",
