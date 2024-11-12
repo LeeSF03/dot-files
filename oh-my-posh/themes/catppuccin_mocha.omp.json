@@ -1,57 +1,69 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
-    "os": "#ACB0BE",
+    "blue": "#89B4FA",
     "closer": "p:os",
-    "pink": "#F5C2E7",
     "lavender": "#B4BEFE",
-    "blue": "#89B4FA"
+    "os": "#ACB0BE",
+    "pink": "#F5C2E7"
   },
   "blocks": [
     {
+      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "style": "plain",
-          "template": "\u256d\u2500 ",
-          "type": "session"
-        },
-        {
-          "foreground": "lightBlue",
-          "style": "plain",
-          "template": "\uf17a ",
-          "type": "os"
-        },
-        {
-          "foreground": "#cba6f7",
-          "template": " \uf017 {{ .CurrentDate | date .Format }} ",
           "properties": {
-            "time_format": "15:04:05"
+            "cache_duration": "none"
           },
-          "style": "plain",
-          "type": "time"
+          "template": "\u256d\u2500 ",
+          "type": "session",
+          "style": "plain"
         },
         {
-          "foreground": "p:blue",
-          "style": "plain",
-          "template": "{{ .UserName }} ",
-          "type": "session"
-        },
-        {
-          "foreground": "p:pink",
           "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\uf17a ",
+          "foreground": "lightBlue",
+          "type": "os",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "time_format": "15:04"
+          },
+          "template": " \uf017 {{ .CurrentDate | date .Format }} ",
+          "foreground": "#cba6f7",
+          "type": "time",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ .UserName }} ",
+          "foreground": "p:blue",
+          "type": "session",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
             "folder_icon": "..\uf07b ..",
             "home_icon": "~",
             "style": "agnoster_short"
           },
-          "style": "plain",
           "template": "{{ .Path }} ",
-          "type": "path"
+          "foreground": "p:pink",
+          "type": "path",
+          "style": "plain"
         },
         {
-          "foreground": "p:lavender",
           "properties": {
             "branch_icon": "\uf126 ",
+            "cache_duration": "none",
             "cherry_pick_icon": "\ue29b ",
             "commit_icon": "\uf417 ",
             "fetch_status": false,
@@ -63,31 +75,37 @@
             "tag_icon": "\uf412 "
           },
           "template": "{{ .HEAD }} ",
-          "style": "plain",
-          "type": "git"
+          "foreground": "p:lavender",
+          "type": "git",
+          "style": "plain"
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
+      "type": "prompt",
       "alignment": "left",
-      "newline": true,
       "segments": [
         {
-          "style": "plain",
+          "properties": {
+            "cache_duration": "none"
+          },
           "template": "\u2570\u2500\u2500\u2500",
-          "type": "text"
+          "type": "text",
+          "style": "plain"
         },
         {
-          "style": "plain",
-          "foreground": "lightBlue",
+          "properties": {
+            "cache_duration": "none"
+          },
           "template": "\uf105",
-          "type": "text"
+          "foreground": "lightBlue",
+          "type": "text",
+          "style": "plain"
         }
       ],
-      "type": "prompt"
+      "newline": true
     }
   ],
-  "final_space": true,
-  "version": 2
+  "version": 3,
+  "final_space": true
 }
