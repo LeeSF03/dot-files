@@ -1,4 +1,4 @@
-theme = "dracula"
+theme = "Catppuccin-mocha"
 client_id = "65b708073fc0480ea92a077233ca87bd"
 client_port = 8080
 login_redirect_uri = "http://127.0.0.1:8989/login"
@@ -10,10 +10,10 @@ tracks_playback_limit = 50
 app_refresh_duration_in_ms = 32
 playback_refresh_duration_in_ms = 0
 page_size_in_rows = 20
-play_icon = "▶"
-pause_icon = "▌▌"
-liked_icon = "♥"
-border_type = "Plain"
+play_icon = ""
+pause_icon = ""
+liked_icon = ""
+border_type = "Rounded"
 progress_bar_type = "Rectangle"
 enable_media_control = false
 enable_streaming = "Always"
@@ -22,7 +22,7 @@ default_device = "spotify-player"
 seek_duration_secs = 5
 
 [layout]
-playback_window_position = "Top"
+playback_window_position = "Bottom"
 playback_window_height = 6
 
 [layout.library]
@@ -36,4 +36,4 @@ volume = 70
 bitrate = 320
 audio_cache = false
 normalization = false
-autoplay = false
+autoplay = true
