@@ -20,13 +20,13 @@ scrolloff = 250
 [opener]
 edit = [
   { run = 'nvim "$@"', block = true, for = "unix" },
-  { run = 'code "%*"', orphan = true, for = "windows" },
+  { run = 'code -w %*', block = true, desc = "Code", for = "windows" },
 ]
-# open = [
-#   { run = 'xdg-open "$@"', block = false, orphan = true, desc = "Open", for = "linux" },
-#   { run = 'open "$@"', desc = "Open", for = "macos" },
-#   { run = 'start "%1"', orphan = true, desc = "Open", for = "windows" },
-# ]
+open = [
+  { run = 'xdg-open "$1"', desc = "Open", for = "linux" },
+  { run = 'open "$@"', desc = "Open", for = "macos" },
+  { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
+]
 reveal = [
   { run = 'open -R "$1"', desc = "Reveal", for = "macos" },
   { run = 'explorer /select,%1', orphan = true, desc = "Reveal", for = "windows" },
@@ -37,20 +37,24 @@ extract = [
   { run = 'unar "%1"', desc = "Extract here", for = "windows" },
 ]
 play = [
-  { run = 'mpv "$@"', block = false, orphan = true, for = "unix" },
-  { run = 'xdg-open "$@"', block = false, orphan = true, for = "unix" },
-  { run = 'mpv "%1"', orphan = true, for = "windows" },
+  { run = 'mpv "$@"', block = false, orphan = true, desc = "Play", for = "unix" },
+  { run = 'xdg-open "$@"', block = false, orphan = true, desc = "Play", for = "unix" },
+  { run = 'mpv "%1"', orphan = true, desc = "Play", for = "windows" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
 ]
 
 [open]
 rules = [
   { name = "*/", use = [
-    "edit",
     "open",
+    "edit",
     "reveal",
   ] },
-
+  { name = "*", use = [
+    "open",
+    "edit",
+    "reveal",
+  ] },
   { mime = "text/*", use = [
     "edit",
     "reveal",
@@ -110,11 +114,6 @@ rules = [
     "reveal",
   ] },
 
-  { mime = "*", use = [
-    "open",
-    "play",
-    "reveal",
-  ] },
 ]
 
 [tasks]

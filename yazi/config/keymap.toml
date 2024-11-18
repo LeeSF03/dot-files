@@ -1,12 +1,27 @@
 [manager]
 prepend_keymap = [
   # Goto
-  { on = ["g", "d"], run = "cd D:", desc = "Switch to D drive" },
-  { on = ["g", "c"], run = "cd C:", desc = "Switch to C drive" },
-  { on = ["g", "G"], run = "cd G:", desc = "Switch to G drive" },
+  { on = [
+    "g",
+    "d",
+  ], run = "cd D:", desc = "Switch to D drive" },
+  { on = [
+    "g",
+    "c",
+  ], run = "cd C:", desc = "Switch to C drive" },
+  { on = [
+    "g",
+    "G",
+  ], run = "cd G:", desc = "Switch to G drive" },
+  { on = [
+    "g",
+    "D",
+  ], run = "cd C:/Users/shuen/Downloads", desc = "Switch to Download directory" },
 
   # Tasks
-  { on = ["w"], run = "tasks_show", desc = "Show the tasks manager" },
+  { on = [
+    "w",
+  ], run = "tasks_show", desc = "Show the tasks manager" },
 
 ]
 # [manager]
