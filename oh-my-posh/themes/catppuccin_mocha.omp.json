@@ -61,6 +61,41 @@
           "style": "plain"
         },
         {
+          "foreground": "yellow",
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "fetch_version": true,
+            "folder_name_fallback": false
+          },
+          "style": "plain",
+          "template": "\ue235 {{ if .Venv }}{{ .Venv }} {{ .Full }}{{ end }} ",
+          "type": "python"
+        },
+        {
+          "foreground": "green",
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "files",
+            "extensions": [
+              "*.js",
+              "*.ts",
+              "package.json",
+              ".nvmrc",
+              "pnpm-workspace.yaml",
+              ".pnpmfile.cjs",
+              ".vue"
+            ],
+            "fetch_virtual_env": true,
+            "fetch_version": true,
+            "folder_name_fallback": false
+          },
+          "style": "plain",
+          "template": "\ued0d {{ .Full }} ",
+          "type": "node"
+        },
+        {
           "properties": {
             "branch_icon": "\uf126 ",
             "cache_duration": "none",
@@ -74,7 +109,7 @@
             "revert_icon": "\uf0e2 ",
             "tag_icon": "\uf412 "
           },
-          "template": "{{ .HEAD }} ",
+          "template": "{{ .HEAD }}",
           "foreground": "p:lavender",
           "type": "git",
           "style": "plain"
