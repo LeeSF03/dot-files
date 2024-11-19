@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local mux = wezterm.mux
 -- local workspace_saver = require("wezterm_workspace_saver")
 
 -- wezterm.on("save_state", function(window) workspace_saver.save_state(window) end)
@@ -14,6 +15,14 @@ wezterm.on('toggle-opacity', function(window, pane)
       overrides.window_background_opacity = nil
     end
     window:set_config_overrides(overrides)
+  end)
+
+  wezterm.on('gui-startup', function(cmd) -- set startup Window position
+    local screens = wezterm.gui.screens()
+
+    local tab, pane, window = mux.spawn_window(
+      {position={x=2480,y=240}}
+    )
   end)
 
 -- Functions
@@ -96,6 +105,9 @@ config.default_prog =
 
 -- Colorscheme
 config.color_scheme = "Catppuccin Mocha"
+-- config.colors ={
+--     background = "#181825"
+-- }
 
 -- Background
 config.window_background_opacity = 0.90
@@ -362,7 +374,7 @@ config.keys = { -- This will create a new split and run the `top` program inside
     }, {
         key = 'n',
         mods = 'CTRL|SHIFT',
-        action = act.SpawnWindow
+        action = act.EmitEvent('gui-startup')
     }, {
         key = 'h',
         mods = 'CTRL|SHIFT',
@@ -371,7 +383,11 @@ config.keys = { -- This will create a new split and run the `top` program inside
         key = 'B',
         mods = 'CTRL|SHIFT',
         action = act.EmitEvent('toggle-opacity'),
-    },
+    },{
+        key = 'd',
+        mods = 'CTRL|SHIFT',
+        action = wezterm.action.ShowDebugOverlay
+    }
 }
 
 config.key_tables = {
