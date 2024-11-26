@@ -1,3 +1,4 @@
 configstore/*
 *.spotify_token_cache.json
 *.log
+lazygit/state.yml
