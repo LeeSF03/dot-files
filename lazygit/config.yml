@@ -1,0 +1,39 @@
+gui:
+  showCommandLog: false
+  statusPanelView: 'allBranchesLog'
+  theme:
+    activeBorderColor:
+      - '#74c7ec'
+      - bold
+    inactiveBorderColor:
+      - '#a6adc8'
+    optionsTextColor:
+      - '#89b4fa'
+    selectedLineBgColor:
+      - '#313244'
+    cherryPickedCommitBgColor:
+      - '#45475a'
+    cherryPickedCommitFgColor:
+      - '#74c7ec'
+    unstagedChangesColor:
+      - '#f38ba8'
+    defaultFgColor:
+      - '#cdd6f4'
+    searchingActiveBorderColor:
+      - '#f9e2af'
+
+  authorColors:
+    '*': '#b4befe'
+
+git:
+  skipHookPrefix: WIP
+  autoFetch: false
+  autoRefresh: true
+  fetchAll: false
+  autoStageResolvedConflicts: true
+  branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
+  allBranchesLogCmd: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
+  overrideGpg: false
+  disableForcePushing: false
+  parseEmoji: false
+  truncateCopiedCommitHashesTo: 12
