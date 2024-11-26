@@ -17,13 +17,24 @@ wezterm.on('toggle-opacity', function(window, pane)
     window:set_config_overrides(overrides)
   end)
 
-  wezterm.on('gui-startup', function(cmd) -- set startup Window position
-    local screens = wezterm.gui.screens()
+wezterm.on('center-window', function(window, pane)
+  window:set_position(560, 240)
+  window:set_inner_size(800, 500)
+end)
 
-    local tab, pane, window = mux.spawn_window(
-      {position={x=2480,y=240}}
-    )
-  end)
+wezterm.on('gui-startup', function(cmd) -- set startup Window position
+  local screens = wezterm.gui.screens()
+
+  if screens.virtual_width > 1920 then
+      local tab, pane, window = mux.spawn_window(
+        {position={x=2480,y=240}}
+      )
+  else
+      local tab, pane, window = mux.spawn_window(
+        {position={x=560,y=240}}
+      )
+  end
+end)
 
 -- Functions
 local get_last_folder_segment = function(cwd)
@@ -92,6 +103,9 @@ end
 
 -- This table will hold the configuration.
 local config = {}
+
+config.initial_rows = 24
+config.initial_cols = 80
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -387,7 +401,11 @@ config.keys = { -- This will create a new split and run the `top` program inside
         key = 'd',
         mods = 'CTRL|SHIFT',
         action = wezterm.action.ShowDebugOverlay
-    }
+    },{
+      key = 'o',
+      mods = 'CTRL|SHIFT',
+      action = act.EmitEvent('center-window')
+  }
 }
 
 config.key_tables = {
