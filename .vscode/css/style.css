@@ -252,7 +252,7 @@
 .editor-widget.find-widget.visible {
   height: fit-content !important;
   align-content: center !important;
-  border: solid 2px #89b4fa !important;
+  border: solid 1px #89b4fa !important;
   border-radius: 6px !important;
   box-shadow: none !important;
   padding: 8px !important;
@@ -264,6 +264,9 @@
   margin-top: auto !important;
   margin-bottom: auto !important;
   top: 12px !important;
+}
+.monaco-sash.vertical {
+  display: none !important;
 }
 
 /* Remove background for lists */
