@@ -35,31 +35,37 @@
 }
 
 /* Tabs */
-.tab.active.selected {
-  border-radius: 10px 10px 0 0 !important;
-  border-top: 2px solid #727b90 !important;
-  border-left: 2px solid #727b90 !important;
-  border-right: 2px solid #727b90 !important;
-  font-family: "Fira Code" !important;
-}
-
-.tab.active.selected > .tab-border-bottom-container {
-  display: none !important;
-}
-
+.monaco-workbench .part.editor>
+.content .editor-group-container>
+.title .tabs-container>
+.tab.selected.tab-border-top>
 .tab-border-top-container {
-  display: none !important;
+  display: none;
 }
-
-.tab.tab-actions-right {
-  border-radius: 10px 10px 0 0 !important;
-  font-family: "Fira Code" !important;
+.tab.active {
+  font-weight: 700 !important;
+  border: 1px solid #b4befe !important;
 }
-
-.tab > .tab-border-bottom-container {
-  background-color: #727b90 !important;
-  height: 2px !important;
-  display: block !important;
+.tab{
+  border-radius: 6px !important;
+  margin-left: 2.5px !important;
+  margin-right: 2.5px !important;
+  padding-top: 2px !important;
+  height: 30px !important;
+  border: 1px solid ##6c7086 !important;
+  background-color: #1e1e2e !important;
+  align-items: center !important;
+}
+.tab .monaco-icon-label {
+  height: 100% !important;
+  align-items: center;
+}
+.tab .tab-label {
+  line-height: 27px !important;
+}
+.tabs-container{
+  height: auto !important;
+  padding: 5px !important;
 }
 
 /* Side bar */
@@ -225,24 +231,31 @@
 .quick-input-widget {
   transform: translateY(-50%) !important;
   top: 50% !important;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.45) !important;
-  padding: 10px 10px 18px 10px !important;
-  /* background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important; */
-  background-color: #363654 !important;
-  backdrop-filter: blur(3px) !important;
-  border-radius: 20px !important;
+  z-index: 100;
+  border: solid 2px #89b4fa !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  padding: 8px !important;
+}
+.quick-input-widget .monaco-inputbox {
+  border: solid 2px #89b4fa !important;
+  padding: 5px !important;
+  border-radius: 3px !important;
+}
+
+/* Command palette's input box placeholder. */
+.monaco-inputbox input::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Editor Search */
 .editor-widget.find-widget.visible {
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.45) !important;
-  padding: 10px !important;
-  /* background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important; */
-  background-color: #363654 !important;
-  backdrop-filter: blur(3px) !important;
-  border-radius: 8px !important;
   height: fit-content !important;
   align-content: center !important;
+  border: solid 2px #89b4fa !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  padding: 8px !important;
 }
 .find-part {
   margin-right: 25px !important;
@@ -250,7 +263,7 @@
 .button.codicon.codicon-widget-close {
   margin-top: auto !important;
   margin-bottom: auto !important;
-  top: 15px !important;
+  top: 12px !important;
 }
 
 /* Remove background for lists */
@@ -267,49 +280,6 @@
 .notifications-toasts .monaco-list-row:hover {
   background: none !important;
 }
-
-/* .monaco-list-row.focused {
-  background-color: rgb(181 198 228 / 25%) !important;
-} */
-
-/* .synthetic-focus {
-  outline-color: rgba(50, 50, 50, 1) !important;
-} */
-
-/* .quick-input-widget .monaco-label {
-  font-size: 11px !important;
-} */
-
-/* Command palette text input */
-.quick-input-filter .monaco-inputbox {
-  border-radius: 12px !important;
-  padding: 8px !important;
-  border: none !important;
-  background-color: rgba(34, 34, 34, 0.4) !important;
-  font-family: "Fira Code" !important;
-  font-size: 14px !important;
-  margin-bottom: 16px !important;
-}
-
-#command-blur {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.15);
-  top: 0;
-  left: 0;
-  backdrop-filter: blur(8px);
-}
-
-/* Command palette's input box placeholder. */
-.monaco-inputbox input::placeholder {
-  color: rgba(255, 255, 255, 0.3) !important;
-}
-
-/* .monaco-workbench label {
-  color: #fff !important;
-  font-size: 14px !important;
-} */
 
 /* Container that holds the VS Code home icon. */
 .editor-group-watermark {
