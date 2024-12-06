@@ -49,7 +49,7 @@ bars:
         ]
       right:
         [
-          "media",
+          # "media",
           "wifi",
           "cpu",
           "memory",
