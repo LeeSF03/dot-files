@@ -96,6 +96,12 @@
           "type": "node"
         },
         {
+          "style": "plain",
+          "foreground": "#7FD5EA",
+          "template": "\ue627 {{ .Full }} ",
+          "type": "go"
+        },
+        {
           "properties": {
             "branch_icon": "\uf126 ",
             "cache_duration": "none",
