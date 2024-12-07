@@ -123,6 +123,17 @@ config.color_scheme = "Catppuccin Mocha"
 --     background = "#181825"
 -- }
 
+config.window_frame = {
+  border_left_width = '0.1cell',
+  border_right_width = '0.1cell',
+  border_bottom_height = '0.05cell',
+  border_top_height = '0.05cell',
+  border_left_color = '#cba6f7',
+  border_right_color = '#cba6f7',
+  border_bottom_color = '#cba6f7',
+  border_top_color = '#cba6f7',
+}
+
 -- Background
 config.window_background_opacity = 0.90
 
