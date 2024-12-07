@@ -24,6 +24,9 @@ gui:
 
   authorColors:
     '*': '#b4befe'
+  nerdFontsVersion: "3"
+  showFileIcons: false
+  commitHashLength: 6
 
 git:
   skipHookPrefix: WIP
