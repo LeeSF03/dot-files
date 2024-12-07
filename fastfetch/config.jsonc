@@ -52,19 +52,22 @@
       "type": "os",
       "format": " {4}",
       "key": " \uf17a",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "red"
     },
     {
       "type": "kernel",
       "format": " {1} {4} ({5})",
       "key": " \udb82\udcd6",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "red"
     },
     {
       "type": "host",
       "format": " {1}",
       "key": " \udb80\udf22",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "blue"
     },
     // {
     //   "type": "uptime",
@@ -75,18 +78,15 @@
       "type": "shell",
       "format": " {6} {4}",
       "key": " \uea85",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "magenta"
     },
-    // {
-    //   "type": "wm",
-    //   "format": "{1}",
-    //   "key": "wm"
-    // },
     {
       "type": "packages",
       "format": " {20} (scoop), {21} (choco), {24} (winget)",
       "key": " \udb80\udfd3",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "magenta"
     },
     {
       "type": "custom",
@@ -100,31 +100,36 @@
       "type": "cpu",
       "format": " {1} ({4}) @ {7}",
       "key": " \uf4bc",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "green"
     },
     {
       "type": "gpu",
       "format": " {2}",
       "key": " \uf11b",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "green"
     },
     {
       "type": "memory",
       "key": " \uefc5",
       "format": " {2}",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "yellow"
     },
     {
       "type": "battery",
       "key": " \uf240",
       "format": " {4}",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "yellow"
     },
     {
       "type": "disk",
       "key": " \udb80\udeca",
       "format": " {1} / {2} ({3})",
-      "keyWidth": 4
+      "keyWidth": 4,
+      "keyColor": "cyan"
     },
     {
       "type": "custom",
