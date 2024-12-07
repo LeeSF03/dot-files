@@ -48,8 +48,8 @@
 }
 .tab{
   border-radius: 3px !important;
-  margin-left: 2.5px !important;
-  margin-right: 2.5px !important;
+  margin-left: 2px !important;
+  margin-right: 2px !important;
   padding-top: 2px !important;
   height: 30px !important;
   border: 1px solid ##6c7086 !important;
@@ -65,7 +65,7 @@
 }
 .tabs-container{
   height: auto !important;
-  padding: 5px !important;
+  padding: 3px !important;
 }
 
 /* Side bar */
