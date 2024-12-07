@@ -84,7 +84,7 @@
     // },
     {
       "type": "packages",
-      "format": " {20} (scoop), {21} (choco)",
+      "format": " {20} (scoop), {21} (choco), {24} (winget)",
       "key": " \udb80\udfd3",
       "keyWidth": 4
     },
