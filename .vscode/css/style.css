@@ -43,8 +43,8 @@
   display: none;
 }
 .tab.active {
-  font-weight: 700 !important;
-  border: 1px solid #b4befe !important;
+  font-weight: 600 !important;
+  border: 1px solid #89b4fa !important;
 }
 .tab{
   border-radius: 3px !important;
@@ -52,7 +52,7 @@
   margin-right: 2px !important;
   padding-top: 2px !important;
   height: 30px !important;
-  border: 1px solid ##6c7086 !important;
+  border: 1px solid #6c7086 !important;
   background-color: #1e1e2e !important;
   align-items: center !important;
 }
@@ -117,7 +117,7 @@
 /* Sidebar top shadow */
 .monaco-scrollable-element > .shadow.top {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75) !important;
-  top: -3px !important;
+  /* top: -3px !important; */
 }
 
 /* Sidebar title */
@@ -125,27 +125,13 @@
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
-  justify-items: center !important;
+  border-bottom: 2px solid #89b4fa !important;
 }
 .composite.title h2 {
   font-weight: bold !important;
   font-size: 12px !important;
   text-transform: uppercase;
   color: #bc9abc !important;
-}
-
-.composite.title h2::before {
-  display: inline-block;
-  margin-right: 6px;
-  font-size: 1.1rem;
-  content: "[";
-}
-
-.composite.title h2::after {
-  display: inline-block;
-  margin-right: 6px;
-  font-size: 1.1rem;
-  content: "\00a0]";
 }
 
 /* Scroll Bar */
@@ -169,13 +155,11 @@
 /* Tooltip box style */
 .monaco-editor-hover,
 .monaco-hover {
-  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.45) !important;
-  padding: 10px !important;
-  /* background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important; */
-  backdrop-filter: blur(3px) !important;
-  border-radius: 20px !important;
-  /* border: none !important */
-  border: 1px #727b90 solid;
+  z-index: 100;
+  border: solid 1px #89b4fa !important;
+  border-radius: 3px !important;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.45) !important;
+  padding: 8px !important;
 }
 
 .monaco-tokenized-source {
@@ -234,7 +218,7 @@
   z-index: 100;
   border: solid 2px #89b4fa !important;
   border-radius: 6px !important;
-  box-shadow: none !important;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.45) !important;
   padding: 8px !important;
 }
 .quick-input-widget .monaco-inputbox {
@@ -254,7 +238,7 @@
   align-content: center !important;
   border: solid 1px #89b4fa !important;
   border-radius: 3px !important;
-  box-shadow: none !important;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.45) !important;
   padding: 8px !important;
 }
 .find-part {
