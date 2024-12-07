@@ -1,0 +1,167 @@
+/* @noriaku | Kalos Lazo */
+
+/*===: root :===*/
+/* Change with your colorscheme colors ;)  */
+:root {
+    --bg-dark-01: #1A1A1A;
+    --bg-dark-02: #2A2A2A;
+    --bg-dark-03: #333333;
+    --bg-dark-04: #3D3D3D;
+    --bg-dark-05: #505050;
+    --bg-dark-05: #636363;
+    
+    --bg-white-02: #DBDBDB;
+    --bg-white-03: #CDCDCD;
+    --bg-white-01: #E8E8E8;
+    --bg-white-04: #F5F5F5;
+
+    --col-red-01: #C88383;
+    --col-red-02: #D79393;
+    --col-red-03: #E6A3A2;
+    
+    --col-light-orange-01: #C69F66;
+    --col-light-orange-02: #D7B47A;
+    --col-light-orange-03: #E6C98E;
+    
+    --col-purple-01: #A57FAE;
+    --col-purple-02: #B694C1;
+    --col-purple-03: #C7A9D4;
+    
+    --col-yellow-01: #C7B885;
+    --col-yellow-02: #E0D195;
+    --col-yellow-03: #F9EAA5;
+    
+    --col-green-01: #96BF7E;
+    --col-green-02: #A7CC97;
+    --col-green-03: #B8D9B0;
+    
+    --col-sky-blue-01: #7DB4CE;
+    --col-sky-blue-02: #90C6E1;
+    --col-sky-blue-03: #A3D8F4;
+
+    --ff-mono: "Agave Nerd Font";
+    --ff-weight-base: 400;
+}
+
+/*===: general :===*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--ff-mono);
+    font-weight: var(--ff-weight-base);
+    box-sizing: border-box;
+}
+a {
+    color: var(--bg-white-03);
+    font-style: normal;
+    text-decoration: none;
+}
+a:hover {
+    color: var(--col-red-01);
+    text-decoration: underline;
+}
+
+/*===: helpers :===*/
+.flex {
+    display: flex;
+    align-items: center;
+}
+.text-center {
+    text-align: center;
+}
+
+/*===: body :===*/
+body {
+    width: 100%;
+    height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2em;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    color: var(--bg-white-01);
+    background-color: #1e1e2e;
+}
+
+/*===: top section :===*/
+#section_top_info {
+    width: 100%;
+    margin: 1em 0em;
+    padding: 2.2em 0em;
+    justify-content: space-evenly;
+}
+#time_welcome h3, #date_weather h3 {
+    font-size: 3.2em;
+    font-weight: bold;
+}
+#time_welcome h5, #date_weather h5 {
+    margin-top: .5em;
+    font-size: 1.2em;
+}
+
+/*===: bottom section :===*/
+#section_bottom_links {
+    width: 100%;
+    margin: 1em 0em;
+    gap: 1em;
+    justify-content: center;
+}
+.generic_link {
+    width: 100%;
+    padding: 1.1em 1.1em;
+    background: var(--bg-dark-02);
+}
+
+/*===: middle section :===*/
+#section_middle_search {
+    width: 100%;
+    justify-content: center;
+    padding: 1em 2em;
+    background-color: #181825;
+    border-radius: 3px
+}
+.terminal-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.terminal-form label {
+    width: auto;
+    margin-right: 1em;
+}
+.terminal-form input[type="text"] {
+    border: none;
+    flex-grow: 1;
+    background-color: #181825;
+    color: #cdd6f4;
+}
+.terminal-form input[type="text"]:focus {
+    outline: none;
+}
+
+/*===: prompt section :===*/
+.prompt_link {
+    margin-bottom: 0.5em;
+}
+.res_prompt {
+    margin-left: 1.5em;
+}
+.res_folder {
+    color: var(--col-purple-01);
+}
+
+/*===: global colors section :===*/
+.col-01 {
+    color: #89b4fa;
+}
+.col-02 {
+    color: #89b4fa;
+}
+.col-03 {
+    color: #f5c2e7;
+}
+.col-04 {
+    color: #b4befe;
+}

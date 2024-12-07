@@ -1,0 +1,21 @@
+{
+  "username": "LeeSF",
+
+  "country": "Malysia",
+  "city": "Kuala Lumpur",
+
+  "categories": {
+    "work": {
+      "slack": "https://slack.com/",
+      "trello": "https://trello.com"
+    },
+    "news": {
+      "xataka": "https://xataka.com",
+      "theverge": "https://theverge.com"
+    },
+    "social": {
+      "github": "https://github.com",
+      "reddit": "https://reddit.com"
+    }
+  }
+}
