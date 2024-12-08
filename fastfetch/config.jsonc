@@ -77,7 +77,7 @@
     {
       "type": "shell",
       "format": " {6} {4}",
-      "key": " \uea85",
+      "key": " \udb82\ude0a",
       "keyWidth": 4,
       "keyColor": "magenta"
     },
