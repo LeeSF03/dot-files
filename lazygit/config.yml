@@ -26,7 +26,7 @@ gui:
     '*': '#b4befe'
   nerdFontsVersion: "3"
   showFileIcons: false
-  commitHashLength: 6
+  commitHashLength: 7
 
 git:
   skipHookPrefix: WIP
