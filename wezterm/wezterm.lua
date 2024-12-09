@@ -18,8 +18,8 @@ wezterm.on('toggle-opacity', function(window, pane)
   end)
 
 wezterm.on('center-window', function(window, pane)
-  window:set_position(560, 240)
-  window:set_inner_size(800, 500)
+  window:set_position(570, 240)
+  window:set_inner_size(812, 511)
 end)
 
 wezterm.on('gui-startup', function(cmd) -- set startup Window position
@@ -123,11 +123,12 @@ config.color_scheme = "Catppuccin Mocha"
 --     background = "#181825"
 -- }
 
+-- Window Frame
 config.window_frame = {
-  border_left_width = '0.1cell',
-  border_right_width = '0.1cell',
-  border_bottom_height = '0.05cell',
-  border_top_height = '0.05cell',
+  border_left_width = '1px',
+  border_right_width = '1px',
+  border_bottom_height = '1px',
+  border_top_height = '1px',
   border_left_color = '#cba6f7',
   border_right_color = '#cba6f7',
   border_bottom_color = '#cba6f7',
