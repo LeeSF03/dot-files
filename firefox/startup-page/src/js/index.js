@@ -84,9 +84,17 @@ function handle_current_time() {
     current_time_element.textContent = `${hours}:${minutes}`;
 };
 
+function handle_focus_search() {
+  const search = document.getElementById("search");
+  console.log(search)
+  if (search) search.focus();
+}
+
+
 handle_current_time();
 handle_current_date();
-handle_current_weather();
-handle_get_username();
+// handle_focus_search();
+// handle_current_weather();
+// handle_get_username();
 
 setInterval(handle_current_time, 60000);
