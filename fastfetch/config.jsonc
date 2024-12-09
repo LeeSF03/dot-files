@@ -69,11 +69,13 @@
       "keyWidth": 4,
       "keyColor": "blue"
     },
-    // {
-    //   "type": "uptime",
-    //   "key": "up",
-    //   "format": "{}d {2}h {3}m"
-    // },
+    {
+      "type": "terminal",
+      "format": " {5}",
+      "key": " \uf155W",
+      "keyWidth": 4,
+      "keyColor": "blue"
+    },
     {
       "type": "shell",
       "format": " {6} {4}",
