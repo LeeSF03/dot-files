@@ -304,6 +304,7 @@
   width: auto !important;
 }
 
+/* Statusbar Left */
 .statusbar-item.left:has(.codicon-git-branch) {
   background: #cba6f7 !important;
   color: #1e1e2e !important;
@@ -314,7 +315,12 @@
   color: #1e1e2e !important;
   font-weight: 600 !important;
 }
+.left-items.items-container div:nth-child(11) {
+  order: 12 !important;
+  font-weight: 600 !important;
+}
 
+/* Statusbar Right */
 .statusbar-item.right.__CUSTOM_CSS_JS_INDICATOR_CLS {
   display: none !important;
 }
