@@ -304,6 +304,34 @@
   width: auto !important;
 }
 
+.statusbar-item.left:has(.codicon-git-branch) {
+  background: #cba6f7 !important;
+  color: #1e1e2e !important;
+  font-weight: 600 !important;
+}
+#vscodevim\.vim\.primary {
+  background: #89b4fa !important;
+  color: #1e1e2e !important;
+  font-weight: 600 !important;
+}
+
+.statusbar-item.right.__CUSTOM_CSS_JS_INDICATOR_CLS {
+  display: none !important;
+}
+#status\.editor\.selection {
+  background: #89b4fa !important;
+  color: #1e1e2e !important;
+  font-weight: 600 !important;
+  text-transform: lowercase !important;
+}
+#GitHub\.copilot\.status {
+  background: #a6da95 !important;
+  color: #1e1e2e !important;
+}
+#vscodevim\.vim\.showcmd {
+  font-weight: 600 !important;
+}
+
 /* Terminal */
 .xterm-link-layer {
   font-weight: 500 !important;
