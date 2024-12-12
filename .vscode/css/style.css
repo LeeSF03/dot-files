@@ -66,6 +66,7 @@
 .tabs-container{
   height: auto !important;
   padding: 3px !important;
+  padding-bottom: 5px !important;
 }
 
 /* Side bar */
@@ -314,6 +315,24 @@
   background: #89b4fa !important;
   color: #1e1e2e !important;
   font-weight: 600 !important;
+}
+#vscodevim\.vim\.primary[aria-label="-- INSERT --"] {
+  background: #a6e3a1 !important;
+}
+#vscodevim\.vim\.primary[aria-label="-- VISUAL --"] {
+  background: #cba6f7 !important;
+}
+#vscodevim\.vim\.primary[aria-label="-- VISUAL LINE --"] {
+  background: #cba6f7 !important;
+}
+#vscodevim\.vim\.primary[aria-label="-- VISUAL BLOCK --"] {
+  background: #cba6f7 !important;
+}
+#vscodevim\.vim\.primary[aria-label="-- VIM: DISABLED --"] {
+  background: #f38ba8 !important;
+}
+#vscodevim\.vim\.showcmd[aria-label="<ExtensionDisable>"] {
+  display: none !important;
 }
 .left-items.items-container div:nth-child(11) {
   order: 12 !important;
