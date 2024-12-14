@@ -36,7 +36,7 @@ ratio = 30
 [[row.child]]
 type = "cpu"
 [[row]]
-ratio = 40
+ratio = 30
 [[row.child]]
 ratio = 4
 type = "mem"
