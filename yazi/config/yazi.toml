@@ -113,8 +113,11 @@ rules = [
     "extract",
     "reveal",
   ] },
-
 ]
+
+[[open.prepend_rules]]
+name = "*.zip"
+use = ["extract", "reveal"]
 
 [tasks]
 micro_workers = 5
