@@ -40,3 +40,6 @@ git:
   disableForcePushing: false
   parseEmoji: false
   truncateCopiedCommitHashesTo: 12
+
+os:
+  editPreset: vscode
