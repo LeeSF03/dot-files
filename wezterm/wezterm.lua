@@ -10,7 +10,7 @@ local mux = wezterm.mux
 wezterm.on('toggle-opacity', function(window, pane)
     local overrides = window:get_config_overrides() or {}
     if not overrides.window_background_opacity then
-      overrides.window_background_opacity = 1
+      overrides.window_background_opacity = 0.90
     else
       overrides.window_background_opacity = nil
     end
@@ -136,7 +136,7 @@ config.window_frame = {
 }
 
 -- Background
-config.window_background_opacity = 0.90
+-- config.window_background_opacity = 0.90
 
 -- Font
 config.font = wezterm.font_with_fallback {"FiraCode Nerd Font"}
