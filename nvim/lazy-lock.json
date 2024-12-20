@@ -3,6 +3,7 @@
   "blink.cmp": { "branch": "main", "commit": "ae5a4ce8f7e519e49de7ae6fcadd74547f820a52" },
   "bufferline.nvim": { "branch": "main", "commit": "5726c4e291224181903e960119a11e20ac677a0a" },
   "catppuccin": { "branch": "main", "commit": "faf15ab0201b564b6368ffa47b56feefc92ce3f4" },
+  "conform.nvim": { "branch": "master", "commit": "f4e8837878fc5712d053ba3091a73d27d96a09e2" },
   "copilot-status.nvim": { "branch": "main", "commit": "ea9e7000e82a89aac9d8434675dfed3da4ec1158" },
   "copilot.vim": { "branch": "release", "commit": "87038123804796ca7af20d1b71c3428d858a9124" },
   "dashboard-nvim": { "branch": "master", "commit": "ae309606940d26d8c9df8b048a6e136b6bbec478" },
