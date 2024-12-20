@@ -1,0 +1,5 @@
+return {
+  {
+    'gelguy/wilder.nvim',
+  },
+}
