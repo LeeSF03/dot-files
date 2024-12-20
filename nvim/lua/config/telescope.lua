@@ -4,15 +4,16 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope commands' })
+vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope find git tracked files' })
 
 local telescope = require("telescope")
 local actions = require("telescope.actions")
-telescope.setup{
+telescope.setup {
   defaults = {
     previewer = true,
-	  file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-	  grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-	  qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
     layout_startegy = 'horizontal',
     layout_config = {
       center = {
