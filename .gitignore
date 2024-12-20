@@ -4,3 +4,4 @@ configstore/*
 lazygit/state.yml
 dooit/dooit/*
 dooit/dooit_extras/*
+.ignore
