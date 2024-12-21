@@ -9,6 +9,9 @@ mason.setup()
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#181825", })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#181825" })
 vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#ea76cb" })
+vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#181825", })
+vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#89b4fa", bg = "#181825" })
+-- vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#181825" }) -- not working
 
 blink.setup({
   keymap = {
@@ -25,7 +28,6 @@ blink.setup({
   documentation = {
     auto_show = true,
     auto_show_delay_ms = 500,
-    border = 'rounded',
   },
   appearance = {
     use_nvim_cmp_as_default = true,
@@ -37,7 +39,7 @@ blink.setup({
     },
   },
   -- experimental signature help support
-  signature = { enabled = true }
+  signature = { enabled = true, window = { border = 'rounded' } },
 })
 
 -- list of language servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
