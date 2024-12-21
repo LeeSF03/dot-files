@@ -20,7 +20,7 @@ scrolloff = 250
 [opener]
 edit = [
   { run = 'nvim "$@"', block = true, for = "unix" },
-  { run = 'code -w %*', block = true, desc = "Code", for = "windows" },
+  { run = 'nvim %*', block = true, desc = "Code", for = "windows" },
 ]
 open = [
   { run = 'xdg-open "$1"', desc = "Open", for = "linux" },
