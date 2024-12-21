@@ -1,9 +1,44 @@
 local mason = require("mason")
 local masonlsp = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
-local capabilities = require('blink.cmp').get_lsp_capabilities()
+local blink = require("blink.cmp")
+local capabilities = blink.get_lsp_capabilities()
 
 mason.setup()
+
+vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#181825", })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#181825" })
+vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#ea76cb" })
+
+blink.setup({
+  keymap = {
+    ['<C-s>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    ['<C-e>'] = { 'hide' },
+    ['<C-y>'] = { 'select_and_accept' },
+
+    ['<C-k>'] = { 'select_prev', 'fallback' },
+    ['<C-j>'] = { 'select_next', 'fallback' },
+
+    ['<C-h>'] = { 'scroll_documentation_up', 'fallback' },
+    ['<C-l>'] = { 'scroll_documentation_down', 'fallback' },
+  },
+  documentation = {
+    auto_show = true,
+    auto_show_delay_ms = 500,
+    border = 'rounded',
+  },
+  appearance = {
+    use_nvim_cmp_as_default = true,
+    nerd_font_variant = 'mono',
+  },
+  completion = {
+    menu = {
+      border = 'rounded',
+    },
+  },
+  -- experimental signature help support
+  signature = { enabled = true }
+})
 
 -- list of language servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
 masonlsp.setup({
