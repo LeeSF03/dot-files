@@ -1,4 +1,5 @@
 local mason = require("mason")
+local masontoolinstaller = require("mason-tool-installer")
 local masonlsp = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local blink = require("blink.cmp")
@@ -43,6 +44,14 @@ blink.setup({
   },
   -- experimental signature help support
   signature = { enabled = true, window = { border = 'rounded' } },
+})
+
+masontoolinstaller.setup({
+  ensure_installed = {
+    "prettier",
+    "prettierd",
+    "eslint_d",
+  },
 })
 
 -- list of language servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
