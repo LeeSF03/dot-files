@@ -114,8 +114,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     vim.keymap.set('n', 'gsc', '<cmd>Lspsaga show_cursor_diagnostics<CR>', { desc = "Show cursor diagnostics", buffer = ev.buf })
     vim.keymap.set('n', 'gsw', '<cmd>Lspsaga show_workspace_diagnostics<CR>', { desc = "Show workplace diagnostics", buffer = ev.buf })
-    vim.keymap.set('n', 'g(', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = "Jump to previous diagnostic", buffer = ev.buf })
-    vim.keymap.set('n', 'g)', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = "Jump to next diagnostic", buffer = ev.buf })
+    vim.keymap.set('n', 'gsh', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = "Jump to previous diagnostic", buffer = ev.buf })
+    vim.keymap.set('n', 'gsl', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = "Jump to next diagnostic", buffer = ev.buf })
 
     vim.keymap.set('n', 'gdp', '<cmd>Lspsaga peek_definition<CR>', { desc = "Peek defenition", buffer = ev.buf })
     vim.keymap.set('n', 'gdo', '<cmd>Lspsaga goto_definition<CR>', { desc = "Go to defenition", buffer = ev.buf })
