@@ -33,7 +33,7 @@ local opts = {
       { action = ":ene",                                           desc = " New File",        icon = " ", key = "n" },
       { action = 'Telescope oldfiles',                             desc = " Recent Files",    icon = " ", key = "r" },
       { action = 'Telescope live_grep',                            desc = " Find Text",       icon = " ", key = "g" },
-      { action = "Lazy health",                                    desc = " Check Health",    icon = " ", key = "h" },
+      { action = ":checkhealth",                                   desc = " Check Health",    icon = " ", key = "h" },
       { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
       { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
     },
