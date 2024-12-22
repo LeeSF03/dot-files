@@ -11,7 +11,7 @@ vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#181825" })
 vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#ea76cb" })
 vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#181825", })
 vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#89b4fa", bg = "#181825" })
--- vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#181825" }) -- not working
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#181825" }) -- not working
 
 blink.setup({
   keymap = {
@@ -25,10 +25,6 @@ blink.setup({
     ['<C-h>'] = { 'scroll_documentation_up', 'fallback' },
     ['<C-l>'] = { 'scroll_documentation_down', 'fallback' },
   },
-  documentation = {
-    auto_show = true,
-    auto_show_delay_ms = 500,
-  },
   appearance = {
     use_nvim_cmp_as_default = true,
     nerd_font_variant = 'mono',
@@ -36,6 +32,13 @@ blink.setup({
   completion = {
     menu = {
       border = 'rounded',
+    },
+    documentation = {
+      window = {
+        border = 'rounded',
+      },
+      auto_show = true,
+      auto_show_delay_ms = 500,
     },
   },
   -- experimental signature help support
