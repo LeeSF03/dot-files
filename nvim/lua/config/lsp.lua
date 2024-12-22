@@ -87,18 +87,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     lspsaga.setup({
       code_action = {
         keys = {
-          quit = '<esc>',
+          quit = 'q',
           exec = '<CR>',
         }
       },
       rename = {
         keys = {
-          quit = '<esc>',
+          quit = 'q',
         }
       },
       definition = {
         keys = {
-          quit = '<esc>',
+          quit = 'q',
         }
       }
     })
@@ -106,9 +106,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Disabled because using blink.cmp
     -- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-    vim.keymap.set('n', 'gh', '<cmd>Lspsaga hover_doc<CR>', { desc = "Hover action from LSP", buffer = ev.buf })
+    vim.keymap.set('n', 'ghh', '<cmd>Lspsaga hover_doc<CR>', { desc = "Hover action from LSP", buffer = ev.buf })
+    vim.keymap.set('n', 'ghe', '<cmd>Lspsaga hover_doc ++<CR>', { desc = "Enter hover", buffer = ev.buf })
+
+    vim.keymap.set('n', 'gsc', '<cmd>Lspsaga show_cursor_diagnostics<CR>', { desc = "Show cursor diagnostics", buffer = ev.buf })
+    vim.keymap.set('n', 'gsw', '<cmd>Lspsaga show_workspace_diagnostics<CR>', { desc = "Show workplace diagnostics", buffer = ev.buf })
+    vim.keymap.set('n', 'g(', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = "Jump to previous diagnostic", buffer = ev.buf })
+    vim.keymap.set('n', 'g)', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = "Jump to next diagnostic", buffer = ev.buf })
+
     vim.keymap.set('n', 'gdp', '<cmd>Lspsaga peek_definition<CR>', { desc = "Peek defenition", buffer = ev.buf })
     vim.keymap.set('n', 'gdo', '<cmd>Lspsaga goto_definition<CR>', { desc = "Go to defenition", buffer = ev.buf })
+
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = ev.buf })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Go to references", buffer = ev.buf })
