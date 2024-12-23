@@ -3,16 +3,17 @@ local masontoolinstaller = require("mason-tool-installer")
 local masonlsp = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local blink = require("blink.cmp")
+local telescope_builtin = require("telescope.builtin")
 local capabilities = blink.get_lsp_capabilities()
 
 mason.setup()
 
-vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#181825", })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#181825" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#1e1e2e", })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
 vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#ea76cb" })
-vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#181825", })
-vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#89b4fa", bg = "#181825" })
-vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#181825" }) -- not working
+vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#1e1e2e", })
+vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#1e1e2e" }) -- not working
 
 blink.setup({
   keymap = {
@@ -46,6 +47,9 @@ blink.setup({
   signature = { enabled = true, window = { border = 'rounded' } },
 })
 
+-- list of tools(linters, formatters, etc):
+-- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
+-- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
 masontoolinstaller.setup({
   ensure_installed = {
     "prettier",
@@ -58,7 +62,9 @@ masontoolinstaller.setup({
 masonlsp.setup({
   ensure_installed = {
     "lua_ls",
-    "ts_ls"
+    "ts_ls",
+    "tailwindcss",
+    "cssmodules_ls",
   }
 })
 
@@ -89,6 +95,16 @@ lspconfig.lua_ls.setup({
 
 -- typescript language server setup
 lspconfig.ts_ls.setup({
+  capabilities = capabilities,
+})
+
+-- tailwindcss language server setup
+lspconfig.tailwindcss.setup({
+  capabilities = capabilities,
+})
+
+-- cssmodules language server setup
+lspconfig.cssmodules_ls.setup({
   capabilities = capabilities,
 })
 
@@ -131,11 +147,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = ev.buf })
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Go to references", buffer = ev.buf })
+    vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { desc = "Go to references", buffer = ev.buf })
     vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<CR>', { desc = "Rename variable", buffer = ev.buf })
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<CR>', { desc = "Code Actions", buffer = ev.buf })
     vim.keymap.set('n', '<leader>f', function()
       vim.lsp.buf.format { async = true }
     end, { desc = "Format code", buffer = ev.buf })
   end
+})
+
+-- Disable diagnostic signs
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.HINT] = '',
+    }
+  }
 })
