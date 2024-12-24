@@ -55,6 +55,7 @@ masontoolinstaller.setup({
     "prettier",
     "prettierd",
     "eslint_d",
+    -- "clangd",
   },
 })
 
@@ -108,6 +109,10 @@ lspconfig.cssmodules_ls.setup({
   capabilities = capabilities,
 })
 
+-- lspconfig.clangd.setup({
+--   capabilities = capabilities,
+-- })
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -150,9 +155,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { desc = "Go to references", buffer = ev.buf })
     vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<CR>', { desc = "Rename variable", buffer = ev.buf })
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<CR>', { desc = "Code Actions", buffer = ev.buf })
-    vim.keymap.set('n', '<leader>f', function()
+    vim.keymap.set('n', '<leader>cf', function()
       vim.lsp.buf.format { async = true }
-    end, { desc = "Format code", buffer = ev.buf })
+    end, { desc = "Code Format", buffer = ev.buf })
   end
 })
 
