@@ -8,15 +8,20 @@ toggleterm.setup({
       return vim.o.columns * 0.4
     end
   end,
-	open_mapping = [[<leader>tt]],
 	start_in_insert = true,
 	direction = "float",
 	shell = "pwsh.exe -nologo",
 	float_opts = {
 		border = "curved",
-    title_pos = "center",
 	}
 })
 
-vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm direction=vertical<CR>', { desc = 'Open terminal in vertical split' })
-vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Open terminal in horizontal split' })
+vim.keymap.set('n', '<C-t><C-t>', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm") end, { desc = 'Open terminal in floating' })
+vim.keymap.set('n', '<C-t><C-v>', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm direction=vertical") end, { desc = 'Open terminal in vertical split' })
+vim.keymap.set('n', '<C-t><C-s>', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm direction=horizontal") end, { desc = 'Open terminal in horizontal split' })
+vim.keymap.set('t', '<C-t><C-n>', '<C-\\><C-n>', { desc = 'Turn into normal mode' })
+vim.keymap.set('n', '<C-t><C-a>', '<cmd>ToggleTermToggleAll<CR>', { desc = 'Toggle all terminal' })
+vim.keymap.set('n', '<leader>ft', '<cmd>TermSelect<CR>', { desc = 'Find terminal' })
+-- vim.keymap.set({ 'n', 'i' }, '<C-t><C-t>', '<cmd>ToggleTerm<CR>', { desc = 'Open terminal in vertical split' })
+-- vim.keymap.set('n', '<C-t><C-v>', '<cmd>ToggleTerm direction=vertical<CR>', { desc = 'Open terminal in vertical split' })
+-- vim.keymap.set('n', '<C-t><C-s>', '<cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Open terminal in horizontal split' })
