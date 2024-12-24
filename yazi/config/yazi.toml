@@ -49,11 +49,13 @@ rules = [
     "open",
     "edit",
     "reveal",
+    "extract",
   ] },
   { name = "*", use = [
     "open",
     "edit",
     "reveal",
+    "extract",
   ] },
   { mime = "text/*", use = [
     "edit",
