@@ -17,6 +17,7 @@ local dashboard = require("dashboard")
 -- ]]
 
 local logo_narrow = [[
+
         ██████                           ████████████ █████████████
        ██████                           ████████████████   ████ 
        ████        ████████████████ ███████████ ████          
@@ -54,7 +55,7 @@ local logo_wide = [[
 ]]
 
 local selected_logo = logo_narrow
--- if vim.o.columns < 137 then selected_logo = logo_narrow end
+-- if vim.o.columns > 137 then selected_logo = logo_wide end
 
 local logo = string.rep("\n", 1) .. selected_logo .. "\n\n"
 
