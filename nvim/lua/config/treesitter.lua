@@ -6,7 +6,7 @@ require('nvim-treesitter.install').compilers = {"zig", "clang", "gcc"}
 
 ---@diagnostic disable-next-line: missing-fields
 configs.setup({
-  ensure_installed = { "c", "lua", "javascript", "html", "markdown", "markdown_inline", "cpp" },
+  ensure_installed = { "c", "lua", "javascript", "html", "markdown", "markdown_inline", "cpp", "typescript", "tsx" },
   highlight = { enable = true },
   indent = { enable = true },
 })
