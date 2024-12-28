@@ -332,7 +332,7 @@ config.leader = {
 -- }
 config.keys = { -- This will create a new split and run the `top` program inside it
     {
-        key = "=",
+        key = "v",
         mods = "LEADER",
         action = act.SplitPane {
             direction = "Right",
@@ -342,7 +342,7 @@ config.keys = { -- This will create a new split and run the `top` program inside
             }
         }
     }, {
-        key = "-",
+        key = "s",
         mods = "LEADER",
         action = act.SplitPane {
             direction = "Down",
@@ -434,8 +434,8 @@ config.key_tables = {
         mods = 'CTRL',
         action = act.CopyMode 'NextMatch'
     }, {
-        key = 'p',
-        mods = 'CTRL',
+        key = 'n',
+        mods = 'CTRL|SHIFT',
         action = act.CopyMode 'PriorMatch'
     }}
 }
