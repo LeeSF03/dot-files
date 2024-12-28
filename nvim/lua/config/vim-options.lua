@@ -6,9 +6,20 @@ vim.cmd("set number")
 vim.cmd("set relativenumber")
 vim.cmd("autocmd InsertEnter * :set norelativenumber")
 vim.cmd("autocmd InsertLeave * :set relativenumber")
--- vim.cmd("source " .. vim.fn.stdpath("config") .. "\\vim\\plugins\\surround.vim")
--- vim.cmd("set cmdheight=0")
 vim.cmd("set noshowmode")
 vim.cmd([[
 call camelcasemotion#CreateMotionMappings('<leader>')
 ]])
+vim.cmd("set fileformat=unix")
+
+local function set_filetype(pattern, filetype)
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = pattern,
+        command = "set filetype=" .. filetype,
+    })
+end
+
+set_filetype({ "docker-compose.*.yml" }, "yaml.docker-compose")
+set_filetype({ "docker-compose.*.yaml" }, "yaml.docker-compose")
+set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
+set_filetype({ "docker-compose.yml" }, "yaml.docker-compose")
