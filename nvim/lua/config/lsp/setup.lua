@@ -1,19 +1,33 @@
 local mason = require("mason")
 local masontoolinstaller = require("mason-tool-installer")
 local masonlsp = require("mason-lspconfig")
-local lspconfig = require("lspconfig")
 local blink = require("blink.cmp")
 local telescope_builtin = require("telescope.builtin")
-local capabilities = blink.get_lsp_capabilities()
 
 mason.setup()
 
-vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#1e1e2e", })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
-vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#ea76cb" })
-vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#1e1e2e", })
-vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
-vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#1e1e2e" }) -- not working
+-- list of tools(linters, formatters, etc):
+-- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
+-- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
+masontoolinstaller.setup({
+  ensure_installed = {
+    "prettier",
+    "prettierd",
+    "eslint_d",
+  },
+})
+
+-- list of language servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
+masonlsp.setup({
+  ensure_installed = {
+    "lua_ls",
+    "ts_ls",
+    "tailwindcss",
+    "cssmodules_ls",
+    "docker_compose_language_service",
+    "dockerls",
+  }
+})
 
 blink.setup({
   keymap = {
@@ -47,71 +61,6 @@ blink.setup({
   signature = { enabled = true, window = { border = 'rounded' } },
 })
 
--- list of tools(linters, formatters, etc):
--- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
--- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
-masontoolinstaller.setup({
-  ensure_installed = {
-    "prettier",
-    "prettierd",
-    "eslint_d",
-    -- "clangd",
-  },
-})
-
--- list of language servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
-masonlsp.setup({
-  ensure_installed = {
-    "lua_ls",
-    "ts_ls",
-    "tailwindcss",
-    "cssmodules_ls",
-  }
-})
-
--- lua language server setup
-lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  }
-})
-
--- typescript language server setup
-lspconfig.ts_ls.setup({
-  capabilities = capabilities,
-})
-
--- tailwindcss language server setup
-lspconfig.tailwindcss.setup({
-  capabilities = capabilities,
-})
-
--- cssmodules language server setup
-lspconfig.cssmodules_ls.setup({
-  capabilities = capabilities,
-})
-
--- lspconfig.clangd.setup({
---   capabilities = capabilities,
--- })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -142,10 +91,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'ghh', '<cmd>Lspsaga hover_doc<CR>', { desc = "Hover action from LSP", buffer = ev.buf })
     vim.keymap.set('n', 'ghe', '<cmd>Lspsaga hover_doc ++<CR>', { desc = "Enter hover", buffer = ev.buf })
 
-    vim.keymap.set('n', 'gsc', '<cmd>Lspsaga show_cursor_diagnostics<CR>', { desc = "Show cursor diagnostics", buffer = ev.buf })
-    vim.keymap.set('n', 'gsw', '<cmd>Lspsaga show_workspace_diagnostics<CR>', { desc = "Show workplace diagnostics", buffer = ev.buf })
-    vim.keymap.set('n', 'gsh', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = "Jump to previous diagnostic", buffer = ev.buf })
-    vim.keymap.set('n', 'gsl', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = "Jump to next diagnostic", buffer = ev.buf })
+    vim.keymap.set('n', 'gsc', '<cmd>Lspsaga show_cursor_diagnostics<CR>',
+      { desc = "Show cursor diagnostics", buffer = ev.buf })
+    vim.keymap.set('n', 'gsw', '<cmd>Lspsaga show_workspace_diagnostics<CR>',
+      { desc = "Show workplace diagnostics", buffer = ev.buf })
+    vim.keymap.set('n', 'gsh', '<cmd>Lspsaga diagnostic_jump_prev<CR>',
+      { desc = "Jump to previous diagnostic", buffer = ev.buf })
+    vim.keymap.set('n', 'gsl', '<cmd>Lspsaga diagnostic_jump_next<CR>',
+      { desc = "Jump to next diagnostic", buffer = ev.buf })
 
     vim.keymap.set('n', 'gdp', '<cmd>Lspsaga peek_definition<CR>', { desc = "Peek defenition", buffer = ev.buf })
     vim.keymap.set('n', 'gdo', '<cmd>Lspsaga goto_definition<CR>', { desc = "Go to defenition", buffer = ev.buf })
@@ -172,3 +125,11 @@ vim.diagnostic.config({
     }
   }
 })
+
+-- Set autocomplete highlight
+vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#1e1e2e", })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#ea76cb" })
+vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#1e1e2e", })
+vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#1e1e2e" }) -- not working
