@@ -151,17 +151,55 @@ config.status_update_interval = 1000
 config.tab_max_width = 60
 config.tab_bar_at_bottom = false
 
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
     local title = tab_title(tab)
     -- local pane = tab.active_pane
     -- local title = basename(pane.foreground_process_name)
+    local bg = "#CBA6F7"
+    local fg = "#1E1E2E"
+    local right_arrow_bg = "#1E1E2E"
+    local right_arrow_fg = "#CBA6F7"
+    local left_arrow_bg = "#1E1E2E"
+    local left_arrow_fg = "#CBA6F7"
     if not tab.is_active then
-      title = string.sub(title, 1, 10) .. '...'
+      bg = "#1E1E2E"
+      fg = "#CDD6F4"
+      right_arrow_fg = "#1E1E2E"
+      left_arrow_fg = "#1E1E2E"
+
+      if string.len(title) > 10 then
+        title = string.sub(title, 1, 10) .. '...'
+      end
     end
+
+    local next_tab = tabs[tab.tab_index + 2]
+    -- if next_tab ~= nil and next_tab.is_active then
+    -- right_arrow_bg = "#CBA6F7"
+    -- end
+
+    if next_tab == nil then
+      right_arrow_bg = "#11111B"
+    end
+
+    local prev_tab = tabs[tab.tab_index]
+    if prev_tab == nil then
+      left_arrow_bg = "#CBA6F7"
+    end
+
     return {
+      { Background = { Color = left_arrow_bg } },
+      { Foreground = { Color = left_arrow_fg } },
+      { Text = SOLID_LEFT_ARROW },
+      { Background = { Color = bg } },
+      { Foreground = { Color = fg } },
       { Text = ' [' .. tab.tab_index + 1 .. '] ' .. title .. ' ' },
+      { Background = { Color = right_arrow_bg } },
+      { Foreground = { Color = right_arrow_fg } },
+      { Text = SOLID_RIGHT_ARROW },
     }
   end
 )
@@ -253,97 +291,6 @@ config.leader = {
   mods = "CTRL",
   timeout_milliseconds = 3000
 }
--- config.keys = {
---   { key = "c", mods = "LEADER", action = act.ActivateCopyMode },
-
---   -- Pane Keybindings
---   { key = "+", mods = "LEADER", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
---   { key = "|", mods = "LEADER", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
---   { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
---   { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
---   { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
---   { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
---   { key = "x", mods = "LEADER", action = act.CloseCurrentPane { confirm = true } },
---   { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
---   { key = "s", mods = "LEADER", action = act.RotatePanes "Clockwise" },
---   -- We could make separate keybindings for resizing panes
---   -- But Wezterm offers a custom mode we will use here
---   { key = "r", mods = "LEADER", action = act.ActivateKeyTable { name = "resize_pane", one_shot = false } },
-
---   -- Tab Keybindings
---   { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
---   { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
---   { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
---   { key = "t", mods = "LEADER", action = act.ShowTabNavigator },
---   -- Table for moving tabs around
---   { key = "m", mods = "LEADER", action = act.ActivateKeyTable { name = "move_tab", one_shot = false } },
-
---   -- Workspace
---   { key = "w", mods = "LEADER", action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
---   {
---     key = 'W',
---     mods = 'LEADER',
---     action = act.PromptInputLine {
---       description = wezterm.format {
---         { Attribute = { Intensity = 'Bold' } },
---         { Foreground = { AnsiColor = 'Fuchsia' } },
---         { Text = 'Enter name for new workspace' },
---       },
---       action = wezterm.action_callback(function(window, pane, line)
---         -- line will be `nil` if they hit escape without entering anything
---         -- An empty string if they just hit enter
---         -- Or the actual line of text they wrote
---         if line then
---           window:perform_action(
---             act.SwitchToWorkspace {
---               name = line,
---             },
---             pane
---           )
---         end
---       end),
---     },
---   },
-
---   -- Experimental section for workspace saving
---   { key = "S", mods = "LEADER", action = wezterm.action({ EmitEvent = "save_state" }) },
---   { key = "R", mods = "LEADER", action = wezterm.action({ EmitEvent = "restore_state" }) },
---   { key = "L", mods = "LEADER", action = wezterm.action({ EmitEvent = "load_state" }) },
--- }
--- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
-
--- local function is_vim(pane)
---   -- this is set by the plugin, and unset on ExitPre in Neovim
---   return pane:get_user_vars().IS_NVIM == 'true'
--- end
---
--- local direction_keys = {
---   h = 'Left',
---   j = 'Down',
---   k = 'Up',
---   l = 'Right',
--- }
---
--- local function split_nav(resize_or_move, key)
---   return {
---     key = key,
---     mods = resize_or_move == 'resize' and 'META' or 'CTRL',
---     action = wezterm.action_callback(function(win, pane)
---       if is_vim(pane) then
---         -- pass the keys through to vim/nvim
---         win:perform_action({
---           SendKey = { key = key, mods = resize_or_move == 'resize' and 'META' or 'CTRL' },
---         }, pane)
---       else
---         if resize_or_move == 'resize' then
---           win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
---         else
---           win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
---         end
---       end
---     end),
---   }
--- end
 
 config.keys = { -- This will create a new split and run the `top` program inside it
   {
@@ -356,119 +303,89 @@ config.keys = { -- This will create a new split and run the `top` program inside
     mods = "LEADER",
     action = act.ActivateTabRelative(-1)
   }, {
-    key = "v",
-    mods = "LEADER",
-    action = act.SplitPane {
-      direction = "Right",
-      -- command = { args = { "top" } },
-      size = {
-        Percent = 50
-      }
+  key = "v",
+  mods = "LEADER",
+  action = act.SplitPane {
+    direction = "Right",
+    -- command = { args = { "top" } },
+    size = {
+      Percent = 50
     }
-  }, {
-    key = "s",
-    mods = "LEADER",
-    action = act.SplitPane {
-      direction = "Down",
-      -- command = { args = { "top" } },
-      size = {
-        Percent = 50
-      }
+  }
+}, {
+  key = "s",
+  mods = "LEADER",
+  action = act.SplitPane {
+    direction = "Down",
+    -- command = { args = { "top" } },
+    size = {
+      Percent = 50
     }
-  }, {
-    key = "}",
-    mods = "LEADER|SHIFT",
-    action = act.MoveTabRelative(1)
-  }, {
-    key = "{",
-    mods = "LEADER|SHIFT",
-    action = act.MoveTabRelative(-1)
-  }, {
-    key = '0',
-    mods = 'LEADER',
-    action = act.PaneSelect {
-      mode = 'SwapWithActiveKeepFocus',
-      alphabet = '1234567890',
-    },
+  }
+}, {
+  key = "}",
+  mods = "LEADER|SHIFT",
+  action = act.MoveTabRelative(1)
+}, {
+  key = "{",
+  mods = "LEADER|SHIFT",
+  action = act.MoveTabRelative(-1)
+}, {
+  key = '0',
+  mods = 'LEADER',
+  action = act.PaneSelect {
+    mode = 'SwapWithActiveKeepFocus',
+    alphabet = '1234567890',
   },
-    -- move between split panes
-    split_nav('move', 'h'),
-    split_nav('move', 'j'),
-    split_nav('move', 'k'),
-    split_nav('move', 'l'),
-    -- resize panes
-    split_nav('resize', 'h'),
-    split_nav('resize', 'j'),
-    split_nav('resize', 'k'),
-    split_nav('resize', 'l'),
+},
+  -- move between split panes
+  split_nav('move', 'h'),
+  split_nav('move', 'j'),
+  split_nav('move', 'k'),
+  split_nav('move', 'l'),
+  -- resize panes
+  split_nav('resize', 'h'),
+  split_nav('resize', 'j'),
+  split_nav('resize', 'k'),
+  split_nav('resize', 'l'),
   {
-    -- }, {
-    --   key = "h",
-    --   mods = "LEADER",
-    --   action = act.ActivatePaneDirection("Left")
-    -- }, {
-    --   key = "j",
-    --   mods = "LEADER",
-    --   action = act.ActivatePaneDirection("Down")
-    -- }, {
-    --   key = "k",
-    --   mods = "LEADER",
-    --   action = act.ActivatePaneDirection("Up")
-    -- }, {
-    --   key = "l",
-    --   mods = "LEADER",
-    --   action = act.ActivatePaneDirection("Right")
-  -- }, {
     key = "x",
     mods = "LEADER",
     action = act.CloseCurrentPane {
       confirm = true
     }
   }, {
-    key = 'h',
-    mods = 'CTRL|ALT',
-    action = act.AdjustPaneSize { 'Left', 1 }
-  }, {
-    key = 'j',
-    mods = 'CTRL|ALT',
-    action = act.AdjustPaneSize { 'Down', 1 }
-  }, {
-    key = 'k',
-    mods = 'CTRL|ALT',
-    action = act.AdjustPaneSize { 'Up', 1 }
-  }, {
-    key = 'l',
-    mods = 'CTRL|ALT',
-    action = act.AdjustPaneSize { 'Right', 1 }
-  }, {
-    key = 'k',
-    mods = 'CTRL|SHIFT',
-    action = act.ScrollByPage(-0.5)
-  }, {
-    key = 'j',
-    mods = 'CTRL|SHIFT',
-    action = act.ScrollByPage(0.5)
-  }, {
-    key = 'n',
-    mods = 'CTRL|SHIFT',
-    action = act.EmitEvent('gui-startup')
-  }, {
-    key = 'h',
-    mods = 'CTRL|SHIFT',
-    action = act.Hide
-  }, {
-    key = 'B',
-    mods = 'CTRL|SHIFT',
-    action = act.EmitEvent('toggle-opacity'),
-  }, {
-    key = 'd',
-    mods = 'CTRL|SHIFT',
-    action = wezterm.action.ShowDebugOverlay
-  }, {
-    key = 'o',
-    mods = 'CTRL|SHIFT',
-    action = act.EmitEvent('center-window')
-  }
+  key = 'k',
+  mods = 'CTRL|SHIFT',
+  action = act.ScrollByPage(-0.5)
+}, {
+  key = 'j',
+  mods = 'CTRL|SHIFT',
+  action = act.ScrollByPage(0.5)
+}, {
+  key = 'n',
+  mods = 'CTRL|SHIFT',
+  action = act.EmitEvent('gui-startup')
+}, {
+  key = 'B',
+  mods = 'CTRL|SHIFT',
+  action = act.EmitEvent('toggle-opacity'),
+}, {
+  key = 'd',
+  mods = 'CTRL|SHIFT',
+  action = act.ShowDebugOverlay
+}, {
+  key = 'o',
+  mods = 'CTRL|SHIFT',
+  action = act.EmitEvent('center-window')
+}, {
+  key = '0',
+  mods = 'CTRL',
+  action = act.PaneSelect {
+    mode = 'SwapWithActiveKeepFocus',
+    alphabet = '1234567890',
+  },
+},
 }
 
 config.key_tables = {
@@ -490,25 +407,5 @@ config.key_tables = {
     action = act.CopyMode 'PriorMatch'
   } }
 }
-
--- Quick tab movement
--- for i = 1, 9 do
---   table.insert(config.keys, {
---     key = tostring(i),
---     mods = "LEADER",
---     action = act.ActivateTab(i - 1)
---   })
--- end
-
--- config.key_tables = {
---   move_tab = {
---     { key = "h",      action = act.MoveTabRelative(-1) },
---     { key = "j",      action = act.MoveTabRelative(-1) },
---     { key = "k",      action = act.MoveTabRelative(1) },
---     { key = "l",      action = act.MoveTabRelative(1) },
---     { key = "Escape", action = "PopKeyTable" },
---     { key = "Enter",  action = "PopKeyTable" },
---   }
--- }
 
 return config
