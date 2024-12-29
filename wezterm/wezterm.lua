@@ -8,14 +8,14 @@ local mux = wezterm.mux
 -- wezterm.on("restore_state", function(window) workspace_saver.restore_state(window) end)
 
 wezterm.on('toggle-opacity', function(window, pane)
-    local overrides = window:get_config_overrides() or {}
-    if not overrides.window_background_opacity then
-      overrides.window_background_opacity = 0.90
-    else
-      overrides.window_background_opacity = nil
-    end
-    window:set_config_overrides(overrides)
-  end)
+  local overrides = window:get_config_overrides() or {}
+  if not overrides.window_background_opacity then
+    overrides.window_background_opacity = 0.90
+  else
+    overrides.window_background_opacity = nil
+  end
+  window:set_config_overrides(overrides)
+end)
 
 wezterm.on('center-window', function(window, pane)
   window:set_position(570, 240)
@@ -26,79 +26,69 @@ wezterm.on('gui-startup', function(cmd) -- set startup Window position
   local screens = wezterm.gui.screens()
 
   if screens.virtual_width > 1920 then
-      local tab, pane, window = mux.spawn_window(
-        {position={x=2480,y=240}}
-      )
+    local tab, pane, window = mux.spawn_window(
+      { position = { x = 2480, y = 240 } }
+    )
   else
-      local tab, pane, window = mux.spawn_window(
-        {position={x=560,y=240}}
-      )
+    local tab, pane, window = mux.spawn_window(
+      { position = { x = 560, y = 240 } }
+    )
   end
 end)
 
--- Functions
-local get_last_folder_segment = function(cwd)
-    if cwd == nil then
-        return "N/A" -- or some default value you prefer
-    end
-
-    -- Strip off 'file:///' if present
-    local pathStripped = cwd:match("^file:///(.+)") or cwd
-    -- Normalize backslashes to slashes for Windows paths
-    pathStripped = pathStripped:gsub("\\", "/")
-    -- Split the path by '/'
-    local path = {}
-    for segment in string.gmatch(pathStripped, "[^/]+") do
-        table.insert(path, segment)
-    end
-    return path[#path] -- returns the last segment
-end
-
-local function get_current_working_dir(tab)
-    local current_dir = tab.active_pane.current_working_dir or ''
-    return get_last_folder_segment(current_dir)
-end
-
 local process_icons = {
-    ['docker'] = wezterm.nerdfonts.linux_docker,
-    ['docker-compose'] = wezterm.nerdfonts.linux_docker,
-    ['psql'] = wezterm.nerdfonts.dev_postgresql,
-    ['kuberlr'] = wezterm.nerdfonts.linux_docker,
-    ['kubectl'] = wezterm.nerdfonts.linux_docker,
-    ['stern'] = wezterm.nerdfonts.linux_docker,
-    ['nvim'] = wezterm.nerdfonts.custom_vim,
-    ['make'] = wezterm.nerdfonts.seti_makefile,
-    ['vim'] = wezterm.nerdfonts.dev_vim,
-    ['go'] = wezterm.nerdfonts.seti_go,
-    ['zsh'] = wezterm.nerdfonts.dev_terminal,
-    ['bash'] = wezterm.nerdfonts.cod_terminal_bash,
-    ['btm'] = wezterm.nerdfonts.mdi_chart_donut_variant,
-    ['htop'] = wezterm.nerdfonts.mdi_chart_donut_variant,
-    ['cargo'] = wezterm.nerdfonts.dev_rust,
-    ['sudo'] = wezterm.nerdfonts.fa_hashtag,
-    ['lazydocker'] = wezterm.nerdfonts.linux_docker,
-    ['git'] = wezterm.nerdfonts.dev_git,
-    ['lua'] = wezterm.nerdfonts.seti_lua,
-    ['wget'] = wezterm.nerdfonts.mdi_arrow_down_box,
-    ['curl'] = wezterm.nerdfonts.mdi_flattr,
-    ['gh'] = wezterm.nerdfonts.dev_github_badge,
-    ['ruby'] = wezterm.nerdfonts.cod_ruby,
-    ['pwsh'] = wezterm.nerdfonts.seti_powershell,
-    ['node'] = wezterm.nerdfonts.dev_nodejs_small,
-    ['dotnet'] = wezterm.nerdfonts.md_language_csharp
+  ['docker'] = wezterm.nerdfonts.linux_docker,
+  ['docker-compose'] = wezterm.nerdfonts.linux_docker,
+  ['psql'] = wezterm.nerdfonts.dev_postgresql,
+  ['kuberlr'] = wezterm.nerdfonts.linux_docker,
+  ['kubectl'] = wezterm.nerdfonts.linux_docker,
+  ['stern'] = wezterm.nerdfonts.linux_docker,
+  ['nvim'] = wezterm.nerdfonts.custom_vim,
+  ['make'] = wezterm.nerdfonts.seti_makefile,
+  ['vim'] = wezterm.nerdfonts.dev_vim,
+  ['go'] = wezterm.nerdfonts.seti_go,
+  ['zsh'] = wezterm.nerdfonts.dev_terminal,
+  ['bash'] = wezterm.nerdfonts.cod_terminal_bash,
+  ['btm'] = wezterm.nerdfonts.mdi_chart_donut_variant,
+  ['htop'] = wezterm.nerdfonts.mdi_chart_donut_variant,
+  ['cargo'] = wezterm.nerdfonts.dev_rust,
+  ['sudo'] = wezterm.nerdfonts.fa_hashtag,
+  ['lazydocker'] = wezterm.nerdfonts.linux_docker,
+  ['git'] = wezterm.nerdfonts.dev_git,
+  ['lua'] = wezterm.nerdfonts.seti_lua,
+  ['wget'] = wezterm.nerdfonts.mdi_arrow_down_box,
+  ['curl'] = wezterm.nerdfonts.mdi_flattr,
+  ['gh'] = wezterm.nerdfonts.dev_github_badge,
+  ['ruby'] = wezterm.nerdfonts.cod_ruby,
+  ['pwsh'] = wezterm.nerdfonts.seti_powershell,
+  ['node'] = wezterm.nerdfonts.dev_nodejs_small,
+  ['dotnet'] = wezterm.nerdfonts.md_language_csharp
 }
+--
+-- Functions
 local function get_process(tab)
-    local process_name = tab.active_pane.foreground_process_name:match("([^/\\]+)%.exe$") or
-                             tab.active_pane.foreground_process_name:match("([^/\\]+)$")
+  local process_name = tab.active_pane.foreground_process_name:match("([^/\\]+)%.exe$") or
+      tab.active_pane.foreground_process_name:match("([^/\\]+)$")
 
-    -- local icon = process_icons[process_name] or string.format('[%s]', process_name)
-    local icon = process_icons[process_name] or wezterm.nerdfonts.seti_checkbox_unchecked
+  -- local icon = process_icons[process_name] or string.format('[%s]', process_name)
+  local icon = process_icons[process_name] or wezterm.nerdfonts.seti_checkbox_unchecked
 
-    return icon
+  return icon
 end
 
 local function basename(s)
-    return string.gsub(s, '(.*[/\\])(.*)', '%2')
+  return string.gsub(s, '(.*[/\\])(.*)', '%2')
+end
+
+function tab_title(tab_info)
+  local title = tab_info.tab_title
+  -- if the tab title is explicitly set, take that
+  if title and #title > 0 then
+    return title
+  end
+  -- Otherwise, use the title from the active pane
+  -- in that tab
+  return basename(tab_info.active_pane.title)
 end
 
 -- This table will hold the configuration.
@@ -110,18 +100,15 @@ config.initial_cols = 80
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-    config = wezterm.config_builder()
+  config = wezterm.config_builder()
 end
 
 -- Shell
 config.default_prog =
-    {"C:\\Users\\shuen\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe", '-NoLogo'}
+{ "C:\\Users\\shuen\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe", '-NoLogo' }
 
 -- Colorscheme
 config.color_scheme = "Catppuccin Mocha"
--- config.colors ={
---     background = "#181825"
--- }
 
 -- Window Frame
 config.window_frame = {
@@ -139,18 +126,17 @@ config.window_frame = {
 -- config.window_background_opacity = 0.90
 
 -- Font
-config.font = wezterm.font_with_fallback {"FiraCode Nerd Font"}
+config.font = wezterm.font_with_fallback { "FiraCode Nerd Font" }
 config.font_size = 10.0
 
 -- Window
--- this is disabled so that 
 config.window_decorations = "RESIZE" -- removes close, minimize and so on
 config.window_close_confirmation = "AlwaysPrompt"
 config.window_padding = {
-    top = 5,
-    right = 5,
-    bottom = 0,
-    left = 5
+  top = 5,
+  right = 5,
+  bottom = 0,
+  left = 5
 }
 
 -- General
@@ -164,73 +150,34 @@ config.hide_tab_bar_if_only_one_tab = true
 config.status_update_interval = 1000
 config.tab_max_width = 60
 config.tab_bar_at_bottom = false
--- wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
---   local has_unseen_output = false
---   local is_zoomed = false
 
---   for _, pane in ipairs(tab.panes) do
---     if not tab.is_active and pane.has_unseen_output then
---       has_unseen_output = true
---     end
---     if pane.is_zoomed then
---       is_zoomed = true
---     end
---   end
-
---   local cwd = get_current_working_dir(tab)
---   local process = get_process(tab)
---   local zoom_icon = is_zoomed and wezterm.nerdfonts.cod_zoom_in or ""
---   local title = string.format(' %s ~ %s %s ', process, cwd, zoom_icon) -- Add placeholder for zoom_icon
-
---   return title
--- end)
-
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    -- prefer title that was set via `tab:set_title()` or `wezterm cli set-tab-title`
-    local title = tab.tab_title ~= "" and tab.tab_title or tab.active_pane.title
-    local cwd = tab.active_pane.current_working_dir
-    local icon
-
-    if cwd and (title == "pwsh.exe" or title == "wezterm" or title:find("\\")) then
-        local pwdBasefolder = cwd.file_path:gsub("^.*/(.*)/$", "%1")
-        title = pwdBasefolder
-        icon = wezterm.nerdfonts.cod_folder
-    elseif title:find("^docs") then
-        icon = wezterm.nerdfonts.cod_file
-    else
-        icon = wezterm.nerdfonts.oct_command_palette
+wezterm.on(
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width)
+    local title = tab_title(tab)
+    -- local pane = tab.active_pane
+    -- local title = basename(pane.foreground_process_name)
+    if not tab.is_active then
+      title = string.sub(title, 1, 10) .. '...'
     end
-
-    -- local active_pane_index
-    -- for _, pane in ipairs(tab.panes) do
-    --   if pane.is_active then
-    --     active_pane_index = pane.pane_index + 1
-    --     break  -- Stop the loop once the active pane is found
-    --   end
-    -- end
-
-    -- if active_pane_index == nil then
-    --   active_pane_index = 1
-    -- elseif #panes == 1 then
-    --   return (" %s "):format(tab.tab_index + 1)
-    -- end
-
-    -- return (" %s: [%d/%d] "):format(tab.tab_index + 1, active_pane_index, #panes)
-    return ("   %s   "):format(tab.tab_index + 1)
-end)
+    return {
+      { Text = ' [' .. tab.tab_index + 1 .. '] ' .. title .. ' ' },
+    }
+  end
+)
 
 wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
-    local zoomed = ''
-    if tab.active_pane.is_zoomed then
-        zoomed = '[Z] '
-    end
+  local zoomed = ''
+  if tab.active_pane.is_zoomed then
+    zoomed = '[Z] '
+  end
 
-    local index = ''
-    if #tabs > 1 then
-        index = string.format('[ %d / %d ] ', tab.tab_index + 1, #tabs)
-    end
+  local index = ''
+  if #tabs > 1 then
+    index = string.format('[ %d / %d ] ', tab.tab_index + 1, #tabs)
+  end
 
-    return zoomed .. index
+  return zoomed .. index
 end)
 
 -- wezterm.on("update-right-status", function(window, pane)
@@ -263,15 +210,48 @@ end)
 
 -- Panes
 config.inactive_pane_hsb = {
-    -- saturation = 0.4,
-    brightness = 0.6
+  -- saturation = 0.4,
+  brightness = 0.7
 }
+
+local function is_vim(pane)
+  -- this is set by the plugin, and unset on ExitPre in Neovim
+  return pane:get_user_vars().IS_NVIM == 'true'
+end
+
+local direction_keys = {
+  h = 'Left',
+  j = 'Down',
+  k = 'Up',
+  l = 'Right',
+}
+
+local function split_nav(resize_or_move, key)
+  return {
+    key = key,
+    mods = resize_or_move == 'resize' and 'META' or 'CTRL',
+    action = wezterm.action_callback(function(win, pane)
+      if is_vim(pane) then
+        -- pass the keys through to vim/nvim
+        win:perform_action({
+          SendKey = { key = key, mods = resize_or_move == 'resize' and 'ALT' or 'CTRL' },
+        }, pane)
+      else
+        if resize_or_move == 'resize' then
+          win:perform_action({ AdjustPaneSize = { direction_keys[key], 1 } }, pane)
+        else
+          win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+        end
+      end
+    end),
+  }
+end
 
 -- Keys
 config.leader = {
-    key = "Space",
-    mods = "CTRL",
-    timeout_milliseconds = 3000
+  key = "Space",
+  mods = "CTRL",
+  timeout_milliseconds = 3000
 }
 -- config.keys = {
 --   { key = "c", mods = "LEADER", action = act.ActivateCopyMode },
@@ -330,114 +310,185 @@ config.leader = {
 --   { key = "R", mods = "LEADER", action = wezterm.action({ EmitEvent = "restore_state" }) },
 --   { key = "L", mods = "LEADER", action = wezterm.action({ EmitEvent = "load_state" }) },
 -- }
+-- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
+
+-- local function is_vim(pane)
+--   -- this is set by the plugin, and unset on ExitPre in Neovim
+--   return pane:get_user_vars().IS_NVIM == 'true'
+-- end
+--
+-- local direction_keys = {
+--   h = 'Left',
+--   j = 'Down',
+--   k = 'Up',
+--   l = 'Right',
+-- }
+--
+-- local function split_nav(resize_or_move, key)
+--   return {
+--     key = key,
+--     mods = resize_or_move == 'resize' and 'META' or 'CTRL',
+--     action = wezterm.action_callback(function(win, pane)
+--       if is_vim(pane) then
+--         -- pass the keys through to vim/nvim
+--         win:perform_action({
+--           SendKey = { key = key, mods = resize_or_move == 'resize' and 'META' or 'CTRL' },
+--         }, pane)
+--       else
+--         if resize_or_move == 'resize' then
+--           win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
+--         else
+--           win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+--         end
+--       end
+--     end),
+--   }
+-- end
+
 config.keys = { -- This will create a new split and run the `top` program inside it
-    {
-        key = "v",
-        mods = "LEADER",
-        action = act.SplitPane {
-            direction = "Right",
-            -- command = { args = { "top" } },
-            size = {
-                Percent = 50
-            }
-        }
-    }, {
-        key = "s",
-        mods = "LEADER",
-        action = act.SplitPane {
-            direction = "Down",
-            -- command = { args = { "top" } },
-            size = {
-                Percent = 50
-            }
-        }
-    }, {
-        key = "h",
-        mods = "LEADER",
-        action = act.ActivatePaneDirection("Left")
-    }, {
-        key = "j",
-        mods = "LEADER",
-        action = act.ActivatePaneDirection("Down")
-    }, {
-        key = "k",
-        mods = "LEADER",
-        action = act.ActivatePaneDirection("Up")
-    }, {
-        key = "l",
-        mods = "LEADER",
-        action = act.ActivatePaneDirection("Right")
-    }, {
-        key = "x",
-        mods = "LEADER",
-        action = act.CloseCurrentPane {
-            confirm = true
-        }
-    }, {
-        key = 'h',
-        mods = 'CTRL|ALT',
-        action = act.AdjustPaneSize {'Left', 1}
-    }, {
-        key = 'j',
-        mods = 'CTRL|ALT',
-        action = act.AdjustPaneSize {'Down', 1}
-    }, {
-        key = 'k',
-        mods = 'CTRL|ALT',
-        action = act.AdjustPaneSize {'Up', 1}
-    }, {
-        key = 'l',
-        mods = 'CTRL|ALT',
-        action = act.AdjustPaneSize {'Right', 1}
-    }, {
-        key = 'k',
-        mods = 'CTRL|SHIFT',
-        action = act.ScrollByPage(-0.5)
-    }, {
-        key = 'j',
-        mods = 'CTRL|SHIFT',
-        action = act.ScrollByPage(0.5)
-    }, {
-        key = 'n',
-        mods = 'CTRL|SHIFT',
-        action = act.EmitEvent('gui-startup')
-    }, {
-        key = 'h',
-        mods = 'CTRL|SHIFT',
-        action = act.Hide
-    }, {
-        key = 'B',
-        mods = 'CTRL|SHIFT',
-        action = act.EmitEvent('toggle-opacity'),
-    },{
-        key = 'd',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.ShowDebugOverlay
-    },{
-      key = 'o',
-      mods = 'CTRL|SHIFT',
-      action = act.EmitEvent('center-window')
+  {
+    key = "]",
+    mods = "LEADER",
+    action = act.ActivateTabRelative(1)
+  },
+  {
+    key = "[",
+    mods = "LEADER",
+    action = act.ActivateTabRelative(-1)
+  }, {
+    key = "v",
+    mods = "LEADER",
+    action = act.SplitPane {
+      direction = "Right",
+      -- command = { args = { "top" } },
+      size = {
+        Percent = 50
+      }
+    }
+  }, {
+    key = "s",
+    mods = "LEADER",
+    action = act.SplitPane {
+      direction = "Down",
+      -- command = { args = { "top" } },
+      size = {
+        Percent = 50
+      }
+    }
+  }, {
+    key = "}",
+    mods = "LEADER|SHIFT",
+    action = act.MoveTabRelative(1)
+  }, {
+    key = "{",
+    mods = "LEADER|SHIFT",
+    action = act.MoveTabRelative(-1)
+  }, {
+    key = '0',
+    mods = 'LEADER',
+    action = act.PaneSelect {
+      mode = 'SwapWithActiveKeepFocus',
+      alphabet = '1234567890',
+    },
+  },
+    -- move between split panes
+    split_nav('move', 'h'),
+    split_nav('move', 'j'),
+    split_nav('move', 'k'),
+    split_nav('move', 'l'),
+    -- resize panes
+    split_nav('resize', 'h'),
+    split_nav('resize', 'j'),
+    split_nav('resize', 'k'),
+    split_nav('resize', 'l'),
+  {
+    -- }, {
+    --   key = "h",
+    --   mods = "LEADER",
+    --   action = act.ActivatePaneDirection("Left")
+    -- }, {
+    --   key = "j",
+    --   mods = "LEADER",
+    --   action = act.ActivatePaneDirection("Down")
+    -- }, {
+    --   key = "k",
+    --   mods = "LEADER",
+    --   action = act.ActivatePaneDirection("Up")
+    -- }, {
+    --   key = "l",
+    --   mods = "LEADER",
+    --   action = act.ActivatePaneDirection("Right")
+  -- }, {
+    key = "x",
+    mods = "LEADER",
+    action = act.CloseCurrentPane {
+      confirm = true
+    }
+  }, {
+    key = 'h',
+    mods = 'CTRL|ALT',
+    action = act.AdjustPaneSize { 'Left', 1 }
+  }, {
+    key = 'j',
+    mods = 'CTRL|ALT',
+    action = act.AdjustPaneSize { 'Down', 1 }
+  }, {
+    key = 'k',
+    mods = 'CTRL|ALT',
+    action = act.AdjustPaneSize { 'Up', 1 }
+  }, {
+    key = 'l',
+    mods = 'CTRL|ALT',
+    action = act.AdjustPaneSize { 'Right', 1 }
+  }, {
+    key = 'k',
+    mods = 'CTRL|SHIFT',
+    action = act.ScrollByPage(-0.5)
+  }, {
+    key = 'j',
+    mods = 'CTRL|SHIFT',
+    action = act.ScrollByPage(0.5)
+  }, {
+    key = 'n',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('gui-startup')
+  }, {
+    key = 'h',
+    mods = 'CTRL|SHIFT',
+    action = act.Hide
+  }, {
+    key = 'B',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('toggle-opacity'),
+  }, {
+    key = 'd',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ShowDebugOverlay
+  }, {
+    key = 'o',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('center-window')
   }
 }
 
 config.key_tables = {
-    search_mode = {{
-        key = 'Enter',
-        mods = 'NONE',
-        action = act.CopyMode 'PriorMatch'
-    }, {
-        key = 'Escape',
-        mods = 'NONE',
-        action = act.CopyMode 'Close'
-    }, {
-        key = 'n',
-        mods = 'CTRL',
-        action = act.CopyMode 'NextMatch'
-    }, {
-        key = 'n',
-        mods = 'CTRL|SHIFT',
-        action = act.CopyMode 'PriorMatch'
-    }}
+  search_mode = { {
+    key = 'Enter',
+    mods = 'NONE',
+    action = act.CopyMode 'PriorMatch'
+  }, {
+    key = 'Escape',
+    mods = 'NONE',
+    action = act.CopyMode 'Close'
+  }, {
+    key = 'n',
+    mods = 'CTRL',
+    action = act.CopyMode 'NextMatch'
+  }, {
+    key = 'n',
+    mods = 'CTRL|SHIFT',
+    action = act.CopyMode 'PriorMatch'
+  } }
 }
 
 -- Quick tab movement
@@ -450,14 +501,6 @@ config.key_tables = {
 -- end
 
 -- config.key_tables = {
---   resize_pane = {
---     { key = "h",      action = act.AdjustPaneSize { "Left", 1 } },
---     { key = "j",      action = act.AdjustPaneSize { "Down", 1 } },
---     { key = "k",      action = act.AdjustPaneSize { "Up", 1 } },
---     { key = "l",      action = act.AdjustPaneSize { "Right", 1 } },
---     { key = "Escape", action = "PopKeyTable" },
---     { key = "Enter",  action = "PopKeyTable" },
---   },
 --   move_tab = {
 --     { key = "h",      action = act.MoveTabRelative(-1) },
 --     { key = "j",      action = act.MoveTabRelative(-1) },
