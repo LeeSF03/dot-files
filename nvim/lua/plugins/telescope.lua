@@ -5,6 +5,9 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
+    config = function()
+      require("config.telescope")
+    end,
   },
   {
     'nvim-telescope/telescope-ui-select.nvim',

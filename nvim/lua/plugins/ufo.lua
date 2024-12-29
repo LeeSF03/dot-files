@@ -4,4 +4,7 @@ return {
     'kevinhwang91/promise-async',
     'luukvbaal/statuscol.nvim',
   },
+  config = function()
+    require("config.ufo")
+  end,
 }

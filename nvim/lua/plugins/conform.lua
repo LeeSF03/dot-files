@@ -6,5 +6,8 @@ return {
       "BufNewFile",
     },
     opts = {},
+    config = function()
+      require("config.conform")
+    end,
   },
 }
