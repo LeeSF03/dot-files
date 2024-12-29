@@ -23,3 +23,14 @@ set_filetype({ "docker-compose.*.yml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.*.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yml" }, "yaml.docker-compose")
+
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+  callback = function(event)
+    local title = "nvim"
+    if event.file ~= "" then
+      title = string.format("nvim: %s", vim.fs.basename(event.file))
+    end
+
+    vim.fn.system({"wezterm", "cli", "set-tab-title", title})
+  end,
+})
