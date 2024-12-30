@@ -66,16 +66,6 @@ local process_icons = {
 }
 --
 -- Functions
-local function get_process(tab)
-  local process_name = tab.active_pane.foreground_process_name:match("([^/\\]+)%.exe$") or
-      tab.active_pane.foreground_process_name:match("([^/\\]+)$")
-
-  -- local icon = process_icons[process_name] or string.format('[%s]', process_name)
-  local icon = process_icons[process_name] or wezterm.nerdfonts.seti_checkbox_unchecked
-
-  return icon
-end
-
 local function basename(s)
   return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
@@ -109,6 +99,16 @@ config.default_prog =
 
 -- Colorscheme
 config.color_scheme = "Catppuccin Mocha"
+local catppuccin_colors = {
+  "#f5c2e7", -- pink
+  "#cba6f7", -- mauve
+  "#f38ba8", -- red
+  "#fab387", -- peach
+  "#f9e2af", -- yellow
+  "#a6e3a1", -- green
+  "#94e2d5", -- teal
+  "#89b4fa", -- blue
+}
 
 -- Window Frame
 config.window_frame = {
@@ -124,6 +124,7 @@ config.window_frame = {
 
 -- Background
 -- config.window_background_opacity = 0.90
+config.max_fps = 120
 
 -- Font
 config.font = wezterm.font_with_fallback { "FiraCode Nerd Font" }
@@ -152,19 +153,23 @@ config.tab_max_width = 60
 config.tab_bar_at_bottom = false
 
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
+-- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
+-- local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
+    local color = catppuccin_colors[tab.tab_index % #catppuccin_colors + 1]
+
     local title = tab_title(tab)
     -- local pane = tab.active_pane
     -- local title = basename(pane.foreground_process_name)
-    local bg = "#CBA6F7"
+    local bg = color
     local fg = "#1E1E2E"
     local right_arrow_bg = "#1E1E2E"
-    local right_arrow_fg = "#CBA6F7"
+    local right_arrow_fg = color
     local left_arrow_bg = "#1E1E2E"
-    local left_arrow_fg = "#CBA6F7"
+    local left_arrow_fg = color
     if not tab.is_active then
       bg = "#1E1E2E"
       fg = "#CDD6F4"
@@ -178,7 +183,7 @@ wezterm.on(
 
     local next_tab = tabs[tab.tab_index + 2]
     -- if next_tab ~= nil and next_tab.is_active then
-    -- right_arrow_bg = "#CBA6F7"
+    -- right_arrow_bg = color
     -- end
 
     if next_tab == nil then
@@ -186,8 +191,8 @@ wezterm.on(
     end
 
     local prev_tab = tabs[tab.tab_index]
-    if prev_tab == nil then
-      left_arrow_bg = "#CBA6F7"
+    if prev_tab == nil and tab.is_active then
+      left_arrow_bg = color
     end
 
     return {
@@ -217,34 +222,6 @@ wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
 
   return zoomed .. index
 end)
-
--- wezterm.on("update-right-status", function(window, pane)
---   local workspace_or_leader = window:active_workspace()
---   -- Change the worspace name status if leader is active
---   if window:active_key_table() then workspace_or_leader = window:active_key_table() end
---   if window:leader_is_active() then workspace_or_leader = "LEADER" end
-
---   local cwd = pane:get_current_working_dir() or "N/A"
---   local last_folder = get_last_folder_segment(cwd)
---   local cmd = get_last_folder_segment(pane:get_foreground_process_name())
---   local time = wezterm.strftime("%H:%M")
---   local hostname = " " .. wezterm.hostname() .. " ";
-
---   window:set_right_status(wezterm.format({
---     { Text = wezterm.nerdfonts.oct_table .. " " .. workspace_or_leader },
---     { Text = " | " },
---     -- { Text = wezterm.nerdfonts.md_folder .. " " .. last_folder },
---     -- { Text = " | " },
---     { Foreground = { Color = "FFB86C" } },
---     { Text = wezterm.nerdfonts.fa_code .. " " .. cmd },
---     "ResetAttributes",
---     { Text = " | " },
---     { Text = wezterm.nerdfonts.oct_person .. " " .. hostname },
---     { Text = " | " },
---     { Text = wezterm.nerdfonts.md_clock .. " " .. time },
---     { Text = " | " },
---   }))
--- end)
 
 -- Panes
 config.inactive_pane_hsb = {
@@ -303,41 +280,41 @@ config.keys = { -- This will create a new split and run the `top` program inside
     mods = "LEADER",
     action = act.ActivateTabRelative(-1)
   }, {
-  key = "v",
-  mods = "LEADER",
-  action = act.SplitPane {
-    direction = "Right",
-    -- command = { args = { "top" } },
-    size = {
-      Percent = 50
+    key = "v",
+    mods = "LEADER",
+    action = act.SplitPane {
+      direction = "Right",
+      -- command = { args = { "top" } },
+      size = {
+        Percent = 50
+      }
     }
-  }
-}, {
-  key = "s",
-  mods = "LEADER",
-  action = act.SplitPane {
-    direction = "Down",
-    -- command = { args = { "top" } },
-    size = {
-      Percent = 50
+  }, {
+    key = "s",
+    mods = "LEADER",
+    action = act.SplitPane {
+      direction = "Down",
+      -- command = { args = { "top" } },
+      size = {
+        Percent = 50
+      }
     }
-  }
-}, {
-  key = "}",
-  mods = "LEADER|SHIFT",
-  action = act.MoveTabRelative(1)
-}, {
-  key = "{",
-  mods = "LEADER|SHIFT",
-  action = act.MoveTabRelative(-1)
-}, {
-  key = '0',
-  mods = 'LEADER',
-  action = act.PaneSelect {
-    mode = 'SwapWithActiveKeepFocus',
-    alphabet = '1234567890',
+  }, {
+    key = "}",
+    mods = "LEADER|SHIFT",
+    action = act.MoveTabRelative(1)
+  }, {
+    key = "{",
+    mods = "LEADER|SHIFT",
+    action = act.MoveTabRelative(-1)
+  }, {
+    key = '0',
+    mods = 'LEADER',
+    action = act.PaneSelect {
+      mode = 'SwapWithActiveKeepFocus',
+      alphabet = '1234567890',
+    },
   },
-},
   -- move between split panes
   split_nav('move', 'h'),
   split_nav('move', 'j'),
@@ -355,37 +332,37 @@ config.keys = { -- This will create a new split and run the `top` program inside
       confirm = true
     }
   }, {
-  key = 'k',
-  mods = 'CTRL|SHIFT',
-  action = act.ScrollByPage(-0.5)
-}, {
-  key = 'j',
-  mods = 'CTRL|SHIFT',
-  action = act.ScrollByPage(0.5)
-}, {
-  key = 'n',
-  mods = 'CTRL|SHIFT',
-  action = act.EmitEvent('gui-startup')
-}, {
-  key = 'B',
-  mods = 'CTRL|SHIFT',
-  action = act.EmitEvent('toggle-opacity'),
-}, {
-  key = 'd',
-  mods = 'CTRL|SHIFT',
-  action = act.ShowDebugOverlay
-}, {
-  key = 'o',
-  mods = 'CTRL|SHIFT',
-  action = act.EmitEvent('center-window')
-}, {
-  key = '0',
-  mods = 'CTRL',
-  action = act.PaneSelect {
-    mode = 'SwapWithActiveKeepFocus',
-    alphabet = '1234567890',
+    key = 'u',
+    mods = 'CTRL',
+    action = act.ScrollByPage(-0.5)
+  }, {
+    key = 'd',
+    mods = 'CTRL',
+    action = act.ScrollByPage(0.5)
+  }, {
+    key = 'n',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('gui-startup')
+  }, {
+    key = 'B',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('toggle-opacity'),
+  }, {
+    key = 'd',
+    mods = 'CTRL|SHIFT',
+    action = act.ShowDebugOverlay
+  }, {
+    key = 'o',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('center-window')
+  }, {
+    key = '0',
+    mods = 'CTRL',
+    action = act.PaneSelect {
+      mode = 'SwapWithActiveKeepFocus',
+      alphabet = '1234567890',
+    },
   },
-},
 }
 
 config.key_tables = {
