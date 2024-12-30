@@ -11,6 +11,7 @@ vim.cmd([[
 call camelcasemotion#CreateMotionMappings('<leader>')
 ]])
 vim.cmd("set fileformat=unix")
+vim.cmd("set equalalways")
 
 local function set_filetype(pattern, filetype)
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
