@@ -5,6 +5,22 @@ return {
     config = function()
       require("config.toggleterm")
     end,
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    cmd = { "ToggleTerm", "TermSelect", "ToggleTermToggleAll" },
+    keys = {
+      {
+        '<C-t>t', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm") end, desc = 'Open terminal in floating'
+      }, {
+        '<C-t>v', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm direction=vertical") end, desc = 'Open terminal in vertical split'
+      }, {
+        '<C-t>s', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm direction=horizontal") end, desc = 'Open terminal in horizontal split'
+      }, {
+        '<C-t>n', '<C-\\><C-n>', desc = 'Turn into normal mode'
+      }, {
+        '<C-t>a', '<cmd>ToggleTermToggleAll<CR>', desc = 'Toggle all terminal'
+      }, {
+        '<leader>ft', '<cmd>TermSelect<CR>', desc = 'Find terminal'
+      }
+    }
   },
 }

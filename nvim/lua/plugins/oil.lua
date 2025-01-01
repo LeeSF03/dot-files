@@ -6,5 +6,9 @@ return {
   config = function()
     require("config.oil")
   end,
-  event = "VeryLazy",
+  -- event = 'VeryLazy',
+  keys = {
+    { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+    { '<leader>-', '<CMD>Oil --float<CR>', desc = 'Open parent directory in floating' },
+  },
 }

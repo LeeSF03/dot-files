@@ -1,3 +1,6 @@
+local acmd = vim.api.nvim_create_autocmd
+local agrp = vim.api.nvim_create_augroup
+
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
@@ -16,8 +19,26 @@ vim.cmd([[
 autocmd FileType dashboard setlocal nofoldenable
 ]])
 
+-- agrp("alpha_tabline", { clear = true })
+-- acmd("FileType", {
+--         group = "alpha_tabline",
+--         pattern = { "alpha" },
+--         command = "set showtabline=0 laststatus=0 noruler",
+-- })
+-- acmd("FileType", {
+--         group = "alpha_tabline",
+--         pattern = { "alpha" },
+--         callback = function()
+--                 acmd("BufUnload", {
+--                         group = "alpha_tabline",
+--                         buffer = 0,
+--                         command = "set showtabline=2 ruler laststatus=3",
+--                 })
+--         end,
+-- })
+
 local function set_filetype(pattern, filetype)
-    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    acmd({ "BufRead", "BufNewFile" }, {
         pattern = pattern,
         command = "set filetype=" .. filetype,
     })
@@ -28,7 +49,7 @@ set_filetype({ "docker-compose.*.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yml" }, "yaml.docker-compose")
 
-vim.api.nvim_create_autocmd({"BufEnter"}, {
+acmd({"BufEnter"}, {
   callback = function(event)
     local title = "nvim"
     if event.file ~= "" then
