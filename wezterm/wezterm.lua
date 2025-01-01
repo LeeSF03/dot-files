@@ -152,6 +152,14 @@ config.status_update_interval = 1000
 config.tab_max_width = 60
 config.tab_bar_at_bottom = false
 
+local tab_bar_bg = '#181825'
+config.colors = {
+  tab_bar = {
+    background = tab_bar_bg,
+  }
+}
+
+local tab_min_width = 11
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
 -- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
@@ -162,13 +170,14 @@ wezterm.on(
     local color = catppuccin_colors[tab.tab_index % #catppuccin_colors + 1]
 
     local title = tab_title(tab)
+    local title_len = string.len(title)
     -- local pane = tab.active_pane
     -- local title = basename(pane.foreground_process_name)
     local bg = color
     local fg = "#1E1E2E"
-    local right_arrow_bg = "#1E1E2E"
+    local right_arrow_bg = tab_bar_bg
     local right_arrow_fg = color
-    local left_arrow_bg = "#1E1E2E"
+    local left_arrow_bg = tab_bar_bg
     local left_arrow_fg = color
     if not tab.is_active then
       bg = "#1E1E2E"
@@ -176,9 +185,13 @@ wezterm.on(
       right_arrow_fg = "#1E1E2E"
       left_arrow_fg = "#1E1E2E"
 
-      if string.len(title) > 10 then
-        title = string.sub(title, 1, 10) .. '...'
+      if title_len > 10 then
+        title = string.sub(title, 1, tab_min_width - 3) .. '...'
       end
+    end
+
+    if title_len < tab_min_width then
+      title = title .. string.rep(' ', tab_min_width - title_len)
     end
 
     local next_tab = tabs[tab.tab_index + 2]
@@ -187,12 +200,15 @@ wezterm.on(
     -- end
 
     if next_tab == nil then
-      right_arrow_bg = "#11111B"
+      right_arrow_bg = tab_bar_bg
     end
 
     local prev_tab = tabs[tab.tab_index]
-    if prev_tab == nil and tab.is_active then
-      left_arrow_bg = color
+    if prev_tab == nil then
+      left_arrow_bg = "#1E1E2E"
+      if tab.is_active then
+        left_arrow_bg = color
+      end
     end
 
     return {
@@ -257,6 +273,23 @@ local function split_nav(resize_or_move, key)
         else
           win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
         end
+      end
+    end),
+  }
+end
+
+local function scroll(direction, key)
+  return {
+    key = key,
+    mods = 'CTRL',
+    action = wezterm.action_callback(function(win, pane)
+      if is_vim(pane) then
+        -- pass the keys through to vim/nvim
+        win:perform_action({
+          SendKey = { key = key, mods = 'CTRL' },
+        }, pane)
+      else
+        win:perform_action({ ScrollByPage = direction }, pane)
       end
     end),
   }
@@ -331,15 +364,21 @@ config.keys = { -- This will create a new split and run the `top` program inside
     action = act.CloseCurrentPane {
       confirm = true
     }
-  }, {
-    key = 'u',
-    mods = 'CTRL',
-    action = act.ScrollByPage(-0.5)
-  }, {
-    key = 'd',
-    mods = 'CTRL',
-    action = act.ScrollByPage(0.5)
-  }, {
+  },
+  scroll(-0.5, 'u'),
+  scroll(0.5, 'd'),
+  scroll(-1, 'b'),
+  scroll(1, 'f'),
+  {
+    --   fix this with custom action like smartsplit
+  --   KEY = 'u',
+  --   mods = 'CTRL',
+  --   action = act.ScrollByPage(-0.5)
+  -- }, {
+  --   key = 'd',
+  --   mods = 'CTRL',
+  --   action = act.ScrollByPage(0.5)
+  -- }, {
     key = 'n',
     mods = 'CTRL|SHIFT',
     action = act.EmitEvent('gui-startup')
@@ -347,10 +386,10 @@ config.keys = { -- This will create a new split and run the `top` program inside
     key = 'B',
     mods = 'CTRL|SHIFT',
     action = act.EmitEvent('toggle-opacity'),
-  }, {
-    key = 'd',
-    mods = 'CTRL|SHIFT',
-    action = act.ShowDebugOverlay
+  -- }, {
+  --   key = 'd',
+  --   mods = 'CTRL|SHIFT',
+  --   action = act.ShowDebugOverlay
   }, {
     key = 'o',
     mods = 'CTRL|SHIFT',

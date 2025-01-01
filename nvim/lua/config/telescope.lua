@@ -29,12 +29,12 @@ telescope.setup {
     },
     mappings = {
       i = {
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
+        -- ["<C-j>"] = actions.move_selection_next,
+        -- ["<C-k>"] = actions.move_selection_previous,
         ["<C-c>"] = actions.close,
 
-        ["<C-h>"] = actions.preview_scrolling_up,
-        ["<C-l>"] = actions.preview_scrolling_down,
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["<C-d>"] = actions.preview_scrolling_down,
       }
     }
   },

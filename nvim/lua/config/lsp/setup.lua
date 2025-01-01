@@ -35,11 +35,11 @@ blink.setup({
     ['<C-e>'] = { 'hide' },
     ['<C-y>'] = { 'select_and_accept' },
 
-    ['<C-k>'] = { 'select_prev', 'fallback' },
-    ['<C-j>'] = { 'select_next', 'fallback' },
+    -- ['<C-k>'] = { 'select_prev', 'fallback' },
+    -- ['<C-j>'] = { 'select_next', 'fallback' },
 
-    ['<C-h>'] = { 'scroll_documentation_up', 'fallback' },
-    ['<C-l>'] = { 'scroll_documentation_down', 'fallback' },
+    ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+    ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
   },
   appearance = {
     use_nvim_cmp_as_default = true,
