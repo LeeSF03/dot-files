@@ -3,6 +3,10 @@ return {
   config = function()
     require("config.indentblankline")
   end,
+  event = {
+    "BufReadPre",
+    "BufNewFile"
+  },
   main = "ibl",
   ---@module "ibl"
   ---@type ibl.config

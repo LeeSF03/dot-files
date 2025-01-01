@@ -5,5 +5,6 @@ return {
     config = function()
       require("config.toggleterm")
     end,
+    event = "VeryLazy",
   },
 }

@@ -1,10 +1,16 @@
 return {
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      "ofseed/copilot-status.nvim",
+    },
     config = function()
       require("config.lualine")
     end,
+    event = {
+      'BufReadPre',
+      'BufNewFile',
+    }
   },
-  { "ofseed/copilot-status.nvim" },
 }

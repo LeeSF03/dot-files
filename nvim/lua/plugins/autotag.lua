@@ -3,4 +3,8 @@ return {
   config = function()
     require("config.autotag")
   end,
+  event = {
+    "BufReadPre",
+    "BufNewFile"
+  },
 }

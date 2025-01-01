@@ -3,4 +3,8 @@ return {
   config = function()
     require("config.fidget")
   end,
+  event = {
+    "BufReadPre",
+    "BufNewFile"
+  },
 }

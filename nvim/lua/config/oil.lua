@@ -9,6 +9,22 @@ oil.setup({
   view_options = {
     show_hidden = true,
   },
+  keymaps ={
+    ["q"] = { "actions.close", mode = "n" },
+    ["p"] = "actions.preview",
+  },
+  preview_win = {
+    -- Whether the preview window is automatically updated when the cursor is moved
+    update_on_cursor_moved = true,
+    -- How to open the preview window "load"|"scratch"|"fast_scratch"
+    preview_method = "fast_scratch",
+    -- A function that returns true to disable preview on a file e.g. to avoid lag
+    disable_preview = function(filename)
+      return false
+    end,
+    -- Window-local options to use for preview window buffers
+    win_options = {},
+  },
   float = {
     override = function()
       local screen_w = vim.opt.columns:get()

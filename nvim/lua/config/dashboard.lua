@@ -64,7 +64,8 @@ local opts = {
   hide = {
     -- this is taken care of by lualine
     -- enabling this messes up the actual laststatus setting after loading a file
-    statusline = false,
+    statusline = true,
+    winbar = true,
   },
   config = {
     header = vim.split(logo, "\n"),
@@ -112,4 +113,5 @@ vim.api.nvim_set_hl(0, "DashboardIcon", { fg = "#CBA6F7" })
 vim.api.nvim_set_hl(0, "DashboardKey", { fg = "#F5C2E7" })
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#BAC2DE" })
 
+-- vim.cmd("UfoDetach")
 dashboard.setup(opts)

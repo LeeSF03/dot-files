@@ -3,4 +3,8 @@ return {
   config = function()
     require("config.illuminate")
   end,
+  event = {
+    'BufReadPre',
+    'BufNewFile'
+  },
 }
