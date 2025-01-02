@@ -19,5 +19,3 @@ gitsigns.setup({
     untracked    = { text = '┆' },
   },
 })
-
-vim.keymap.set('n', '<leader>gp', '<cmd>Gitsigns preview_hunk<CR>', { desc = 'Git Preview Hunk' })

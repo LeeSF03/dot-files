@@ -1,7 +1,5 @@
 local neoclip = require('neoclip')
 
-vim.keymap.set('n', '<leader>fn', '<cmd>Telescope neoclip<CR>', { noremap = true, silent = true, desc = 'Open neoclip history' })
-
 neoclip.setup({
   history = 1000,
   enable_persistent_history = false,

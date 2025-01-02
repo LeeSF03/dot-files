@@ -19,6 +19,9 @@ blink.setup({
   completion = {
     menu = {
       border = 'rounded',
+      draw = {
+        align_to = 'cursor',
+      },
     },
     documentation = {
       window = {

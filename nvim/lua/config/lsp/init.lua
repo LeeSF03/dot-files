@@ -3,5 +3,5 @@ require(filepath .. "setup")
 
 -- lsp servers
 require(filepath .. "lua_lsp")
--- require(filepath .. "web_lsp")
--- require(filepath .. "docker_lsp")
+require(filepath .. "web_lsp")
+require(filepath .. "docker_lsp")
