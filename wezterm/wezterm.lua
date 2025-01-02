@@ -283,14 +283,28 @@ local function scroll(direction, key)
     key = key,
     mods = 'CTRL',
     action = wezterm.action_callback(function(win, pane)
-      if is_vim(pane) then
-        -- pass the keys through to vim/nvim
+      if pane:is_alt_screen_active() then
+        -- pass the keys to running screen
         win:perform_action({
           SendKey = { key = key, mods = 'CTRL' },
         }, pane)
       else
         win:perform_action({ ScrollByPage = direction }, pane)
       end
+
+      -- if is_vim(pane) then
+      --   -- pass the keys through to vim/nvim
+      --   win:perform_action({
+      --     SendKey = { key = key, mods = 'CTRL' },
+      --   }, pane)
+      -- elseif pane:is_alt_screen_active() then
+      --   -- pass the keys to running screen
+      --   win:perform_action({
+      --     SendKey = { key = key, mods = 'CTRL' },
+      --   }, pane)
+      -- else
+      --   win:perform_action({ ScrollByPage = direction }, pane)
+      -- end
     end),
   }
 end
@@ -313,41 +327,41 @@ config.keys = { -- This will create a new split and run the `top` program inside
     mods = "LEADER",
     action = act.ActivateTabRelative(-1)
   }, {
-    key = "v",
-    mods = "LEADER",
-    action = act.SplitPane {
-      direction = "Right",
-      -- command = { args = { "top" } },
-      size = {
-        Percent = 50
-      }
+  key = "v",
+  mods = "LEADER",
+  action = act.SplitPane {
+    direction = "Right",
+    -- command = { args = { "top" } },
+    size = {
+      Percent = 50
     }
-  }, {
-    key = "s",
-    mods = "LEADER",
-    action = act.SplitPane {
-      direction = "Down",
-      -- command = { args = { "top" } },
-      size = {
-        Percent = 50
-      }
+  }
+}, {
+  key = "s",
+  mods = "LEADER",
+  action = act.SplitPane {
+    direction = "Down",
+    -- command = { args = { "top" } },
+    size = {
+      Percent = 50
     }
-  }, {
-    key = "}",
-    mods = "LEADER|SHIFT",
-    action = act.MoveTabRelative(1)
-  }, {
-    key = "{",
-    mods = "LEADER|SHIFT",
-    action = act.MoveTabRelative(-1)
-  }, {
-    key = '0',
-    mods = 'LEADER',
-    action = act.PaneSelect {
-      mode = 'SwapWithActiveKeepFocus',
-      alphabet = '1234567890',
-    },
+  }
+}, {
+  key = "}",
+  mods = "LEADER|SHIFT",
+  action = act.MoveTabRelative(1)
+}, {
+  key = "{",
+  mods = "LEADER|SHIFT",
+  action = act.MoveTabRelative(-1)
+}, {
+  key = '0',
+  mods = 'LEADER',
+  action = act.PaneSelect {
+    mode = 'SwapWithActiveKeepFocus',
+    alphabet = '1234567890',
   },
+},
   -- move between split panes
   split_nav('move', 'h'),
   split_nav('move', 'j'),
@@ -371,37 +385,37 @@ config.keys = { -- This will create a new split and run the `top` program inside
   scroll(1, 'f'),
   {
     --   fix this with custom action like smartsplit
-  --   KEY = 'u',
-  --   mods = 'CTRL',
-  --   action = act.ScrollByPage(-0.5)
-  -- }, {
-  --   key = 'd',
-  --   mods = 'CTRL',
-  --   action = act.ScrollByPage(0.5)
-  -- }, {
+    --   KEY = 'u',
+    --   mods = 'CTRL',
+    --   action = act.ScrollByPage(-0.5)
+    -- }, {
+    --   key = 'd',
+    --   mods = 'CTRL',
+    --   action = act.ScrollByPage(0.5)
+    -- }, {
     key = 'n',
     mods = 'CTRL|SHIFT',
     action = act.EmitEvent('gui-startup')
   }, {
-    key = 'B',
-    mods = 'CTRL|SHIFT',
-    action = act.EmitEvent('toggle-opacity'),
+  key = 'B',
+  mods = 'CTRL|SHIFT',
+  action = act.EmitEvent('toggle-opacity'),
   -- }, {
   --   key = 'd',
   --   mods = 'CTRL|SHIFT',
   --   action = act.ShowDebugOverlay
-  }, {
-    key = 'o',
-    mods = 'CTRL|SHIFT',
-    action = act.EmitEvent('center-window')
-  }, {
-    key = '0',
-    mods = 'CTRL',
-    action = act.PaneSelect {
-      mode = 'SwapWithActiveKeepFocus',
-      alphabet = '1234567890',
-    },
+}, {
+  key = 'o',
+  mods = 'CTRL|SHIFT',
+  action = act.EmitEvent('center-window')
+}, {
+  key = '0',
+  mods = 'CTRL',
+  action = act.PaneSelect {
+    mode = 'SwapWithActiveKeepFocus',
+    alphabet = '1234567890',
   },
+},
 }
 
 config.key_tables = {
