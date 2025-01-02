@@ -19,24 +19,6 @@ vim.cmd([[
 autocmd FileType dashboard setlocal nofoldenable
 ]])
 
--- agrp("alpha_tabline", { clear = true })
--- acmd("FileType", {
---         group = "alpha_tabline",
---         pattern = { "alpha" },
---         command = "set showtabline=0 laststatus=0 noruler",
--- })
--- acmd("FileType", {
---         group = "alpha_tabline",
---         pattern = { "alpha" },
---         callback = function()
---                 acmd("BufUnload", {
---                         group = "alpha_tabline",
---                         buffer = 0,
---                         command = "set showtabline=2 ruler laststatus=3",
---                 })
---         end,
--- })
-
 local function set_filetype(pattern, filetype)
     acmd({ "BufRead", "BufNewFile" }, {
         pattern = pattern,
@@ -57,5 +39,10 @@ acmd({"BufEnter"}, {
     end
 
     vim.fn.system({"wezterm", "cli", "set-tab-title", title})
+  end,
+})
+acmd({ "VimLeave"}, {
+  callback = function()
+    vim.fn.system({"wezterm", "cli", "set-tab-title", "pwsh.exe"})
   end,
 })

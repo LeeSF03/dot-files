@@ -6,7 +6,13 @@ return {
   config = function()
     require("config.oil")
   end,
-  -- event = 'VeryLazy',
+  event = { "VimEnter */*,.*", "BufNew */*,.*" },
+  -- event = {
+  --   "BufReadPre",
+  --   "BufNewFile",
+  --   "DirChangedPre",
+  --   "DirChanged",
+  -- },
   cmd = { 'Oil'},
   -- keys = {
   --   { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },

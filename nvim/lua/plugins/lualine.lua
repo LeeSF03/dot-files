@@ -9,7 +9,7 @@ return {
       require("config.lualine")
     end,
     event = {
-      'BufReadPre',
+      'BufReadPost',
       'BufNewFile',
     }
   },
