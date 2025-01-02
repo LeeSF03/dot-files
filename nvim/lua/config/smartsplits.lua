@@ -10,7 +10,7 @@ vim.keymap.set('n', '<A-l>', function() smartsplits.resize_right(1) end, { desc 
 
 -- moving between splits
 -- the letters are capital even with shift because of wezterm
-vim.keymap.set('n', "<C-S-H>", smartsplits.move_cursor_left, { desc = 'move cursor left' })
-vim.keymap.set('n', "<C-S-J>", smartsplits.move_cursor_down, { desc = 'move cursor down' })
-vim.keymap.set('n', "<C-S-K>", smartsplits.move_cursor_up, { desc = 'move cursor up' })
-vim.keymap.set('n', "<C-S-L>", smartsplits.move_cursor_right, { desc = 'move cursor right' })
+vim.keymap.set('n', "<C-h>", smartsplits.move_cursor_left, { desc = 'move cursor left' })
+vim.keymap.set('n', "<C-j>", smartsplits.move_cursor_down, { desc = 'move cursor down' })
+vim.keymap.set('n', "<C-k>", smartsplits.move_cursor_up, { desc = 'move cursor up' })
+vim.keymap.set('n', "<C-l>", smartsplits.move_cursor_right, { desc = 'move cursor right' })
