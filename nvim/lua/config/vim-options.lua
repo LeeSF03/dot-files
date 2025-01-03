@@ -13,7 +13,7 @@ vim.cmd("set noshowmode")
 vim.cmd([[
 call camelcasemotion#CreateMotionMappings('<leader>')
 ]])
-vim.cmd("set fileformat=unix")
+-- vim.cmd("set fileformat=unix")
 vim.cmd("set equalalways")
 vim.cmd([[
 autocmd FileType dashboard setlocal nofoldenable
@@ -45,4 +45,24 @@ acmd({ "VimLeave"}, {
   callback = function()
     vim.fn.system({"wezterm", "cli", "set-tab-title", "pwsh.exe"})
   end,
+})
+
+local del_qf_item = function()
+  local items = vim.fn.getqflist()
+  local line = vim.fn.line('.')
+  table.remove(items, line)
+  vim.fn.setqflist(items, "r")
+  vim.api.nvim_win_set_cursor(0, { line, 0 })
+end
+
+acmd('FileType', {
+  group = custom_group,
+  pattern = 'qf',
+  callback = function()
+
+    -- `dd` deletes an item from the list.
+    vim.keymap.set('n', 'dd', del_qf_item, { buffer = true })
+    vim.keymap.set('x', 'd', del_qf_item, { buffer = true })
+  end,
+  desc = 'Quickfix tweaks',
 })
