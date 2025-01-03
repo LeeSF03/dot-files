@@ -10,5 +10,6 @@ colorizer.setup({
     tailwind = true,
     mode = 'virtualtext',
     virtualtext_inline = true,
+    virtualtext = "󱓻",
   },
 })
