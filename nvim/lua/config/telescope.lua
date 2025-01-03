@@ -9,6 +9,11 @@ vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope find gi
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 telescope.setup {
+  pickers = {
+    find_files = {
+      hidden = true
+    },
+  },
   defaults = {
     previewer = true,
     file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
