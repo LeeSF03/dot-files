@@ -384,38 +384,29 @@ config.keys = { -- This will create a new split and run the `top` program inside
   scroll(-1, 'b'),
   scroll(1, 'f'),
   {
-    --   fix this with custom action like smartsplit
-    --   KEY = 'u',
-    --   mods = 'CTRL',
-    --   action = act.ScrollByPage(-0.5)
-    -- }, {
-    --   key = 'd',
-    --   mods = 'CTRL',
-    --   action = act.ScrollByPage(0.5)
-    -- }, {
     key = 'n',
     mods = 'CTRL|SHIFT',
     action = act.EmitEvent('gui-startup')
   }, {
-  key = 'B',
-  mods = 'CTRL|SHIFT',
-  action = act.EmitEvent('toggle-opacity'),
-  -- }, {
-  --   key = 'd',
-  --   mods = 'CTRL|SHIFT',
-  --   action = act.ShowDebugOverlay
-}, {
-  key = 'o',
-  mods = 'CTRL|SHIFT',
-  action = act.EmitEvent('center-window')
-}, {
-  key = '0',
-  mods = 'CTRL',
-  action = act.PaneSelect {
-    mode = 'SwapWithActiveKeepFocus',
-    alphabet = '1234567890',
+    key = 'n',
+    mods = 'LEADER',
+    action = act.SpawnTab('DefaultDomain'),
+  }, {
+    key = 'B',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('toggle-opacity'),
+  }, {
+    key = 'o',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('center-window')
+  }, {
+    key = '0',
+    mods = 'CTRL',
+    action = act.PaneSelect {
+      mode = 'SwapWithActiveKeepFocus',
+      alphabet = '1234567890',
+    },
   },
-},
 }
 
 config.key_tables = {
