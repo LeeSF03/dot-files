@@ -7,6 +7,7 @@ colorizer.setup({
     css_fn = true,
     hsl_fn = true,
     rgb_fn = true,
+    tailwind = true,
     mode = 'virtualtext',
     virtualtext_inline = true,
   },
