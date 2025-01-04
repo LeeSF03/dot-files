@@ -2,8 +2,8 @@ return {
   {
     'tpope/vim-surround',
     event = {
-      'BufRead',
-      'BufNewFile',
+      "BufReadPost",
+      "BufNewFile",
     },
   },
 }

@@ -8,7 +8,7 @@ return {
     config = function()
       require("config.lsp")
     end,
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     cmd = {
       "MasonInstall",
       "MasonUninstall",
@@ -53,7 +53,7 @@ return {
       'nvim-tree/nvim-web-devicons',     -- optional
     },
     event = {
-      "BufRead",
+      "BufReadPre",
       "BufNewFile",
     },
     config = function()

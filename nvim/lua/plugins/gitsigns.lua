@@ -5,7 +5,7 @@ return {
       require("config.gitsigns")
     end,
     event = {
-      'BufReadPre',
+      'BufReadPost',
       'BufNewFile'
     },
   }

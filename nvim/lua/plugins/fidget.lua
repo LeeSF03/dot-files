@@ -4,7 +4,7 @@ return {
     require("config.fidget")
   end,
   event = {
-    "BufReadPre",
+    "BufReadPost",
     "BufNewFile"
   },
 }

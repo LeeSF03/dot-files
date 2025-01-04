@@ -4,7 +4,6 @@ return {
     require("config.autotag")
   end,
   event = {
-    "BufReadPre",
-    "BufNewFile"
+    "InsertEnter",
   },
 }

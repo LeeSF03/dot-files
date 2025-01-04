@@ -10,9 +10,6 @@ vim.cmd("set relativenumber")
 vim.cmd("autocmd InsertEnter * :set norelativenumber")
 vim.cmd("autocmd InsertLeave * :set relativenumber")
 vim.cmd("set noshowmode")
-vim.cmd([[
-call camelcasemotion#CreateMotionMappings('<leader>')
-]])
 -- vim.cmd("set fileformat=unix")
 vim.cmd("set equalalways")
 vim.cmd([[

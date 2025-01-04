@@ -4,7 +4,7 @@ return {
     require("config.indentblankline")
   end,
   event = {
-    "BufReadPre",
+    "BufReadPost",
     "BufNewFile"
   },
   main = "ibl",
