@@ -1,6 +1,5 @@
 require("config.lazy")
 require("config.vim-options")
 require("config.catppuccin")
--- require("config.treesitter")
 require("config.bufferline")
 require("config.keymaps")
