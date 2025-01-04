@@ -42,6 +42,9 @@ return {
     dependencies = {
       "zbirenbaum/copilot.lua",
     },
+    event = {
+      "InsertEnter",
+    },
   },
   {
     "nvimdev/lspsaga.nvim",
