@@ -70,7 +70,7 @@ local function basename(s)
   return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
 
-function tab_title(tab_info)
+local function tab_title(tab_info)
   local title = tab_info.tab_title
   -- if the tab title is explicitly set, take that
   if title and #title > 0 then
@@ -116,10 +116,10 @@ config.window_frame = {
   border_right_width = '1px',
   border_bottom_height = '1px',
   border_top_height = '1px',
-  border_left_color = '#cba6f7',
-  border_right_color = '#cba6f7',
-  border_bottom_color = '#cba6f7',
-  border_top_color = '#cba6f7',
+  border_left_color = catppuccin_colors[2],
+  border_right_color = catppuccin_colors[2],
+  border_bottom_color = catppuccin_colors[2],
+  border_top_color = catppuccin_colors[2],
 }
 
 -- Background
@@ -262,7 +262,7 @@ local function split_nav(resize_or_move, key)
     key = key,
     mods = resize_or_move == 'resize' and 'ALT' or 'CTRL',
     action = wezterm.action_callback(function(win, pane)
-      if is_vim(pane) then
+      if pane:is_alt_screen_active() then
         -- pass the keys through to vim/nvim
         win:perform_action({
           SendKey = { key = key, mods = resize_or_move == 'resize' and 'ALT' or 'CTRL' },
@@ -274,6 +274,18 @@ local function split_nav(resize_or_move, key)
           win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
         end
       end
+      -- if is_vim(pane) then
+      --   -- pass the keys through to vim/nvim
+      --   win:perform_action({
+      --     SendKey = { key = key, mods = resize_or_move == 'resize' and 'ALT' or 'CTRL' },
+      --   }, pane)
+      -- else
+      --   if resize_or_move == 'resize' then
+      --     win:perform_action({ AdjustPaneSize = { direction_keys[key], 1 } }, pane)
+      --   else
+      --     win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+      --   end
+      -- end
     end),
   }
 end
@@ -388,25 +400,25 @@ config.keys = { -- This will create a new split and run the `top` program inside
     mods = 'CTRL|SHIFT',
     action = act.EmitEvent('gui-startup')
   }, {
-    key = 'n',
-    mods = 'LEADER',
-    action = act.SpawnTab('DefaultDomain'),
-  }, {
-    key = 'B',
-    mods = 'CTRL|SHIFT',
-    action = act.EmitEvent('toggle-opacity'),
-  }, {
-    key = 'o',
-    mods = 'CTRL|SHIFT',
-    action = act.EmitEvent('center-window')
-  }, {
-    key = '0',
-    mods = 'CTRL',
-    action = act.PaneSelect {
-      mode = 'SwapWithActiveKeepFocus',
-      alphabet = '1234567890',
-    },
+  key = 'n',
+  mods = 'LEADER',
+  action = act.SpawnTab('DefaultDomain'),
+}, {
+  key = 'B',
+  mods = 'CTRL|SHIFT',
+  action = act.EmitEvent('toggle-opacity'),
+}, {
+  key = 'o',
+  mods = 'CTRL|SHIFT',
+  action = act.EmitEvent('center-window')
+}, {
+  key = '0',
+  mods = 'CTRL',
+  action = act.PaneSelect {
+    mode = 'SwapWithActiveKeepFocus',
+    alphabet = '1234567890',
   },
+},
 }
 
 config.key_tables = {
