@@ -1,9 +1,12 @@
 return {
   {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
     event = {
-      "BufReadPre",
-      "BufNewFile",
-    }
+      "InsertEnter",
+    },
+    config = function()
+      require("config.copilot")
+    end,
   }
 }
