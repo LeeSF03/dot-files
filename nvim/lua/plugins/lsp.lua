@@ -24,17 +24,14 @@ return {
   },
   {
     "saghen/blink.cmp",
-    -- optional: provides snippets for the snippet source
     dependencies = {
       "rafamadriz/friendly-snippets",
       "giuxtaposition/blink-cmp-copilot",
     },
-    -- use a release tag to download pre-built binaries
     version = 'v0.*',
     opts_extend = { "sources.default" },
     event = {
-      "BufReadPre",
-      "BufNewFile",
+      "InsertEnter",
     },
     config = function()
       require("config.lsp.blink")

@@ -2,7 +2,11 @@ local mason = require("mason")
 local masontoolinstaller = require("mason-tool-installer")
 local masonlsp = require("mason-lspconfig")
 
-mason.setup()
+mason.setup({
+  ui = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  }
+})
 
 -- list of tools(linters, formatters, etc):
 -- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
@@ -24,6 +28,7 @@ masonlsp.setup({
     "cssmodules_ls",
     "docker_compose_language_service",
     "dockerls",
+    -- "nginx_language_server",
   }
 })
 
