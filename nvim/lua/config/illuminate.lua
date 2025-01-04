@@ -55,3 +55,6 @@ illuminate.configure({
   -- case_insensitive_regex: sets regex case sensitivity
   case_insensitive_regex = false,
 })
+
+vim.keymap.set('n', 'gn', illuminate.goto_next_reference, { desc = "Go to next reference"})
+vim.keymap.set('n', 'gN', illuminate.goto_prev_reference, { desc = "Go to previous reference"})
