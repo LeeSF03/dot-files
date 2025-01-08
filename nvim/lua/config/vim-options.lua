@@ -27,6 +27,7 @@ set_filetype({ "docker-compose.*.yml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.*.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yml" }, "yaml.docker-compose")
+set_filetype({ "*.xaml" }, "xml")
 
 acmd({"BufEnter"}, {
   callback = function(event)

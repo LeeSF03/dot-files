@@ -52,6 +52,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = ev.buf })
     vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { desc = "Go to references", buffer = ev.buf })
+
+
     vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<CR>', { desc = "Rename variable", buffer = ev.buf })
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<CR>', { desc = "Code Actions", buffer = ev.buf })
     vim.keymap.set('n', '<leader>cf', function()

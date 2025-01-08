@@ -40,6 +40,9 @@ telescope.setup {
 
         ["<C-u>"] = actions.preview_scrolling_up,
         ["<C-d>"] = actions.preview_scrolling_down,
+        ["<C-s>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
+        ["<C-x>"] = actions.delete_buffer,
       }
     }
   },
