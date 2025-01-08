@@ -1,0 +1,291 @@
+/**
+ * Import the Nerdfonts icon font.
+ * Ref https://www.nerdfonts.com/cheat-sheet for a cheatsheet of available Nerdfonts icons.
+ */
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
+
+:root {
+  --main-color: #b4befe;
+  --background-color: #11111b;
+  --font-color: rgba(255, 255, 255, 0.9);
+  user-select: none;
+}
+
+::placeholder {
+  color: rgb(255 255 255 / 60%);
+}
+
+i {
+  color: var(--main-color);
+  margin-right: 7px;
+}
+
+.nf-md-download {
+  color: #f5bde6;
+}
+
+.nf-md-upload {
+  color: #f5bde6;
+}
+
+.nf-fa-memory {
+  color: #eed49f;
+}
+
+.nf-oct-cpu {
+  color: #eed49f;
+}
+
+.nf-fa-battery_4 {
+  color: #a6da95;
+}
+.nf-fa-battery_3 {
+  color: #a6da95;
+}
+.nf-fa-battery_2 {
+  color: #eed49f;
+}
+.nf-fa-battery_1 {
+  color: #ed8796;
+}
+.nf-fa-battery_0 {
+  color: #494d64;
+}
+
+.nf-md-lightning_bolt {
+  color: #eed49f;
+}
+
+body {
+  color: var(--font-color);
+  font-family: "FiraCode Nerd Font", monospace;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+html,
+body,
+#root {
+  height: 30px;
+}
+
+#root {
+  background: transparent;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  height: 30px;
+  padding: 4px 6px 0px 6px;
+  white-space: nowrap;
+}
+
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  justify-self: center;
+}
+
+.right {
+  justify-self: end;
+}
+
+.keyboard,
+.network,
+.memory,
+.cpu,
+.network,
+.battery {
+  margin-right: 8px !important;
+  display: flex;
+  align-items: center;
+  color: var(--font-color);
+}
+
+.tiling-direction {
+  display: flex;
+  align-items: center;
+  color: var(--font-color);
+}
+
+.binding-mode {
+  display: flex;
+  /*margin-left: 2px;*/
+  align-items: center;
+  color: var(--font-color);
+  background: transparent;
+  border: none;
+}
+
+.weather {
+  margin-right: 4px;
+}
+
+.logo {
+  padding: 2px;
+  margin-right: 0px !important;
+  display: flex;
+  align-items: center;
+  color: var(--font-color);
+}
+
+.nf-custom-windows {
+  /*margin-right: 4px;*/
+  margin-right: 0px;
+}
+
+.wm-indicator {
+  display: flex;
+  margin-left: 4px;
+  margin-right: 2px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+}
+
+.on {
+  color: #a6e3a1;
+}
+
+.off {
+  color: #f38ba8;
+}
+
+.workspaces {
+  display: flex;
+  align-items: center;
+}
+
+.workspace {
+  background: transparent;
+  margin-right: 4px;
+  padding: 2px 8px;
+  color: var(--font-color);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transform: scale(0.9);
+  transition:
+    all 0.3s,
+    transform 0.3s;
+
+  &.displayed {
+    background: #b4befe77;
+    color: #11111b;
+  }
+
+  &.focused,
+  &:hover {
+    background: var(--main-color);
+    color: #11111b;
+  }
+}
+
+.tiling-direction {
+  background: transparent;
+  color: var(--font-color);
+  border-radius: 3px;
+  line-height: 1;
+  padding: 2px 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+.cpu .high-usage {
+  color: #900029;
+}
+
+.battery {
+  position: relative;
+}
+
+.battery .charging-icon {
+  position: absolute;
+  font-size: 7px;
+  left: -8px;
+  top: 3px;
+}
+
+.box {
+  height: 24px;
+  background: var(--background-color);
+  border: 1px solid var(--main-color);
+  padding: 2px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  backdrop-filter: invert(1);
+  transition:
+    all 0.3s,
+    transform 0.3s;
+}
+
+.network-item {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+}
+
+.network {
+  gap: 0.5em;
+}
+
+.shortcut {
+  background: var(--background-color);
+  padding: 2px 8px;
+  color: var(--font-color);
+  border: 1px solid var(--main-color) !important;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    all 0.3s,
+    transform 0.3s;
+
+  &.displayed {
+    background: rgb(255 255 255 / 15%);
+  }
+
+  &.focused,
+  &:hover {
+    background: var(--main-color);
+    transform: scale(0.9);
+  }
+}
+
+.shortcut .nf {
+  color: var(--font-color);
+}
+
+.clean-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--font-color);
+}
+
+.settings {
+  background: rgb(255 255 255 / 15%);
+  margin-right: 4px;
+  padding: 2px 8px;
+  color: var(--font-color);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    all 0.3s,
+    transform 0.3s;
+
+  &.focused,
+  &:hover {
+    background: var(--main-color);
+    transform: scale(0.9);
+  }
+}
