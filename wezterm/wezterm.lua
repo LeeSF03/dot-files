@@ -108,19 +108,20 @@ local catppuccin_colors = {
   "#a6e3a1", -- green
   "#94e2d5", -- teal
   "#89b4fa", -- blue
+  "#b4befe", -- lavender
 }
 
 -- Window Frame
-config.window_frame = {
-  border_left_width = '1px',
-  border_right_width = '1px',
-  border_bottom_height = '1px',
-  border_top_height = '1px',
-  border_left_color = catppuccin_colors[2],
-  border_right_color = catppuccin_colors[2],
-  border_bottom_color = catppuccin_colors[2],
-  border_top_color = catppuccin_colors[2],
-}
+-- config.window_frame = {
+--   border_left_width = '1px',
+--   border_right_width = '1px',
+--   border_bottom_height = '1px',
+--   border_top_height = '1px',
+--   border_left_color = catppuccin_colors[9],
+--   border_right_color = catppuccin_colors[9],
+--   border_bottom_color = catppuccin_colors[9],
+--   border_top_color = catppuccin_colors[9],
+-- }
 
 -- Background
 -- config.window_background_opacity = 0.90
@@ -262,19 +263,7 @@ local function split_nav(resize_or_move, key)
     key = key,
     mods = resize_or_move == 'resize' and 'ALT' or 'CTRL',
     action = wezterm.action_callback(function(win, pane)
-      if pane:is_alt_screen_active() then
-        -- pass the keys through to vim/nvim
-        win:perform_action({
-          SendKey = { key = key, mods = resize_or_move == 'resize' and 'ALT' or 'CTRL' },
-        }, pane)
-      else
-        if resize_or_move == 'resize' then
-          win:perform_action({ AdjustPaneSize = { direction_keys[key], 1 } }, pane)
-        else
-          win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-        end
-      end
-      -- if is_vim(pane) then
+      -- if pane:is_alt_screen_active() then
       --   -- pass the keys through to vim/nvim
       --   win:perform_action({
       --     SendKey = { key = key, mods = resize_or_move == 'resize' and 'ALT' or 'CTRL' },
@@ -286,6 +275,19 @@ local function split_nav(resize_or_move, key)
       --     win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
       --   end
       -- end
+
+      if is_vim(pane) then
+        -- pass the keys through to vim/nvim
+        win:perform_action({
+          SendKey = { key = key, mods = resize_or_move == 'resize' and 'ALT' or 'CTRL' },
+        }, pane)
+      else
+        if resize_or_move == 'resize' then
+          win:perform_action({ AdjustPaneSize = { direction_keys[key], 1 } }, pane)
+        else
+          win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+        end
+      end
     end),
   }
 end
