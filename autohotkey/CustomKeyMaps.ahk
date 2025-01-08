@@ -2,7 +2,7 @@
 #NoTrayIcon
 
 ; Hotkey to minimize the focused window
-^#m:: {   ; Ctrl + Win + M
+#m:: {   ; Ctrl + Win + M
     WinMinimize("A")  ; Minimizes the active window
 }
 
