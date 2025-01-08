@@ -42,4 +42,10 @@ git:
   truncateCopiedCommitHashesTo: 12
 
 os:
-  editPreset: vscode
+  # editPreset: "nvim-remote"
+  editPreset: "nvim"
+  # edit: "nvim {{filename}}"
+  # editAtLine: "nvim-remote +{{line}} {{filename}}"
+  # editAtLineAndWait: "nvim-remote +{{line}} {{filename}}"
+  # editInTerminal: true
+  # open: "nvim"
