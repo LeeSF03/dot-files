@@ -89,6 +89,12 @@ body,
   align-items: center;
 }
 
+.window-title {
+  margin-left: 6px;
+  padding: 0px 4px !important;
+  align-items: center;
+}
+
 .center {
   justify-self: center;
 }
@@ -101,7 +107,6 @@ body,
 .network,
 .memory,
 .cpu,
-.network,
 .battery {
   margin-right: 8px !important;
   display: flex;
@@ -235,7 +240,7 @@ body,
 }
 
 .network {
-  gap: 0.5em;
+  width: 65px;
 }
 
 .shortcut {
@@ -269,6 +274,14 @@ body,
   border: none;
   cursor: pointer;
   color: var(--font-color);
+}
+
+.indicator-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
 }
 
 .settings {

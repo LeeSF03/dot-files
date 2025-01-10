@@ -115,6 +115,15 @@ window_rules:
       - window_process: { equals: "Lively" }
         window_class: { regex: "HwndWrapper" }
 
+  - commands: ["set-floating"]
+    match:
+      - window_process: { regex: "SnippingTool" }
+      - window_title: { regex: "Task Manager" }
+      - window_process: { equals: "Spotify" }
+      - window_process: { equals: "Discord" }
+      - window_process: { equals: "Flow.Launcher" }
+        window_title: { equals: "Settings" }
+
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
   - name: "resize"
@@ -258,8 +267,9 @@ keybindings:
   - commands: ["toggle-fullscreen"]
     bindings: ["lwin+f"]
 
+  # lwin+q to open terminal is set in powertoy
   - commands: ["close"]
-    bindings: ["lwin+q"]
+    bindings: ["lwin+shift+q"]
   - commands: ["wm-redraw"]
     bindings: ["lwin+r"]
   - commands: ["wm-exit"]

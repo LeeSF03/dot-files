@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import * as zebar from "zebar";
+import Shortcut from "./components/Shortcut";
+import config from "./config.js";
 
 const providers = zebar.createProviderGroup({
   keyboard: { type: "keyboard" },
@@ -74,9 +76,18 @@ function App() {
             <i className="nf nf-custom-windows"></i>
           </div>
           <div>
-            <i
-              className={`nf nf-fa-circle_dot wm-indicator ${output.glazewm ? "on" : "off"}`}
-            ></i>
+            <button
+              className="indicator-button"
+              onClick={
+                output.glazewm
+                  ? () => output.glazewm.runCommand("wm-exit")
+                  : null
+              }
+            >
+              <i
+                className={`nf nf-fa-circle_dot wm-indicator ${output.glazewm ? "on" : "off"}`}
+              ></i>
+            </button>
           </div>
           {output.glazewm &&
             output.glazewm.bindingModes.map((bindingMode) => (
@@ -93,6 +104,11 @@ function App() {
               </button>
             ))}
         </div>
+        {/* {output.glazewm && output.glazewm.focusedContainer.title && ( */}
+        {/*   <div className="box window-title"> */}
+        {/*     <div>{output.glazewm.focusedContainer.title}</div> */}
+        {/*   </div> */}
+        {/* )} */}
       </div>
 
       <div className="center">
@@ -132,7 +148,7 @@ function App() {
               onClick={() => output.glazewm.runCommand("shell-exec taskmgr")}
             >
               <i className="nf nf-md-download"></i>
-              {output.network.traffic.received.siValue}
+              {output.network.traffic.received.siValue.toPrecision(3)}
               {output.network.traffic.received.siUnit}
             </button>
           )}
@@ -143,7 +159,7 @@ function App() {
               onClick={() => output.glazewm.runCommand("shell-exec taskmgr")}
             >
               <i className="nf nf-md-upload"></i>
-              {output.network.traffic.transmitted.siValue}
+              {output.network.traffic.transmitted.siValue.toPrecision(3)}
               {output.network.traffic.transmitted.siUnit}
             </button>
           )}

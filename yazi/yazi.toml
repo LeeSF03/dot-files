@@ -125,3 +125,13 @@ use = ["extract", "reveal"]
 micro_workers = 5
 macro_workers = 10
 bizarre_retry = 5
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"

@@ -153,7 +153,7 @@ config.status_update_interval = 1000
 config.tab_max_width = 60
 config.tab_bar_at_bottom = false
 
-local tab_bar_bg = '#181825'
+local tab_bar_bg = '#1e1e2e'
 config.colors = {
   tab_bar = {
     background = tab_bar_bg,
@@ -161,9 +161,13 @@ config.colors = {
 }
 
 local tab_min_width = 11
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
+
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_right_half_circle_thick
+-- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
 -- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
+
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_left_half_circle_thick
+-- local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
 -- local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 wezterm.on(
   'format-tab-title',
@@ -227,17 +231,11 @@ wezterm.on(
 )
 
 wezterm.on('format-window-title', function(tab, pane, tabs, panes, config)
-  local zoomed = ''
-  if tab.active_pane.is_zoomed then
-    zoomed = '[Z] '
-  end
+  -- local title = tab_title(tab)
+  --
+  -- return title
 
-  local index = ''
-  if #tabs > 1 then
-    index = string.format('[ %d / %d ] ', tab.tab_index + 1, #tabs)
-  end
-
-  return zoomed .. index
+  return 'WezTerm'
 end)
 
 -- Panes
