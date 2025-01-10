@@ -77,7 +77,7 @@ require("yatline"):setup({
         { type = "line", custom = false, name = "tabs", params = { "left" } },
       },
       section_b = {
-        { type = "coloreds", custom = false, name = "githead" },
+        -- { type = "coloreds", custom = false, name = "githead" },
       },
       section_c = {},
     },
@@ -162,7 +162,7 @@ require("yatline"):setup({
 -- 	behind_color = catppuccin_palette.yellow,
 -- })
 
-require("git"):setup()
-THEME.git = THEME.git or {}
-THEME.git.modified_sign = "M"
-THEME.git.deleted_sign = "D"
+-- require("git"):setup()
+-- THEME.git = THEME.git or {}
+-- THEME.git.modified_sign = "M"
+-- THEME.git.deleted_sign = "D"
