@@ -1,19 +1,25 @@
+# run script to temp fix screen reader message
+& "$PSScriptRoot\run.ps1"
+
+# figure a way to make this work on windows
+# C:\Users\shuen\.config\powershell\powershell_profile.ps1
+
 $Env:COLORTERM = 'truecolor'
 
 # Env vars for yazi
 $Env:YAZI_FILE_ONE = 'C:\Program Files\Git\usr\bin\file.exe'
-$Env:YAZI_CONFIG_HOME = 'C:\Users\shuen\.config\yazi\config'
+$Env:YAZI_CONFIG_HOME = 'C:\Users\shuen\.config\yazi'
 
 # Env vars for fzf
-$ENV:FZF_DEFAULT_COMMAND = 'fd --type file --hidden --exclude .git'
+$ENV:FZF_DEFAULT_COMMAND = 'fd --type file --hidden --exclude .git --no-ignore'
 $ENV:FZF_DEFAULT_OPTS = @"
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
 --color=selected-bg:#45475a
 --multi
---bind ctrl-h:preview-up,ctrl-l:preview-down `
---preview 'bat --style numbers,changes --color=always --theme=CatppuccinMocha --line-range=:100 {}'
+--bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down `
+--preview 'bat --style numbers,changes --color=always --theme=CatppuccinMocha --line-range=:100 {} || eza -T --level 2 --colour=always --icons=always {2}'
 "@
 
 # Env vars for bat
@@ -24,6 +30,7 @@ $Env:BAT_CONFIG_DIR = 'C:\Users\shuen\.config\bat'
 $Env:EZA_CONFIG_DIR = 'C:\Users\shuen\.config\eza'
 
 # Env vars for zoxide
+$Env:_ZO_ECHO = 1
 $Env:_ZO_FZF_OPTS = @"
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
@@ -34,7 +41,7 @@ $Env:_ZO_FZF_OPTS = @"
 --layout reverse `
 --border
 --delimiter '\t' `
---bind ctrl-h:preview-up,ctrl-l:preview-down `
+--bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down `
 --preview 'eza -T --level 2 --colour=always --icons=always {2}' `
 --preview-window 'right:35%'
 "@
@@ -44,7 +51,6 @@ $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 # Env vars for lazygit
 $Env:CONFIG_DIR = "C:\Users\shuen\.config\lazygit"
-
 
 # Set-Alias
 Set-Alias cat bat
@@ -64,7 +70,7 @@ Set-Alias ls eza
 
 # Functions alias for ls
 function ll {
-  eza -aalhSm --git --git-repos --git-repos-no-status --colour=always --icons=always --hyperlink --total-size $args
+  eza -aalhSm --git --git-repos --git-repos-no-status --colour=always --icons=always --hyperlink --total-size --group-directories-first --total-size $args
 }
 
 # yazi shell wrapper https://yazi-rs.github.io/docs/quick-start
@@ -82,6 +88,7 @@ function y {
 function ff {
   param (
     [string]$agent,
+    [switch]$clear,
     [switch]$h
   )
 
@@ -96,7 +103,7 @@ agent  Valorant agent name
     Write-Output $helpMessage
     return
   }
-  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy")
+  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko")
 
   $logo_root = "C:\Users\shuen\.config\fastfetch\images"
 
@@ -108,6 +115,10 @@ agent  Valorant agent name
   }
 
   $logo_path = Join-Path -Path $logo_root -ChildPath $selected_agent_image
+
+  if ($clear) {
+    clear
+  }
 
   fastfetch `
     --logo-type iterm `
@@ -172,10 +183,16 @@ Usage: frg <search term> [-h]
 "
     return
   }
+  $search = $args[0]
+
+  if (!$search) {
+    $search = ""
+  }
   $rg_prefix = "rg --column --line-number --no-heading --color=always --smart-case "
   fzf --ansi `
     --color "hl:-1:underline,hl+:-1:underline:reverse" `
-    --bind "ctrl-h:preview-up,ctrl-l:preview-down" `
+    --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" `
+    --bind "start:reload:$rg_prefix || true" `
     --bind "change:reload:$rg_prefix {q} || true" `
     --bind "enter:become(code -g {1}:{2})" `
     --delimiter : `
@@ -202,7 +219,7 @@ Usage: frg <before> <after> [-h]
   fzf --ansi `
     --color "hl:-1:underline,hl+:-1:underline:reverse" `
     --delimiter ':' `
-    --bind "ctrl-r:execute(sed -i {2}'s/$before/$after/gi' {1})+reload(rg --ignore-case --color always --line-number --no-heading $before),ctrl-h:preview-up,ctrl-l:preview-down" `
+    --bind "ctrl-r:execute(sed -i {2}'s/$before/$after/gi' {1})+reload(rg --ignore-case --color always --line-number --no-heading $before),ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" `
     --preview "bat --color always {1} --theme=CatppuccinMocha --highlight-line {2}" `
     --preview-window '+{2}+3/3,~3'
 }
@@ -230,7 +247,9 @@ Usage: fcd [-y] [-c] [-h]
   $dir = fd --max-depth 1 --type directory --follow --hidden --exclude .git |
   fzf --prompt 'Directory> ' `
     --header-first `
-    --preview 'eza -aT --level 2 --colour=always --icons=always {}'
+    --preview 'eza -aT --level 2 --colour=always --icons=always {}' `
+    --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down"
+
   if ($null -ne $dir) {
     if ($y) {
       z $dir
@@ -278,8 +297,19 @@ function sply {
 #Functions for Get-Command
 function which {
   param (
-    [switch]$f
+    [switch]$f,
+    [switch]$h
   )
+  if ($h) {
+    Write-Output "
+Usage: which [-f] <command>
+
+-f     Show full command
+-h     Show help
+"
+    return
+  }
+
   $stat = Get-Command $args
   if ($null -ne $stat) {
     if ($f) {
@@ -294,12 +324,37 @@ function which {
   }
 }
 
+# Functions for lauching dooit
+function todo {
+  if ($args) {
+    dooit $args
+    return
+  }
+  dooit -c 'C:\Users\shuen\.config\dooit\dooit.py'
+}
+
+# Functions for launching hoyoplay
+function hoyo {
+  & "C:\Program Files\HoYoPlay\launcher.exe"
+}
+
+
+# Functions for launching RecycleBinFolder
+function trash {
+  start shell:RecycleBinFolder
+}
+
+function docker-desktop {
+  & "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+}
+
 # Initialize oh-my-posh
 oh-my-posh init pwsh --config "C:\Users\shuen\.config\oh-my-posh\themes\catppuccin_mocha.omp.json" | Invoke-Expression
 
 # Initialize zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
-# run fastfetch
-ff
-
+# run fastfetch if not in vscode or nvim
+if ($env:TERM_PROGRAM -ne 'vscode' -and -not $env:NVIM) {
+  ff
+}
