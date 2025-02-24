@@ -52,7 +52,7 @@ window_effects:
     # Highlight the window with a colored border.
     # ** Exclusive to Windows 11 due to API limitations.
     border:
-      enabled: false
+      enabled: true
       color: "#b4befe"
 
   # Visual effects to apply to non-focused windows.
@@ -60,7 +60,7 @@ window_effects:
     hide_title_bar:
       enabled: false
     border:
-      enabled: false
+      enabled: true
       color: "#585b70"
 
 window_behavior:
@@ -250,7 +250,7 @@ keybindings:
   - commands: ["toggle-tiling-direction"]
     bindings: ["lwin+s"]
   - commands: ["toggle-floating"]
-    bindings: ["lwin+o"]
+    bindings: ["lwin+i"]
   - commands: ["toggle-tiling"]
     bindings: ["lwin+t"]
   - commands: ["toggle-minimized"]

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import * as zebar from "zebar";
-import Shortcut from "./components/Shortcut";
-import config from "./config.js";
 
 const providers = zebar.createProviderGroup({
   keyboard: { type: "keyboard" },
