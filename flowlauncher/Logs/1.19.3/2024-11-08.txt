@@ -1,0 +1,920 @@
+11:20:06.7068+08:00 - ERROR - WindowsIndex.ExecuteWindowsIndexSearchAsync - Failed to execute windows index search query: SELECT TOP 100 "System.FileName", "System.ItemUrl", "System.ItemType" FROM "SystemIndex" WHERE CONTAINS(System.FileName,'"`*"',17417) AND scope='file:' ORDER BY System.FileName
+EXCEPTION OCCURS: System.Data.OleDb.OleDbException (0x80041605): Unspecified error: -2147215867(0x80041605)
+   at void System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   at int System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, out object executeResult)
+   at int System.Data.OleDb.OleDbCommand.ExecuteCommandText(out object executeResult)
+   at OleDbDataReader System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, string method)
+   at Task<DbDataReader> System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at async IAsyncEnumerable<SearchResult> Flow.Launcher.Plugin.Explorer.Search.WindowsIndex.WindowsIndex.ExecuteWindowsIndexSearchAsync(string indexQueryString, string connectionString, CancellationToken token)+MoveNext() in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.Explorer/Search/WindowsIndex/WindowsIndex.cs:line 71
+
+22:18:55.2054+08:00 - INFO  - App.OnStartup - Begin Flow Launcher startup ----------------------------------------------------
+22:18:55.2054+08:00 - INFO  - App.OnStartup - Runtime info:
+Flow Launcher version: 1.19.3
+OS Version: 22631.4391
+IntPtr Length: 8
+x64: True
+22:18:57.3283+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Process Killer> is <45ms>
+22:18:57.3283+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugin Indicator> is <40ms>
+22:18:57.3283+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <System Commands> is <75ms>
+22:18:57.3283+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <URL> is <62ms>
+22:18:57.3473+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Shell> is <132ms>
+22:18:57.3657+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Web Searches> is <131ms>
+22:18:57.3657+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Windows Settings> is <210ms>
+22:18:57.4347+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Preload programs cost <80ms>
+22:18:57.4347+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload win32 programs <331>
+22:18:57.4347+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload uwps <51>
+22:18:57.4347+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Program> is <235ms>
+22:18:57.4347+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:18:57.4347+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Explorer> is <250ms>
+22:18:57.4622+08:00 - ERROR -  - ------------- BEGIN Flow.Launcher.Plugin.Program exception -------------
+22:18:57.4622+08:00 - ERROR -  - 
+Exception full name: System.IO.FileNotFoundException
+Error status: UNKNOWN
+Class name: Win32
+Calling method: ExeProgram
+Program path: C:\Program Files (x86)\Autodesk\Autodesk Desktop App\AutodeskDesktopApp.exe
+InnerException number: 1
+Exception message: C:\Program Files (x86)\Autodesk\Autodesk Desktop App\AutodeskDesktopApp.exe
+Exception error type: HResult -2147024894
+Exception thrown in called method: System.Diagnostics.FileVersionInfo GetVersionInfo(System.String)
+Possible interpretation of the error: File not found when trying to load the program from C:\Program Files (x86)\Autodesk\Autodesk Desktop App\AutodeskDesktopApp.exe
+Possible resolution: Not yet known
+22:18:57.4622+08:00 - ERROR -  - ------------- END Flow.Launcher.Plugin.Program exception -------------
+22:18:57.4750+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Calculator> is <198ms>
+22:18:57.4914+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://gcore.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:18:57.4914+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:18:57.4914+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+22:18:57.5254+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Browser Bookmarks> is <287ms>
+22:18:58.6118+08:00 - ERROR -  - ------------- BEGIN Flow.Launcher.Plugin.Program exception -------------
+22:18:58.6118+08:00 - ERROR -  - 
+Exception full name: System.IO.FileNotFoundException
+Error status: UNKNOWN
+Class name: Win32
+Calling method: ExeProgram
+Program path: C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\msrdc.exe
+InnerException number: 1
+Exception message: C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\msrdc.exe
+Exception error type: HResult -2147024894
+Exception thrown in called method: System.Diagnostics.FileVersionInfo GetVersionInfo(System.String)
+Possible interpretation of the error: File not found when trying to load the program from C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\msrdc.exe
+Possible resolution: Not yet known
+22:18:58.6118+08:00 - ERROR -  - ------------- END Flow.Launcher.Plugin.Program exception -------------
+22:18:58.6292+08:00 - ERROR -  - ------------- BEGIN Flow.Launcher.Plugin.Program exception -------------
+22:18:58.6292+08:00 - ERROR -  - 
+Exception full name: System.IO.FileNotFoundException
+Error status: UNKNOWN
+Class name: Win32
+Calling method: ExeProgram
+Program path: C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\wslg.exe
+InnerException number: 1
+Exception message: C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\wslg.exe
+Exception error type: HResult -2147024894
+Exception thrown in called method: System.Diagnostics.FileVersionInfo GetVersionInfo(System.String)
+Possible interpretation of the error: File not found when trying to load the program from C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\wslg.exe
+Possible resolution: Not yet known
+22:18:58.6292+08:00 - ERROR -  - ------------- END Flow.Launcher.Plugin.Program exception -------------
+22:18:58.7823+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - UWPProgram index cost <1345ms>
+22:18:58.8803+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loaded 200 plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:18:58.8803+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugins Manager> is <1678ms>
+22:19:00.0793+08:00 - INFO  - App.OnStartup - Dependencies Info:
+Python Path: 
+Node Path: 
+22:19:00.6456+08:00 - INFO  - App.OnStartup - End Flow Launcher startup ----------------------------------------------------  
+22:19:00.6456+08:00 - INFO  - App.OnStartup - Startup cost <5642ms>
+22:19:00.9417+08:00 - ERROR -  - ------------- BEGIN Flow.Launcher.Plugin.Program exception -------------
+22:19:00.9417+08:00 - ERROR -  - 
+Exception full name: System.Runtime.InteropServices.COMException
+Error status: UNKNOWN
+Class name: IShellLinkW
+Calling method: retrieveTargetPath
+Program path: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Windows Media Player Legacy.lnk
+InnerException number: 1
+Exception message: Error HRESULT E_FAIL has been returned from a call to a COM component.
+Exception error type: HResult -2147467259
+Exception thrown in called method: Void GetDescription(System.Text.StringBuilder, Int32)
+Possible interpretation of the error: Error caused likely due to trying to get the description of the program
+Possible resolution: Not yet known
+22:19:00.9417+08:00 - ERROR -  - ------------- END Flow.Launcher.Plugin.Program exception -------------
+22:19:01.0640+08:00 - ERROR -  - ------------- BEGIN Flow.Launcher.Plugin.Program exception -------------
+22:19:01.0640+08:00 - ERROR -  - 
+Exception full name: System.Runtime.InteropServices.COMException
+Error status: UNKNOWN
+Class name: IShellLinkW
+Calling method: retrieveTargetPath
+Program path: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\ODBC Data Sources (32-bit).lnk
+InnerException number: 1
+Exception message: Error HRESULT E_FAIL has been returned from a call to a COM component.
+Exception error type: HResult -2147467259
+Exception thrown in called method: Void GetDescription(System.Text.StringBuilder, Int32)
+Possible interpretation of the error: Error caused likely due to trying to get the description of the program
+Possible resolution: Not yet known
+22:19:01.0640+08:00 - ERROR -  - ------------- END Flow.Launcher.Plugin.Program exception -------------
+22:19:02.1274+08:00 - INFO  - ImageLoader.Initialize - Preload images cost <4776ms>
+22:19:02.1274+08:00 - INFO  - ImageLoader.Initialize - Number of preload images is <150>, Images Number: 150, Unique Items 98
+22:19:04.9230+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Win32Program index cost <7485ms>
+22:36:15.2982+08:00 - INFO  - App.OnStartup - Begin Flow Launcher startup ----------------------------------------------------
+22:36:15.2982+08:00 - INFO  - App.OnStartup - Runtime info:
+Flow Launcher version: 1.19.3
+OS Version: 22631.4391
+IntPtr Length: 8
+x64: True
+22:36:17.1838+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Process Killer> is <45ms>
+22:36:17.1838+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugin Indicator> is <41ms>
+22:36:17.1838+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <System Commands> is <95ms>
+22:36:17.1838+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <URL> is <63ms>
+22:36:17.2059+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Shell> is <131ms>
+22:36:17.2281+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Windows Settings> is <175ms>
+22:36:17.2294+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Web Searches> is <151ms>
+22:36:17.2512+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Preload programs cost <38ms>
+22:36:17.2512+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload win32 programs <331>
+22:36:17.2512+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload uwps <51>
+22:36:17.2983+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:36:17.2983+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Explorer> is <256ms>
+22:36:17.3273+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Calculator> is <192ms>
+22:36:17.3273+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Program> is <287ms>
+22:36:17.3459+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://gcore.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:36:17.3459+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:36:17.3459+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+22:36:17.3801+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Browser Bookmarks> is <277ms>
+22:36:17.5279+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loaded 200 plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:36:17.5279+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugins Manager> is <459ms>
+22:36:18.4179+08:00 - INFO  - App.OnStartup - Dependencies Info:
+Python Path: 
+Node Path: 
+22:36:18.9387+08:00 - INFO  - App.OnStartup - End Flow Launcher startup ----------------------------------------------------  
+22:36:18.9387+08:00 - INFO  - App.OnStartup - Startup cost <3851ms>
+22:36:21.6865+08:00 - INFO  - ImageLoader.Initialize - Preload images cost <4473ms>
+22:36:21.6865+08:00 - INFO  - ImageLoader.Initialize - Number of preload images is <150>, Images Number: 150, Unique Items 99
+22:46:50.2146+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:46:50.2146+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://gcore.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:46:50.2146+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:46:50.2146+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+22:46:50.3111+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loaded 200 plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+22:47:15.2241+08:00 - INFO  - App.OnStartup - Begin Flow Launcher startup ----------------------------------------------------
+22:47:15.2241+08:00 - INFO  - App.OnStartup - Runtime info:
+Flow Launcher version: 1.19.3
+OS Version: 22631.4391
+IntPtr Length: 8
+x64: True
+22:47:15.5857+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Process Killer> is <3ms>
+22:47:15.5857+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugin Indicator> is <3ms>
+22:47:15.5857+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <System Commands> is <3ms>
+22:47:15.5857+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <URL> is <16ms>
+22:47:15.5966+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <IpMacAddress> is <32ms>
+22:47:15.6048+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:47:15.6048+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Web Searches> is <28ms>
+22:47:15.6048+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Shell> is <30ms>
+22:47:15.6215+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Preload programs cost <12ms>
+22:47:15.6215+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload win32 programs <331>
+22:47:15.6215+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload uwps <51>
+22:47:15.6215+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Calculator> is <44ms>
+22:47:15.6215+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Windows Settings> is <47ms>
+22:47:15.6460+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Browser Bookmarks> is <67ms>
+22:47:15.6460+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://gcore.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:47:15.6460+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:47:15.6460+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+22:47:15.6596+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Program> is <83ms>
+22:47:15.6596+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Explorer> is <83ms>
+22:47:15.8729+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loaded 200 plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:47:15.8729+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugins Manager> is <294ms>
+22:47:16.2496+08:00 - INFO  - App.OnStartup - Dependencies Info:
+Python Path: 
+Node Path: C:\Program Files\nodejs\node.exe
+22:47:16.6068+08:00 - INFO  - App.OnStartup - End Flow Launcher startup ----------------------------------------------------  
+22:47:16.6068+08:00 - INFO  - App.OnStartup - Startup cost <1463ms>
+22:47:18.6748+08:00 - INFO  - ImageLoader.Initialize - Preload images cost <3057ms>
+22:47:18.6748+08:00 - INFO  - ImageLoader.Initialize - Number of preload images is <150>, Images Number: 150, Unique Items 101
+22:48:39.3498+08:00 - INFO  - App.OnStartup - Begin Flow Launcher startup ----------------------------------------------------
+22:48:39.3498+08:00 - INFO  - App.OnStartup - Runtime info:
+Flow Launcher version: 1.19.3
+OS Version: 22631.4391
+IntPtr Length: 8
+x64: True
+22:48:39.7241+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <System Commands> is <3ms>
+22:48:39.7241+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugin Indicator> is <4ms>
+22:48:39.7241+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Process Killer> is <3ms>
+22:48:39.7241+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <URL> is <16ms>
+22:48:39.7241+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <IpMacAddress> is <1ms>
+22:48:39.7355+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Web Searches> is <26ms>
+22:48:39.7355+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Shell> is <34ms>
+22:48:39.7475+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Preload programs cost <9ms>
+22:48:39.7475+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload win32 programs <331>
+22:48:39.7475+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload uwps <51>
+22:48:39.7475+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Calculator> is <38ms>
+22:48:39.7475+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Windows Settings> is <31ms>
+22:48:39.7700+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Explorer> is <64ms>
+22:48:39.7974+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:48:39.8195+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Program> is <115ms>
+22:48:39.8238+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Browser Bookmarks> is <117ms>
+22:48:39.8238+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://gcore.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:48:39.8238+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:48:39.8238+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+22:48:39.8709+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Steam Search> is <146ms>
+22:48:39.9751+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loaded 200 plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+22:48:39.9751+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugins Manager> is <267ms>
+22:48:40.4722+08:00 - INFO  - App.OnStartup - Dependencies Info:
+Python Path: 
+Node Path: C:\Program Files\nodejs\node.exe
+22:48:40.8310+08:00 - INFO  - App.OnStartup - End Flow Launcher startup ----------------------------------------------------  
+22:48:40.8310+08:00 - INFO  - App.OnStartup - Startup cost <1571ms>
+22:48:43.0491+08:00 - INFO  - ImageLoader.Initialize - Preload images cost <3244ms>
+22:48:43.0491+08:00 - INFO  - ImageLoader.Initialize - Number of preload images is <150>, Images Number: 150, Unique Items 98
+22:50:12.4648+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:50:28.4176+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process pgbouncer
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:50:37.7056+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:50:48.9701+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:50:51.3985+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:50:54.0176+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:09.3135+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:21.1870+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:23.6353+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:25.9091+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:31.5426+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:34.2291+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:35.9297+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process Secure System
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process Registry
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process LsaIso
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process fontdrvhost
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process fontdrvhost
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process WUDFHost
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process WUDFHost
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process NVDisplay.Container
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process atiesrxx
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process amdlogsr
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process dwm
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process atieclxx
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process Memory Compression
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process NVDisplay.Container
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process WmiPrvSE
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process WmiPrvSE
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process AdminService
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process DAX3API
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process armsvc
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process Lenovo.Modern.ImController
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process FMService64
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process GooglePlayGamesServices
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process nvcontainer
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process pservice
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process MpDefenderCoreService
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process LenovoVantageService
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process vmnat
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process vmware-authd
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process pgbouncer
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process OfficeClickToRun
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process vmware-usbarbitrator64
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process pg_ctl
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process MsMpEng
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process UDClientService
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process QcomWlanSrvx64
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process mysqld
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process vmnetdhcp
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process wslservice
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process RtkAudUService64
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process windhawk
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process pgagent
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process logi_lamparray_service
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process mysqld
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process gamingservices
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process gamingservicesnet
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process crashpad_handler
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process DAX3API
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0128+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process postgres
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process AggregatorHost
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process NisSrv
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process MoUsoCoreWorker
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process printfilterpipelinesvc
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process SearchIndexer
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process SecurityHealthService
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process LenovoVantage-(VantageCoreAddin)
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process LenovoVantage-(LenovoGamingSystemAddin)
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process unsecapp
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process Lenovo.Modern.ImController.PluginHost.Device
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process OfficeC2RClient
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process Locator
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process WmiApSrv
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process LenovoVantage-(DeviceSettingsSystemAddin)
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:51:42.0267+08:00 - ERROR - ProcessHelper.TryKill - Failed to kill process TrustedInstaller
+EXCEPTION OCCURS: System.ComponentModel.Win32Exception (5): Access is denied.
+   at SafeProcessHandle System.Diagnostics.ProcessManager.OpenProcess(int processId, int access, bool throwIfExited)
+   at SafeProcessHandle System.Diagnostics.Process.GetProcessHandle(int access, bool throwIfExited)
+   at void System.Diagnostics.Process.UpdateHasExited()
+   at bool System.Diagnostics.Process.get_HasExited()
+   at void Flow.Launcher.Plugin.ProcessKiller.ProcessHelper.TryKill(Process p) in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.ProcessKiller/ProcessHelper.cs:line 75
+
+22:54:43.5173+08:00 - INFO  - App.OnStartup - Begin Flow Launcher startup ----------------------------------------------------
+22:54:43.5173+08:00 - INFO  - App.OnStartup - Runtime info:
+Flow Launcher version: 1.19.3
+OS Version: 22631.4391
+IntPtr Length: 8
+x64: True
+22:54:45.2645+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <System Commands> is <72ms>
+22:54:45.2645+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugin Indicator> is <38ms>
+22:54:45.2645+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Process Killer> is <49ms>
+22:54:45.2645+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <IpMacAddress> is <36ms>
+22:54:45.2645+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <URL> is <58ms>
+22:54:45.2812+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Shell> is <111ms>
+22:54:45.2812+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Web Searches> is <110ms>
+22:54:45.2812+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Windows Settings> is <141ms>
+22:54:45.3457+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Explorer> is <216ms>
+22:54:45.3457+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:54:45.3686+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Calculator> is <151ms>
+22:54:45.3841+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Preload programs cost <25ms>
+22:54:45.3841+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload win32 programs <331>
+22:54:45.3841+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload uwps <51>
+22:54:45.3841+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://gcore.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:54:45.3841+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:54:45.3841+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+22:54:45.4132+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Program> is <268ms>
+22:54:45.4132+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Browser Bookmarks> is <238ms>
+22:54:45.4285+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Steam Search> is <163ms>
+22:54:45.6101+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loaded 200 plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+22:54:45.6101+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugins Manager> is <458ms>
+22:54:46.3429+08:00 - INFO  - App.OnStartup - Dependencies Info:
+Python Path: 
+Node Path: C:\Program Files\nodejs\node.exe
+22:54:46.8250+08:00 - INFO  - App.OnStartup - End Flow Launcher startup ----------------------------------------------------  
+22:54:46.8307+08:00 - INFO  - App.OnStartup - Startup cost <3525ms>
+22:54:50.0879+08:00 - INFO  - ImageLoader.Initialize - Preload images cost <4734ms>
+22:54:50.0879+08:00 - INFO  - ImageLoader.Initialize - Number of preload images is <150>, Images Number: 150, Unique Items 97

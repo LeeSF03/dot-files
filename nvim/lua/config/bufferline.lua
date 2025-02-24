@@ -10,8 +10,19 @@ bufferline.setup({
       bg = '#232634',
     },
     tab = {
-      fg = '#00ff00',
-      bg = '#00ff00',
+      bg = '#181825',
+      fg = '#cdd6f4',
+    },
+    tab_selected = {
+      fg = '#cdd6f4',
+      bg = '#1e1e2e',
+    },
+    tab_separator = {
+      fg = '#181825',
+      bg = '#181825',
+    },
+    tab_separator_selected = {
+      fg = '#181825',
     },
     buffer_visible = {
       bg = '#232634',

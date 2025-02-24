@@ -9,14 +9,6 @@ show_hidden = true
 show_symlink = true
 scrolloff = 250
 
-# [preview]
-# tab_size = 2
-# max_width = 600
-# max_height = 900
-# image_filter = "lanczos3"
-# image_quality = 70
-# sixel_fraction = 15
-
 [opener]
 edit = [
   { run = 'nvim "$@"', block = true, for = "unix" },
@@ -33,8 +25,8 @@ reveal = [
   { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-  { run = 'unar "$1"', desc = "Extract here", for = "unix" },
-  { run = 'unar "%1"', desc = "Extract here", for = "windows" },
+  { run = 'ya pub extract --list "$1"', desc = "Extract here", for = "unix" },
+  { run = 'ya pub extract --list "%1"', desc = "Extract here", for = "windows" },
 ]
 play = [
   { run = 'mpv "$@"', block = false, orphan = true, desc = "Play", for = "unix" },

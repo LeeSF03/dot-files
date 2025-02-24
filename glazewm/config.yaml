@@ -52,7 +52,7 @@ window_effects:
     # Highlight the window with a colored border.
     # ** Exclusive to Windows 11 due to API limitations.
     border:
-      enabled: true
+      enabled: false
       color: "#b4befe"
 
   # Visual effects to apply to non-focused windows.
@@ -60,7 +60,7 @@ window_effects:
     hide_title_bar:
       enabled: false
     border:
-      enabled: true
+      enabled: false
       color: "#585b70"
 
 window_behavior:
@@ -74,7 +74,7 @@ window_behavior:
   state_defaults:
     floating:
       # Whether to center floating windows by default.
-      centered: true
+      centered: false
 
       # Whether to show floating windows as always on top.
       shown_on_top: true
@@ -119,27 +119,18 @@ window_rules:
     match:
       - window_process: { regex: "SnippingTool" }
       - window_title: { regex: "Task Manager" }
+      - window_title: { regex: "Run" }
       - window_process: { equals: "Spotify" }
       - window_process: { equals: "Discord" }
-      - window_process: { equals: "Flow.Launcher" }
-        window_title: { equals: "Settings" }
+      - window_process: { equals: "Photos" }
+      - window_title: { regex: "WhatsApp" }
+      # - window_process: { equals: "Flow.Launcher" }
+      #   window_title: { equals: "Settings" }
+      # - window_process: { regex: "OneNote" }
+      # - window_title: { regex: "Microsoft OneNote" }
+      # - window_title: { regex: "Sticky Notes" }
 
 binding_modes:
-  # When enabled, the focused window can be resized via arrow keys or HJKL.
-  - name: "resize"
-    keybindings:
-      - commands: ["resize --width -1%"]
-        bindings: ["h", "left"]
-      - commands: ["resize --width +1%"]
-        bindings: ["l", "right"]
-      - commands: ["resize --height +1%"]
-        bindings: ["k", "up"]
-      - commands: ["resize --height -1%"]
-        bindings: ["j", "down"]
-      # Press enter/escape to return to default keybindings.
-      - commands: ["wm-disable-binding-mode --name resize"]
-        bindings: ["escape", "enter"]
-
   # When enabled, all keybindings are disabled except for alt+shift+p which
   # returns to default keybindings.
   - name: "pause"
@@ -267,7 +258,6 @@ keybindings:
   - commands: ["toggle-fullscreen"]
     bindings: ["lwin+f"]
 
-  # lwin+q to open terminal is set in powertoy
   - commands: ["close"]
     bindings: ["lwin+shift+q"]
   - commands: ["wm-redraw"]

@@ -1,0 +1,90 @@
+01:45:52.3497+08:00 - INFO  - Updater.UpdateApp - Future Release <{
+  "SHA1": "38F4ED418B28E21663B5D10A6457CB9ACB030D44",
+  "BaseUrl": null,
+  "Filename": "FlowLauncher-1.19.4-full.nupkg",
+  "Query": null,
+  "Filesize": 81332160,
+  "IsDelta": false,
+  "StagingPercentage": null,
+  "EntryAsString": "38F4ED418B28E21663B5D10A6457CB9ACB030D44 FlowLauncher-1.19.4-full.nupkg 81332160",
+  "Version": {
+    "Version": "1.19.4.0",
+    "SpecialVersion": ""
+  },
+  "PackageName": "FlowLauncher"
+}>
+13:55:43.8101+08:00 - INFO  - App.OnStartup - Begin Flow Launcher startup ----------------------------------------------------
+13:55:43.8101+08:00 - INFO  - App.OnStartup - Runtime info:
+Flow Launcher version: 1.19.4
+OS Version: 26100.2605
+IntPtr Length: 8
+x64: True
+13:55:46.8661+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugin Indicator> is <57ms>
+13:55:46.8661+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <System Commands> is <104ms>
+13:55:46.8661+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Process Killer> is <59ms>
+13:55:46.8661+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <SpotifyPremium> is <259ms>
+13:55:46.8681+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <IpMacAddress> is <62ms>
+13:55:46.8681+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <URL> is <100ms>
+13:55:46.8900+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Shell> is <170ms>
+13:55:46.9063+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Windows Settings> is <221ms>
+13:55:46.9063+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Web Searches> is <171ms>
+13:55:46.9802+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Explorer> is <316ms>
+13:55:47.0508+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+13:55:47.0672+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Obsidian Notes> is <197ms>
+13:55:47.0837+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Calculator> is <297ms>
+13:55:47.1077+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://gcore.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+13:55:47.1077+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+13:55:47.1077+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loading plugins from https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/plugin_api_v2/plugins.json
+13:55:47.1528+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Steam Search> is <272ms>
+13:55:47.2174+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Preload programs cost <149ms>
+13:55:47.2174+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload win32 programs <345>
+13:55:47.2174+08:00 - INFO  - Flow.Launcher.Plugin.Program.Main - Number of preload uwps <54>
+13:55:47.3199+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Program> is <628ms>
+13:55:47.4398+08:00 - INFO  - CommunityPluginSource.FetchAsync - Loaded 211 plugins from https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@plugin_api_v2/plugins.json
+13:55:47.4398+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Plugins Manager> is <746ms>
+13:55:47.4653+08:00 - INFO  - PluginManager.InitializePlugins - Total init cost for <Browser Bookmarks> is <694ms>
+13:55:48.1967+08:00 - INFO  - App.OnStartup - Dependencies Info:
+Python Path: C:\Users\shuen\AppData\Roaming\FlowLauncher\Environments\Python\PythonEmbeddable-v3.11.4\pythonw.exe
+Node Path: C:\Program Files\nodejs\node.exe
+13:55:48.8859+08:00 - INFO  - App.OnStartup - End Flow Launcher startup ----------------------------------------------------  
+13:55:48.8859+08:00 - INFO  - App.OnStartup - Startup cost <5310ms>
+13:55:50.3254+08:00 - INFO  - Updater.UpdateApp - Future Release <{
+  "SHA1": "38F4ED418B28E21663B5D10A6457CB9ACB030D44",
+  "BaseUrl": null,
+  "Filename": "FlowLauncher-1.19.4-full.nupkg",
+  "Query": null,
+  "Filesize": 81332160,
+  "IsDelta": false,
+  "StagingPercentage": null,
+  "EntryAsString": "38F4ED418B28E21663B5D10A6457CB9ACB030D44 FlowLauncher-1.19.4-full.nupkg 81332160",
+  "Version": {
+    "Version": "1.19.4.0",
+    "SpecialVersion": ""
+  },
+  "PackageName": "FlowLauncher"
+}>
+13:55:51.7693+08:00 - INFO  - ImageLoader.Initialize - Preload images cost <7609ms>
+13:55:51.7693+08:00 - INFO  - ImageLoader.Initialize - Number of preload images is <150>, Images Number: 150, Unique Items 99
+13:55:57.5539+08:00 - ERROR - JsonRPCPlugin.ExecuteAsync - Exception when kill process
+EXCEPTION OCCURS: System.InvalidOperationException: Collection was modified; enumeration operation may not execute.
+   at bool System.Collections.Generic.List<T>+Enumerator.MoveNextRare()
+   at void Microsoft.IO.RecyclableMemoryStreamManager.ReturnBlocks(List<byte[]> blocks, Guid id, string tag) in /_/src/RecyclableMemoryStreamManager.cs:line 558
+   at void Microsoft.IO.RecyclableMemoryStream.Dispose(bool disposing) in /_/src/RecyclableMemoryStream.cs:line 336
+   at void Microsoft.IO.RecyclableMemoryStream.Close() in /_/src/RecyclableMemoryStream.cs:line 348
+   at Task<Stream> Flow.Launcher.Core.Plugin.JsonRPCPlugin.ExecuteAsync(string fileName, string arguments, CancellationToken token)+() => { } in C:/projects/flow-launcher/Flow.Launcher.Core/Plugin/JsonRPCPlugin.cs:line 215
+
+18:55:50.6315+08:00 - INFO  - Updater.UpdateApp - Future Release <{
+  "SHA1": "38F4ED418B28E21663B5D10A6457CB9ACB030D44",
+  "BaseUrl": null,
+  "Filename": "FlowLauncher-1.19.4-full.nupkg",
+  "Query": null,
+  "Filesize": 81332160,
+  "IsDelta": false,
+  "StagingPercentage": null,
+  "EntryAsString": "38F4ED418B28E21663B5D10A6457CB9ACB030D44 FlowLauncher-1.19.4-full.nupkg 81332160",
+  "Version": {
+    "Version": "1.19.4.0",
+    "SpecialVersion": ""
+  },
+  "PackageName": "FlowLauncher"
+}>

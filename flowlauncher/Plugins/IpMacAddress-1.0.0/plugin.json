@@ -1,0 +1,12 @@
+{
+    "ID": "56A92C3AB5714EA9841098CE7D105E11",
+    "ActionKeyword": "ipaddr",
+    "Name": "IpMacAddress",
+    "Description": "Get ip and mac address of current machine",
+    "Author": "seanmars",
+    "Version": "1.0.0",
+    "Language": "csharp",
+    "Website": "https://github.com/seanmars/Flow.Launcher.Plugin.IpMacAddress",
+    "IcoPath": "icon.png",
+    "ExecuteFileName": "Flow.Launcher.Plugin.IpMacAddress.dll"
+}

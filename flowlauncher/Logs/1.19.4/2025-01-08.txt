@@ -1,0 +1,30 @@
+12:55:39.7228+08:00 - INFO  - Updater.UpdateApp - Future Release <{
+  "SHA1": "38F4ED418B28E21663B5D10A6457CB9ACB030D44",
+  "BaseUrl": null,
+  "Filename": "FlowLauncher-1.19.4-full.nupkg",
+  "Query": null,
+  "Filesize": 81332160,
+  "IsDelta": false,
+  "StagingPercentage": null,
+  "EntryAsString": "38F4ED418B28E21663B5D10A6457CB9ACB030D44 FlowLauncher-1.19.4-full.nupkg 81332160",
+  "Version": {
+    "Version": "1.19.4.0",
+    "SpecialVersion": ""
+  },
+  "PackageName": "FlowLauncher"
+}>
+19:18:57.6589+08:00 - INFO  - Updater.UpdateApp - Future Release <{
+  "SHA1": "38F4ED418B28E21663B5D10A6457CB9ACB030D44",
+  "BaseUrl": null,
+  "Filename": "FlowLauncher-1.19.4-full.nupkg",
+  "Query": null,
+  "Filesize": 81332160,
+  "IsDelta": false,
+  "StagingPercentage": null,
+  "EntryAsString": "38F4ED418B28E21663B5D10A6457CB9ACB030D44 FlowLauncher-1.19.4-full.nupkg 81332160",
+  "Version": {
+    "Version": "1.19.4.0",
+    "SpecialVersion": ""
+  },
+  "PackageName": "FlowLauncher"
+}>

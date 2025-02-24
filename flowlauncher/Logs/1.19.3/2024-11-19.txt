@@ -1,0 +1,58 @@
+23:37:13.0406+08:00 - INFO  - Updater.UpdateApp - Future Release <{
+  "SHA1": "38F4ED418B28E21663B5D10A6457CB9ACB030D44",
+  "BaseUrl": null,
+  "Filename": "FlowLauncher-1.19.4-full.nupkg",
+  "Query": null,
+  "Filesize": 81332160,
+  "IsDelta": false,
+  "StagingPercentage": null,
+  "EntryAsString": "38F4ED418B28E21663B5D10A6457CB9ACB030D44 FlowLauncher-1.19.4-full.nupkg 81332160",
+  "Version": {
+    "Version": "1.19.4.0",
+    "SpecialVersion": ""
+  },
+  "PackageName": "FlowLauncher"
+}>
+23:37:24.4000+08:00 - INFO  - Updater.UpdateApp - Update success:New version 1.19.4 is available, would you like to restart Flow Launcher to use the update?
+23:37:24.6033+08:00 - ERROR -  - ------------- BEGIN Flow.Launcher.Plugin.Program exception -------------
+23:37:24.6033+08:00 - ERROR -  - 
+Exception full name: System.IO.FileNotFoundException
+Error status: UNKNOWN
+Class name: Win32
+Calling method: ExeProgram
+Program path: C:\Program Files (x86)\Autodesk\Autodesk Desktop App\AutodeskDesktopApp.exe
+InnerException number: 1
+Exception message: C:\Program Files (x86)\Autodesk\Autodesk Desktop App\AutodeskDesktopApp.exe
+Exception error type: HResult -2147024894
+Exception thrown in called method: System.Diagnostics.FileVersionInfo GetVersionInfo(System.String)
+Possible interpretation of the error: File not found when trying to load the program from C:\Program Files (x86)\Autodesk\Autodesk Desktop App\AutodeskDesktopApp.exe
+Possible resolution: Not yet known
+23:37:24.6033+08:00 - ERROR -  - ------------- END Flow.Launcher.Plugin.Program exception -------------
+23:37:25.9523+08:00 - ERROR -  - ------------- BEGIN Flow.Launcher.Plugin.Program exception -------------
+23:37:25.9523+08:00 - ERROR -  - 
+Exception full name: System.IO.FileNotFoundException
+Error status: UNKNOWN
+Class name: Win32
+Calling method: ExeProgram
+Program path: C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\msrdc.exe
+InnerException number: 1
+Exception message: C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\msrdc.exe
+Exception error type: HResult -2147024894
+Exception thrown in called method: System.Diagnostics.FileVersionInfo GetVersionInfo(System.String)
+Possible interpretation of the error: File not found when trying to load the program from C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\msrdc.exe
+Possible resolution: Not yet known
+23:37:25.9523+08:00 - ERROR -  - ------------- END Flow.Launcher.Plugin.Program exception -------------
+23:37:25.9675+08:00 - ERROR -  - ------------- BEGIN Flow.Launcher.Plugin.Program exception -------------
+23:37:25.9675+08:00 - ERROR -  - 
+Exception full name: System.IO.FileNotFoundException
+Error status: UNKNOWN
+Class name: Win32
+Calling method: ExeProgram
+Program path: C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\wslg.exe
+InnerException number: 1
+Exception message: C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\wslg.exe
+Exception error type: HResult -2147024894
+Exception thrown in called method: System.Diagnostics.FileVersionInfo GetVersionInfo(System.String)
+Possible interpretation of the error: File not found when trying to load the program from C:\Program Files\WindowsApps\MicrosoftCorporationII.WindowsSubsystemForLinux_1.2.5.0_x64__8wekyb3d8bbwe\wslg.exe
+Possible resolution: Not yet known
+23:37:25.9675+08:00 - ERROR -  - ------------- END Flow.Launcher.Plugin.Program exception -------------

@@ -23,6 +23,19 @@ prepend_keymap = [
     "w",
   ], run = "tasks_show", desc = "Show the tasks manager" },
 
+  # Compress
+  { on   = [
+    "c",
+    "a",
+  ], run  = "plugin compress", desc = "Archive selected files" },
+
+  # Preview
+  { on   = [
+    "K",
+  ], run  = "seek -5", desc = "Scroll preview up" },
+  { on   = [
+    "J",
+  ], run  = "seek 5", desc = "Scroll preview down" },
 ]
 # [manager]
 

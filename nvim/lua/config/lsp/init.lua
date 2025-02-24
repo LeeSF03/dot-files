@@ -2,7 +2,30 @@ local filepath = "config.lsp."
 require(filepath .. "setup")
 
 -- lsp servers
+
+-- Lua Language Server
 require(filepath .. "lua_lsp")
-require(filepath .. "web_lsp")
-require(filepath .. "docker_lsp")
+
+-- Go Language Server
+-- require(filepath .. "go_lsp")
+
+-- Web Language Server
+-- require(filepath .. "web_lsp")
+
+-- TailwindCSS Language Server
+-- require(filepath .. "tailwindcss_lsp")
+
+-- Docker Language Server
+-- require(filepath .. "docker_lsp")
+
+-- Yaml Language Server
+-- require(filepath .. "yaml_lsp")
+
+-- Nginx Language Server
+-- require(filepath .. "nginx_lsp")
+
+-- C++ Language Server
 -- require(filepath .. "cpp_lsp")
+
+-- C# Language Server
+require(filepath .. "csharp_lsp")

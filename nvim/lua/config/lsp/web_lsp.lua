@@ -7,13 +7,7 @@ lspconfig.ts_ls.setup({
   capabilities = capabilities,
 })
 
--- tailwindcss language server setup
-lspconfig.tailwindcss.setup({
-  capabilities = capabilities,
-})
-
 -- cssmodules language server setup
 lspconfig.cssmodules_ls.setup({
   capabilities = capabilities,
 })
-

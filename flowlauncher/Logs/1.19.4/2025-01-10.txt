@@ -1,0 +1,33 @@
+12:46:12.7997+08:00 - INFO  - Updater.UpdateApp - Future Release <{
+  "SHA1": "38F4ED418B28E21663B5D10A6457CB9ACB030D44",
+  "BaseUrl": null,
+  "Filename": "FlowLauncher-1.19.4-full.nupkg",
+  "Query": null,
+  "Filesize": 81332160,
+  "IsDelta": false,
+  "StagingPercentage": null,
+  "EntryAsString": "38F4ED418B28E21663B5D10A6457CB9ACB030D44 FlowLauncher-1.19.4-full.nupkg 81332160",
+  "Version": {
+    "Version": "1.19.4.0",
+    "SpecialVersion": ""
+  },
+  "PackageName": "FlowLauncher"
+}>
+14:48:59.1373+08:00 - ERROR - WindowsIndex.ExecuteWindowsIndexSearchAsync - Failed to execute windows index search query: SELECT TOP 100 "System.FileName", "System.ItemUrl", "System.ItemType" FROM "SystemIndex" WHERE CONTAINS(System.FileName,'"17.82*" AND "/*"',17417) AND scope='file:' ORDER BY System.FileName
+EXCEPTION OCCURS: System.Data.OleDb.OleDbException (0x80041605): Unspecified error: -2147215867(0x80041605)
+   at void System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   at int System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, out object executeResult)
+   at int System.Data.OleDb.OleDbCommand.ExecuteCommandText(out object executeResult)
+   at OleDbDataReader System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, string method)
+   at Task<DbDataReader> System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at async IAsyncEnumerable<SearchResult> Flow.Launcher.Plugin.Explorer.Search.WindowsIndex.WindowsIndex.ExecuteWindowsIndexSearchAsync(string indexQueryString, string connectionString, CancellationToken token)+MoveNext() in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.Explorer/Search/WindowsIndex/WindowsIndex.cs:line 71
+
+14:49:03.4859+08:00 - ERROR - WindowsIndex.ExecuteWindowsIndexSearchAsync - Failed to execute windows index search query: SELECT TOP 100 "System.FileName", "System.ItemUrl", "System.ItemType" FROM "SystemIndex" WHERE CONTAINS(System.FileName,'"17.82*" AND "/*"',17417) AND scope='file:' ORDER BY System.FileName
+EXCEPTION OCCURS: System.Data.OleDb.OleDbException (0x80041605): Unspecified error: -2147215867(0x80041605)
+   at void System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   at int System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, out object executeResult)
+   at int System.Data.OleDb.OleDbCommand.ExecuteCommandText(out object executeResult)
+   at OleDbDataReader System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, string method)
+   at Task<DbDataReader> System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at async IAsyncEnumerable<SearchResult> Flow.Launcher.Plugin.Explorer.Search.WindowsIndex.WindowsIndex.ExecuteWindowsIndexSearchAsync(string indexQueryString, string connectionString, CancellationToken token)+MoveNext() in C:/projects/flow-launcher/Plugins/Flow.Launcher.Plugin.Explorer/Search/WindowsIndex/WindowsIndex.cs:line 71
+

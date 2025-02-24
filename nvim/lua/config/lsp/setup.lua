@@ -16,6 +16,9 @@ masontoolinstaller.setup({
     "prettier",
     "prettierd",
     "eslint_d",
+    -- "golangcilint",
+    "gofumpt",
+    "golines",
   },
 })
 
@@ -28,9 +31,12 @@ masonlsp.setup({
     "cssmodules_ls",
     "docker_compose_language_service",
     "dockerls",
-    -- "nginx_language_server",
+    "nginx_language_server",
     "clangd",
-  }
+    "gopls",
+    "yamlls",
+    "omnisharp",
+  },
 })
 
 -- Disable diagnostic signs

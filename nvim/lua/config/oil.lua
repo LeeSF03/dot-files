@@ -11,7 +11,7 @@ oil.setup({
   },
   keymaps ={
     ["q"] = { "actions.close", mode = "n" },
-    ["p"] = "actions.preview",
+    ["<C-p>"] = "actions.preview",
   },
   preview_win = {
     -- Whether the preview window is automatically updated when the cursor is moved

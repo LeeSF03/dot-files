@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Flow.Launcher.Plugin.IpMacAddress</name>
+    </assembly>
+    <members>
+        <member name="T:Flow.Launcher.Plugin.IpMacAddress.IpMacAddress">
+            <summary>
+            Plugin to show ip and mac address
+            </summary>
+        </member>
+        <member name="E:Flow.Launcher.Plugin.IpMacAddress.IpMacAddress.ResultsUpdated">
+            <summary>
+            Event that is fired when results are updated
+            </summary>
+        </member>
+        <member name="M:Flow.Launcher.Plugin.IpMacAddress.IpMacAddress.InitAsync(Flow.Launcher.Plugin.PluginInitContext)">
+            <summary>
+            Initialize plugin
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Flow.Launcher.Plugin.IpMacAddress.IpMacAddress.QueryAsync(Flow.Launcher.Plugin.Query,System.Threading.CancellationToken)">
+            <summary>
+            Query for ip and mac address
+            </summary>
+            <param name="query"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

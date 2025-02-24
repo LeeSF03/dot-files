@@ -330,6 +330,16 @@ config.leader = {
 
 config.keys = { -- This will create a new split and run the `top` program inside it
   {
+    key = "n",
+    mods = "CTRL|SHIFT",
+    action = act.ActivateTabRelative(1)
+  },
+  {
+    key = "p",
+    mods = "CTRL|SHIFT",
+    action = act.ActivateTabRelative(-1)
+  },
+  {
     key = "]",
     mods = "LEADER",
     action = act.ActivateTabRelative(1)
@@ -338,7 +348,8 @@ config.keys = { -- This will create a new split and run the `top` program inside
     key = "[",
     mods = "LEADER",
     action = act.ActivateTabRelative(-1)
-  }, {
+  },
+  {
   key = "v",
   mods = "LEADER",
   action = act.SplitPane {
@@ -396,49 +407,53 @@ config.keys = { -- This will create a new split and run the `top` program inside
   scroll(-1, 'b'),
   scroll(1, 'f'),
   {
-    key = 'n',
+    key = 'o',
     mods = 'CTRL|SHIFT',
     action = act.EmitEvent('gui-startup')
-  }, {
-  key = 'n',
-  mods = 'LEADER',
-  action = act.SpawnTab('DefaultDomain'),
-}, {
-  key = 'B',
-  mods = 'CTRL|SHIFT',
-  action = act.EmitEvent('toggle-opacity'),
-}, {
-  key = 'o',
-  mods = 'CTRL|SHIFT',
-  action = act.EmitEvent('center-window')
-}, {
-  key = '0',
-  mods = 'CTRL',
-  action = act.PaneSelect {
-    mode = 'SwapWithActiveKeepFocus',
-    alphabet = '1234567890',
   },
-},
+  {
+    key = 'n',
+    mods = 'LEADER',
+    action = act.SpawnTab('DefaultDomain'),
+  },
+  {
+    key = 'B',
+    mods = 'CTRL|SHIFT',
+    action = act.EmitEvent('toggle-opacity'),
+  },
+  {
+    key = '0',
+    mods = 'CTRL',
+    action = act.PaneSelect {
+      mode = 'SwapWithActiveKeepFocus',
+      alphabet = '1234567890',
+    },
+  },
 }
 
 config.key_tables = {
-  search_mode = { {
-    key = 'Enter',
-    mods = 'NONE',
-    action = act.CopyMode 'PriorMatch'
-  }, {
-    key = 'Escape',
-    mods = 'NONE',
-    action = act.CopyMode 'Close'
-  }, {
-    key = 'n',
-    mods = 'CTRL',
-    action = act.CopyMode 'NextMatch'
-  }, {
-    key = 'n',
-    mods = 'CTRL|SHIFT',
-    action = act.CopyMode 'PriorMatch'
-  } }
+  search_mode = {
+    {
+      key = 'Enter',
+      mods = 'NONE',
+      action = act.CopyMode 'PriorMatch'
+    },
+    {
+      key = 'Escape',
+      mods = 'NONE',
+      action = act.CopyMode 'Close'
+    },
+    {
+      key = 'n',
+      mods = 'CTRL',
+      action = act.CopyMode 'NextMatch'
+    },
+    {
+      key = 'n',
+      mods = 'CTRL|SHIFT',
+      action = act.CopyMode 'PriorMatch'
+    }
+  }
 }
 
 return config

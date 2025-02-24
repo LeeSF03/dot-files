@@ -42,10 +42,9 @@ git:
   truncateCopiedCommitHashesTo: 12
 
 os:
-  # editPreset: "nvim-remote"
-  editPreset: "nvim"
-  # edit: "nvim {{filename}}"
-  # editAtLine: "nvim-remote +{{line}} {{filename}}"
-  # editAtLineAndWait: "nvim-remote +{{line}} {{filename}}"
-  # editInTerminal: true
-  # open: "nvim"
+  # editPreset: "nvim"
+  #   editPreset: "nvr --remote"
+  edit: "nvim {{filename}}"
+  editAtLine: "nvim +{{line}} {{filename}}"
+  editAtLineAndWait: "nvim +{{line}} {{filename}}"
+  open: "nvim"
