@@ -10,7 +10,7 @@ require(filepath .. "lua_lsp")
 -- require(filepath .. "go_lsp")
 
 -- Web Language Server
--- require(filepath .. "web_lsp")
+require(filepath .. "web_lsp")
 
 -- TailwindCSS Language Server
 -- require(filepath .. "tailwindcss_lsp")
@@ -28,4 +28,4 @@ require(filepath .. "lua_lsp")
 -- require(filepath .. "cpp_lsp")
 
 -- C# Language Server
-require(filepath .. "csharp_lsp")
+-- require(filepath .. "csharp_lsp")

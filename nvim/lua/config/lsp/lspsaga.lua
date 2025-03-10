@@ -11,11 +11,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
           exec = '<CR>',
         }
       },
-      rename = {
-        keys = {
-          quit = 'q',
-        }
-      },
+      -- rename = {
+      --   keys = {
+      --     quit = 'q',
+      --   }
+      -- },
       definition = {
         keys = {
           quit = 'q',

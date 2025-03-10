@@ -35,7 +35,7 @@ blink.setup({
     }
   },
   sources = {
-    default = { "lsp", "path", "snippets", "buffer", "copilot" },
+    default = { "lsp", "path", "snippets", "buffer", "copilot", "markdown" },
     providers = {
       copilot = {
         name = "copilot",
@@ -52,6 +52,11 @@ blink.setup({
           return items
         end,
       },
+      markdown = {
+        name = 'RenderMarkdown',
+        module = 'render-markdown.integ.blink',
+        fallbacks = { 'lsp' },
+      }
     },
   },
   appearance = {
