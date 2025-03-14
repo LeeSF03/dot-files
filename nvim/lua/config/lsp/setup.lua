@@ -36,6 +36,7 @@ masonlsp.setup({
     "gopls",
     "yamlls",
     "omnisharp",
+    "biome",
   },
 })
 

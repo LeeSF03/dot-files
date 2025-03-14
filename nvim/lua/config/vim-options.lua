@@ -12,6 +12,8 @@ vim.cmd("autocmd InsertLeave * :set relativenumber")
 vim.cmd("set noshowmode")
 -- vim.cmd("set fileformat=unix")
 vim.cmd("set equalalways")
+vim.cmd("set spell")
+vim.cmd("set guicursor=n-v-c-i:block")
 vim.cmd([[
 autocmd FileType dashboard setlocal nofoldenable
 ]])
