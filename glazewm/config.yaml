@@ -1,16 +1,11 @@
 general:
   # Commands to run when the WM has started (e.g. to run a script or launch
   # another application). Here we are running a batch script to start Zebar.
-  # startup_commands: ['shell-exec %HOMEPATH%/.glzr/scripts/shellexec.exe  powershell %HOMEPATH%/.glzr/start.ps1']
-  startup_commands: []
+  startup_commands: ["shell-exec zebar"]
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
-  shutdown_commands: []
-  # shutdown_commands:
-  # [
-  #   "shell-exec %HOMEPATH%/.glzr/scripts/shellexec.exe  powershell %HOMEPATH%/.glzr/exit.ps1",
-  # ]
+  shutdown_commands: ["shell-exec taskkill /IM zebar.exe /F"]
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands: []
@@ -32,6 +27,8 @@ general:
     # - 'monitor_focus': Jump when focus changes between monitors.
     # - 'window_focus': Jump when focus changes between windows.
     trigger: "monitor_focus"
+
+  hide_method: "cloak"
 
 gaps:
   # Gap between adjacent windows.
@@ -55,6 +52,10 @@ window_effects:
       enabled: true
       color: "#b4befe"
 
+    corner_style:
+      enabled: true
+      style: "small_rounded"
+
   # Visual effects to apply to non-focused windows.
   other_windows:
     hide_title_bar:
@@ -62,6 +63,10 @@ window_effects:
     border:
       enabled: true
       color: "#585b70"
+
+    corner_style:
+      enabled: true
+      style: "small_rounded"
 
 window_behavior:
   # New windows are created in this state whenever possible.
@@ -74,10 +79,10 @@ window_behavior:
   state_defaults:
     floating:
       # Whether to center floating windows by default.
-      centered: false
+      centered: true
 
       # Whether to show floating windows as always on top.
-      shown_on_top: true
+      shown_on_top: false
 
     fullscreen:
       # Maximize the window if possible. If the window doesn't have a maximize button, then it'll be fullscreen'ed normally instead.
@@ -117,6 +122,10 @@ window_rules:
 
   - commands: ["set-floating"]
     match:
+      - window_title: { regex: "OneNote" }
+
+  - commands: ["set-floating --centered"]
+    match:
       - window_process: { regex: "SnippingTool" }
       - window_title: { regex: "Task Manager" }
       - window_title: { regex: "Run" }
@@ -124,6 +133,7 @@ window_rules:
       - window_process: { equals: "Discord" }
       - window_process: { equals: "Photos" }
       - window_title: { regex: "WhatsApp" }
+      # - window_title: { regex: "WezTerm" }
       # - window_process: { equals: "Flow.Launcher" }
       #   window_title: { equals: "Settings" }
       # - window_process: { regex: "OneNote" }
