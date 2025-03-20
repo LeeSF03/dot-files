@@ -3,37 +3,55 @@
 #SingleInstance Force  ; Ensures only one instance of the script runs
 #NoTrayIcon
 
-; Hotkey to minimize the focused window
-LWin & m::WinMinimize("A")  ; Minimizes the active window
-
 LauncherHotkey := "!{Space}" ; Alt+Space
 LWin & Space::Send(LauncherHotkey) ; Win+Space
 
 ; Hotkey to start GlazeWM
-LWin & Enter::
-{
+LWin & Enter::ActivateGlazeWM()
+
+ActivateGlazeWM() {
     ; Check if GlazeWM is already running
     if ProcessExist("GlazeWM.exe")
     {
         return ; Do nothing if already running
     }
 
-    ; Launch GlazeWM
-    Run("C:\Program Files\glzr.io\GlazeWM\glazewm.exe")
+    glazewmExeFilePath := "C:\Program Files\glzr.io\GlazeWM\glazewm.exe"
+
+    if FileExist(glazewmExeFilePath)
+    {
+        ; Launch GlazeWM
+        Run(glazewmExeFilePath)
+    }
+    else
+    {
+        MsgBox("Error: GlazeWM executable path not found.")
+        return
+    }
 }
 
+
+; Hotkey to minimize the focused window
+#m::WinMinimize("A")  ; Minimizes the active window
+
 ; Hotkey to fullscreen active window
-LWin & f::
-{
-  ; Check if the active window is already maximized
-  if (WinGetMinMax("A"))
-  {
-    WinRestore("A") ; Restore the window if already maximized
-  }
-  else
-  {
-    WinMaximize("A")
-  }
+#f::ToggleFullScreenWindow("A")
+
+ToggleFullScreenWindow(winTitle*) {
+    hwnd := WinExist(winTitle*)  ; Get the active window's handle
+    if !hwnd {  ; If no window is active, return early
+        return
+    }
+
+    ; Check if the active window is already maximized
+    if (WinGetMinMax(hwnd))
+    {
+      WinRestore(hwnd) ; Restore the window if already maximized
+    }
+    else
+    {
+      WinMaximize(hwnd)
+    }
 }
 
 ; Close active window
@@ -43,6 +61,10 @@ LWin & f::
 
 CenterWindow(winTitle*) {
     hwnd := WinExist(winTitle*)
+    if !hwnd {  ; If no window is active
+        return
+    }
+
     WinGetPos ,, &W, &H, hwnd
     mon := GetNearestMonitorInfo(hwnd)
     WinMove mon.WALeft + mon.WAWidth // 2 - W // 2, mon.WATop + mon.WAHeight // 2 - H // 2,,, hwnd
@@ -73,4 +95,27 @@ GetNearestMonitorInfo(winTitle*) {
             }
     }
     throw Error("GetMonitorInfo: " A_LastError, -1)
+}
+
+#u::ResizeWindow("A")
+
+ResizeWindow(winTitle*) {
+    hwnd := WinExist(winTitle*)  ; Get the active window's handle
+    if !hwnd {  ; If no window is active, return early
+        return
+    }
+
+    WinGetPos ,, &W, &H, hwnd
+    mon := GetNearestMonitorInfo(hwnd)
+
+    ; Calculate new window size (70% of monitor size)
+    newWidth := mon.WAWidth * 0.85
+    newHeight := mon.WAHeight * 0.8
+
+    ; Calculate the new centered position
+    newX := mon.WALeft + (mon.WAWidth - newWidth) / 2
+    newY := mon.WATop + (mon.WAHeight - newHeight) / 2
+
+    ; Resize and move the active window to the center
+    WinMove(newX, newY, newWidth, newHeight, hwnd)
 }

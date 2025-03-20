@@ -2,6 +2,7 @@
 
 ; #Warn All          	; Enable all warnings to assist with detecting common errors ; #Warn All, Off
 #SingleInstance force	; Reloads script without dialog box
+#NoTrayIcon
 
 #Include %A_scriptDir%\gVar\var.ahk	; Global vars
 
