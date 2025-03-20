@@ -52,6 +52,9 @@ $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 # Env vars for lazygit
 $Env:CONFIG_DIR = "C:\Users\shuen\.config\lazygit"
 
+# Env vars for glazewm config path
+$Env:GLAZEWM_CONFIG_DIR = "C:\Users\shuen\.config\glazewm\config.yaml"
+
 # Set-Alias
 Set-Alias cat bat
 Set-Alias du dust
@@ -103,7 +106,7 @@ agent  Valorant agent name
     Write-Output $helpMessage
     return
   }
-  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko")
+  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko", "vyse", "kayo")
 
   $logo_root = "C:\Users\shuen\.config\fastfetch\images"
 
@@ -292,6 +295,11 @@ function gf {
 #Functions for spotify_player
 function sply {
   spotify_player $args
+}
+
+#Functions for git log --all --decorate --oneline --graph
+function glog {
+  git log --all --decorate --oneline --graph
 }
 
 #Functions for Get-Command
