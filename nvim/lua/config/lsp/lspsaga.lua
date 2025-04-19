@@ -1,6 +1,6 @@
 local telescope_builtin = require("telescope.builtin")
 
-vim.api.nvim_create_autoCMD('LspAttach', {
+vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     local lspsaga = require('lspsaga')

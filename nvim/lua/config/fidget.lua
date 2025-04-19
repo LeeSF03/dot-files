@@ -6,7 +6,7 @@ fidget.setup({
       winblend = 0,
       border = 'rounded',
     },
-    override_vim_notify = true,
+    -- override_vim_notify = true,
     -- filter = vim.log.levels.TRACE,
   },
 })
