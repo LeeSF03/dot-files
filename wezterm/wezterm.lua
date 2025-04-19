@@ -162,12 +162,14 @@ config.colors = {
 
 local tab_min_width = 11
 
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_right_half_circle_thick
+-- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_right_half_circle_thick
 -- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_lower_left_triangle
 -- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_left_half_circle_thick
+-- local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_left_half_circle_thick
 -- local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_upper_right_triangle
 -- local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 wezterm.on(
   'format-tab-title',
@@ -354,7 +356,6 @@ config.keys = { -- This will create a new split and run the `top` program inside
   mods = "LEADER",
   action = act.SplitPane {
     direction = "Right",
-    -- command = { args = { "top" } },
     size = {
       Percent = 50
     }
@@ -364,7 +365,6 @@ config.keys = { -- This will create a new split and run the `top` program inside
   mods = "LEADER",
   action = act.SplitPane {
     direction = "Down",
-    -- command = { args = { "top" } },
     size = {
       Percent = 50
     }
