@@ -79,7 +79,7 @@ window_behavior:
   state_defaults:
     floating:
       # Whether to center floating windows by default.
-      centered: true
+      centered: false
 
       # Whether to show floating windows as always on top.
       shown_on_top: false
@@ -123,6 +123,7 @@ window_rules:
   - commands: ["set-floating"]
     match:
       - window_title: { regex: "OneNote" }
+      - window_title: { regex: "^Android Emulator.*" }
 
   - commands: ["set-floating --centered"]
     match:
@@ -274,3 +275,6 @@ keybindings:
     bindings: ["lwin+r"]
   - commands: ["wm-exit"]
     bindings: ["lwin+escape"]
+
+  - commands: ["wm-cycle-focus"]
+    bindings: ["lwin+c"]
