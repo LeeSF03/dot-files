@@ -78,7 +78,7 @@ local opts = {
       { action = ":e C:\\Users\\shuen\\.config\\nvim\\lua\\config\\lsp\\init.lua",                                   desc = " Language Server File",    icon = " ", key = "s" },
       { action = "checkhealth",                                    desc = " Check Health",    icon = " ", key = "h" },
       { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
-      { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
+      { action = function() vim.api.nvim_input("<CMD>qa<CR>") end, desc = " Quit",            icon = " ", key = "q" },
     },
     footer = function()
       local stats = require("lazy").stats()

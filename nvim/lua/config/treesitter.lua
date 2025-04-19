@@ -23,6 +23,7 @@ configs.setup({
     "cpp",
     "go",
     "c_sharp",
+    "php",
 
     "xml",
     "yaml",

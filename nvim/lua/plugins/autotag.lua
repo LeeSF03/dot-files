@@ -3,7 +3,8 @@ return {
   config = function()
     require("config.autotag")
   end,
-  event = {
-    "InsertEnter",
-  },
+  -- event = {
+  --   "InsertEnter",
+  -- },
+  ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
 }

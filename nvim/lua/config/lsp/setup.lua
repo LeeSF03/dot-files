@@ -25,18 +25,35 @@ masontoolinstaller.setup({
 -- list of language servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
 masonlsp.setup({
   ensure_installed = {
+    -- lua
     "lua_ls",
+
+    -- web
     "ts_ls",
     "tailwindcss",
     "cssmodules_ls",
+    "biome",
+    "yamlls",
+
+    -- docker
     "docker_compose_language_service",
     "dockerls",
-    "nginx_language_server",
-    "clangd",
+
+    -- golang
     "gopls",
-    "yamlls",
+
+    -- php
+    "intelephense",
+    "phpactor",
+
+    -- c++
+    "clangd",
+
+    -- c#
     "omnisharp",
-    "biome",
+
+    -- nginx
+    "nginx_language_server",
   },
 })
 

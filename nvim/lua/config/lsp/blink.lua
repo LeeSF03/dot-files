@@ -16,7 +16,7 @@ blink.setup({
     menu = {
       border = 'rounded',
       draw = {
-        align_to = 'cursor',
+        align_to = 'label',
       },
     },
     documentation = {
@@ -25,6 +25,14 @@ blink.setup({
       },
       auto_show = true,
       auto_show_delay_ms = 500,
+    },
+  },
+  cmdline = {
+    enabled = true,
+    completion = {
+      menu = {
+        auto_show = true,
+      },
     },
   },
   -- experimental signature help support
