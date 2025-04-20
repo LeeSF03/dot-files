@@ -6,6 +6,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope commands' })
 vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope find git tracked files' })
 vim.keymap.set('n', '<leader>fm', "<CMD>Telescope marks mark_type=local<CR>", { desc = 'Telescope find marks' })
+vim.keymap.set('n', '<leader>fd', "<CMD>Telescope diagnostics<CR>", { desc = 'Telescope find diagnostics' })
 
 local telescope = require("telescope")
 local actions = require("telescope.actions")
