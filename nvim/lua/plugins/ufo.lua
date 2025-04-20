@@ -7,8 +7,9 @@ return {
   config = function()
     require("config.ufo")
   end,
-  -- event = {
-  --   'BufReadPre',
-  --   'BufNewFile'
-  -- },
+  event = {
+    'VeryLazy',
+    -- 'BufReadPre',
+    -- 'BufNewFile'
+  },
 }
