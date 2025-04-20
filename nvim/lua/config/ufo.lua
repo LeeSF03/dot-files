@@ -13,6 +13,9 @@ vim.keymap.set('n', 'zM', ufo.closeAllFolds, { desc = 'Close all folds' })
 
 ufo.setup({
   provider_selector = function(bufnr, filetype, buftype)
+    if filetype == 'dashboard' then
+      return ''
+    end
     return { 'treesitter', 'indent' }
   end,
 })
