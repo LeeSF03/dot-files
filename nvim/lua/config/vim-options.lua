@@ -15,7 +15,7 @@ vim.cmd("set equalalways")
 vim.cmd("set spell")
 vim.cmd("set guicursor=n-v-c-i:block")
 vim.cmd([[
-autocmd FileType dashboard setlocal nofoldenable
+  autocmd FileType dashboard setlocal nofoldenable
 ]])
 vim.cmd("packadd cfilter")
 
@@ -31,6 +31,7 @@ set_filetype({ "docker-compose.*.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yml" }, "yaml.docker-compose")
 set_filetype({ "*.xaml" }, "xml")
+set_filetype({ "*.xml" }, "xml")
 
 acmd({ "BufEnter" }, {
   callback = function(event)
@@ -42,10 +43,16 @@ acmd({ "BufEnter" }, {
     vim.fn.system({ "wezterm", "cli", "set-tab-title", title })
   end,
 })
-acmd({ "VimLeave" }, {
+acmd({ "VimLeave", "VimLeavePre" }, {
   callback = function()
     vim.fn.system({ "wezterm", "cli", "set-tab-title", "pwsh.exe" })
   end,
+})
+acmd("VimEnter", {
+  callback = function()
+    -- To fix issue with lualine across windows
+    vim.o.laststatus = 3
+  end
 })
 
 local del_qf_item = function()
