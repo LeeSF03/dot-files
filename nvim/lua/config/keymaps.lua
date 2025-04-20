@@ -1,14 +1,6 @@
 -- gitsigns
 vim.keymap.set('n', '<leader>gp', '<CMD>Gitsigns preview_hunk<CR>', { desc = 'Git Preview Hunk' })
 
--- bufferline
-vim.keymap.set('n', ']b', '<CMD>BufferLineCycleNext<CR>', { desc = 'Switch to next buffer' })
-vim.keymap.set('n', '[b', '<CMD>BufferLineCyclePrev<CR>', { desc = 'Switch to previous buffer' })
-vim.keymap.set('n', '}b', '<CMD>BufferLineMoveNext<CR>', { desc = 'Swap with next buffer' })
-vim.keymap.set('n', '{b', '<CMD>BufferLineMovePrev<CR>', { desc = 'Swap with previous buffer' })
-vim.keymap.set('n', 'bd', '<CMD>bdelete<CR>', { desc = 'Delete current buffer' })
-vim.keymap.set('n', 'bn', '<CMD>:enew<CR>', { desc = 'Create new unname buffer' })
-
 -- lazygit
 vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = 'Open Lazygit' })
 
@@ -22,6 +14,9 @@ vim.keymap.set("n", "<leader>-", "<CMD>Oil --float<CR>", { desc = "Open parent d
 -- scroll remap
 vim.keymap.set({"n", "i", "v" }, "<C-u>", "<C-u>zz", { desc = "Scroll up half page" })
 vim.keymap.set({"n", "i", "v" }, "<C-d>", "<C-d>zz", { desc = "Scroll down half page" })
+
+-- disable keymaps
+vim.keymap.set("n", ";", "", { desc = "Disable ; keymap" })
 
 -- marks remap
 vim.keymap.set("n", "\'\'", "]\'", { desc = "Go to next mark" })
