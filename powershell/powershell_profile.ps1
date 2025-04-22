@@ -1,11 +1,6 @@
 # run script to temp fix screen reader message
 & "$PSScriptRoot\run.ps1"
 
-# figure a way to make this work on windows
-# C:\Users\shuen\.config\powershell\powershell_profile.ps1
-
-$Env:COLORTERM = 'truecolor'
-
 # Env vars for yazi
 $Env:YAZI_FILE_ONE = 'C:\Program Files\Git\usr\bin\file.exe'
 $Env:YAZI_CONFIG_HOME = 'C:\Users\shuen\.config\yazi'
@@ -60,12 +55,15 @@ Set-Alias cat bat
 Set-Alias du dust
 
 # remove default alias cd
-Remove-Item alias:cd -Force
+if (Get-Alias -Name cd -ErrorAction SilentlyContinue) {
+    Remove-Item Alias:cd
+}
 
 # Set-Alias for zoxide
 Set-Alias cd z
 Set-Alias cdi zi
 
+# Set-Alias for eza
 Set-Alias ls eza
 
 # Set-Alias for sd
@@ -108,7 +106,7 @@ agent  Valorant agent name
   }
   $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko", "vyse", "kayo")
 
-  $logo_root = "C:\Users\shuen\.config\fastfetch\images"
+  $logo_root = "$HOME\.config\fastfetch\images"
 
   if ($agent -and $agents -contains $agent) {
     $selected_agent_image = "$agent.png"
@@ -199,30 +197,6 @@ Usage: frg <search term> [-h]
     --bind "change:reload:$rg_prefix {q} || true" `
     --bind "enter:become(code -g {1}:{2})" `
     --delimiter : `
-    --preview "bat --color always {1} --theme=CatppuccinMocha --highlight-line {2}" `
-    --preview-window '+{2}+3/3,~3'
-}
-
-# Functions alias for fzf integration with ripgrep and sed
-function fsr {
-  param (
-    [switch]$h
-  )
-  if ($h) {
-    Write-Output "
-Usage: frg <before> <after> [-h]
-
--h     Show help
-"
-    return
-  }
-  $before = $args[0]
-  $after = $args[1]
-  rg --ignore-case --color always --line-number --no-heading $before |
-  fzf --ansi `
-    --color "hl:-1:underline,hl+:-1:underline:reverse" `
-    --delimiter ':' `
-    --bind "ctrl-r:execute(sed -i {2}'s/$before/$after/gi' {1})+reload(rg --ignore-case --color always --line-number --no-heading $before),ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" `
     --preview "bat --color always {1} --theme=CatppuccinMocha --highlight-line {2}" `
     --preview-window '+{2}+3/3,~3'
 }
