@@ -101,7 +101,7 @@ lualine.setup({
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { 'filename' },
+    lualine_c = { 'filename', 'searchcount', 'selectioncount' },
     lualine_x = { 'copilot', 'fileformat', 'filetype' },
     lualine_y = { 'os.date("%I:%M%p")' },
     lualine_z = { 'progress', 'location' }
@@ -109,17 +109,17 @@ lualine.setup({
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = { 'filename' },
+    lualine_c = { 'filename', 'searchcount', 'selectioncount' },
     lualine_x = { 'location' },
     lualine_y = {},
     lualine_z = {}
   },
   tabline = {},
   winbar = {
-    lualine_a = { harpooned_files_status, 'searchcount', 'selectioncount' },
+    lualine_a = { harpooned_files_status },
   },
   inactive_winbar = {
-    lualine_a = { { file_status, separator = { left = '', right = '' } }, 'searchcount', 'selectioncount' },
+    lualine_a = { { file_status, separator = { left = '', right = '' } } },
   },
   extensions = { 'oil', 'lazy' }
 })

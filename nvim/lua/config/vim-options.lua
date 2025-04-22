@@ -18,6 +18,7 @@ vim.cmd([[
   autocmd FileType dashboard setlocal nofoldenable
 ]])
 vim.cmd("packadd cfilter")
+vim.cmd("set shortmess+=S")
 
 local function set_filetype(pattern, filetype)
   acmd({ "BufRead", "BufNewFile" }, {
@@ -33,6 +34,20 @@ set_filetype({ "docker-compose.yml" }, "yaml.docker-compose")
 set_filetype({ "*.xaml" }, "xml")
 set_filetype({ "*.xml" }, "xml")
 
+-- Autocommand Groups
+acmd({ "ModeChanged" }, {
+    pattern = { "*:[vV\x16]*" },
+  callback = function()
+    vim.cmd("set noshowcmd")
+  end
+})
+acmd({ "ModeChanged" }, {
+  pattern = { "[vV\x16]*:*" },
+  callback = function()
+    vim.cmd("set showcmd")
+  end
+})
+
 acmd({ "BufEnter" }, {
   callback = function(event)
     local title = "nvim"
@@ -43,11 +58,13 @@ acmd({ "BufEnter" }, {
     vim.fn.system({ "wezterm", "cli", "set-tab-title", title })
   end,
 })
+
 acmd({ "VimLeave", "VimLeavePre" }, {
   callback = function()
     vim.fn.system({ "wezterm", "cli", "set-tab-title", "pwsh.exe" })
   end,
 })
+
 acmd("VimEnter", {
   callback = function()
     -- To fix issue with lualine across windows
