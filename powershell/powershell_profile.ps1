@@ -241,6 +241,10 @@ Usage: fcd [-y] [-c] [-h]
   }
 }
 
+function lg {
+  lazygit $args
+}
+
 # Functions alias for tml
 function clk {
   $colors = @("blue", "cyan", "green", "red", "yellow", "magenta")
@@ -264,11 +268,6 @@ function gitfetch {
 
 function gf {
   gitfetch
-}
-
-#Functions for spotify_player
-function sply {
-  spotify_player $args
 }
 
 #Functions for git log --all --decorate --oneline --graph
@@ -304,15 +303,6 @@ Usage: which [-f] <command>
   else {
     Write-Output "Command not found"
   }
-}
-
-# Functions for lauching dooit
-function todo {
-  if ($args) {
-    dooit $args
-    return
-  }
-  dooit -c 'C:\Users\shuen\.config\dooit\dooit.py'
 }
 
 # Functions for launching hoyoplay
