@@ -14,9 +14,6 @@ vim.cmd("set noshowmode")
 vim.cmd("set equalalways")
 vim.cmd("set spell")
 vim.cmd("set guicursor=n-v-c-i:block")
-vim.cmd([[
-  autocmd FileType dashboard setlocal nofoldenable
-]])
 vim.cmd("packadd cfilter")
 vim.cmd("set shortmess+=S")
 
@@ -35,13 +32,19 @@ set_filetype({ "*.xaml" }, "xml")
 set_filetype({ "*.xml" }, "xml")
 
 -- Autocommand Groups
+local showcmd_grp = agrp("ShowCmd", { clear = true })
+local wezterm_title_grp = agrp("WezTermTitle", { clear = true })
+local qf_grp = agrp("Quickfix Customs", { clear = true })
+
 acmd({ "ModeChanged" }, {
-    pattern = { "*:[vV\x16]*" },
+  group = showcmd_grp,
+  pattern = { "*:[vV\x16]*" },
   callback = function()
     vim.cmd("set noshowcmd")
   end
 })
 acmd({ "ModeChanged" }, {
+  group = showcmd_grp,
   pattern = { "[vV\x16]*:*" },
   callback = function()
     vim.cmd("set showcmd")
@@ -49,6 +52,7 @@ acmd({ "ModeChanged" }, {
 })
 
 acmd({ "BufEnter" }, {
+  group = wezterm_title_grp,
   callback = function(event)
     local title = "nvim"
     if event.file ~= "" then
@@ -58,8 +62,8 @@ acmd({ "BufEnter" }, {
     vim.fn.system({ "wezterm", "cli", "set-tab-title", title })
   end,
 })
-
 acmd({ "VimLeave", "VimLeavePre" }, {
+  group = wezterm_title_grp,
   callback = function()
     vim.fn.system({ "wezterm", "cli", "set-tab-title", "pwsh.exe" })
   end,
@@ -79,8 +83,6 @@ local del_qf_item = function()
   vim.fn.setqflist(items, "r")
   vim.api.nvim_win_set_cursor(0, { line, 0 })
 end
-
-local qf_grp = agrp("Quickfix Customs", { clear = true })
 
 acmd('FileType', {
   group = qf_grp,
