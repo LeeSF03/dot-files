@@ -2,7 +2,7 @@ local gitsigns = require('gitsigns')
 
 gitsigns.setup({
   current_line_blame = true,
-    signs = {
+  signs = {
     add          = { text = '┃' },
     change       = { text = '┃' },
     delete       = { text = '_' },
