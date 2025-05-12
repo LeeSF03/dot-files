@@ -52,14 +52,14 @@ local function toggle_mark_and_shift()
 
   -- Step 5: Re-add in order
   for _, path in ipairs(new_list) do
-    list:add({ value = path })
+    list:add(list.config.create_list_item(list.config, path))
   end
 
-  if removed then
-    print("Removed and shifted Harpoon mark: " .. current_path)
-  else
-    print("Added to Harpoon: " .. current_path)
-  end
+  -- if removed then
+  --   print("Removed and shifted Harpoon mark: " .. current_path)
+  -- else
+  --   print("Added to Harpoon: " .. current_path)
+  -- end
 end
 
 local function select_next_harpooned_file()

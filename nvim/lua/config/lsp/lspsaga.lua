@@ -27,8 +27,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     -- hover
-    vim.keymap.set('n', 'ghh', '<CMD>Lspsaga hover_doc<CR>', { desc = "Hover action from LSP", buffer = ev.buf })
-    vim.keymap.set('n', 'ghe', '<CMD>Lspsaga hover_doc ++<CR>', { desc = "Enter hover", buffer = ev.buf })
+    -- vim.keymap.set('n', 'K', '<CMD>Lspsaga hover_doc<CR>', { desc = "Hover action from LSP", buffer = ev.buf })
+    -- vim.keymap.set('n', 'K', '<CMD>Lspsaga hover_doc ++<CR>', { desc = "Enter hover", buffer = ev.buf })
 
     -- diagnostics
     vim.keymap.set('n', 'gsc', '<CMD>Lspsaga show_cursor_diagnostics<CR>',

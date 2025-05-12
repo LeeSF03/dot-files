@@ -3,7 +3,7 @@ local harpoon = require("harpoon")
 
 local modify_harpooned_buffer_title = function(file_path, idx)
   local filename = vim.fn.fnamemodify(file_path, ':t')
-  local idx_str = string.format('%d. ', idx)
+  local idx_str = string.format('%d.', idx)
   local title = ' ' .. idx_str .. filename
 
   local bufnr = vim.fn.bufnr(file_path, false)

@@ -76,3 +76,15 @@ vim.diagnostic.config({
     }
   }
 })
+
+local orig_util = vim.lsp.util.open_floating_preview
+
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or "rounded"
+  return orig_util(contents, syntax, opts, ...)
+end
+
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#1e1e2e" })
