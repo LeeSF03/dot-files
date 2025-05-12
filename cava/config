@@ -2,15 +2,12 @@
 foreground = '#cba6f7'
 
 [smoothing]
-integral = 70
 monstercat = 1
 waves = 0;
-gravity = 100
-ignore = 0
 
 [eq]
-1 = 2 # bass
+1 = 0
 2 = 2
-3 = 1 # midtone
+3 = 1
 4 = 1
-5 = 0.5 # treble
+5 = 0.5
