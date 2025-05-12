@@ -10,22 +10,22 @@ local dashboard = require("dashboard")
 --
 -- ██╗     ███████╗███████╗ ██████╗███████╗
 -- ██║     ██╔════╝██╔════╝██╔════╝██╔════╝
--- ██║     █████╗  █████╗  ╚█████╗ █████╗  
--- ██║     ██╔══╝  ██╔══╝   ╚═══██╗██╔══╝  
--- ███████╗███████╗███████╗██████╔╝██║     
--- ╚══════╝╚══════╝╚══════╝╚═════╝ ╚═╝     
+-- ██║     █████╗  █████╗  ╚█████╗ █████╗
+-- ██║     ██╔══╝  ██╔══╝   ╚═══██╗██╔══╝
+-- ███████╗███████╗███████╗██████╔╝██║
+-- ╚══════╝╚══════╝╚══════╝╚═════╝ ╚═╝
 -- ]]
 
 local logo_narrow = [[
-
-        ██████                           ████████████ ████████████ 
-       ██████                           ████████████████  ████ 
-       ████        ████████████████ ███████████ ████          
-      ████         ███     ███       ███████    ████████████   
-     ████        ███████████████████████████  ████            
-   ██████  ███ ███     ███    █████████████████            
-  ████████████████████████████████████████████████             
-                                                                         
+                                                                          
+        ██████                           ████████████ ████████████  
+       ██████                           ████████████████  ████  
+       ████        ████████████████ ███████████ ████           
+      ████         ███     ███       ███████    ████████████    
+     ████        ███████████████████████████  ████             
+   ██████  ███ ███     ███    █████████████████             
+  ████████████████████████████████████████████████              
+                                                                          
 
                                                                         
          ████ ██████           █████      ██                      
@@ -44,14 +44,14 @@ local logo_wide = [[
 
 
 
-                                                                                                                                       
-      ██████                           ████████████ ████████████   ████ ██████           █████      ██                     
-     ██████                           ████████████████  ████  ███████████             █████                             
-     ████        ████████████████ ███████████ ████           █████████ ███████████████████ ███   ███████████   
-    ████         ███     ███       ███████    ████████████   █████████  ███    █████████████ █████ ██████████████   
-   ████        ███████████████████████████  ████           █████████ ██████████ █████████ █████ █████ ████ █████   
- ██████  ███ ███     ███    █████████████████         ███████████ ███    ███ █████████ █████ █████ ████ █████  
-████████████████████████████████████████████████         ██████  █████████████████████ ████ █████ █████ ████ ██████ 
+                                                                                                                                      
+      ██████                           ████████████ ████████████   ████ ██████           █████      ██                    
+     ██████                           ████████████████  ████  ███████████             █████                            
+     ████        ████████████████ ███████████ ████           █████████ ███████████████████ ███   ███████████  
+    ████         ███     ███       ███████    ████████████   █████████  ███    █████████████ █████ ██████████████  
+   ████        ███████████████████████████  ████           █████████ ██████████ █████████ █████ █████ ████ █████  
+ ██████  ███ ███     ███    █████████████████         ███████████ ███    ███ █████████ █████ █████ ████ █████ 
+████████████████████████████████████████████████         ██████  █████████████████████ ████ █████ █████ ████ ██████
 ]]
 
 local selected_logo = logo_narrow
@@ -71,14 +71,14 @@ local opts = {
     header = vim.split(logo, "\n"),
     -- stylua: ignore
     center = {
-      { action = 'Telescope find_files',                           desc = " Find File",       icon = " ", key = "f" },
-      { action = ":ene",                                           desc = " New File",        icon = " ", key = "n" },
-      { action = 'Telescope oldfiles',                             desc = " Recent Files",    icon = " ", key = "r" },
-      { action = 'Telescope live_grep',                            desc = " Find Text",       icon = " ", key = "g" },
-      { action = ":e C:\\Users\\shuen\\.config\\nvim\\lua\\config\\lsp\\init.lua",                                   desc = " Language Server File",    icon = " ", key = "s" },
-      { action = "checkhealth",                                    desc = " Check Health",    icon = " ", key = "h" },
-      { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
-      { action = function() vim.api.nvim_input("<CMD>qa<CR>") end, desc = " Quit",            icon = " ", key = "q" },
+      { action = 'Telescope find_files', desc = " Find File", icon = " ", key = "f" },
+      { action = ":ene", desc = " New File", icon = " ", key = "n" },
+      { action = 'Telescope oldfiles', desc = " Recent Files", icon = " ", key = "r" },
+      { action = 'Telescope live_grep', desc = " Find Text", icon = " ", key = "g" },
+      { action = ":e C:\\Users\\shuen\\.config\\nvim\\lua\\config\\lsp\\init.lua", desc = " Language Server File", icon = " ", key = "s" },
+      { action = "checkhealth", desc = " Check Health", icon = " ", key = "h" },
+      { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
+      { action = function() vim.api.nvim_input("<CMD>qa<CR>") end, desc = " Quit", icon = " ", key = "q" },
     },
     footer = function()
       local stats = require("lazy").stats()
@@ -108,11 +108,25 @@ if vim.o.filetype == "lazy" then
   })
 end
 
-vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#B4BEFE" })
-vim.api.nvim_set_hl(0, "DashboardDesc", { fg = "#CBA6F7" })
-vim.api.nvim_set_hl(0, "DashboardIcon", { fg = "#CBA6F7" })
-vim.api.nvim_set_hl(0, "DashboardKey", { fg = "#F5C2E7" })
-vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#BAC2DE" })
+-- Attempt to redraw the dashboard on resize
+-- vim.api.nvim_create_autocmd("VimResized", {
+--   callback = function()
+--     local new_logo = logo_narrow
+--     if vim.o.columns > 137 then new_logo = logo_wide end
+--
+--     local formatted_logo = string.rep("\n", 1) .. new_logo .. "\n\n"
+--     opts.config.header = vim.split(formatted_logo, "\n")
+--
+--     dashboard.setup(opts)
+--     print("there should be a new logo")
+--     vim.cmd("Dashboard")
+--   end,
+-- })
 
--- vim.cmd("UfoDetach")
+vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#b4befe" })
+vim.api.nvim_set_hl(0, "DashboardDesc", { fg = "#cba6f7" })
+vim.api.nvim_set_hl(0, "DashboardIcon", { fg = "#cba6f7" })
+vim.api.nvim_set_hl(0, "DashboardKey", { fg = "#f5c2e7" })
+vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#bac2de" })
+
 dashboard.setup(opts)

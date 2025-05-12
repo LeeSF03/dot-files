@@ -30,6 +30,7 @@ configs.setup({
     "powershell",
 
     "nginx",
+    "sql",
   },
   highlight = { enable = true },
   indent = { enable = true },

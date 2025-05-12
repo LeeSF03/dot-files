@@ -13,7 +13,16 @@ conform.setup({
     markdown = { "prettierd", "prettier", stop_after_first = true },
     graphql = { "prettierd", "prettier", stop_after_first = true },
     yaml = { "prettierd", "prettier", stop_after_first = true },
+
+    python = { "ruff_format" },
   },
+  -- formatters = {
+  --   pyink = {
+  --     command = "pyink",
+  --     args = { "--fast", "-" },
+  --     stdin = true,
+  --   },
+  -- },
 })
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {

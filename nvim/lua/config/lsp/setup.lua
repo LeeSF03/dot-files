@@ -13,12 +13,17 @@ mason.setup({
 -- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
 masontoolinstaller.setup({
   ensure_installed = {
+    -- web
     "prettier",
     "prettierd",
     "eslint_d",
-    -- "golangcilint",
+
+    -- golang
     "gofumpt",
     "golines",
+
+    -- python
+    "ruff",
   },
 })
 
@@ -27,6 +32,9 @@ masonlsp.setup({
   ensure_installed = {
     -- lua
     "lua_ls",
+
+    -- python
+    "basedpyright",
 
     -- web
     "ts_ls",

@@ -54,7 +54,13 @@ local harpooned_files_status = function()
       local with_surround = string.format('[%s]', title)
       table.insert(pinned_files, with_surround)
     else
-      table.insert(pinned_files, title)
+      local shortened
+      if (#title > 18) then
+        shortened = string.format('%s...', string.sub(title, 1, 15))
+      else
+        shortened = title
+      end
+      table.insert(pinned_files, shortened)
     end
   end
 
@@ -101,7 +107,7 @@ lualine.setup({
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { 'filename', 'searchcount', 'selectioncount' },
+    lualine_c = { harpooned_files_status, 'searchcount', 'selectioncount' },
     lualine_x = { 'copilot', 'fileformat', 'filetype' },
     lualine_y = { 'os.date("%I:%M%p")' },
     lualine_z = { 'progress', 'location' }
@@ -110,16 +116,25 @@ lualine.setup({
     lualine_a = {},
     lualine_b = {},
     lualine_c = { 'filename', 'searchcount', 'selectioncount' },
-    lualine_x = { 'location' },
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
+  tabline = {
+    lualine_a = { {
+      'tabs',
+      mode = 2,
+      tabs_color = {
+        active = { fg = '#1e1e2e', bg = '#89b4fa' },
+        inactive = { fg = '#89b4fa', bg = '#1e1e2e' }
+      },
+    } },
+  },
   winbar = {
-    lualine_a = { harpooned_files_status },
+    -- lualine_a = { harpooned_files_status },
   },
   inactive_winbar = {
-    lualine_a = { { file_status, separator = { left = '', right = '' } } },
+    -- lualine_a = { { file_status, separator = { left = '', right = '' } } },
   },
   extensions = { 'oil', 'lazy' }
 })

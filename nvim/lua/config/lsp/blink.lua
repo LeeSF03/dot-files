@@ -44,6 +44,10 @@ blink.setup({
   },
   sources = {
     default = { "lsp", "path", "snippets", "buffer", "copilot", "markdown" },
+    per_filetype = {
+      sql = { "snippets", "dadbod", "buffer" },
+      markdown = { "markdown", "snippets", "buffer", "copilot" },
+    },
     providers = {
       copilot = {
         name = "copilot",
@@ -64,7 +68,11 @@ blink.setup({
         name = 'RenderMarkdown',
         module = 'render-markdown.integ.blink',
         fallbacks = { 'lsp' },
-      }
+      },
+      dadbod = {
+        name = "Dadbod",
+        module = "vim_dadbod_completion.blink"
+      },
     },
   },
   appearance = {

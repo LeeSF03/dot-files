@@ -24,10 +24,7 @@ return {
   },
   {
     "saghen/blink.cmp",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      "giuxtaposition/blink-cmp-copilot",
-    },
+    dependencies = { 'rafamadriz/friendly-snippets' },
     version = 'v0.*',
     opts_extend = { "sources.default" },
     event = {
@@ -41,6 +38,7 @@ return {
     "giuxtaposition/blink-cmp-copilot",
     dependencies = {
       "zbirenbaum/copilot.lua",
+      "saghen/blink.cmp",
     },
     event = {
       "InsertEnter",

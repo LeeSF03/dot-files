@@ -25,13 +25,6 @@ vim.keymap.set("n", ";", "", { desc = "Disable ; keymap" })
 vim.keymap.set("n", "\'\'", "]\'", { desc = "Go to next mark" })
 vim.keymap.set("n", ";;", "[\'", { desc = "Go to next mark" })
 
--- toggleterm
--- vim.keymap.set({ 'n', 't' }, '<C-t>t', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm") end, { desc = 'Open terminal in floating' })
--- vim.keymap.set({ 'n', 't' }, '<C-t>v', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm direction=vertical") end, { desc = 'Open terminal in vertical split' })
--- vim.keymap.set({ 'n', 't' }, '<C-t>s', function() vim.cmd(tostring(vim.v.count1) .. "ToggleTerm direction=horizontal") end, { desc = 'Open terminal in horizontal split' })
--- vim.keymap.set('t', '<C-t>n', '<C-\\><C-n>', { desc = 'Turn into normal mode' })
--- vim.keymap.set({ 'n', 't' }, '<C-t>a', '<cmd>ToggleTermToggleAll<CR>', { desc = 'Toggle all terminal' })
--- vim.keymap.set({ 'n', 't' }, '<leader>ft', '<cmd>TermSelect<CR>', { desc = 'Find terminal' })
--- vim.keymap.set({ 'n', 'i' }, '<C-t><C-t>', '<cmd>ToggleTerm<CR>', { desc = 'Open terminal in vertical split' })
--- vim.keymap.set('n', '<C-t><C-v>', '<cmd>ToggleTerm direction=vertical<CR>', { desc = 'Open terminal in vertical split' })
--- vim.keymap.set('n', '<C-t><C-s>', '<cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Open terminal in horizontal split' })
+--tab navigation
+vim.keymap.set("n", "<leader>]", "<CMD>tabn<CR>", { desc = "Go to next tab" })
+vim.keymap.set("n", "<leader>[", "<CMD>tabp<CR>", { desc = "Go to previous tab" })
