@@ -5,3 +5,6 @@ lazygit/state.yml
 dooit/dooit/*
 dooit/dooit_extras/*
 .ignore
+ngrok/*
+lyricstify/*
+github-copilot/*
