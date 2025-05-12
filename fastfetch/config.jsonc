@@ -122,14 +122,14 @@
     {
       "type": "battery",
       "key": " \uf240",
-      "format": " {4}",
+      "format": " {10}",
       "keyWidth": 4,
       "keyColor": "yellow"
     },
     {
       "type": "disk",
       "key": " \udb80\udeca",
-      "format": " {1} / {2} ({3})",
+      "format": " {1} / {2}",
       "keyWidth": 4,
       "keyColor": "cyan"
     },
