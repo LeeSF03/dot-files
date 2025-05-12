@@ -11,8 +11,18 @@ wezterm.on('toggle-opacity', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if not overrides.window_background_opacity then
     overrides.window_background_opacity = 0.90
+    overrides.colors = {
+      tab_bar = {
+        background = "1e1e2ee5"
+      }
+    }
   else
     overrides.window_background_opacity = nil
+    overrides.colors = {
+      tab_bar = {
+        background = "1e1e2e"
+      }
+    }
   end
   window:set_config_overrides(overrides)
 end)
@@ -323,6 +333,8 @@ local function scroll(direction, key)
   }
 end
 
+config.warn_about_missing_glyphs = false
+
 -- Keys
 config.leader = {
   key = "Space",
@@ -332,59 +344,43 @@ config.leader = {
 
 config.keys = { -- This will create a new split and run the `top` program inside it
   {
-    key = "n",
+    key = "}",
     mods = "CTRL|SHIFT",
     action = act.ActivateTabRelative(1)
   },
   {
-    key = "p",
+    key = "{",
     mods = "CTRL|SHIFT",
     action = act.ActivateTabRelative(-1)
   },
   {
-    key = "]",
+    key = "v",
     mods = "LEADER",
-    action = act.ActivateTabRelative(1)
+    action = act.SplitPane {
+      direction = "Right",
+      size = {
+        Percent = 50
+      }
+    }
   },
   {
-    key = "[",
+    key = "s",
     mods = "LEADER",
-    action = act.ActivateTabRelative(-1)
+    action = act.SplitPane {
+      direction = "Down",
+      size = {
+        Percent = 50
+      }
+    }
   },
   {
-  key = "v",
-  mods = "LEADER",
-  action = act.SplitPane {
-    direction = "Right",
-    size = {
-      Percent = 50
-    }
-  }
-}, {
-  key = "s",
-  mods = "LEADER",
-  action = act.SplitPane {
-    direction = "Down",
-    size = {
-      Percent = 50
-    }
-  }
-}, {
-  key = "}",
-  mods = "LEADER|SHIFT",
-  action = act.MoveTabRelative(1)
-}, {
-  key = "{",
-  mods = "LEADER|SHIFT",
-  action = act.MoveTabRelative(-1)
-}, {
-  key = '0',
-  mods = 'LEADER',
-  action = act.PaneSelect {
-    mode = 'SwapWithActiveKeepFocus',
-    alphabet = '1234567890',
+    key = '0',
+    mods = 'LEADER',
+    action = act.PaneSelect {
+      mode = 'SwapWithActiveKeepFocus',
+      alphabet = '1234567890',
+    },
   },
-},
   -- move between split panes
   split_nav('move', 'h'),
   split_nav('move', 'j'),
