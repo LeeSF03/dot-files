@@ -37,11 +37,15 @@ wezterm.on('gui-startup', function(cmd) -- set startup Window position
 
   if screens.virtual_width > 1920 then
     local tab, pane, window = mux.spawn_window(
-      { position = { x = 2480, y = 240 } }
+      { position = { x = 2466, y = 232 } }
     )
   else
     local tab, pane, window = mux.spawn_window(
-      { position = { x = 560, y = 240 } }
+      {
+        position = { x = 546, y = 232 },
+        width = 80,
+        height = 25,
+      }
     )
   end
 end)
