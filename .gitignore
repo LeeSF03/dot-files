@@ -2,8 +2,6 @@ configstore/*
 *.spotify_token_cache.json
 *.log
 lazygit/state.yml
-dooit/dooit/*
-dooit/dooit_extras/*
 .ignore
 ngrok/*
 lyricstify/*
