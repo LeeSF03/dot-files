@@ -1,5 +1,6 @@
 local harpoon = require("harpoon")
 local Path = require("plenary.path")
+local conf = require("telescope.config").values
 
 harpoon:setup()
 
@@ -54,12 +55,29 @@ local function toggle_mark_and_shift()
   for _, path in ipairs(new_list) do
     list:add(list.config.create_list_item(list.config, path))
   end
+end
 
-  -- if removed then
-  --   print("Removed and shifted Harpoon mark: " .. current_path)
-  -- else
-  --   print("Added to Harpoon: " .. current_path)
-  -- end
+local function select_index(index)
+  local current_file = vim.fn.expand('%:p')
+  print(current_file)
+
+  for _, file in ipairs(harpoon:list().items) do
+    local file_path = vim.fn.fnamemodify(file.value, ':p')
+
+    if file_path == current_file then
+      harpoon:list():select(index)
+      return
+    end
+  end
+
+  local bufnr = vim.fn.bufnr(current_file, false)
+  local is_modified = bufnr ~= -1 and vim.bo[bufnr].modified or false
+
+  if is_modified then
+    print("Cannot switch file if current file is modified and not harpooned.")
+  else
+    harpoon:list():select(index)
+  end
 end
 
 local function select_next_harpooned_file()
@@ -104,24 +122,42 @@ local function select_previous_harpooned_file()
   end
 end
 
+local function toggle_telescope(harpoon_files)
+  local file_paths = {}
+  for _, item in ipairs(harpoon_files.items) do
+    table.insert(file_paths, item.value)
+  end
+
+  require("telescope.pickers").new({}, {
+    prompt_title = "Harpoon",
+    finder = require("telescope.finders").new_table({
+      results = file_paths,
+    }),
+    previewer = conf.file_previewer({}),
+    sorter = conf.generic_sorter({}),
+  }):find()
+end
+
 vim.keymap.set("n", "M", toggle_mark_and_shift, { desc = "Toggle Harpoon Mark" })
 vim.keymap.set("n", "<leader>mm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
-vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
-vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
-vim.keymap.set("n", "<leader>7", function() harpoon:list():select(7) end)
-vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end)
-vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
-vim.keymap.set("n", "<leader>0", function() harpoon:list():select(10) end)
-
--- Disable incase of other keymaps
-vim.keymap.set("n", ",", "")
-vim.keymap.set("n", ".", "")
+vim.keymap.set("n", "<leader>1", function() select_index(1) end)
+vim.keymap.set("n", "<leader>2", function() select_index(2) end)
+vim.keymap.set("n", "<leader>3", function() select_index(3) end)
+vim.keymap.set("n", "<leader>4", function() select_index(4) end)
+vim.keymap.set("n", "<leader>5", function() select_index(5) end)
+vim.keymap.set("n", "<leader>6", function() select_index(6) end)
+vim.keymap.set("n", "<leader>7", function() select_index(7) end)
+vim.keymap.set("n", "<leader>8", function() select_index(8) end)
+vim.keymap.set("n", "<leader>9", function() select_index(9) end)
+vim.keymap.set("n", "<leader>0", function() select_index(10) end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", ",,", select_previous_harpooned_file)
-vim.keymap.set("n", "..", select_next_harpooned_file)
+vim.keymap.set("n", "m[", select_previous_harpooned_file)
+vim.keymap.set("n", "m]", select_next_harpooned_file)
+
+-- vim.keymap.set("n", "<leader>mf", function() toggle_telescope(harpoon:list()) end,
+--   { desc = "Open harpoon window" })
+
+-- Commands
+-- vim.api.nvim_create_user_command("TelescopeHarpoon", function() toggle_telescope(harpoon:list()) end, {})
