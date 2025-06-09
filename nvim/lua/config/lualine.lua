@@ -3,38 +3,14 @@ local harpoon = require("harpoon")
 
 local modify_harpooned_buffer_title = function(file_path, idx)
   local filename = vim.fn.fnamemodify(file_path, ':t')
-  local idx_str = string.format('%d.', idx)
+  local idx_str = string.format('%d•', idx)
   local title = ' ' .. idx_str .. filename
 
   local bufnr = vim.fn.bufnr(file_path, false)
   local is_modified = bufnr ~= -1 and vim.bo[bufnr].modified or false
 
   if is_modified then
-    title = string.format('%s*', title)
-  end
-
-  return title
-end
-
-local file_status = function()
-  local current_file = vim.fn.expand('%:p')
-  local filename = vim.fn.fnamemodify(current_file, ':t')
-  local title = '# ' .. filename
-
-  local bufnr = vim.fn.bufnr(current_file, false)
-  local is_modified = bufnr ~= -1 and vim.bo[bufnr].modified or false
-
-  for idx, file in ipairs(harpoon:list().items) do
-    local file_path = vim.fn.fnamemodify(file.value, ':p')
-    local harpooned_buffer_title = modify_harpooned_buffer_title(file_path, idx)
-
-    if file_path == current_file then
-      return harpooned_buffer_title
-    end
-  end
-
-  if is_modified then
-    return title .. '*'
+    title = string.format('*%s', title)
   end
 
   return title
@@ -55,8 +31,8 @@ local harpooned_files_status = function()
       table.insert(pinned_files, with_surround)
     else
       local shortened
-      if (#title > 18) then
-        shortened = string.format('%s...', string.sub(title, 1, 15))
+      if (#title > 20) then
+        shortened = string.format('%s...', string.sub(title, 1, 17))
       else
         shortened = title
       end
@@ -72,7 +48,7 @@ local harpooned_files_status = function()
     local is_modified = bufnr ~= -1 and vim.bo[bufnr].modified or false
 
     if is_modified then
-      with_symbol = string.format('%s*', with_symbol)
+      with_symbol = string.format('*%s', with_symbol)
     end
 
     local with_surround = string.format('[%s]', with_symbol)
@@ -83,6 +59,96 @@ local harpooned_files_status = function()
   return table.concat(pinned_files, ' ')
 end
 
+local function is_index_has_file(index)
+  local file = harpoon:list():get(index)
+  if not file then
+    return false
+  end
+  return true
+end
+
+local function harpooned_file_status(index)
+  local current_file = vim.fn.expand('%:p')
+
+  local file = harpoon:list():get(index)
+  local file_path = vim.fn.fnamemodify(file.value, ':p')
+  local title = modify_harpooned_buffer_title(file_path, index)
+
+  if file_path == current_file then
+    local with_surround = string.format('%s', title)
+    return with_surround
+  else
+    local shortened
+    if #title > 20 then
+      shortened = string.format('%s...', string.sub(title, 1, 17))
+    else
+      shortened = title
+    end
+    return shortened
+  end
+end
+
+local function harpoon_color(index)
+  local current_file_path = vim.fn.expand('%:p')
+  local file = harpoon:list():get(index)
+  if not file then
+    return nil
+  end
+  local harpooned_file_path = vim.fn.fnamemodify(file.value, ':p')
+  return (harpooned_file_path == current_file_path) and { bg = '#89b4fa', fg = '#1e1e2e' } or
+      { bg = '#1e1e2e', fg = '#cdd6f4' }
+end
+
+local function is_current_file_not_harpooned()
+  local current_file = vim.fn.expand('%:p')
+
+  for _, file in ipairs(harpoon:list().items) do
+    local file_path = vim.fn.fnamemodify(file.value, ':p')
+
+    if file_path == current_file then
+      return false
+    end
+  end
+  return true
+end
+
+local function unharpooned_file()
+  local file_path = vim.fn.expand('%:p')
+  local filename = vim.fn.fnamemodify(file_path, ':t')
+
+  local bufnr = vim.fn.bufnr(file_path, false)
+  local is_modified = bufnr ~= -1 and vim.bo[bufnr].modified or false
+
+  if is_modified then
+    filename = string.format('*%s', filename)
+  end
+
+  return filename
+end
+
+local lualine_c = {}
+for i = 1, 10 do
+  table.insert(lualine_c, {
+    function()
+      return harpooned_file_status(i)
+    end,
+    cond = function() return is_index_has_file(i) end,
+    separator = { left = i == 1 and '' or '', right = '' },
+    color = function(section)
+      return harpoon_color(i)
+    end,
+  })
+end
+table.insert(lualine_c, 'searchcount')
+table.insert(lualine_c, 'selectioncount')
+table.insert(lualine_c, {
+  function()
+    return unharpooned_file()
+  end,
+  cond = is_current_file_not_harpooned,
+  separator = { left = '', right = '' },
+  color = { bg = '#89b4fa', fg = '#1e1e2e' },
+})
 
 lualine.setup({
   options = {
@@ -107,18 +173,18 @@ lualine.setup({
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { harpooned_files_status, 'searchcount', 'selectioncount' },
+    lualine_c = lualine_c,
     lualine_x = { 'copilot', 'fileformat', 'filetype' },
     lualine_y = { 'os.date("%I:%M%p")' },
     lualine_z = { 'progress', 'location' }
   },
   inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = { 'filename', 'searchcount', 'selectioncount' },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { harpooned_files_status, 'searchcount', 'selectioncount' },
+    lualine_x = { 'copilot', 'fileformat', 'filetype' },
+    lualine_y = { 'os.date("%I:%M%p")' },
+    lualine_z = { 'progress', 'location' }
   },
   tabline = {
     lualine_a = { {
