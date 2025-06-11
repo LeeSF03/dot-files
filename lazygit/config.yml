@@ -6,7 +6,7 @@ gui:
       - "#74c7ec"
       - bold
     inactiveBorderColor:
-      - "#a6adc8"
+      - "#585b70"
     optionsTextColor:
       - "#89b4fa"
     selectedLineBgColor:
@@ -46,9 +46,11 @@ git:
   truncateCopiedCommitHashesTo: 12
 
 os:
+  # editCommand: "nvim"
+  # editCommandTemplate: '{{editor}} --server 127.0.0.1:8888 --remote-tab "{{filename}}"'
   # editPreset: "nvim"
   #   editPreset: "nvr --remote"
   edit: "nvim {{filename}}"
   editAtLine: "nvim +{{line}} {{filename}}"
   editAtLineAndWait: "nvim +{{line}} {{filename}}"
-  open: "nvim"
+  # open: "nvim"
