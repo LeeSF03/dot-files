@@ -3,16 +3,11 @@ return {
   ---@module 'oil'
   ---@type oil.SetupOpts
   dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  -- TODO: move everything from config.oil to here
   config = function()
     require("config.oil")
   end,
   event = { "VimEnter */*,.*", "BufNew */*,.*" },
-  -- event = {
-  --   "BufReadPre",
-  --   "BufNewFile",
-  --   "DirChangedPre",
-  --   "DirChanged",
-  -- },
   cmd = { 'Oil'},
   -- keys = {
   --   { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },

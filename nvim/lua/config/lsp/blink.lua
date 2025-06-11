@@ -6,9 +6,6 @@ blink.setup({
     ['<C-e>'] = { 'hide' },
     ['<C-y>'] = { 'select_and_accept' },
 
-    -- ['<C-k>'] = { 'select_prev', 'fallback' },
-    -- ['<C-j>'] = { 'select_next', 'fallback' },
-
     ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
     ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
   },
@@ -17,6 +14,15 @@ blink.setup({
       border = 'rounded',
       draw = {
         align_to = 'label',
+        columns = { { "kind_icon", gap = 1 }, { "label", "label_description", gap = 1 }, { "source_id" } },
+        components = {
+          label_description = {
+            width = { max = 30 },
+          },
+          label = {
+            width = { max = 30 },
+          },
+        },
       },
     },
     documentation = {
@@ -47,6 +53,7 @@ blink.setup({
     per_filetype = {
       sql = { "snippets", "dadbod", "buffer" },
       markdown = { "markdown", "snippets", "buffer", "copilot" },
+      -- codecompanion = { "codecompanion" },
     },
     providers = {
       copilot = {
@@ -117,7 +124,7 @@ blink.setup({
 -- Set autocomplete highlight
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#1e1e2e", })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
-vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#ea76cb" })
+vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#f38ba8" })
 vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#1e1e2e", })
 vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
-vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#1e1e2e" }) -- not working
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#1e1e2e" })

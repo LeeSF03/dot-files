@@ -11,9 +11,20 @@ vim.cmd("set noshowmode")
 -- vim.cmd("set fileformat=unix")
 vim.cmd("set equalalways")
 vim.cmd("set spell")
+vim.cmd("set spelllang=en_us")
 vim.cmd("set guicursor=n-v-c-i:block")
 vim.cmd("packadd cfilter")
 vim.cmd("set shortmess+=S")
+
+-- vim.o.shell = "C:\\Users\\shuen\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe"
+-- vim.o.shell = "pwsh.exe"
+-- vim.opt.shellcmdflag = "-NoLogo -Command"
+-- vim.opt.shellquote = ""
+-- vim.opt.shellxquote = ""
+
+if vim.fn.has('nvim') == 1 and vim.fn.executable('nvr') == 1 then
+  vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+end
 
 -- Diagnostic settings
 vim.diagnostic.config({ virtual_text = true })

@@ -1,6 +1,3 @@
--- gitsigns
-vim.keymap.set('n', '<leader>gp', '<CMD>Gitsigns preview_hunk<CR>', { desc = 'Git Preview Hunk' })
-
 -- lazygit
 vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = 'Open Lazygit' })
 

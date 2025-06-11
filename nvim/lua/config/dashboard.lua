@@ -73,7 +73,7 @@ local opts = {
     center = {
       { action = 'Telescope find_files', desc = " Find File", icon = " ", key = "f" },
       { action = ":ene", desc = " New File", icon = " ", key = "n" },
-      { action = 'Telescope oldfiles', desc = " Recent Files", icon = " ", key = "r" },
+      -- { action = 'TelescopeHarpoon', desc = " Marked Files", icon = " ", key = "m" },
       { action = 'Telescope live_grep', desc = " Find Text", icon = " ", key = "g" },
       { action = ":e C:\\Users\\shuen\\.config\\nvim\\lua\\config\\lsp\\init.lua", desc = " Language Server File", icon = " ", key = "s" },
       { action = "checkhealth", desc = " Check Health", icon = " ", key = "h" },
@@ -84,6 +84,7 @@ local opts = {
       local stats = require("lazy").stats()
       local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
       return {
+        "",
         "󱐋 Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
       }
     end,
@@ -125,8 +126,8 @@ end
 
 vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#b4befe" })
 vim.api.nvim_set_hl(0, "DashboardDesc", { fg = "#cba6f7" })
-vim.api.nvim_set_hl(0, "DashboardIcon", { fg = "#cba6f7" })
+vim.api.nvim_set_hl(0, "DashboardIcon", { fg = "#f5c2e7" })
 vim.api.nvim_set_hl(0, "DashboardKey", { fg = "#f5c2e7" })
-vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#bac2de" })
+vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#f9e2af" })
 
 dashboard.setup(opts)

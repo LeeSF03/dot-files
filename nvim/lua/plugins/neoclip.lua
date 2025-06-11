@@ -8,7 +8,7 @@ return {
     require("config.neoclip")
   end,
   event = {
-    'BufReadPre',
+    'BufReadPost',
     'BufNewFile'
   },
 }

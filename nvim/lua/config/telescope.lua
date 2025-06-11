@@ -7,13 +7,21 @@ vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Telescope commands
 vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope find git tracked files' })
 vim.keymap.set('n', '<leader>fm', "<CMD>Telescope marks mark_type=local<CR>", { desc = 'Telescope find marks' })
 vim.keymap.set('n', '<leader>fd', "<CMD>Telescope diagnostics<CR>", { desc = 'Telescope find diagnostics' })
+vim.keymap.set('n', '<leader>ft', "<CMD>TodoTelescope<CR>", { desc = 'Telescope find todos' })
 
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 telescope.setup {
   pickers = {
     find_files = {
-      hidden = true
+      hidden = true,
+      -- find_command = { "fd", "--type", "f", "--no-ignore", "--hidden" },
+      find_command = { "fd", "--type", "f", "--hidden" },
+    },
+    live_grep = {
+      additional_args = function()
+        return { "--hidden" }
+      end,
     },
   },
   defaults = {
@@ -22,6 +30,13 @@ telescope.setup {
     grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
     qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
     layout_startegy = 'horizontal',
+    -- file_ignore_patterns = {
+    --   "node_modules",
+    --   ".git/*",
+    --   "%.venv",
+    --   "%venv",
+    --   "%.next",
+    -- },
     layout_config = {
       center = {
         height = 0.80,
@@ -44,7 +59,7 @@ telescope.setup {
         ["<C-d>"] = actions.preview_scrolling_down,
         ["<C-s>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
-        ["<C-x>"] = actions.delete_buffer,
+        -- ["<C-x>"] = actions.delete_buffer,
       }
     }
   },

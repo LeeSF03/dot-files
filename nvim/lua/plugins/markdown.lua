@@ -8,7 +8,7 @@ return {
     ---@type render.md.UserConfig
     opts = {},
     -- event = { "BufReadPost", "BufNewFile" },
-    ft = { "markdown" },
+    ft = { "markdown", "codecompanion" },
   },
   {
     "iamcco/markdown-preview.nvim",

@@ -1,6 +1,7 @@
 local mason = require("mason")
 local masontoolinstaller = require("mason-tool-installer")
 local masonlsp = require("mason-lspconfig")
+local lspconfig = require("lspconfig")
 
 mason.setup({
   ui = {
@@ -40,19 +41,25 @@ masonlsp.setup({
     "ts_ls",
     "tailwindcss",
     "cssmodules_ls",
-    "biome",
+    "cssls",
+    -- "biome",
+
+    -- yaml
     "yamlls",
 
     -- docker
     "docker_compose_language_service",
     "dockerls",
 
+    -- github actions
+    "gh_actions_ls",
+
     -- golang
     "gopls",
 
     -- php
     "intelephense",
-    "phpactor",
+    -- "phpactor",
 
     -- c++
     "clangd",
@@ -62,6 +69,9 @@ masonlsp.setup({
 
     -- nginx
     "nginx_language_server",
+
+    -- sql
+    "sqlls",
   },
 })
 

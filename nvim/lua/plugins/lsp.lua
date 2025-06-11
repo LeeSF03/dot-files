@@ -29,6 +29,7 @@ return {
     opts_extend = { "sources.default" },
     event = {
       "InsertEnter",
+      "CmdlineEnter",
     },
     config = function()
       require("config.lsp.blink")

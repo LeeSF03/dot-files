@@ -3,6 +3,7 @@ local conform = require("conform")
 conform.setup({
   -- Available formatters: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
   formatters_by_ft = {
+    -- web
     javascript = { "prettierd", "prettier", stop_after_first = true },
     typescript = { "prettierd", "prettier", stop_after_first = true },
     typescriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -12,17 +13,13 @@ conform.setup({
     html = { "prettierd", "prettier", stop_after_first = true },
     markdown = { "prettierd", "prettier", stop_after_first = true },
     graphql = { "prettierd", "prettier", stop_after_first = true },
+
+    -- yaml
     yaml = { "prettierd", "prettier", stop_after_first = true },
 
+    -- python
     python = { "ruff_format" },
   },
-  -- formatters = {
-  --   pyink = {
-  --     command = "pyink",
-  --     args = { "--fast", "-" },
-  --     stdin = true,
-  --   },
-  -- },
 })
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {

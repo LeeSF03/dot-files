@@ -36,3 +36,8 @@ require(filepath .. "web_lsp")
 -- Python Language Server
 -- require(filepath .. "python_lsp")
 
+-- SQL Language Server
+-- require(filepath .. "sql_lsp")
+
+-- GitHub Actions Language Server
+-- require(filepath .. "github_actions_lsp")
