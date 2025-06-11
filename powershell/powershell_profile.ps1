@@ -1,9 +1,60 @@
 # run script to temp fix screen reader message
 & "$PSScriptRoot\run.ps1"
 
+# Set xdg config home for all env vars
+$Env:XDG_CONFIG_HOME = "$env:USERPROFILE\.config"
+
+function Save-SecureApiKey {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$FilePath,
+
+        [Parameter(Mandatory = $true)]
+        [string]$ApiKey
+    )
+
+    try {
+        $secureApiKey = $ApiKey | ConvertTo-SecureString -AsPlainText -Force
+        $encrypted = $secureApiKey | ConvertFrom-SecureString
+        Set-Content -Path $FilePath -Value $encrypted -Force
+        Write-Host "API key encrypted and saved to $FilePath"
+    }
+    catch {
+        Write-Error "Failed to encrypt and save API key: $_"
+    }
+}
+
+function Get-SecureKey {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$KeyPath
+    )
+
+    if (-Not (Test-Path $KeyPath)) {
+        Write-Warning "Encrypted key file not found at $KeyPath"
+        return $null
+    }
+
+    try {
+        $secureApiKey = Get-Content $KeyPath | ConvertTo-SecureString
+        $apiKey = [System.Net.NetworkCredential]::new("", $secureApiKey).Password
+
+        return $apiKey
+    }
+    catch {
+        Write-Error "Failed to decrypt API key: $_"
+        return $null
+    }
+}
+
+# Env vars for avante
+$Env:GEMINI_API_KEY = Get-SecureKey -KeyPath "$env:USERPROFILE\.pass\google\gemini_api_key.txt"
+$Env:GOOGLE_SEARCH_API_KEY = Get-SecureKey -KeyPath "$env:USERPROFILE\.pass\google\google_search_api_key.txt"
+$Env:GOOGLE_SEARCH_ENGINE_ID = Get-SecureKey -KeyPath "$env:USERPROFILE\.pass\google\google_search_engine_id.txt"
+
 # Env vars for yazi
-$Env:YAZI_FILE_ONE = 'C:\Program Files\Git\usr\bin\file.exe'
-$Env:YAZI_CONFIG_HOME = 'C:\Users\shuen\.config\yazi'
+$Env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
+$Env:YAZI_CONFIG_HOME = "$env:USERPROFILE\.config\yazi"
 
 # Env vars for fzf
 $ENV:FZF_DEFAULT_COMMAND = 'fd --type file --hidden --exclude .git --no-ignore'
@@ -13,16 +64,18 @@ $ENV:FZF_DEFAULT_OPTS = @"
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
 --color=selected-bg:#45475a
 --multi
---bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down `
---preview 'bat --style numbers,changes --color=always --theme=CatppuccinMocha --line-range=:100 {} || eza -T --level 2 --colour=always --icons=always {2}'
+--header-first
+--bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down
+--bind "enter:become(nvim {1} -c '{2}')"
+--preview 'bat --style numbers,changes --color=always --theme=CatppuccinMocha --line-range=:100 {}'
 "@
 
 # Env vars for bat
-$Env:BAT_CONFIG_PATH = 'C:\Users\shuen\.config\bat\bat.conf'
-$Env:BAT_CONFIG_DIR = 'C:\Users\shuen\.config\bat'
+$Env:BAT_CONFIG_PATH = "$env:USERPROFILE\.config\bat\bat.conf"
+$Env:BAT_CONFIG_DIR = "$env:USERPROFILE\.config\bat"
 
 # Env vars for eza
-$Env:EZA_CONFIG_DIR = 'C:\Users\shuen\.config\eza'
+$Env:EZA_CONFIG_DIR = "$env:USERPROFILE\.config\eza"
 
 # Env vars for zoxide
 $Env:_ZO_ECHO = 1
@@ -45,10 +98,10 @@ $Env:_ZO_FZF_OPTS = @"
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 # Env vars for lazygit
-$Env:CONFIG_DIR = "C:\Users\shuen\.config\lazygit"
+$Env:CONFIG_DIR = "$env:USERPROFILE\.config\lazygit"
 
 # Env vars for glazewm config path
-$Env:GLAZEWM_CONFIG_DIR = "C:\Users\shuen\.config\glazewm\config.yaml"
+$Env:GLAZEWM_CONFIG_DIR = "$env:USERPROFILE\.config\glazewm\config.yaml"
 
 # Set-Alias
 Set-Alias cat bat
@@ -104,7 +157,7 @@ agent  Valorant agent name
     Write-Output $helpMessage
     return
   }
-  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko", "vyse", "kayo")
+  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko", "vyse", "kayo", "skye", "waylay")
 
   $logo_root = "$HOME\.config\fastfetch\images"
 
@@ -171,76 +224,6 @@ Usage: fz [-y] [-c] [-b] [-h]
   }
 }
 
-# Functions alias for fzf integration with ripgrep and vscode
-function frg {
-  param (
-    [switch]$h
-  )
-  if ($h) {
-    Write-Output "
-Usage: frg <search term> [-h]
-
--h     Show help
-"
-    return
-  }
-  $search = $args[0]
-
-  if (!$search) {
-    $search = ""
-  }
-  $rg_prefix = "rg --column --line-number --no-heading --color=always --smart-case "
-  fzf --ansi `
-    --color "hl:-1:underline,hl+:-1:underline:reverse" `
-    --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" `
-    --bind "start:reload:$rg_prefix || true" `
-    --bind "change:reload:$rg_prefix {q} || true" `
-    --bind "enter:become(code -g {1}:{2})" `
-    --delimiter : `
-    --preview "bat --color always {1} --theme=CatppuccinMocha --highlight-line {2}" `
-    --preview-window '+{2}+3/3,~3'
-}
-
-# Functions alias for fzf integration with zoxide
-function fcd {
-  param (
-    [switch]$y,
-    [switch]$c,
-    [switch]$r,
-    [switch]$h
-  )
-  if ($h) {
-    Write-Output "
-Usage: fcd [-y] [-c] [-h]
-
--y     Open in yazi
--c     Open in VS Code
--r     Open directory in fzf
--h     Show help
-"
-    return
-  }
-
-  $dir = fd --max-depth 1 --type directory --follow --hidden --exclude .git |
-  fzf --prompt 'Directory> ' `
-    --header-first `
-    --preview 'eza -aT --level 2 --colour=always --icons=always {}' `
-    --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down"
-
-  if ($null -ne $dir) {
-    if ($y) {
-      z $dir
-      y
-    }
-    elseif ($c) {
-      code $dir
-    }
-    else {
-      z $dir
-    }
-  }
-}
-
 function lg {
   lazygit $args
 }
@@ -270,9 +253,22 @@ function gf {
   gitfetch
 }
 
+#Functions for spotify_player
+function sply {
+  spotify_player $args
+}
+
 #Functions for git log --all --decorate --oneline --graph
 function glog {
   git log --all --decorate --oneline --graph
+}
+
+function hlq {
+  harlequin --theme catppuccin-mocha
+}
+
+function spot {
+  spotify_player
 }
 
 #Functions for Get-Command
@@ -310,18 +306,18 @@ function hoyo {
   & "C:\Program Files\HoYoPlay\launcher.exe"
 }
 
-
 # Functions for launching RecycleBinFolder
 function trash {
   start shell:RecycleBinFolder
 }
 
+# Functions for launching docker-desktop
 function docker-desktop {
   & "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 }
 
 # Initialize oh-my-posh
-oh-my-posh init pwsh --config "C:\Users\shuen\.config\oh-my-posh\themes\catppuccin_mocha.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:USERPROFILE\.config\oh-my-posh\themes\catppuccin_mocha.omp.json" | Invoke-Expression
 
 # Initialize zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
