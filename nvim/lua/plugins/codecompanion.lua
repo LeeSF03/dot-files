@@ -30,6 +30,9 @@ return {
     "CodeCompanionInline",
     "CodeCompanionCmd",
   },
+  init = function()
+    vim.keymap.set({ "n" }, "<leader>ai", "<CMD>CodeCompanionChat Toggle<CR>", { desc = "Toggle CodeCompanionChat" })
+  end,
   config = function()
     local spinner = require("config.codecompanion-spinner")
     spinner:init()
@@ -314,7 +317,6 @@ return {
       },
     })
 
-    vim.keymap.set({ "n" }, "<leader>ai", "<CMD>CodeCompanionChat Toggle<CR>", { desc = "Toggle CodeCompanionChat" })
     vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#f38ba8" })
   end,
 }
