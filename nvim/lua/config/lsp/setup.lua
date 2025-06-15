@@ -25,6 +25,11 @@ masontoolinstaller.setup({
 
     -- python
     "ruff",
+
+    -- golang
+    "golangci-lint",
+    "gofumpt",
+    "golines",
   },
 })
 

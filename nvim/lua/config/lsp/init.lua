@@ -7,10 +7,10 @@ require(filepath .. "setup")
 require(filepath .. "lua_lsp")
 
 -- Go Language Server
--- require(filepath .. "go_lsp")
+require(filepath .. "go_lsp")
 
 -- Web Language Server
-require(filepath .. "web_lsp")
+-- require(filepath .. "web_lsp")
 
 -- TailwindCSS Language Server
 -- require(filepath .. "tailwindcss_lsp")
