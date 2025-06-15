@@ -97,9 +97,9 @@ for i, line in ipairs(lines) do
 end
 
 -- Step 4: Add 7 lines of padding on top
-for _ = 1, 5 do
-  table.insert(lines, 1, string.rep(" ", max_len))
-end
+-- for _ = 1, 5 do
+--   table.insert(lines, 1, string.rep(" ", max_len))
+-- end
 
 -- Step 5: Combine lines
 local aligned_logo = table.concat(lines, "\n")
@@ -135,6 +135,7 @@ local opts = {
         "󱐋 Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
       }
     end,
+    vertical_center = true,
   },
 }
 
