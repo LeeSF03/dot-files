@@ -1,9 +1,7 @@
 return {
   'windwp/nvim-autopairs',
   event = "InsertEnter",
-  config = function()
-    require("config.autopairs")
-  end,
+  opts = { map_cr = true },
   -- use opts = {} for passing setup options
   -- this is equivalent to setup({}) function
 }

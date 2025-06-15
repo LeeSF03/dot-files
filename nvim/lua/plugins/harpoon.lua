@@ -6,7 +6,7 @@ return {
     'nvim-telescope/telescope.nvim'
   },
   keys = {
-    { "M",          function() require("config.harpoon").toggle_mark_and_shift() end,                desc = "Toggle Harpoon Mark" },
+    { "M",          function() require("config.harpoon").toggle_mark_and_shift() end,                  desc = "Toggle Harpoon Mark" },
     { "<leader>mm", function() require("harpoon.ui"):toggle_quick_menu(require("harpoon"):list()) end, desc = "Harpoon Quick Menu" },
 
     { "<leader>1",  function() require("config.harpoon").select_index(1) end },
@@ -20,7 +20,7 @@ return {
     { "<leader>9",  function() require("config.harpoon").select_index(9) end },
     { "<leader>0",  function() require("config.harpoon").select_index(10) end },
 
-    { "[m",         function() require("config.harpoon").select_previous_harpooned_file() end,       desc = "Previous Harpoon File" },
-    { "]m",         function() require("config.harpoon").select_next_harpooned_file() end,           desc = "Next Harpoon File" },
+    { "[m",         function() require("config.harpoon").select_previous_harpooned_file() end,         desc = "Previous Harpoon File" },
+    { "]m",         function() require("config.harpoon").select_next_harpooned_file() end,             desc = "Next Harpoon File" },
   },
 }

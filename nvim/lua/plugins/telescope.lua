@@ -10,7 +10,7 @@ return {
     config = function()
       require("config.telescope")
     end,
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
     cmd = 'Telescope',
   },
   -- {

@@ -30,9 +30,9 @@ return {
     "CodeCompanionInline",
     "CodeCompanionCmd",
   },
-  init = function()
-    vim.keymap.set({ "n" }, "<leader>ai", "<CMD>CodeCompanionChat Toggle<CR>", { desc = "Toggle CodeCompanionChat" })
-  end,
+  keys = {
+    { "<leader>ai", "<CMD>CodeCompanionChat Toggle<CR>", desc = "Toggle CodeCompanionChat", mode = "n" },
+  },
   config = function()
     local spinner = require("config.codecompanion-spinner")
     spinner:init()
@@ -302,7 +302,7 @@ return {
               ---Adapter for generating titles (defaults to active chat's adapter)
               adapter = nil, -- e.g "copilot"
               ---Model for generating titles (defaults to active chat's model)
-              model = nil, -- e.g "gpt-4o"
+              model = nil,   -- e.g "gpt-4o"
             },
             ---On exiting and entering neovim, loads the last chat on opening chat
             continue_last_chat = false,

@@ -1,9 +1,15 @@
 return {
   "j-hui/fidget.nvim",
-  -- TODO: move everything from config.fidget to here
-  config = function()
-    require("config.fidget")
-  end,
+  opts = {
+    notification = {
+      window = {
+        winblend = 0,
+        border = 'rounded',
+      },
+      -- override_vim_notify = true,
+      -- filter = vim.log.levels.TRACE,
+    },
+  },
   event = {
     "BufReadPost",
     "BufNewFile"

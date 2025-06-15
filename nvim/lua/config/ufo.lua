@@ -38,7 +38,7 @@ statuscol.setup({
   relculright = true,
   segments = {
     { text = { statuscol_builtin.foldfunc },      click = "v:lua.ScFa" },
-    { text = { " " }                                                    },
+    { text = { " " } },
     { text = { "%s" },                            click = "v:lua.ScSa" },
     { text = { statuscol_builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
   },

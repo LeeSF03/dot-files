@@ -13,7 +13,7 @@ return {
       'DBUIFindBuffer',
     },
     init = function()
-      local smartsplits = require('smart-splits')
+      -- local smartsplits = require('smart-splits')
 
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
