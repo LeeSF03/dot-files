@@ -26,6 +26,9 @@ return {
 
         -- golang
         go = { "gofumpt" },
+
+        -- lua
+        lua = { "stylua" },
       },
     },
     config = function(_, opts)

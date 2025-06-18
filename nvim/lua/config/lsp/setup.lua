@@ -30,6 +30,9 @@ masontoolinstaller.setup({
     "golangci-lint",
     "gofumpt",
     "golines",
+
+    -- lua
+    "stylua",
   },
 })
 

@@ -1,5 +1,5 @@
 return {
-  "folke/flash.nvim",
+	"folke/flash.nvim",
   ---@type Flash.Config
   -- opts = {},
   -- stylua: ignore

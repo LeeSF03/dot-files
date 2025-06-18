@@ -8,5 +8,5 @@ return {
       enable_close_on_slash = true -- Auto close on trailing </
     },
   },
-  ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+  ft = { "typescript", "javascript", "typescriptreact", "javascriptreact", "html" },
 }
