@@ -35,23 +35,57 @@ ActivateGlazeWM() {
 #m::WinMinimize("A")  ; Minimizes the active window
 
 ; Hotkey to fullscreen active window
-#f::ToggleFullScreenWindow("A")
+#f::ToggleFullScreenWithTaskbar("A")
 
-ToggleFullScreenWindow(winTitle*) {
-    hwnd := WinExist(winTitle*)  ; Get the active window's handle
-    if !hwnd {  ; If no window is active, return early
+ToggleFullScreenWithTaskbar(winTitle*) {
+    hwnd := WinExist(winTitle*)
+    if !hwnd {
         return
     }
 
-    ; Check if the active window is already maximized
-    if (WinGetMinMax(hwnd))
-    {
-      WinRestore(hwnd) ; Restore the window if already maximized
+    currentState := WinGetMinMax(hwnd)
+    taskbarIsAutoHidden := IsTaskbarAutoHidden()
+
+    if currentState != 1 {
+        ; Case 1: Not maximized → maximize
+        WinMaximize(hwnd)
+    } else if !taskbarIsAutoHidden {
+        ; Case 2: Maximized but taskbar is not auto-hidden → enable auto-hide
+        AUTOHIDETaskbar(true)
+    } else {
+        ; Case 3: Maximized and taskbar is auto-hidden → restore and disable auto-hide
+        WinRestore(hwnd)
+        AUTOHIDETaskbar(false)
     }
-    else
-    {
-      WinMaximize(hwnd)
+}
+
+IsTaskbarAutoHidden() {
+    static ABM_GETSTATE := 0x00000004
+    APPBARDATA := Buffer(size := 2 * A_PtrSize + 2 * 4 + 16 + A_PtrSize, 0)
+    NumPut("UInt", size, APPBARDATA)
+    state := DllCall("Shell32\SHAppBarMessage", "UInt", ABM_GETSTATE, "Ptr", APPBARDATA)
+    return (state & 0x1) != 0  ; ABS_AUTOHIDE
+}
+
+AUTOHIDETaskbar(enable := -1) {
+    static ABM_GETSTATE := 0x00000004
+    static ABM_SETSTATE := 0x0000000A
+    static ABS_AUTOHIDE := 0x1
+    static ABS_ALWAYSONTOP := 0x2
+
+    APPBARDATA := Buffer(size := 2 * A_PtrSize + 2 * 4 + 16 + A_PtrSize, 0)
+    NumPut("UInt", size, APPBARDATA)
+
+    currentState := DllCall("Shell32\SHAppBarMessage", "UInt", ABM_GETSTATE, "Ptr", APPBARDATA)
+
+    if (enable == -1 || (enable && (currentState & ABS_AUTOHIDE)) || (!enable && !(currentState & ABS_AUTOHIDE))) {
+        return  ; No change needed
     }
+
+    newState := (currentState ^ ABS_AUTOHIDE) | ABS_ALWAYSONTOP
+    NumPut("UInt", newState, APPBARDATA, size - A_PtrSize)
+
+    return DllCall("Shell32\SHAppBarMessage", "UInt", ABM_SETSTATE, "Ptr", APPBARDATA)
 }
 
 ; Close active window
