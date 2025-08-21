@@ -10,10 +10,10 @@ require(filepath .. "lua_lsp")
 -- require(filepath .. "go_lsp")
 
 -- Web Language Server
-require(filepath .. "web_lsp")
+-- require(filepath .. "web_lsp")
 
 -- TailwindCSS Language Server
-require(filepath .. "tailwindcss_lsp")
+-- require(filepath .. "tailwindcss_lsp")
 
 -- Docker Language Server
 -- require(filepath .. "docker_lsp")
@@ -34,10 +34,13 @@ require(filepath .. "tailwindcss_lsp")
 -- require(filepath .. "php_lsp")
 
 -- Python Language Server
--- require(filepath .. "python_lsp")
+require(filepath .. "python_lsp")
 
 -- SQL Language Server
 -- require(filepath .. "sql_lsp")
 
 -- GitHub Actions Language Server
 -- require(filepath .. "github_actions_lsp")
+
+-- GLSL Language Server
+-- require(filepath .. "glsl_lsp")

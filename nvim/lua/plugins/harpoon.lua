@@ -7,7 +7,7 @@ return {
   },
   keys = {
     { "M",          function() require("config.harpoon").toggle_mark_and_shift() end,                  desc = "Toggle Harpoon Mark" },
-    { "<leader>mm", function() require("harpoon.ui"):toggle_quick_menu(require("harpoon"):list()) end, desc = "Harpoon Quick Menu" },
+    { "<leader>mm", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = "Harpoon Quick Menu" },
 
     { "<leader>1",  function() require("config.harpoon").select_index(1) end },
     { "<leader>2",  function() require("config.harpoon").select_index(2) end },
