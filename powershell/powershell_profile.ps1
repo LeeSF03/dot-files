@@ -16,7 +16,14 @@ function Save-SecureApiKey {
     try {
         $secureApiKey = $ApiKey | ConvertTo-SecureString -AsPlainText -Force
         $encrypted = $secureApiKey | ConvertFrom-SecureString
-        Set-Content -Path $FilePath -Value $encrypted -Force
+
+        $Directory = [System.IO.Path]::GetDirectoryName($FilePath)
+
+        if (-not (Test-Path -Path $Directory)) {
+            New-Item -ItemType Directory -Path $Directory -Force
+        }
+
+        Set-Content -Path "$env:USERPROFILE\.pass\$FilePath" -Value $encrypted -Force
         Write-Host "API key encrypted and saved to $FilePath"
     }
     catch {
@@ -47,14 +54,15 @@ function Get-SecureKey {
     }
 }
 
-# Env vars for avante
+# Env vars for ai models
 $Env:GEMINI_API_KEY = Get-SecureKey -KeyPath "$env:USERPROFILE\.pass\google\gemini_api_key.txt"
 $Env:GOOGLE_SEARCH_API_KEY = Get-SecureKey -KeyPath "$env:USERPROFILE\.pass\google\google_search_api_key.txt"
 $Env:GOOGLE_SEARCH_ENGINE_ID = Get-SecureKey -KeyPath "$env:USERPROFILE\.pass\google\google_search_engine_id.txt"
+$Env:CLAUDE_API_KEY = Get-SecureKey -KeyPath "$env:USERPROFILE\.pass\anthropic\claude_api_key.txt"
 
 # Env vars for yazi
-$Env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
-$Env:YAZI_CONFIG_HOME = "$env:USERPROFILE\.config\yazi"
+$Env:YAZI_FILE_ONE = 'C:\Program Files\Git\usr\bin\file.exe'
+$Env:YAZI_CONFIG_HOME = 'C:\Users\shuen\.config\yazi'
 
 # Env vars for fzf
 $ENV:FZF_DEFAULT_COMMAND = 'fd --type file --hidden --exclude .git --no-ignore'
@@ -71,11 +79,11 @@ $ENV:FZF_DEFAULT_OPTS = @"
 "@
 
 # Env vars for bat
-$Env:BAT_CONFIG_PATH = "$env:USERPROFILE\.config\bat\bat.conf"
-$Env:BAT_CONFIG_DIR = "$env:USERPROFILE\.config\bat"
+$Env:BAT_CONFIG_PATH = 'C:\Users\shuen\.config\bat\bat.conf'
+$Env:BAT_CONFIG_DIR = 'C:\Users\shuen\.config\bat'
 
 # Env vars for eza
-$Env:EZA_CONFIG_DIR = "$env:USERPROFILE\.config\eza"
+$Env:EZA_CONFIG_DIR = 'C:\Users\shuen\.config\eza'
 
 # Env vars for zoxide
 $Env:_ZO_ECHO = 1
@@ -98,10 +106,10 @@ $Env:_ZO_FZF_OPTS = @"
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 # Env vars for lazygit
-$Env:CONFIG_DIR = "$env:USERPROFILE\.config\lazygit"
+$Env:CONFIG_DIR = "C:\Users\shuen\.config\lazygit"
 
 # Env vars for glazewm config path
-$Env:GLAZEWM_CONFIG_DIR = "$env:USERPROFILE\.config\glazewm\config.yaml"
+$Env:GLAZEWM_CONFIG_DIR = "C:\Users\shuen\.config\glazewm\config.yaml"
 
 # Set-Alias
 Set-Alias cat bat
@@ -181,7 +189,6 @@ agent  Valorant agent name
     --logo-padding-right 3 --logo-padding-top 4 --logo-padding-left 3
 }
 
-
 # Functions alias for fzf integraion with vscode and yazi
 function fz {
   param (
@@ -224,6 +231,35 @@ Usage: fz [-y] [-c] [-b] [-h]
   }
 }
 
+# Functions alias for fzf integration with ripgrep and vscode
+function frg {
+  param (
+    [switch]$h
+  )
+  if ($h) {
+    Write-Output "
+Usage: frg <search term> [-h]
+-h     Show help
+"
+    return
+  }
+
+  $search = $args[0]
+  if (!$search) {
+    $search = ""
+  }
+  $rg_prefix = "rg --column --line-number --no-heading --color=always --smart-case "
+  fzf --ansi `
+    --color "hl:-1,hl+:-1:reverse" `
+    --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" `
+    --bind "start:reload:$rg_prefix || true" `
+    --bind "change:reload:$rg_prefix {q} || true" `
+    --bind "enter:become(code -g {1}:{2})" `
+    --delimiter : `
+    --preview "bat --color always {1} --theme=CatppuccinMocha --highlight-line {2}" `
+    --preview-window '+{2}+3/3,~3'
+}
+
 function lg {
   lazygit $args
 }
@@ -236,14 +272,6 @@ function clk {
   tml clock -s false -d true --color=$color
 }
 
-# Functions alias for sptlrx
-function lrx {
-  $colors = @("#7287fd", "#94e2d5", "#a6e3a1", "#b4befe", "#f9e2af", "#eba0ac", "#f5c2e7", "#cba6f7")
-  $color = $colors | Get-Random
-
-  sptlrx --current "bold,underline,$color" --before "faint,$color" --after "104,faint"
-}
-
 # Functions alias for onefetch
 function gitfetch {
   onefetch --text-colors 4 5 7 5 7 7 --no-color-palette --nerd-fonts $args
@@ -251,11 +279,6 @@ function gitfetch {
 
 function gf {
   gitfetch
-}
-
-#Functions for spotify_player
-function sply {
-  spotify_player $args
 }
 
 #Functions for git log --all --decorate --oneline --graph
@@ -267,11 +290,12 @@ function hlq {
   harlequin --theme catppuccin-mocha
 }
 
+#Functions for spotify_player
 function spot {
   spotify_player
 }
 
-#Functions for Get-Command
+# #Functions for Get-Command
 function which {
   param (
     [switch]$f,
@@ -284,6 +308,10 @@ Usage: which [-f] <command>
 -f     Show full command
 -h     Show help
 "
+    return
+  }
+  if ($args.Count -eq 0) {
+    Write-Output "Usage: which [-f] <command>"
     return
   }
 
@@ -301,11 +329,6 @@ Usage: which [-f] <command>
   }
 }
 
-# Functions for launching hoyoplay
-function hoyo {
-  & "C:\Program Files\HoYoPlay\launcher.exe"
-}
-
 # Functions for launching RecycleBinFolder
 function trash {
   start shell:RecycleBinFolder
@@ -317,7 +340,7 @@ function docker-desktop {
 }
 
 # Initialize oh-my-posh
-oh-my-posh init pwsh --config "$env:USERPROFILE\.config\oh-my-posh\themes\catppuccin_mocha.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "C:\Users\shuen\.config\oh-my-posh\themes\catppuccin_mocha.omp.json" | Invoke-Expression
 
 # Initialize zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })

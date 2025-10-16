@@ -41,7 +41,6 @@ blink.setup({
 			},
 		},
 	},
-	-- experimental signature help support
 	signature = {
 		enabled = true,
 		window = {
@@ -49,13 +48,13 @@ blink.setup({
 		},
 	},
 	sources = {
-		default = { "lsp", "path", "snippets", "buffer", "markdown" },
-		-- default = { "lsp", "path", "snippets", "buffer", "copilot", "markdown" },
+		-- default = { "lsp", "path", "snippets", "buffer", "markdown" },
+		default = { "lsp", "path", "snippets", "buffer", "copilot", "markdown" },
 		per_filetype = {
 			sql = { "snippets", "dadbod", "buffer", "lsp" },
 			-- markdown = { "markdown", "snippets", "buffer" },
 			markdown = { "markdown", "snippets", "buffer", "copilot" },
-			codecompanion = { "codecompanion" },
+			-- codecompanion = { "codecompanion" },
 		},
 		providers = {
 			copilot = {

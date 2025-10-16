@@ -184,13 +184,13 @@ config.colors = {
 local tab_min_width = 11
 
 -- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_right_half_circle_thick
--- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_lower_left_triangle
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
+-- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_lower_left_triangle
 -- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 -- local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_left_half_circle_thick
--- local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_upper_right_triangle
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
+-- local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_upper_right_triangle
 -- local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local color = catppuccin_colors[tab.tab_index % #catppuccin_colors + 1]
@@ -243,7 +243,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Text = SOLID_LEFT_ARROW },
 		{ Background = { Color = bg } },
 		{ Foreground = { Color = fg } },
-		{ Text = " [" .. tab.tab_index + 1 .. "] " .. title .. " " },
+		-- { Text = " [" .. tab.tab_index + 1 .. "] " .. title .. " " },
+		{ Text = " " .. title .. " " },
 		{ Background = { Color = right_arrow_bg } },
 		{ Foreground = { Color = right_arrow_fg } },
 		{ Text = SOLID_RIGHT_ARROW },
@@ -442,6 +443,11 @@ config.keys = { -- This will create a new split and run the `top` program inside
 	-- Disable Ctrl+Shift+Tab
 	{
 		key = "Tab",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "T",
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.DisableDefaultAssignment,
 	},

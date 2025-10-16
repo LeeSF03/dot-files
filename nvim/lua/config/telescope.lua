@@ -9,6 +9,12 @@ vim.keymap.set('n', '<leader>fm', "<CMD>Telescope marks mark_type=local<CR>", { 
 vim.keymap.set('n', '<leader>fd', "<CMD>Telescope diagnostics<CR>", { desc = 'Telescope find diagnostics' })
 vim.keymap.set('n', '<leader>ft', "<CMD>TodoTelescope<CR>", { desc = 'Telescope find todos' })
 
+vim.api.nvim_set_hl(0, 'TelescopeTitle', { bg = '#1e1e2e' })
+vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = '#1e1e2e' })
+vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = '#1e1e2e' })
+vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = '#1e1e2e' })
+vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = '#1e1e2e', fg = '#89b4fa' })
+
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 telescope.setup {
