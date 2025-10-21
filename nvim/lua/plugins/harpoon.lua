@@ -1,10 +1,14 @@
 return {
-  "ThePrimeagen/harpoon",
-  branch = "harpoon2",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    'nvim-telescope/telescope.nvim'
-  },
+	"ThePrimeagen/harpoon",
+	branch = "harpoon2",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope.nvim",
+	},
+	init = function()
+		require("config.harpoon").setup_autocmd()
+	end,
+  -- stylua: ignore
   keys = {
     { "M",          function() require("config.harpoon").toggle_mark_and_shift() end,                  desc = "Toggle Harpoon Mark" },
     { "<leader>mm", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = "Harpoon Quick Menu" },

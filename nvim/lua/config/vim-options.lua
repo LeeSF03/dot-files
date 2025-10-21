@@ -15,15 +15,11 @@ vim.cmd("set spelllang=en_us")
 vim.cmd("set guicursor=n-v-c-i:block")
 vim.cmd("packadd cfilter")
 vim.cmd("set shortmess+=S")
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
--- vim.o.shell = "C:\\Users\\shuen\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe"
--- vim.o.shell = "pwsh.exe"
--- vim.opt.shellcmdflag = "-NoLogo -Command"
--- vim.opt.shellquote = ""
--- vim.opt.shellxquote = ""
-
-if vim.fn.has('nvim') == 1 and vim.fn.executable('nvr') == 1 then
-  vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+if vim.fn.has("nvim") == 1 and vim.fn.executable("nvr") == 1 then
+	vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
 end
 
 -- Diagnostic settings
@@ -35,18 +31,18 @@ local agrp = vim.api.nvim_create_augroup
 
 -- Function definitions
 local function set_filetype(pattern, filetype)
-  acmd({ "BufRead", "BufNewFile" }, {
-    pattern = pattern,
-    command = "set filetype=" .. filetype,
-  })
+	acmd({ "BufRead", "BufNewFile" }, {
+		pattern = pattern,
+		command = "set filetype=" .. filetype,
+	})
 end
 
 local del_qf_item = function()
-  local items = vim.fn.getqflist()
-  local line = vim.fn.line('.')
-  table.remove(items, line)
-  vim.fn.setqflist(items, "r")
-  vim.api.nvim_win_set_cursor(0, { line, 0 })
+	local items = vim.fn.getqflist()
+	local line = vim.fn.line(".")
+	table.remove(items, line)
+	vim.fn.setqflist(items, "r")
+	vim.api.nvim_win_set_cursor(0, { line, 0 })
 end
 
 -- Function initialization
@@ -62,37 +58,37 @@ local wezterm_title_grp = agrp("WezTermTitle", { clear = true })
 local qf_grp = agrp("Quickfix Customs", { clear = true })
 
 acmd({ "BufEnter" }, {
-  group = wezterm_title_grp,
-  callback = function(event)
-    local title = "nvim"
-    if event.file ~= "" then
-      title = string.format("nvim • %s", vim.fs.basename(event.file))
-    end
+	group = wezterm_title_grp,
+	callback = function(event)
+		local title = "nvim"
+		if event.file ~= "" then
+			title = string.format("nvim • %s", vim.fs.basename(event.file))
+		end
 
-    vim.fn.system({ "wezterm", "cli", "set-tab-title", title })
-  end,
+		vim.fn.system({ "wezterm", "cli", "set-tab-title", title })
+	end,
 })
 acmd({ "VimLeave", "VimLeavePre" }, {
-  group = wezterm_title_grp,
-  callback = function()
-    vim.fn.system({ "wezterm", "cli", "set-tab-title", "pwsh.exe" })
-  end,
+	group = wezterm_title_grp,
+	callback = function()
+		vim.fn.system({ "wezterm", "cli", "set-tab-title", "pwsh.exe" })
+	end,
 })
 
 acmd("VimEnter", {
-  callback = function()
-    -- To fix issue with lualine across windows
-    vim.o.laststatus = 3
-  end
+	callback = function()
+		-- To fix issue with lualine across windows
+		vim.o.laststatus = 3
+	end,
 })
 
-acmd('FileType', {
-  group = qf_grp,
-  pattern = 'qf',
-  callback = function()
-    -- `dd` deletes an item from the list.
-    vim.keymap.set('n', 'dd', del_qf_item, { buffer = true })
-    vim.keymap.set('x', 'd', del_qf_item, { buffer = true })
-  end,
-  desc = 'Quickfix Delete Item',
+acmd("FileType", {
+	group = qf_grp,
+	pattern = "qf",
+	callback = function()
+		-- `dd` deletes an item from the list.
+		vim.keymap.set("n", "dd", del_qf_item, { buffer = true })
+		vim.keymap.set("x", "d", del_qf_item, { buffer = true })
+	end,
+	desc = "Quickfix Delete Item",
 })
