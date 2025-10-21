@@ -83,22 +83,6 @@ local process_icons = {
 	["node"] = wezterm.nerdfonts.dev_nodejs_small,
 	["dotnet"] = wezterm.nerdfonts.md_language_csharp,
 }
---
--- Functions
-local function basename(s)
-	return string.gsub(s, "(.*[/\\])(.*)", "%2")
-end
-
-local function tab_title(tab_info)
-	local title = tab_info.tab_title
-	-- if the tab title is explicitly set, take that
-	if title and #title > 0 then
-		return title
-	end
-	-- Otherwise, use the title from the active pane
-	-- in that tab
-	return basename(tab_info.active_pane.title)
-end
 
 -- This table will hold the configuration.
 local config = {}
@@ -182,23 +166,38 @@ config.colors = {
 }
 
 local tab_min_width = 11
+local function basename(s)
+	local result = string.gsub(s, "(.*[/\\])(.*)", "%2")
+	-- local result = string.gsub(s, "(.*[/\\])(.*)", "")
+	return result
+end
 
--- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_right_half_circle_thick
+local function tab_title(tab)
+	-- local title = tab_info.tab_title
+	local title = tab.active_pane.title
+
+	-- Try to get the current foreground process name
+	local process_name = tab.active_pane.foreground_process_name
+	if process_name then
+		title = process_name
+	end
+
+	title = basename(title)
+
+	if title and #title > 0 then
+		return title
+	end
+
+	return basename(tab.tab_title)
+end
+
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
--- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_lower_left_triangle
--- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
-
--- local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_left_half_circle_thick
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
--- local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_upper_right_triangle
--- local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local color = catppuccin_colors[tab.tab_index % #catppuccin_colors + 1]
 
 	local title = tab_title(tab)
 	local title_len = string.len(title)
-	-- local pane = tab.active_pane
-	-- local title = basename(pane.foreground_process_name)
 	local bg = color
 	local fg = "#1E1E2E"
 	local right_arrow_bg = tab_bar_bg
@@ -249,14 +248,6 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Foreground = { Color = right_arrow_fg } },
 		{ Text = SOLID_RIGHT_ARROW },
 	}
-end)
-
-wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
-	-- local title = tab_title(tab)
-	--
-	-- return title
-
-	return "WezTerm"
 end)
 
 -- Panes

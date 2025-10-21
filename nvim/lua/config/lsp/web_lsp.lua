@@ -1,5 +1,4 @@
 vim.lsp.config("ts_ls", {
-	init_options = { hostInfo = "neovim" },
 	cmd = { "typescript-language-server", "--stdio" },
 	filetypes = {
 		"javascript",
@@ -10,6 +9,13 @@ vim.lsp.config("ts_ls", {
 		"typescript.tsx",
 	},
 	root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+	init_options = {
+		hostInfo = "neovim",
+		preferences = {
+			importModuleSpecifierPreference = "non-relative",
+			importModuleSpecifierEnding = "minimal",
+		},
+	},
 	handlers = {
 		-- handle rename request for certain code actions like extracting functions / types
 		["_typescript.rename"] = function(_, result, ctx)

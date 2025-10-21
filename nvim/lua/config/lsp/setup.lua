@@ -15,8 +15,9 @@ mason.setup({
 masontoolinstaller.setup({
 	ensure_installed = {
 		-- web
-		"prettier",
-		"prettierd",
+    -- use bun installed instead for prettier and prettierd
+		-- "prettier",
+		-- "prettierd",
 		"eslint_d",
 
 		-- golang
