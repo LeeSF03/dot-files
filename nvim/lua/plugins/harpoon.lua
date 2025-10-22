@@ -3,9 +3,10 @@ return {
 	branch = "harpoon2",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope.nvim",
+		-- "nvim-telescope/telescope.nvim",
 	},
-	init = function()
+	event = "VeryLazy",
+	config = function()
 		require("config.harpoon").setup_autocmd()
 	end,
   -- stylua: ignore

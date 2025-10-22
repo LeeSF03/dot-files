@@ -8,6 +8,7 @@ return {
 			-- Available formatters: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
 			formatters_by_ft = {
 				-- INFO: restart prettierd if there was an error that is not caused by the config
+
 				-- web
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettierd", "prettier", stop_after_first = true },

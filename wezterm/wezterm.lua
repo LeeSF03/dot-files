@@ -193,8 +193,15 @@ end
 
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
+local tab_colors = {}
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local color = catppuccin_colors[tab.tab_index % #catppuccin_colors + 1]
+	if not tab_colors[tab.tab_id] then
+		math.randomseed(os.time() + tab.tab_id)
+		tab_colors[tab.tab_id] = catppuccin_colors[math.random(#catppuccin_colors)]
+	end
+
+	local color = tab_colors[tab.tab_id]
+	-- local color = catppuccin_colors[tab.tab_index % #catppuccin_colors + 1]
 
 	local title = tab_title(tab)
 	local title_len = string.len(title)

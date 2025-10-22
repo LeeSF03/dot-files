@@ -119,10 +119,10 @@ window_rules:
         window_title: { regex: ".*? - Peek" }
       - window_process: { equals: "Lively" }
         window_class: { regex: "HwndWrapper" }
+      - window_title: { regex: "Sticky Notes" }
 
   - commands: ["set-floating"]
     match:
-      - window_title: { regex: "OneNote" }
       - window_title: { regex: "^Android Emulator.*" }
 
   - commands: ["set-floating --centered"]
@@ -134,12 +134,7 @@ window_rules:
       - window_process: { equals: "Discord" }
       - window_process: { equals: "Photos" }
       - window_title: { regex: "WhatsApp" }
-      # - window_title: { regex: "WezTerm" }
-      # - window_process: { equals: "Flow.Launcher" }
-      #   window_title: { equals: "Settings" }
-      # - window_process: { regex: "OneNote" }
-      # - window_title: { regex: "Microsoft OneNote" }
-      # - window_title: { regex: "Sticky Notes" }
+      - window_title: { equals: "Settings" }
 
 binding_modes:
   # When enabled, all keybindings are disabled except for alt+shift+p which
@@ -262,8 +257,8 @@ keybindings:
     bindings: ["lwin+s"]
   - commands: ["toggle-floating"]
     bindings: ["lwin+i"]
-  - commands: ["toggle-tiling"]
-    bindings: ["lwin+t"]
+  # - commands: ["toggle-tiling"]
+  #   bindings: ["lwin+t"]
   - commands: ["toggle-minimized"]
     bindings: ["lwin+m"]
   - commands: ["toggle-fullscreen"]

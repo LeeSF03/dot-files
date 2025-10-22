@@ -187,7 +187,7 @@ function M.setup_autocmd()
 	local group = vim.api.nvim_create_augroup("HarpoonMaintain", { clear = true })
 
 	-- Clean up non-existent files
-	vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter", "BufDelete", "BufFilePost", "FocusGained" }, {
+	vim.api.nvim_create_autocmd({ "BufEnter", "BufDelete", "BufFilePost", "FocusGained" }, {
 		group = group,
 		callback = function()
 			clean_nonexistent_marks()
