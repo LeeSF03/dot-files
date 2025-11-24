@@ -30,13 +30,6 @@ telescope.setup({
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 		layout_startegy = "horizontal",
-		-- file_ignore_patterns = {
-		--   "node_modules",
-		--   ".git/*",
-		--   "%.venv",
-		--   "%venv",
-		--   "%.next",
-		-- },
 		layout_config = {
 			center = {
 				height = 0.80,

@@ -50,6 +50,10 @@ set_filetype({ "docker-compose.*.yml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.*.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 set_filetype({ "docker-compose.yml" }, "yaml.docker-compose")
+set_filetype({ "compose.*.yml" }, "yaml.docker-compose")
+set_filetype({ "compose.*.yaml" }, "yaml.docker-compose")
+set_filetype({ "compose.yaml" }, "yaml.docker-compose")
+set_filetype({ "compose.yml" }, "yaml.docker-compose")
 set_filetype({ "*.xaml" }, "xml")
 set_filetype({ "*.xml" }, "xml")
 
@@ -92,3 +96,40 @@ acmd("FileType", {
 	end,
 	desc = "Quickfix Delete Item",
 })
+
+-- -- Define colors for each mode
+-- local mode_colors = {
+-- 	n = "#89b4fa", -- Normal
+-- 	i = "#a6e3a1", -- Insert
+-- 	v = "#cba6f7", -- Visual
+-- 	V = "#cba6f7", -- Visual Line
+-- 	["\22"] = "#cba6f7", -- Visual Block (Ctrl+v)
+-- 	c = "#fab387", -- Command
+-- }
+--
+-- -- Helper: async call to WezTerm CLI to change tab color
+-- local function set_wezterm_color(color)
+-- 	vim.fn.jobstart({ "wezterm", "cli", "set-tab-color", "--background", color }, { detach = true })
+-- end
+--
+-- -- Autocmd group
+-- local group = agrp("ModeAppearance", { clear = true })
+--
+-- -- Single ModeChanged autocmd
+-- acmd("ModeChanged", {
+-- 	group = group,
+-- 	callback = function(event)
+-- 		local new_mode = event.match:sub(-1)
+-- 		local color = mode_colors[new_mode] or mode_colors.n
+--
+-- 		-- Update tab color
+-- 		set_wezterm_color(color)
+--
+-- 		-- Toggle relative number depending on insert mode
+-- 		if new_mode == "i" then
+-- 			vim.opt.relativenumber = false
+-- 		else
+-- 			vim.opt.relativenumber = true
+-- 		end
+-- 	end,
+-- })

@@ -32,27 +32,35 @@ wezterm.on("center-window", function(window, pane)
 	window:set_inner_size(812, 511)
 end)
 
-wezterm.on("gui-startup", function(cmd) -- set startup Window position
+wezterm.on("gui-startup", function(cmd)
 	local screens = wezterm.gui.screens()
 
+	-- safely extract cwd and env
+	local cwd = cmd and cmd.cwd or nil
+	local env = cmd and cmd.set_environment_variables or nil
+
+	local position
 	if screens.virtual_width > 1920 then
-		local tab, pane, window = mux.spawn_window({
-			position = {
-				x = 2466,
-				y = 232,
-				width = 80,
-				-- height = 35,
-				height = 25,
-			},
-		})
-	else
-		local tab, pane, window = mux.spawn_window({
-			position = { x = 546, y = 232 },
+		position = {
+			x = 2466,
+			y = 232,
 			width = 80,
-			-- height = 35,
 			height = 25,
-		})
+		}
+	else
+		position = {
+			x = 546,
+			y = 232,
+			width = 80,
+			height = 25,
+		}
 	end
+
+	local tab, pane, window = mux.spawn_window({
+		position = position,
+		cwd = cwd,
+		set_environment_variables = env,
+	})
 end)
 
 local process_icons = {
