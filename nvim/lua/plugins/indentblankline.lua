@@ -5,7 +5,7 @@ return {
       char = "│",
     },
     exclude = {
-      filetypes = { 'help', 'lazy', 'nvimtree', 'dashboard', 'oil' },
+      filetypes = { 'help', 'lazy', 'undotree', 'nvimtree', 'dashboard', 'oil' },
       buftypes = { 'terminal', 'nofile', 'quickfix' },
     },
   },

@@ -52,6 +52,9 @@ return {
 			end,
 		},
 	},
+	confirmation = {
+		border = "rounded",
+	},
 	event = {
 		"VimEnter */*,.*",
 		"BufNew */*,.*",

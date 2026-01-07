@@ -44,3 +44,6 @@ require(filepath .. "python_lsp")
 
 -- GLSL Language Server
 -- require(filepath .. "glsl_lsp")
+
+-- WGSL Language Server
+require(filepath .. "wgsl_lsp")

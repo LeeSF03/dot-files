@@ -1,4 +1,8 @@
 local builtin = require("telescope.builtin")
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+
+-- stylua: ignore start
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
@@ -8,9 +12,8 @@ vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Telescope find gi
 vim.keymap.set("n", "<leader>fm", "<CMD>Telescope marks mark_type=local<CR>", { desc = "Telescope find marks" })
 vim.keymap.set("n", "<leader>fd", "<CMD>Telescope diagnostics<CR>", { desc = "Telescope find diagnostics" })
 vim.keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>", { desc = "Telescope find todos" })
+-- stylua: ignore end
 
-local telescope = require("telescope")
-local actions = require("telescope.actions")
 telescope.setup({
 	pickers = {
 		find_files = {

@@ -1,0 +1,11 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    { "name": "@theme" },
+    { "name": "@import" },
+    { "name": "@source" },
+    { "name": "@utility" },
+    { "name": "@variant" },
+    { "name": "@custom-variant" }
+  ]
+}

@@ -51,7 +51,7 @@ blink.setup({
 		-- default = { "lsp", "path", "snippets", "buffer", "markdown" },
 		default = { "lsp", "path", "snippets", "buffer", "copilot", "markdown" },
 		per_filetype = {
-			sql = { "snippets", "dadbod", "buffer", "lsp" },
+			-- sql = { "snippets", "dadbod", "buffer", "lsp" },
 			-- markdown = { "markdown", "snippets", "buffer" },
 			markdown = { "markdown", "snippets", "buffer", "copilot" },
 			-- codecompanion = { "codecompanion" },

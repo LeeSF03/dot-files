@@ -26,6 +26,7 @@ vim.lsp.config("dockerls", {
 	filetypes = { "dockerfile" },
 	root_markers = { "Dockerfile" },
 })
+vim.lsp.enable("dockerls")
 
 ---@brief
 ---
@@ -44,3 +45,4 @@ vim.lsp.config("docker_compose_language_service", {
 	filetypes = { "yaml.docker-compose" },
 	root_markers = { "docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml" },
 })
+vim.lsp.enable("docker_compose_language_service")
