@@ -5,7 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		-- "nvim-telescope/telescope.nvim",
 	},
-	event = "VeryLazy",
+	-- event = "VeryLazy",
 	config = function()
 		require("config.harpoon").setup_autocmd()
 	end,

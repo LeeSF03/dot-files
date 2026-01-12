@@ -8,6 +8,14 @@ return {
 		require("telescope").load_extension("git_worktree")
 		local Worktree = require("git-worktree")
 
+		local os_name = vim.loop.os_uname().sysname
+		if os_name ~= "Windows_NT" then
+			Worktree.setup({
+				update_on_change_command = "",
+			})
+			return
+		end
+
 		Worktree.on_tree_change(function(op, metadata)
 			if op == Worktree.Operations.Switch then
 				local current_buf = vim.api.nvim_buf_get_name(0)
@@ -51,16 +59,14 @@ return {
 					vim.schedule(function()
 						vim.cmd("cd " .. new_root)
 						vim.cmd("e " .. vim.fn.fnameescape(new_file_path))
-
-						-- Force lualine refresh to update Harpoon status
-						pcall(function()
-							require("lualine").refresh()
-						end)
 					end)
 				else
 					vim.schedule(function()
 						vim.cmd("cd " .. new_root)
-						vim.notify("File not found in new worktree: " .. new_file_path, vim.log.levels.WARN)
+						vim.notify(
+							"Worktree switched. File not found in new worktree: " .. new_file_path,
+							vim.log.levels.WARN
+						)
 					end)
 				end
 			end
@@ -73,7 +79,7 @@ return {
 	keys = {
     -- stylua: ignore start
     {"<leader>ww", function() require("telescope").extensions.git_worktree.git_worktrees() end, desc = "Manage Git Worktrees"},
-    {"<leader>wc", function() require("telescope").extensions.git_worktree.create_git_worktree() end, desc = "Create Git Worktree"},
+		-- {"<leader>wc", function() require("telescope").extensions.git_worktree.create_git_worktree() end, desc = "Create Git Worktree"},
 		-- stylua: ignore end
 	},
 }

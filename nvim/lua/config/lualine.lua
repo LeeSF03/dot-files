@@ -20,7 +20,8 @@ end
 local modify_harpooned_buffer_title = function(file_path, idx)
 	local filename = vim.fn.fnamemodify(file_path, ":t")
 	local idx_str = string.format("%d:", idx)
-	local title = " " .. idx_str .. filename
+	-- local title = " " .. idx_str .. filename
+	local title = idx_str .. filename
 
 	local bufnr = vim.fn.bufnr(file_path, false)
 	local is_modified = bufnr ~= -1 and vim.bo[bufnr].modified or false
@@ -41,10 +42,18 @@ local function is_index_has_file(index)
 end
 
 local function harpooned_file_status(index)
-	local current_file = vim.fn.expand("%:p"):gsub("\\", "/")
+	local current_file = vim.fn.expand("%:p")
+	local is_window = vim.loop.os_uname().sysname == "Windows_NT"
+	if is_window then
+		current_file = current_file:gsub("\\", "/")
+	end
 
 	local file = harpoon:list():get(index)
-	local file_path = vim.fn.fnamemodify(file.value, ":p"):gsub("\\", "/")
+	local file_path = vim.fn.fnamemodify(file.value, ":p")
+	if is_window then
+		file_path = file_path:gsub("\\", "/")
+	end
+
 	local title = modify_harpooned_buffer_title(file_path, index)
 
 	if file_path == current_file then
@@ -62,21 +71,36 @@ local function harpooned_file_status(index)
 end
 
 local function harpoon_color(index)
-	local current_file_path = vim.fn.expand("%:p"):gsub("\\", "/")
+	local current_file_path = vim.fn.expand("%:p")
+	local is_window = vim.loop.os_uname().sysname == "Windows_NT"
+	if is_window then
+		current_file_path = current_file_path:gsub("\\", "/")
+	end
+
 	local file = harpoon:list():get(index)
 	if not file then
 		return nil
 	end
-	local harpooned_file_path = vim.fn.fnamemodify(file.value, ":p"):gsub("\\", "/")
+	local harpooned_file_path = vim.fn.fnamemodify(file.value, ":p")
+	if is_window then
+		harpooned_file_path = harpooned_file_path:gsub("\\", "/")
+	end
 	return (harpooned_file_path == current_file_path) and { bg = get_mode_color(), fg = "#1e1e2e" }
 		or { bg = "#1e1e2e", fg = "#cdd6f4" }
 end
 
 local function is_current_file_not_harpooned()
-	local current_file = vim.fn.expand("%:p"):gsub("\\", "/")
+	local current_file = vim.fn.expand("%:p")
+	local is_window = vim.loop.os_uname().sysname == "Windows_NT"
+	if is_window then
+		current_file = current_file:gsub("\\", "/")
+	end
 
 	for _, file in ipairs(harpoon:list().items) do
-		local file_path = vim.fn.fnamemodify(file.value, ":p"):gsub("\\", "/")
+		local file_path = vim.fn.fnamemodify(file.value, ":p")
+		if is_window then
+			file_path = file_path:gsub("\\", "/")
+		end
 
 		if file_path == current_file then
 			return false
@@ -176,5 +200,5 @@ lualine.setup({
 			},
 		},
 	},
-	extensions = { "oil" },
+	-- extensions = { "oil" },
 })

@@ -74,9 +74,6 @@ function M.select_index(index)
 		if file_path == current_file then
 			harpoon:list():select(index)
 			vim.cmd("UfoEnableFold")
-			pcall(function()
-				require("lualine").refresh()
-			end)
 			return
 		end
 	end
@@ -89,9 +86,6 @@ function M.select_index(index)
 	else
 		harpoon:list():select(index)
 		vim.cmd("UfoEnableFold")
-		pcall(function()
-			require("lualine").refresh()
-		end)
 	end
 end
 
@@ -104,15 +98,9 @@ function M.select_next_harpooned_file()
 		if Path:new(mark.value):absolute() == current_path then
 			if i == #list.items then
 				list:select(1)
-				pcall(function()
-					require("lualine").refresh()
-				end)
 				vim.cmd("UfoEnableFold")
 			else
 				list:select(i + 1)
-				pcall(function()
-					require("lualine").refresh()
-				end)
 				vim.cmd("UfoEnableFold")
 			end
 			return
@@ -121,9 +109,6 @@ function M.select_next_harpooned_file()
 
 	if #list.items > 0 then
 		list:select(1)
-		pcall(function()
-			require("lualine").refresh()
-		end)
 		vim.cmd("UfoEnableFold")
 	end
 end
@@ -137,15 +122,9 @@ function M.select_previous_harpooned_file()
 		if Path:new(mark.value):absolute() == current_path then
 			if i == 1 then
 				list:select(#list.items)
-				pcall(function()
-					require("lualine").refresh()
-				end)
 				vim.cmd("UfoEnableFold")
 			else
 				list:select(i - 1)
-				pcall(function()
-					require("lualine").refresh()
-				end)
 				vim.cmd("UfoEnableFold")
 			end
 			return
@@ -154,9 +133,6 @@ function M.select_previous_harpooned_file()
 
 	if #list.items > 0 then
 		list:select(#list.items)
-		pcall(function()
-			require("lualine").refresh()
-		end)
 		vim.cmd("UfoEnableFold")
 	end
 end
