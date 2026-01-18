@@ -110,7 +110,7 @@
             "fetch_status": true,
             "fetch_upstream_icon": true,
             "no_commits_icon": "\uf0c3 ",
-            "rebase_icon": "\ue728 ",
+            "rebase_icon": "\ue348 ",
             "revert_icon": "\uf0e2 ",
             "tag_icon": "\uf412 "
           },

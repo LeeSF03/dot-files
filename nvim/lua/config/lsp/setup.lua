@@ -1,7 +1,6 @@
 local mason = require("mason")
 local masontoolinstaller = require("mason-tool-installer")
 local masonlsp = require("mason-lspconfig")
-local lspconfig = require("lspconfig")
 
 mason.setup({
 	ui = {
@@ -15,7 +14,7 @@ mason.setup({
 masontoolinstaller.setup({
 	ensure_installed = {
 		-- web
-    -- use bun installed instead for prettier and prettierd
+		-- use bun installed instead for prettier and prettierd
 		-- "prettier",
 		-- "prettierd",
 		"eslint_d",

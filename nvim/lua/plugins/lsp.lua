@@ -4,11 +4,12 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			require("config.lsp")
 		end,
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile" },
 		cmd = {
 			"MasonInstall",
 			"MasonUninstall",
@@ -19,7 +20,7 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	},
 	{

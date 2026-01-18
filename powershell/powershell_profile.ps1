@@ -165,7 +165,7 @@ agent  Valorant agent name
     Write-Output $helpMessage
     return
   }
-  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko", "vyse", "kayo", "skye", "waylay")
+  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko", "vyse", "kayo", "skye", "waylay", "breach", "veto")
 
   $logo_root = "$HOME\.config\fastfetch\images"
 

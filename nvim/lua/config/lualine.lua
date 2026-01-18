@@ -1,6 +1,8 @@
 local lualine = require("lualine")
 local harpoon = require("harpoon")
 
+local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+
 local mode_colors = {
 	["n"] = "#89b4fa", -- Normal (Blue)
 	["i"] = "#a6e3a1", -- Insert (Green)
@@ -43,14 +45,13 @@ end
 
 local function harpooned_file_status(index)
 	local current_file = vim.fn.expand("%:p")
-	local is_window = vim.loop.os_uname().sysname == "Windows_NT"
-	if is_window then
+	if is_windows then
 		current_file = current_file:gsub("\\", "/")
 	end
 
 	local file = harpoon:list():get(index)
 	local file_path = vim.fn.fnamemodify(file.value, ":p")
-	if is_window then
+	if is_windows then
 		file_path = file_path:gsub("\\", "/")
 	end
 
@@ -72,8 +73,7 @@ end
 
 local function harpoon_color(index)
 	local current_file_path = vim.fn.expand("%:p")
-	local is_window = vim.loop.os_uname().sysname == "Windows_NT"
-	if is_window then
+	if is_windows then
 		current_file_path = current_file_path:gsub("\\", "/")
 	end
 
@@ -82,7 +82,7 @@ local function harpoon_color(index)
 		return nil
 	end
 	local harpooned_file_path = vim.fn.fnamemodify(file.value, ":p")
-	if is_window then
+	if is_windows then
 		harpooned_file_path = harpooned_file_path:gsub("\\", "/")
 	end
 	return (harpooned_file_path == current_file_path) and { bg = get_mode_color(), fg = "#1e1e2e" }
@@ -91,14 +91,13 @@ end
 
 local function is_current_file_not_harpooned()
 	local current_file = vim.fn.expand("%:p")
-	local is_window = vim.loop.os_uname().sysname == "Windows_NT"
-	if is_window then
+	if is_windows then
 		current_file = current_file:gsub("\\", "/")
 	end
 
 	for _, file in ipairs(harpoon:list().items) do
 		local file_path = vim.fn.fnamemodify(file.value, ":p")
-		if is_window then
+		if is_windows then
 			file_path = file_path:gsub("\\", "/")
 		end
 
@@ -188,17 +187,17 @@ lualine.setup({
 		lualine_y = { 'os.date("%I:%M%p")' },
 		lualine_z = { "progress", "location" },
 	},
-	tabline = {
-		lualine_a = {
-			{
-				"tabs",
-				mode = 2,
-				tabs_color = {
-					active = { fg = "#1e1e2e", bg = "#89b4fa" },
-					inactive = { fg = "#89b4fa", bg = "#1e1e2e" },
-				},
-			},
-		},
-	},
+	-- tabline = {
+	-- 	lualine_a = {
+	-- 		{
+	-- 			"tabs",
+	-- 			mode = 2,
+	-- 			tabs_color = {
+	-- 				active = { fg = "#1e1e2e", bg = "#89b4fa" },
+	-- 				inactive = { fg = "#89b4fa", bg = "#1e1e2e" },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	-- extensions = { "oil" },
 })

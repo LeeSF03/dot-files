@@ -9,8 +9,8 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" 
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Telescope commands" })
 vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Telescope find git tracked files" })
-vim.keymap.set("n", "<leader>fm", "<CMD>Telescope marks mark_type=local<CR>", { desc = "Telescope find marks" })
-vim.keymap.set("n", "<leader>fd", "<CMD>Telescope diagnostics<CR>", { desc = "Telescope find diagnostics" })
+vim.keymap.set("n", "<leader>fm", function() builtin.marks({ mark_type = "local"}) end, { desc = "Telescope find marks" })
+vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope find diagnostics" })
 vim.keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>", { desc = "Telescope find todos" })
 -- stylua: ignore end
 
@@ -67,5 +67,3 @@ telescope.setup({
 		},
 	},
 })
-
-telescope.load_extension("ui-select")

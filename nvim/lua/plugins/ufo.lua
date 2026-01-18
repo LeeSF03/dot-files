@@ -9,9 +9,9 @@ return {
 		require("config.ufo")
 	end,
 	event = {
-		-- 'VeryLazy',
+		"VeryLazy",
 		-- 'BufReadPost',
-		"BufReadPre",
-		"BufNewFile",
+		-- "BufReadPre",
+		-- "BufNewFile",
 	},
 }
