@@ -201,15 +201,21 @@ end
 
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
-local tab_colors = {}
+-- local tab_colors = {}
+-- local tab_color = ""
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	if not tab_colors[tab.tab_id] then
-		math.randomseed(os.time() + tab.tab_id)
-		tab_colors[tab.tab_id] = catppuccin_colors[math.random(#catppuccin_colors)]
-	end
-
-	local color = tab_colors[tab.tab_id]
+	-- if not tab_colors[tab.tab_id] then
+	-- 	math.randomseed(os.time() + tab.tab_id)
+	-- 	tab_colors[tab.tab_id] = catppuccin_colors[math.random(#catppuccin_colors)]
+	-- end
 	-- local color = catppuccin_colors[tab.tab_index % #catppuccin_colors + 1]
+	-- if not tab_color == "" then
+	-- 	math.randomseed(os.time() + tab.tab_id)
+	-- 	tab_color = catppuccin_colors[math.random(#catppuccin_colors)]
+	-- end
+	-- local color = tab_colors[tab.tab_id]
+
+	local color = "#89b4fa"
 
 	local title = tab_title(tab)
 	local title_len = string.len(title)
@@ -263,6 +269,35 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Foreground = { Color = right_arrow_fg } },
 		{ Text = SOLID_RIGHT_ARROW },
 	}
+end)
+
+wezterm.on("update-right-status", function(window, pane)
+	local color = "#89b4fa"
+
+	local bg = color
+	local fg = "#1E1E2E"
+	local left_arrow_bg = tab_bar_bg
+	local left_arrow_fg = color
+	local date = wezterm.strftime("%a %_d/%b")
+	local time = wezterm.strftime("%I:%M%p")
+	local dir_bg = "#313244"
+	local dir_fg = "#89b4fa"
+
+	window:set_right_status(wezterm.format({
+		{ Background = { Color = left_arrow_bg } },
+		{ Foreground = { Color = dir_bg } },
+		{ Text = SOLID_LEFT_ARROW },
+		{ Background = { Color = dir_bg } },
+		{ Foreground = { Color = dir_fg } },
+		{ Text = " " .. date .. " " },
+
+		{ Background = { Color = dir_bg } },
+		{ Foreground = { Color = left_arrow_fg } },
+		{ Text = SOLID_LEFT_ARROW },
+		{ Background = { Color = bg } },
+		{ Foreground = { Color = fg } },
+		{ Text = " " .. time .. " " },
+	}))
 end)
 
 -- Panes

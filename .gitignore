@@ -9,3 +9,5 @@ github-copilot/*
 uv/*
 rive-api/*
 spotatio/*
+spotatui/*
+!spotatui/custom_config.yml

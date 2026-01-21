@@ -1,0 +1,36 @@
+keybindings: null
+behavior:
+  seek_milliseconds: 5000
+  volume_increment: 10
+  volume_percent: 100
+  tick_rate_milliseconds: 16
+  enable_text_emphasis: true
+  show_loading_indicator: true
+  enforce_wide_search_bar: true
+  enable_global_song_count: true
+  shuffle_enabled: true
+  liked_icon: 
+  shuffle_icon: 
+  repeat_track_icon: 󰑘
+  repeat_context_icon: 
+  playing_icon: 
+  paused_icon: 
+  set_window_title: true
+  visualizer_style: Equalizer
+theme:
+  active: 166, 227, 161
+  banner: 166, 227, 161
+  error_border: 243, 139, 168
+  error_text: 243, 139, 168
+  hint: 250, 179, 135
+  hovered: 137, 180, 250
+  inactive: 108, 112, 134
+  playbar_background: 30, 30, 46
+  playbar_progress: 166, 227, 161
+  playbar_progress_text: 88, 91, 112
+  playbar_text: 186, 194, 222
+  selected: 166, 227, 161
+  text: 205, 214, 244
+  background: Reset
+  header: 166, 227, 161
+  highlighted_lyrics: 166, 227, 161
