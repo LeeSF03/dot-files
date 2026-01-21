@@ -167,8 +167,8 @@ lualine.setup({
 		globalstatus = true,
 		refresh = {
 			statusline = 100,
-			tabline = 100,
-			winbar = 100,
+			-- tabline = 100,
+			-- winbar = 100,
 		},
 	},
 	sections = {
@@ -176,7 +176,8 @@ lualine.setup({
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = lualine_c,
 		lualine_x = { "copilot", "fileformat", "filetype" },
-		lualine_y = { 'os.date("%I:%M%p")' },
+		-- lualine_y = { 'os.date("%I:%M%p")' },
+		lualine_y = {},
 		lualine_z = { "progress", "location" },
 	},
 	inactive_sections = {
@@ -184,20 +185,8 @@ lualine.setup({
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = lualine_c,
 		lualine_x = { "copilot", "fileformat", "filetype" },
-		lualine_y = { 'os.date("%I:%M%p")' },
+		-- lualine_y = { 'os.date("%I:%M%p")' },
+		lualine_y = {},
 		lualine_z = { "progress", "location" },
 	},
-	-- tabline = {
-	-- 	lualine_a = {
-	-- 		{
-	-- 			"tabs",
-	-- 			mode = 2,
-	-- 			tabs_color = {
-	-- 				active = { fg = "#1e1e2e", bg = "#89b4fa" },
-	-- 				inactive = { fg = "#89b4fa", bg = "#1e1e2e" },
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
-	-- extensions = { "oil" },
 })
