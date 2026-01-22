@@ -32,7 +32,7 @@
         {
           "properties": {
             "cache_duration": "none",
-            "time_format": "15:04"
+            "time_format": "3:04PM"
           },
           "template": " \uf017 {{ .CurrentDate | date .Format }} ",
           "foreground": "#cba6f7",
