@@ -45,14 +45,14 @@ wezterm.on("gui-startup", function(cmd)
 			x = 2466,
 			y = 232,
 			width = 80,
-			height = 25,
+			height = 30,
 		}
 	else
 		position = {
 			x = 546,
 			y = 232,
 			width = 80,
-			height = 25,
+			height = 30,
 		}
 	end
 
@@ -81,6 +81,7 @@ local process_icons = {
 	["cargo"] = wezterm.nerdfonts.dev_rust,
 	["sudo"] = wezterm.nerdfonts.fa_hashtag,
 	["lazydocker"] = wezterm.nerdfonts.linux_docker,
+	["lazygit"] = wezterm.nerdfonts.dev_git,
 	["git"] = wezterm.nerdfonts.dev_git,
 	["lua"] = wezterm.nerdfonts.seti_lua,
 	["wget"] = wezterm.nerdfonts.mdi_arrow_down_box,
@@ -161,6 +162,7 @@ config.scrollback_lines = 3000
 -- disables the 'modern' look of the tab bar
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
+-- config.hide_tab_bar_if_only_one_tab = true
 config.hide_tab_bar_if_only_one_tab = true
 config.status_update_interval = 1000
 config.tab_max_width = 60
@@ -383,6 +385,16 @@ local function scroll(direction, key)
 	}
 end
 
+local show_tab_bar = true
+wezterm.on("toggle-tab-bar", function(window, pane)
+	show_tab_bar = not show_tab_bar
+
+	window:set_config_overrides({
+		hide_tab_bar_if_only_one_tab = not show_tab_bar,
+		enable_tab_bar = show_tab_bar,
+	})
+end)
+
 config.warn_about_missing_glyphs = false
 
 -- Keys
@@ -475,22 +487,22 @@ config.keys = { -- This will create a new split and run the `top` program inside
 			alphabet = "1234567890",
 		}),
 	},
+	{
+		key = "T",
+		mods = "CTRL|SHIFT",
+		action = act.EmitEvent("toggle-tab-bar"),
+	},
 	-- Disable Ctrl+Tab
 	{
 		key = "Tab",
 		mods = "CTRL",
-		action = wezterm.action.DisableDefaultAssignment,
+		action = act.DisableDefaultAssignment,
 	},
 	-- Disable Ctrl+Shift+Tab
 	{
 		key = "Tab",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action.DisableDefaultAssignment,
-	},
-	{
-		key = "T",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.DisableDefaultAssignment,
+		action = act.DisableDefaultAssignment,
 	},
 }
 

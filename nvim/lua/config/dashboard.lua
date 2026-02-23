@@ -1,5 +1,5 @@
 local dashboard = require("dashboard")
-
+-- stylua: ignore start
 -- local logo = [[
 --
 --
@@ -16,15 +16,17 @@ local dashboard = require("dashboard")
 -- ╚══════╝╚══════╝╚══════╝╚═════╝ ╚═╝
 -- ]]
 
-local logo_narrow = [[
-        ██████                           ████████████ ████████████
-       ██████                           ████████████████  ████
-       ████        ████████████████ ███████████ ████
-      ████         ███     ███       ███████    ████████████
-     ████        ███████████████████████████  ████
-   ██████  ███ ███     ███    █████████████████
-  ████████████████████████████████████████████████
-]]
+local logo_narrow = {
+	"        ██████                           ████████████ ████████████  ",
+	"       ██████                           ████████████████  ████  ",
+	"       ████        ████████████████ ███████████ ████           ",
+	"      ████         ███     ███       ███████    ████████████    ",
+	"     ████        ███████████████████████████  ████             ",
+	"   ██████  ███ ███     ███    █████████████████             ",
+	"  ████████████████████████████████████████████████              ",
+	"                                                                          ",
+	"                                                                          ",
+}
 
 -- local logo_narrow = [[
 --                ▐▀▄       ▄▀▌   ▄▄▄▄▄▄▄
@@ -67,34 +69,9 @@ local logo_narrow = [[
 --     ███████████ ███    ███ █████████ █████ █████ ████ █████
 --    ██████  █████████████████████ ████ █████ █████ ████ ██████
 -- ]]
+-- stylua: ignore end
 
 local selected_logo = logo_narrow
-
-local function pad_logo(logo)
-	local padded_lines = {}
-	local max_len = 0
-
-	for line in logo:gmatch("[^\n]+") do
-		local width = vim.fn.strdisplaywidth(line)
-
-		-- If new max_len found, re-pad previous lines
-		if width > max_len then
-			for i, l in ipairs(padded_lines) do
-				padded_lines[i] = l .. string.rep(" ", width - max_len)
-			end
-			max_len = width
-		end
-
-		-- If shorter, pad current line
-		local padded = line .. string.rep(" ", max_len - width)
-		table.insert(padded_lines, padded)
-	end
-
-	table.insert(padded_lines, "")
-	table.insert(padded_lines, "")
-
-	return padded_lines
-end
 
 local opts = {
 	theme = "doom",
@@ -105,7 +82,7 @@ local opts = {
 		winbar = true,
 	},
 	config = {
-		header = pad_logo(selected_logo),
+		header = selected_logo,
 		center = {
 			{ action = "Telescope find_files", desc = " Find File", icon = " ", key = "f" },
 			{ action = ":ene", desc = " New File", icon = " ", key = "n" },
@@ -163,21 +140,6 @@ if vim.o.filetype == "lazy" then
 		end,
 	})
 end
-
--- Attempt to redraw the dashboard on resize
--- vim.api.nvim_create_autocmd("VimResized", {
---   callback = function()
---     local new_logo = logo_narrow
---     if vim.o.columns > 137 then new_logo = logo_wide end
---
---     local formatted_logo = string.rep("\n", 1) .. new_logo .. "\n\n"
---     opts.config.header = vim.split(formatted_logo, "\n")
---
---     dashboard.setup(opts)
---     print("there should be a new logo")
---     vim.cmd("Dashboard")
---   end,
--- })
 
 vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#b4befe" })
 vim.api.nvim_set_hl(0, "DashboardDesc", { fg = "#cba6f7" })

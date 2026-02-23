@@ -1,6 +1,5 @@
 local mason = require("mason")
 local masontoolinstaller = require("mason-tool-installer")
-local masonlsp = require("mason-lspconfig")
 
 mason.setup({
 	ui = {
@@ -15,13 +14,9 @@ masontoolinstaller.setup({
 	ensure_installed = {
 		-- web
 		-- use bun installed instead for prettier and prettierd
-		-- "prettier",
-		-- "prettierd",
+		"prettier",
+		"prettierd",
 		"eslint_d",
-
-		-- golang
-		"gofumpt",
-		"golines",
 
 		-- python
 		"ruff",
@@ -33,56 +28,6 @@ masontoolinstaller.setup({
 
 		-- lua
 		"stylua",
-	},
-})
-
--- list of language servers: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
-masonlsp.setup({
-	ensure_installed = {
-		-- lua
-		"lua_ls",
-
-		-- python
-		"basedpyright",
-
-		-- web
-		"ts_ls",
-		"tailwindcss",
-		"cssmodules_ls",
-		"cssls",
-		-- "biome",
-
-		-- yaml
-		"yamlls",
-
-		-- docker
-		"docker_compose_language_service",
-		"dockerls",
-
-		-- github actions
-		"gh_actions_ls",
-
-		-- golang
-		"gopls",
-
-		-- php
-		"intelephense",
-		-- "phpactor",
-
-		-- c++
-		"clangd",
-
-		-- c#
-		"omnisharp",
-
-		-- nginx
-		"nginx_language_server",
-
-		-- sql
-		"sqlls",
-
-		-- shaders
-		"glsl_analyzer",
 	},
 })
 

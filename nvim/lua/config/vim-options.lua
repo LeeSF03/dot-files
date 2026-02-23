@@ -25,14 +25,6 @@ vim.diagnostic.config({ virtual_text = true })
 local acmd = vim.api.nvim_create_autocmd
 local agrp = vim.api.nvim_create_augroup
 
--- Function definitions
-local function set_filetype(pattern, filetype)
-	acmd({ "BufRead", "BufNewFile" }, {
-		pattern = pattern,
-		command = "set filetype=" .. filetype,
-	})
-end
-
 local del_qf_item = function()
 	local items = vim.fn.getqflist()
 	local line = vim.fn.line(".")
@@ -41,17 +33,24 @@ local del_qf_item = function()
 	vim.api.nvim_win_set_cursor(0, { line, 0 })
 end
 
--- Function initialization
-set_filetype({ "docker-compose.*.yml" }, "yaml.docker-compose")
-set_filetype({ "docker-compose.*.yaml" }, "yaml.docker-compose")
-set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
-set_filetype({ "docker-compose.yml" }, "yaml.docker-compose")
-set_filetype({ "compose.*.yml" }, "yaml.docker-compose")
-set_filetype({ "compose.*.yaml" }, "yaml.docker-compose")
-set_filetype({ "compose.yaml" }, "yaml.docker-compose")
-set_filetype({ "compose.yml" }, "yaml.docker-compose")
-set_filetype({ "*.xaml" }, "xml")
-set_filetype({ "*.xml" }, "xml")
+vim.filetype.add({
+	extension = {
+		env = "sh",
+	},
+	filename = {
+		[".env"] = "sh",
+		["docker-compose.yml"] = "yaml.docker-compose",
+		["docker-compose.yaml"] = "yaml.docker-compose",
+		["compose.yml"] = "yaml.docker-compose",
+		["compose.yaml"] = "yaml.docker-compose",
+	},
+	pattern = {
+		["%.env%.[%w_.-]+"] = "sh",
+		["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
+		["compose.*%.ya?ml"] = "yaml.docker-compose",
+		[".*%.xml"] = "xml",
+	},
+})
 
 -- Autocommand Groups
 local wezterm_title_grp = agrp("WezTermTitle", { clear = true })

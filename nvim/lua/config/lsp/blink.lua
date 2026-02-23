@@ -54,7 +54,6 @@ blink.setup({
 			-- sql = { "snippets", "dadbod", "buffer", "lsp" },
 			-- markdown = { "markdown", "snippets", "buffer" },
 			markdown = { "markdown", "snippets", "buffer", "copilot" },
-			-- codecompanion = { "codecompanion" },
 		},
 		providers = {
 			copilot = {
