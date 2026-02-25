@@ -3,9 +3,7 @@ return {
 	branch = "harpoon2",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		-- "nvim-telescope/telescope.nvim",
 	},
-	-- event = "VeryLazy",
 	config = function()
 		require("config.harpoon").setup_autocmd()
 	end,
@@ -25,7 +23,7 @@ return {
     { "<leader>9",  function() require("config.harpoon").select_index(9) end },
     { "<leader>0",  function() require("config.harpoon").select_index(10) end },
 
-    { "[m",         function() require("config.harpoon").select_previous_harpooned_file() end,         desc = "Previous Harpoon File" },
-    { "]m",         function() require("config.harpoon").select_next_harpooned_file() end,             desc = "Next Harpoon File" },
+    { "mp",         function() require("config.harpoon").select_previous_harpooned_file() end,         desc = "Previous Harpoon File" },
+    { "mn",         function() require("config.harpoon").select_next_harpooned_file() end,             desc = "Next Harpoon File" },
   },
 }

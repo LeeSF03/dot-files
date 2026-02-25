@@ -4,6 +4,11 @@ return {
 		"nvim-telescope/telescope.nvim", -- Optional, but recommended for fuzzy finding
 		"nvim-lua/plenary.nvim",
 	},
+	keys = {
+    -- stylua: ignore start
+    {"<leader>ww", function() require("telescope").extensions.git_worktree.git_worktrees() end, desc = "Manage Git Worktrees"},
+		-- stylua: ignore end
+	},
 	config = function()
 		require("telescope").load_extension("git_worktree")
 		local Worktree = require("git-worktree")
@@ -76,10 +81,4 @@ return {
 			update_on_change = false,
 		})
 	end,
-	keys = {
-    -- stylua: ignore start
-    {"<leader>ww", function() require("telescope").extensions.git_worktree.git_worktrees() end, desc = "Manage Git Worktrees"},
-		-- {"<leader>wc", function() require("telescope").extensions.git_worktree.create_git_worktree() end, desc = "Create Git Worktree"},
-		-- stylua: ignore end
-	},
 }

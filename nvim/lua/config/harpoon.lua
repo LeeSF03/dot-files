@@ -173,7 +173,7 @@ function M.rename_mark(old_path, new_path)
 	local original = list.items
 	local replaced = false
 
-	for i, mark in ipairs(original) do
+	for _, mark in ipairs(original) do
 		if Path:new(mark.value):absolute() == Path:new(old_path):absolute() then
 			-- Replace the old path with the new one
 			list:remove(mark)

@@ -6,9 +6,6 @@ require(filepath .. "setup")
 -- Lua Language Server
 require(filepath .. "lua_lsp")
 
--- Go Language Server
--- require(filepath .. "go_lsp")
-
 -- Web Language Server
 require(filepath .. "ts_lsp")
 
@@ -17,6 +14,9 @@ require(filepath .. "css_html_lsp")
 
 -- TailwindCSS Language Server
 require(filepath .. "tailwindcss_lsp")
+
+-- Go Language Server
+-- require(filepath .. "go_lsp")
 
 -- Docker Language Server
 -- require(filepath .. "docker_lsp")

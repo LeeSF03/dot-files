@@ -24,7 +24,6 @@ vim.api.nvim_set_hl(0, "GitConflictBase", { bg = colors.surface0, fg = colors.te
 return {
 	"akinsho/git-conflict.nvim",
 	version = "*",
-	config = true,
 	event = "BufReadPost",
 	highlights = {
 		current = "GitConflictCurrent",
