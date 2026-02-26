@@ -1,5 +1,7 @@
 return {
 	"mrjones2014/smart-splits.nvim",
+	event = "User DeferredLoad", -- Wait for a custom event
+	-- event = "VeryLazy",
 	keys = {
     -- stylua: ignore start
 		-- Resize splits

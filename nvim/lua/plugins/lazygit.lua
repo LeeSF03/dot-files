@@ -2,6 +2,7 @@
 return {
 	{
 		"kdheepak/lazygit.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		cmd = {
 			"LazyGit",
 			"LazyGitConfig",
@@ -14,7 +15,6 @@ return {
       { "<leader>lg", mode = { "n" }, "<CMD>LazyGit<CR>", desc = "LazyGit" },
 			-- stylua: ignore end
 		},
-		dependencies = { "nvim-lua/plenary.nvim" },
 		init = function()
 			vim.api.nvim_set_hl(0, "LazyGitBorder", { fg = "#585b70" })
 		end,

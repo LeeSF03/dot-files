@@ -95,10 +95,12 @@ return {
 				end,
 			})
 		end
+    -- stylua: ignore start
 		vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#b4befe" })
-		vim.api.nvim_set_hl(0, "DashboardDesc", { fg = "#cba6f7" })
-		vim.api.nvim_set_hl(0, "DashboardIcon", { fg = "#f5c2e7" })
-		vim.api.nvim_set_hl(0, "DashboardKey", { fg = "#f5c2e7" })
+		vim.api.nvim_set_hl(0, "DashboardDesc",   { fg = "#cba6f7" })
+		vim.api.nvim_set_hl(0, "DashboardIcon",   { fg = "#f5c2e7" })
+		vim.api.nvim_set_hl(0, "DashboardKey",    { fg = "#f5c2e7" })
 		vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#f9e2af" })
+		-- stylua: ignore end
 	end,
 }

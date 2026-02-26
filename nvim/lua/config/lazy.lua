@@ -23,20 +23,18 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-	spec = {
-		-- add your plugins here
-		{ import = "plugins" },
-	},
+	spec = { { import = "plugins" } },
 	-- Configure any other settings here. See the documentation for more details.
 	-- automatically check for plugin updates
 	-- checker = { enabled = true },
 	checker = { enabled = false },
-	ui = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-	},
+	ui = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } },
 })
-vim.api.nvim_set_hl(0, "FloatTitle", { bg = "#1e1e2e", fg = "#89b4fa" })
-vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#1e1e2e" })
-vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "#1e1e2e" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e1e2e" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1e1e2e", fg = "#89b4fa" })
+
+-- stylua: ignore start
+vim.api.nvim_set_hl(0, "FloatTitle",            { bg = "#1e1e2e", fg = "#89b4fa" })
+vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = "#1e1e2e"                   })
+vim.api.nvim_set_hl(0, "TelescopePromptTitle",  { bg = "#1e1e2e"                   })
+vim.api.nvim_set_hl(0, "NormalFloat",           { bg = "#1e1e2e"                   })
+vim.api.nvim_set_hl(0, "FloatBorder",           { bg = "#1e1e2e", fg = "#89b4fa" })
+-- stylua: ignore end

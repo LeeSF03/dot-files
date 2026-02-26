@@ -11,22 +11,24 @@ return {
 				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install",
 			},
 		},
+		cmd = "Telescope",
+		keys = {
+        -- stylua: ignore start
+        { "<leader>ff", function() require("telescope.builtin").find_files() end,                   desc = "Telescope find files" },
+        { "<leader>fg", function() require("telescope.builtin").live_grep() end,                    desc = "Telescope live grep" },
+        { "<leader>fb", function() require("telescope.builtin").buffers() end,                      desc = "Telescope buffers" },
+        { "<leader>fh", function() require("telescope.builtin").help_tags() end,                    desc = "Telescope help tags" },
+        { "<leader>fc", function() require("telescope.builtin").commands() end,                     desc = "Telescope commands" },
+        { "<leader>gf", function() require("telescope.builtin").git_files() end,                    desc = "Telescope find git tracked files" },
+        { "<leader>fm", function() require("telescope.builtin").marks({ mark_type = "local" }) end, desc = "Telescope find marks" },
+        { "<leader>fd", function() require("telescope.builtin").diagnostics() end,                  desc = "Telescope find diagnostics" },
+        { "<leader>ft", "<cmd>TodoTelescope<CR>",                                                   desc = "Telescope find todos" },
+        { "<leader>gr", function() require("telescope.builtin").lsp_references() end,               desc = "Search references" },
+			-- stylua: ignore end
+		},
 		config = function()
-			local builtin = require("telescope.builtin")
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
-
-      -- stylua: ignore start
-      vim.keymap.set("n", "<leader>ff", builtin.find_files,                                   { desc = "Telescope find files" })
-      vim.keymap.set("n", "<leader>fg", builtin.live_grep,                                    { desc = "Telescope live grep" })
-      vim.keymap.set("n", "<leader>fb", builtin.buffers,                                      { desc = "Telescope buffers" })
-      vim.keymap.set("n", "<leader>fh", builtin.help_tags,                                    { desc = "Telescope help tags" })
-      vim.keymap.set("n", "<leader>fc", builtin.commands,                                     { desc = "Telescope commands" })
-      vim.keymap.set("n", "<leader>gf", builtin.git_files,                                    { desc = "Telescope find git tracked files" })
-      vim.keymap.set("n", "<leader>fm", function() builtin.marks({ mark_type = "local"}) end, { desc = "Telescope find marks" })
-      vim.keymap.set("n", "<leader>fd", builtin.diagnostics,                                  { desc = "Telescope find diagnostics" })
-      vim.keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>",                             { desc = "Telescope find todos" })
-			-- stylua: ignore end
 
 			telescope.setup({
 				pickers = {

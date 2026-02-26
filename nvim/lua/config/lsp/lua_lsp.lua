@@ -1,7 +1,21 @@
-vim.lsp.config.lua_ls = {
+local root_markers1 = {
+	".emmyrc.json",
+	".luarc.json",
+	".luarc.jsonc",
+}
+local root_markers2 = {
+	".luacheckrc",
+	".stylua.toml",
+	"stylua.toml",
+	"selene.toml",
+	"selene.yml",
+}
+
+vim.lsp.config("lua_ls", {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
-	root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
+	root_markers = vim.fn.has("nvim-0.11.3") == 1 and { root_markers1, root_markers2, { ".git" } }
+		or vim.list_extend(vim.list_extend(root_markers1, root_markers2), { ".git" }),
 	settings = {
 		Lua = {
 			runtime = {
@@ -33,5 +47,5 @@ vim.lsp.config.lua_ls = {
 			enable = false,
 		},
 	},
-}
+})
 vim.lsp.enable("lua_ls")

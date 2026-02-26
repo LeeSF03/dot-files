@@ -1,7 +1,4 @@
 -- stylua: ignore start
--- neoclip
-vim.keymap.set('n', '<leader>fn', '<CMD>Telescope neoclip<CR>', { noremap = true, silent = true, desc = 'Open neoclip history' })
-
 -- scroll remap
 vim.keymap.set({"n", "i", "v" }, "<C-u>", "<C-u>zz", { desc = "Scroll up half page" })
 vim.keymap.set({"n", "i", "v" }, "<C-d>", "<C-d>zz", { desc = "Scroll down half page" })
@@ -14,5 +11,5 @@ vim.keymap.set("n", ";", "", { desc = "Disable ; keymap" })
 
 -- marks remap
 vim.keymap.set("n", "\'\'", "]\'", { desc = "Go to next mark" })
-vim.keymap.set("n", ";;", "[\'", { desc = "Go to next mark" })
+vim.keymap.set("n", ";;", "[\'",   { desc = "Go to next mark" })
 -- stylua: ignore end

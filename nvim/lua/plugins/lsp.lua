@@ -47,13 +47,8 @@ return {
 		},
 	},
 	{
-		"giuxtaposition/blink-cmp-copilot",
-		dependencies = { "zbirenbaum/copilot.lua", "saghen/blink.cmp" },
-		event = { "InsertEnter" },
-	},
-	{
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets" },
+		dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot" },
 		build = "cargo build --release",
 		event = { "InsertEnter", "CmdlineEnter" },
 		opts_extend = { "sources.default" },
@@ -164,12 +159,14 @@ return {
 					},
 				},
 			})
-			vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#1e1e2e" })
-			vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
-			vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#f38ba8" })
-			vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "#1e1e2e" })
+      -- stylua: ignore start
+			vim.api.nvim_set_hl(0, "BlinkCmpMenu",                { bg = "#1e1e2e"                   })
+			vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder",          { fg = "#89b4fa", bg = "#1e1e2e" })
+			vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch",          { fg = "#f38ba8"                   })
+			vim.api.nvim_set_hl(0, "BlinkCmpDoc",                 { bg = "#1e1e2e"                   })
 			vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
-			vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
+			vim.api.nvim_set_hl(0, "BlinkCmpDocBorder",           { fg = "#89b4fa", bg = "#1e1e2e" })
+			-- stylua: ignore end
 		end,
 	},
 	{
@@ -181,8 +178,6 @@ return {
 		},
 		event = "LspAttach",
 		config = function()
-			local telescope_builtin = require("telescope.builtin")
-
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
@@ -212,7 +207,6 @@ return {
           vim.keymap.set("n", "gp",         "<CMD>Lspsaga peek_definition<CR>", { desc = "Peek defenition",   buffer = ev.buf })
           vim.keymap.set("n", "gd",         "<CMD>Lspsaga goto_definition<CR>", { desc = "Go to defenition",  buffer = ev.buf })
           vim.keymap.set("n", "gD",         vim.lsp.buf.declaration,            { desc = "Go to declaration", buffer = ev.buf })
-          vim.keymap.set("n", "<leader>gr", telescope_builtin.lsp_references,   { desc = "Search references", buffer = ev.buf })
           vim.keymap.set("n", "<leader>rn", "<CMD>Lspsaga rename<CR>",          { desc = "Rename variable",   buffer = ev.buf })
 
           -- code action and format

@@ -72,3 +72,7 @@ acmd("FileType", {
 	end,
 	desc = "Quickfix Delete Item",
 })
+
+vim.schedule(function()
+	vim.api.nvim_exec_autocmds("User", { pattern = "DeferredLoad" })
+end)
