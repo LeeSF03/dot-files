@@ -1,9 +1,7 @@
 return {
 	{
 		"stevearc/conform.nvim",
-		event = {
-			"BufWritePre",
-		},
+		event = "BufWritePre",
 		opts = {
 			-- Available formatters: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
 			formatters_by_ft = {

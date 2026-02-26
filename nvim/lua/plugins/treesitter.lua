@@ -32,10 +32,7 @@ return {
 		build = ":TSUpdate",
 		cmd = { "TSUpdate" },
 		ft = languages,
-		event = {
-			"BufReadPre",
-			"BufNewFile",
-		},
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({

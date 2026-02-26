@@ -3,6 +3,14 @@ local WIDTH_RATIO = 0.5 -- You can change this too
 
 return {
 	"stevearc/oil.nvim",
+	event = { "VimEnter */*,.*", "BufNew */*,.*" },
+	cmd = { "Oil" },
+	keys = {
+    -- stylua: ignore start
+		{ "-",         "<CMD>Oil<CR>",         desc = "Open parent directory"             },
+		{ "<leader>-", "<CMD>Oil --float<CR>", desc = "Open parent directory in floating" },
+		-- stylua: ignore end
+	},
 	---@module 'oil'
 	---@type oil.SetupOpts
 	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
@@ -52,16 +60,5 @@ return {
 			end,
 		},
 	},
-	confirmation = {
-		border = "rounded",
-	},
-	event = {
-		"VimEnter */*,.*",
-		"BufNew */*,.*",
-	},
-	cmd = { "Oil" },
-	keys = {
-		{ "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
-		{ "<leader>-", "<CMD>Oil --float<CR>", desc = "Open parent directory in floating" },
-	},
+	confirmation = { border = "rounded" },
 }

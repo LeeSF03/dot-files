@@ -1,9 +1,6 @@
 return {
 	"catgoose/nvim-colorizer.lua",
-	event = {
-		"BufReadPost",
-		"BufNewFile",
-	},
+	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		filetypes = { "*" }, -- Filetype options.  Accepts table like `user_default_options`
 		buftypes = {

@@ -1,7 +1,6 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "williamboman/mason.nvim" },
 		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		config = function()
@@ -10,10 +9,42 @@ return {
 	},
 	{
 		"williamboman/mason.nvim",
-		dependencies = {
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-		},
 		cmd = { "MasonInstall", "MasonUninstall", "MasonUpdate", "Mason", "MasonLog" },
+		opts = { ui = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } } },
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		cmd = {
+			"MasonToolsInstall",
+			"MasonToolsInstallSync",
+			"MasonToolsUpdate",
+			"MasonToolsUpdateSync",
+			"MasonToolsClean",
+		},
+		opts = {
+			-- list of tools(linters, formatters, etc):
+			-- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
+			-- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
+			ensure_installed = {
+				-- js, ts, jsx, tsx
+				-- use bun installed instead for faster executable
+				"prettier",
+				"prettierd",
+				"eslint_d",
+
+				-- python
+				"ruff",
+
+				-- golang
+				"golangci-lint",
+				"gofumpt",
+				"golines",
+
+				-- lua
+				"stylua",
+			},
+		},
 	},
 	{
 		"giuxtaposition/blink-cmp-copilot",
@@ -144,8 +175,8 @@ return {
 	{
 		"nvimdev/lspsaga.nvim",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
 			"rachartier/tiny-code-action.nvim",
 		},
 		event = "LspAttach",

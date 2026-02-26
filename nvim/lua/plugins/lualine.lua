@@ -1,5 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	event = { "BufReadPost", "BufNewFile" },
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"AndreM222/copilot-lualine",
@@ -191,8 +192,4 @@ return {
 			},
 		})
 	end,
-	event = {
-		"BufReadPost",
-		"BufNewFile",
-	},
 }

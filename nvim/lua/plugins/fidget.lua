@@ -1,5 +1,6 @@
 return {
 	"j-hui/fidget.nvim",
+	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		notification = {
 			window = {
@@ -7,9 +8,5 @@ return {
 				border = "rounded",
 			},
 		},
-	},
-	event = {
-		"BufReadPost",
-		"BufNewFile",
 	},
 }

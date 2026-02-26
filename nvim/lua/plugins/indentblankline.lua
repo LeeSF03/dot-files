@@ -1,19 +1,14 @@
 return {
-  "lukas-reineke/indent-blankline.nvim",
-  opts = {
-    indent = {
-      char = "│",
-    },
-    exclude = {
-      filetypes = { 'help', 'lazy', 'undotree', 'nvimtree', 'dashboard', 'oil' },
-      buftypes = { 'terminal', 'nofile', 'quickfix' },
-    },
-  },
-  event = {
-    "BufReadPost",
-    "BufNewFile"
-  },
-  main = "ibl",
-  ---@module "ibl"
-  ---@type ibl.config
+	"lukas-reineke/indent-blankline.nvim",
+	event = { "BufReadPost", "BufNewFile" },
+	main = "ibl",
+	---@module "ibl"
+	---@type ibl.config
+	opts = {
+		indent = { char = "│" },
+		exclude = {
+			filetypes = { "help", "lazy", "undotree", "nvimtree", "dashboard", "oil" },
+			buftypes = { "terminal", "nofile", "quickfix" },
+		},
+	},
 }
