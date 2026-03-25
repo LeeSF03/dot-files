@@ -7,7 +7,7 @@ return {
 	opts = {
 		indent = { char = "│" },
 		exclude = {
-			filetypes = { "help", "lazy", "undotree", "nvimtree", "dashboard", "oil" },
+			filetypes = { "help", "lazy", "undotree", "nvimtree", "dashboard", "oil", "harpoon", "lazygit" },
 			buftypes = { "terminal", "nofile", "quickfix" },
 		},
 	},

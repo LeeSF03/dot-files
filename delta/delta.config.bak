@@ -1,0 +1,6 @@
+[include]
+	path = C:Users/shuen/.config/delta/themes/catppuccin.gitconfig
+
+[delta]
+	features = catppuccin-mocha
+  syntax-theme = "Catppuccin-mocha"

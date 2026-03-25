@@ -9,8 +9,9 @@ return {
 		-- It will sitll load when opening neovim without file, but it won't block the startup process
 		-- event = "VeryLazy",
 		-- event = { "BufReadPre", "BufNewFile" },
-		-- event = "InsertEnter",
-		event = "User DeferredLoad", -- Wait for a custom event
+		-- event = { "InsertEnter", "ModeChanged" },
+		-- event = { "CursorHold"},
+		event = "User DeferredLoad",
 		dependencies = { "nvim-tree/nvim-web-devicons", "ThePrimeagen/harpoon" },
 		init = function()
 			-- Optional: Set a temporary empty statusline so the UI
@@ -177,8 +178,8 @@ return {
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {
-						statusline = { "dashboard", "lazy" },
-						winbar = { "dashboard", "lazy" },
+						statusline = { "dashboard", "lazy", "harpoon", "lazygit", "TelescopePrompt" },
+						winbar = { "dashboard", "lazy", "harpoon", "lazygit", "TelescopePrompt" },
 					},
 					globalstatus = true,
 					refresh = {

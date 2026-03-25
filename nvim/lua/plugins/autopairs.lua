@@ -9,8 +9,8 @@ return {
 		npairs.setup(global_opts)
 
 		npairs.add_rules({
-			Rule("/*", "  */", { "javascript", "typescript", "javascriptreact", "typescriptreact" }):set_end_pair_length(
-				3
+			Rule("/**", "  */", { "javascript", "typescript", "javascriptreact", "typescriptreact" }):set_end_pair_length(
+				4
 			),
 			Rule("<!", "--  -->", { "html" }):set_end_pair_length(5),
 		})

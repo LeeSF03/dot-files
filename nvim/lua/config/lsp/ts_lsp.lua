@@ -1,5 +1,11 @@
 -- vim.lsp.config("ts_ls", {
--- 	init_options = { hostInfo = "neovim" },
+-- 	init_options = {
+-- 		hostInfo = "neovim",
+-- 		preferences = {
+-- 			importModuleSpecifierPreference = "absolute",
+-- 			importModuleSpecifierEnding = "minimal",
+-- 		},
+-- 	},
 -- 	cmd = { "typescript-language-server", "--stdio" },
 -- 	filetypes = {
 -- 		"javascript",
@@ -90,7 +96,14 @@
 -- vim.lsp.enable("ts_ls")
 
 vim.lsp.config("tsgo", {
-	init_options = { hostInfo = "neovim" },
+	init_options = {
+		hostInfo = "neovim",
+		preferences = {
+			-- Set to "absolute" to prefer absolute paths, or "relative" for relative paths
+			importModuleSpecifierPreference = "absolute",
+			importModuleSpecifierEnding = "minimal",
+		},
+	},
 	cmd = function(dispatchers, config)
 		local cmd = "tsgo"
 		local local_cmd = (config or {}).root_dir and config.root_dir .. "/node_modules/.bin/tsgo"

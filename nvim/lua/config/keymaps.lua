@@ -11,5 +11,5 @@ vim.keymap.set("n", ";", "", { desc = "Disable ; keymap" })
 
 -- marks remap
 vim.keymap.set("n", "\'\'", "]\'", { desc = "Go to next mark" })
-vim.keymap.set("n", ";;", "[\'",   { desc = "Go to next mark" })
+vim.keymap.set("n", ";;", "[\'",   { desc = "Go to prev mark" })
 -- stylua: ignore end

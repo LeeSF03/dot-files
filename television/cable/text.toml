@@ -1,0 +1,13 @@
+[metadata]
+name = "text"
+description = "A channel to find and select text from files"
+requirements = [ "rg", "bat",]
+
+[source]
+command = "rg . --no-heading --line-number"
+
+[preview]
+command = "bat -n --color=always --theme=CatppuccinMocha --highlight-line '{split:\\::1}' -- '{split:\\::0}'"
+
+[keybindings]
+shortcut = "f3"

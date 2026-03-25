@@ -1,5 +1,6 @@
 return {
 	"RRethy/vim-illuminate",
+	event = { "BufReadPost", "BufNewFile" },
 	keys = {
     --stylua: ignore start
     { "gn", function() require("illuminate").goto_next_reference() end, desc = "Go to next reference" },
@@ -14,7 +15,7 @@ return {
 		providers = {
 			"lsp",
 			"treesitter",
-			"regex",
+			-- "regex",
 		},
 		-- delay: delay in milliseconds
 		delay = 100,
@@ -27,13 +28,19 @@ return {
 			"dirbuf",
 			"dirvish",
 			"fugitive",
+			"harpoon",
+			"dashboard",
+			"oil",
+			"lazygit",
+			"lazy",
 		},
 		-- filetypes_allowlist: filetypes to illuminate, this is overridden by filetypes_denylist
 		-- You must set filetypes_denylist = {} to override the defaults to allow filetypes_allowlist to take effect
 		filetypes_allowlist = {},
 		-- modes_denylist: modes to not illuminate, this overrides modes_allowlist
 		-- See `:help mode()` for possible values
-		modes_denylist = { "v", "vs", "V", "Vs", "CTRL-V", "CTRL-Vs" },
+		-- modes_denylist = { "v", "vs", "V", "Vs", "CTRL-V", "CTRL-Vs" },
+		modes_denylist = {},
 		-- modes_allowlist: modes to illuminate, this is overridden by modes_denylist
 		-- See `:help mode()` for possible values
 		modes_allowlist = {},
@@ -64,9 +71,5 @@ return {
 		end,
 		-- case_insensitive_regex: sets regex case sensitivity
 		case_insensitive_regex = false,
-	},
-	event = {
-		"BufReadPost",
-		"BufNewFile",
 	},
 }

@@ -20,6 +20,7 @@ vim.opt.splitbelow = true
 
 -- Diagnostic settings
 vim.diagnostic.config({ virtual_text = true })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#585b70" })
 
 -- Autocommands shortcut
 local acmd = vim.api.nvim_create_autocmd
@@ -53,8 +54,6 @@ vim.filetype.add({
 })
 
 -- Autocommand Groups
-local qf_grp = agrp("Quickfix Customs", { clear = true })
-
 acmd("VimEnter", {
 	callback = function()
 		-- To fix issue with lualine across windows
@@ -63,7 +62,7 @@ acmd("VimEnter", {
 })
 
 acmd("FileType", {
-	group = qf_grp,
+	group = agrp("Quickfix Customs", { clear = true }),
 	pattern = "qf",
 	callback = function()
 		-- `dd` deletes an item from the list.
@@ -73,6 +72,16 @@ acmd("FileType", {
 	desc = "Quickfix Delete Item",
 })
 
-vim.schedule(function()
-	vim.api.nvim_exec_autocmds("User", { pattern = "DeferredLoad" })
-end)
+local timer = vim.uv.new_timer()
+acmd({ "CursorMoved", "InsertCharPre", "TextChanged", "CmdlineChanged" }, {
+	callback = function()
+		timer:stop()
+		timer:start(
+			800,
+			0,
+			vim.schedule_wrap(function()
+				vim.api.nvim_exec_autocmds("User", { pattern = "DeferredLoad" })
+			end)
+		)
+	end,
+})

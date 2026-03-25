@@ -19,8 +19,8 @@ return {
 	},
 	{
 		"kevinhwang91/nvim-ufo",
-		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "kevinhwang91/promise-async", "nvim-treesitter/nvim-treesitter" },
+		event = "VeryLazy",
+		dependencies = { "kevinhwang91/promise-async" },
 		opts = function()
 			local ufo = require("ufo")
 
@@ -36,7 +36,8 @@ return {
 
 			return {
 				provider_selector = function(_, filetype, _)
-					local exclude_filetypes = { "help", "lazy", "undotree", "nvimtree", "dashboard", "oil" }
+					local exclude_filetypes =
+						{ "help", "lazy", "undotree", "nvimtree", "dashboard", "oil", "harpoon", "lazygit" }
 					for i = 1, #exclude_filetypes do
 						if exclude_filetypes[i] == filetype then
 							return ""

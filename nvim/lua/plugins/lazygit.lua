@@ -16,7 +16,7 @@ return {
 			-- stylua: ignore end
 		},
 		init = function()
-			vim.api.nvim_set_hl(0, "LazyGitBorder", { fg = "#585b70" })
+			vim.api.nvim_set_hl(0, "LazyGitBorder", { fg = "#89b4fa" })
 		end,
 	},
 }

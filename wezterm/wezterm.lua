@@ -7,7 +7,7 @@ local mux = wezterm.mux
 -- wezterm.on("load_state", function() workspace_saver.load_state() end)
 -- wezterm.on("restore_state", function(window) workspace_saver.restore_state(window) end)
 
-wezterm.on("toggle-opacity", function(window, pane)
+wezterm.on("toggle-opacity", function(window, _)
 	local overrides = window:get_config_overrides() or {}
 	if not overrides.window_background_opacity then
 		overrides.window_background_opacity = 0.90
@@ -27,77 +27,45 @@ wezterm.on("toggle-opacity", function(window, pane)
 	window:set_config_overrides(overrides)
 end)
 
-wezterm.on("center-window", function(window, pane)
-	window:set_position(570, 240)
-	window:set_inner_size(812, 511)
-end)
-
 wezterm.on("gui-startup", function(cmd)
-	local screens = wezterm.gui.screens()
-
 	-- safely extract cwd and env
 	local cwd = cmd and cmd.cwd or nil
 	local env = cmd and cmd.set_environment_variables or nil
 
-	local position
-	if screens.virtual_width > 1920 then
-		position = {
-			x = 2466,
-			y = 232,
-			width = 80,
-			height = 30,
-		}
-	else
-		position = {
-			x = 546,
-			y = 232,
-			width = 80,
-			height = 30,
-		}
-	end
+	local win_width_cells = 80
+	local win_height_cells = 25
 
-	local tab, pane, window = mux.spawn_window({
-		position = position,
+	-- spawn mux window
+	local _, _, mux_window = mux.spawn_window({
+		-- position = position,
 		cwd = cwd,
 		set_environment_variables = env,
+		width = win_width_cells,
+		height = win_height_cells,
 	})
-end)
 
-local process_icons = {
-	["docker"] = wezterm.nerdfonts.linux_docker,
-	["docker-compose"] = wezterm.nerdfonts.linux_docker,
-	["psql"] = wezterm.nerdfonts.dev_postgresql,
-	["kuberlr"] = wezterm.nerdfonts.linux_docker,
-	["kubectl"] = wezterm.nerdfonts.linux_docker,
-	["stern"] = wezterm.nerdfonts.linux_docker,
-	["nvim"] = wezterm.nerdfonts.custom_vim,
-	["make"] = wezterm.nerdfonts.seti_makefile,
-	["vim"] = wezterm.nerdfonts.dev_vim,
-	["go"] = wezterm.nerdfonts.seti_go,
-	["zsh"] = wezterm.nerdfonts.dev_terminal,
-	["bash"] = wezterm.nerdfonts.cod_terminal_bash,
-	["btm"] = wezterm.nerdfonts.mdi_chart_donut_variant,
-	["htop"] = wezterm.nerdfonts.mdi_chart_donut_variant,
-	["cargo"] = wezterm.nerdfonts.dev_rust,
-	["sudo"] = wezterm.nerdfonts.fa_hashtag,
-	["lazydocker"] = wezterm.nerdfonts.linux_docker,
-	["lazygit"] = wezterm.nerdfonts.dev_git,
-	["git"] = wezterm.nerdfonts.dev_git,
-	["lua"] = wezterm.nerdfonts.seti_lua,
-	["wget"] = wezterm.nerdfonts.mdi_arrow_down_box,
-	["curl"] = wezterm.nerdfonts.mdi_flattr,
-	["gh"] = wezterm.nerdfonts.dev_github_badge,
-	["ruby"] = wezterm.nerdfonts.cod_ruby,
-	["pwsh"] = wezterm.nerdfonts.seti_powershell,
-	["node"] = wezterm.nerdfonts.dev_nodejs_small,
-	["dotnet"] = wezterm.nerdfonts.md_language_csharp,
-}
+	-- get window dimensions in pixels
+	local window = mux_window:gui_window()
+	local dims = window:get_dimensions()
+	local pixel_width = dims.pixel_width
+	local pixel_height = dims.pixel_height
+
+	-- get screen info
+	local screen = wezterm.gui.screens().active
+	local new_position = {
+		x = math.floor((screen.width - pixel_width) / 2),
+		y = math.floor((screen.height - pixel_height) / 2) - 35,
+	}
+
+	-- move window to center
+	window:set_position(new_position.x, new_position.y)
+end)
 
 -- This table will hold the configuration.
 local config = {}
 
-config.initial_rows = 24
-config.initial_cols = 80
+config.initial_cols = 25
+config.initial_rows = 80
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -114,15 +82,32 @@ config.default_prog = {
 -- Colorscheme
 config.color_scheme = "Catppuccin Mocha"
 local catppuccin_colors = {
-	"#f5c2e7", -- pink
-	"#cba6f7", -- mauve
-	"#f38ba8", -- red
-	"#fab387", -- peach
-	"#f9e2af", -- yellow
-	"#a6e3a1", -- green
-	"#94e2d5", -- teal
-	"#89b4fa", -- blue
-	"#b4befe", -- lavender
+	rosewater = "#f5e0dc",
+	flamingo = "#f2cdcd",
+	pink = "#f5c2e7",
+	mauve = "#cba6f7",
+	red = "#f38ba8",
+	maroon = "#eba0ac",
+	peach = "#fab387",
+	yellow = "#f9e2af",
+	green = "#a6e3a1",
+	teal = "#94e2d5",
+	sky = "#89dceb",
+	sapphire = "#74c7ec",
+	blue = "#89b4fa",
+	lavender = "#b4befe",
+	text = "#cdd6f4",
+	subtext1 = "#bac2de",
+	subtext0 = "#a6adc8",
+	overlay2 = "#9399b2",
+	overlay1 = "#7f849c",
+	overlay0 = "#6c7086",
+	surface2 = "#585b70",
+	surface1 = "#45475a",
+	surface0 = "#313244",
+	base = "#1e1e2e",
+	mantle = "#181825",
+	crust = "#11111b",
 }
 
 -- Window Frame
@@ -168,7 +153,7 @@ config.status_update_interval = 1000
 config.tab_max_width = 60
 config.tab_bar_at_bottom = false
 
-local tab_bar_bg = "#1e1e2e"
+local tab_bar_bg = catppuccin_colors.base
 config.colors = {
 	tab_bar = {
 		background = tab_bar_bg,
@@ -203,35 +188,22 @@ end
 
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
--- local tab_colors = {}
--- local tab_color = ""
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	-- if not tab_colors[tab.tab_id] then
-	-- 	math.randomseed(os.time() + tab.tab_id)
-	-- 	tab_colors[tab.tab_id] = catppuccin_colors[math.random(#catppuccin_colors)]
-	-- end
-	-- local color = catppuccin_colors[tab.tab_index % #catppuccin_colors + 1]
-	-- if not tab_color == "" then
-	-- 	math.randomseed(os.time() + tab.tab_id)
-	-- 	tab_color = catppuccin_colors[math.random(#catppuccin_colors)]
-	-- end
-	-- local color = tab_colors[tab.tab_id]
-
-	local color = "#89b4fa"
+wezterm.on("format-tab-title", function(tab, tabs, _, _, _, _)
+	local color = catppuccin_colors.blue
 
 	local title = tab_title(tab)
 	local title_len = string.len(title)
 	local bg = color
-	local fg = "#1E1E2E"
+	local fg = catppuccin_colors.base
 	local right_arrow_bg = tab_bar_bg
 	local right_arrow_fg = color
 	local left_arrow_bg = tab_bar_bg
 	local left_arrow_fg = color
 	if not tab.is_active then
-		bg = "#1E1E2E"
-		fg = "#CDD6F4"
-		right_arrow_fg = "#1E1E2E"
-		left_arrow_fg = "#1E1E2E"
+		bg = catppuccin_colors.base
+		fg = catppuccin_colors.text
+		right_arrow_fg = catppuccin_colors.base
+		left_arrow_fg = catppuccin_colors.base
 
 		if title_len > 10 then
 			title = string.sub(title, 1, tab_min_width - 3) .. "..."
@@ -243,9 +215,6 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	end
 
 	local next_tab = tabs[tab.tab_index + 2]
-	-- if next_tab ~= nil and next_tab.is_active then
-	-- right_arrow_bg = color
-	-- end
 
 	if next_tab == nil then
 		right_arrow_bg = tab_bar_bg
@@ -253,7 +222,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
 	local prev_tab = tabs[tab.tab_index]
 	if prev_tab == nil then
-		left_arrow_bg = "#1E1E2E"
+		left_arrow_bg = catppuccin_colors.base
 		if tab.is_active then
 			left_arrow_bg = color
 		end
@@ -273,17 +242,17 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	}
 end)
 
-wezterm.on("update-right-status", function(window, pane)
-	local color = "#89b4fa"
+wezterm.on("update-right-status", function(window, _)
+	local color = catppuccin_colors.blue
 
 	local bg = color
-	local fg = "#1E1E2E"
+	local fg = catppuccin_colors.base
 	local left_arrow_bg = tab_bar_bg
 	local left_arrow_fg = color
 	local date = wezterm.strftime("%a %_d/%b")
 	local time = wezterm.strftime("%I:%M%p")
-	local dir_bg = "#313244"
-	local dir_fg = "#89b4fa"
+	local dir_bg = catppuccin_colors.surface0
+	local dir_fg = catppuccin_colors.blue
 
 	window:set_right_status(wezterm.format({
 		{ Background = { Color = left_arrow_bg } },
@@ -325,19 +294,6 @@ local function split_nav(resize_or_move, key)
 		key = key,
 		mods = resize_or_move == "resize" and "ALT" or "CTRL",
 		action = wezterm.action_callback(function(win, pane)
-			-- if pane:is_alt_screen_active() then
-			--   -- pass the keys through to vim/nvim
-			--   win:perform_action({
-			--     SendKey = { key = key, mods = resize_or_move == 'resize' and 'ALT' or 'CTRL' },
-			--   }, pane)
-			-- else
-			--   if resize_or_move == 'resize' then
-			--     win:perform_action({ AdjustPaneSize = { direction_keys[key], 1 } }, pane)
-			--   else
-			--     win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-			--   end
-			-- end
-
 			if is_vim(pane) then
 				-- pass the keys through to vim/nvim
 				win:perform_action({
@@ -367,26 +323,12 @@ local function scroll(direction, key)
 			else
 				win:perform_action({ ScrollByPage = direction }, pane)
 			end
-
-			-- if is_vim(pane) then
-			--   -- pass the keys through to vim/nvim
-			--   win:perform_action({
-			--     SendKey = { key = key, mods = 'CTRL' },
-			--   }, pane)
-			-- elseif pane:is_alt_screen_active() then
-			--   -- pass the keys to running screen
-			--   win:perform_action({
-			--     SendKey = { key = key, mods = 'CTRL' },
-			--   }, pane)
-			-- else
-			--   win:perform_action({ ScrollByPage = direction }, pane)
-			-- end
 		end),
 	}
 end
 
 local show_tab_bar = true
-wezterm.on("toggle-tab-bar", function(window, pane)
+wezterm.on("toggle-tab-bar", function(window, _)
 	show_tab_bar = not show_tab_bar
 
 	window:set_config_overrides({
@@ -464,11 +406,6 @@ config.keys = { -- This will create a new split and run the `top` program inside
 	scroll(0.5, "d"),
 	scroll(-1, "b"),
 	scroll(1, "f"),
-	{
-		key = "o",
-		mods = "CTRL|SHIFT",
-		action = act.EmitEvent("gui-startup"),
-	},
 	{
 		key = "n",
 		mods = "LEADER",

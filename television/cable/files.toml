@@ -1,0 +1,13 @@
+[metadata]
+name = "files"
+description = "A channel to select files and directories"
+requirements = ["fd", "bat"]
+
+[source]
+command = ["fd -t f", "fd -t f -H"]
+
+[keybindings]
+shortcut = "f1"
+
+[preview]
+command = "bat -n --style=numbers --color=always --theme=CatppuccinMocha -- '{}'"

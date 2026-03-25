@@ -14,16 +14,18 @@ return {
 		cmd = "Telescope",
 		keys = {
         -- stylua: ignore start
-        { "<leader>ff", function() require("telescope.builtin").find_files() end,                   desc = "Telescope find files" },
-        { "<leader>fg", function() require("telescope.builtin").live_grep() end,                    desc = "Telescope live grep" },
-        { "<leader>fb", function() require("telescope.builtin").buffers() end,                      desc = "Telescope buffers" },
-        { "<leader>fh", function() require("telescope.builtin").help_tags() end,                    desc = "Telescope help tags" },
-        { "<leader>fc", function() require("telescope.builtin").commands() end,                     desc = "Telescope commands" },
-        { "<leader>gf", function() require("telescope.builtin").git_files() end,                    desc = "Telescope find git tracked files" },
-        { "<leader>fm", function() require("telescope.builtin").marks({ mark_type = "local" }) end, desc = "Telescope find marks" },
-        { "<leader>fd", function() require("telescope.builtin").diagnostics() end,                  desc = "Telescope find diagnostics" },
-        { "<leader>ft", "<cmd>TodoTelescope<CR>",                                                   desc = "Telescope find todos" },
-        { "<leader>gr", function() require("telescope.builtin").lsp_references() end,               desc = "Search references" },
+        { "<leader>ff", function() require("telescope.builtin").find_files()                   end, desc = "Telescope find files"       },
+        { "<leader>fg", function() require("telescope.builtin").live_grep()                    end, desc = "Telescope live grep"        },
+        { "<leader>fb", function() require("telescope.builtin").buffers()                      end, desc = "Telescope buffers"          },
+        { "<leader>fh", function() require("telescope.builtin").help_tags()                    end, desc = "Telescope help tags"        },
+        { "<leader>fc", function() require("telescope.builtin").commands()                     end, desc = "Telescope commands"         },
+        { "<leader>fm", function() require("telescope.builtin").marks({ mark_type = "local" }) end, desc = "Telescope find marks"       },
+        { "<leader>fd", function() require("telescope.builtin").diagnostics()                  end, desc = "Telescope find diagnostics" },
+        { "<leader>gr", function() require("telescope.builtin").lsp_references()               end, desc = "Search references"          },
+        { "<leader>ft", "<cmd>TodoTelescope<CR>",                                                   desc = "Telescope find todos"       },
+
+        { "<leader>gf", function() require("telescope.builtin").git_files()  end, desc = "Telescope find git tracked files"           },
+        { "<leader>gd", function() require("telescope.builtin").git_status() end, desc = "Telescope find file change detected by git" },
 			-- stylua: ignore end
 		},
 		config = function()
@@ -42,8 +44,6 @@ return {
 				},
 				defaults = {
 					previewer = true,
-					file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-					grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 					qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 					layout_startegy = "horizontal",
 					layout_config = {
@@ -83,7 +83,8 @@ return {
 				},
 			})
 			telescope.load_extension("fzf")
+
+			vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#f38ba8" })
 		end,
-		cmd = { "Telescope" },
 	},
 }

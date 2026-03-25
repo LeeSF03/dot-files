@@ -1,13 +1,10 @@
 local harpoon = require("harpoon")
 local Path = require("plenary.path")
 
-harpoon:setup({
-	settings = {
-		key = function()
-			return vim.loop.cwd()
-		end,
-	},
-})
+harpoon:extend(require("harpoon.extensions").builtins.highlight_current_file())
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#f38ba8", bold = true })
+
+harpoon:setup()
 
 local M = {}
 
@@ -65,28 +62,27 @@ function M.toggle_mark_and_shift(filepath)
 end
 
 function M.select_index(index)
-	local current_file = vim.fn.expand("%:p")
-	print(current_file)
-
-	for _, file in ipairs(harpoon:list().items) do
-		local file_path = vim.fn.fnamemodify(file.value, ":p")
-
-		if file_path == current_file then
-			harpoon:list():select(index)
-			vim.cmd("UfoEnableFold")
-			return
-		end
+	local items = harpoon:list().items
+	if index < 1 or index > #items then
+		print("No file is harpooned at index " .. index)
+		return
 	end
+	print(vim.fn.fnamemodify(items[index].value, ":p"))
+	harpoon:list():select(index)
+	vim.cmd("UfoEnableFold")
 
-	local bufnr = vim.fn.bufnr(current_file, false)
-	local is_modified = bufnr ~= -1 and vim.bo[bufnr].modified or false
+	-- local current_file = vim.fn.expand("%:p")
+	-- print(current_file)
 
-	if is_modified then
-		print("Cannot switch file if current file is modified and not harpooned.")
-	else
-		harpoon:list():select(index)
-		vim.cmd("UfoEnableFold")
-	end
+	-- for _, file in ipairs(harpoon:list().items) do
+	-- 	local file_path = vim.fn.fnamemodify(file.value, ":p")
+	--
+	-- 	if file_path == current_file then
+	-- 		harpoon:list():select(index)
+	-- 		-- vim.cmd("UfoEnableFold")
+	-- 		return
+	-- 	end
+	-- end
 end
 
 function M.select_next_harpooned_file()
@@ -97,19 +93,17 @@ function M.select_next_harpooned_file()
 	for i, mark in ipairs(marks) do
 		if Path:new(mark.value):absolute() == current_path then
 			if i == #list.items then
-				list:select(1)
-				vim.cmd("UfoEnableFold")
+				M.select_index(1)
 			else
-				list:select(i + 1)
-				vim.cmd("UfoEnableFold")
+				M.select_index(i + 1)
 			end
 			return
 		end
 	end
 
+	-- if current file is not in the list, select the first one (oldest added)
 	if #list.items > 0 then
-		list:select(1)
-		vim.cmd("UfoEnableFold")
+		M.select_index(1)
 	end
 end
 
@@ -121,19 +115,17 @@ function M.select_previous_harpooned_file()
 	for i, mark in ipairs(marks) do
 		if Path:new(mark.value):absolute() == current_path then
 			if i == 1 then
-				list:select(#list.items)
-				vim.cmd("UfoEnableFold")
+				M.select_index(#list.items)
 			else
-				list:select(i - 1)
-				vim.cmd("UfoEnableFold")
+				M.select_index(i - 1)
 			end
 			return
 		end
 	end
 
+	-- if current file is not in the list, select the last one (most recently added)
 	if #list.items > 0 then
-		list:select(#list.items)
-		vim.cmd("UfoEnableFold")
+		M.select_index(#list.items)
 	end
 end
 
@@ -193,7 +185,7 @@ function M.setup_autocmd()
 	local group = vim.api.nvim_create_augroup("HarpoonMaintain", { clear = true })
 
 	-- Clean up non-existent files
-	vim.api.nvim_create_autocmd({ "BufEnter", "BufDelete", "BufFilePost", "FocusGained" }, {
+	vim.api.nvim_create_autocmd({ "BufEnter", "BufDelete", "BufFilePost", "FocusGained", "VimResume" }, {
 		group = group,
 		callback = function()
 			clean_nonexistent_marks()

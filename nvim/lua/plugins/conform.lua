@@ -3,6 +3,12 @@ return {
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
 		opts = {
+			format_on_save = {
+				-- These options will be passed to conform.format()
+				timeout_ms = 800,
+				lsp_format = "fallback",
+			},
+
 			-- Available formatters: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
 			formatters_by_ft = {
 				-- INFO: restart prettierd if there was an error that is not caused by the config
@@ -15,7 +21,7 @@ return {
 				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 				css = { "prettierd", "prettier", stop_after_first = true },
 				html = { "prettierd", "prettier", stop_after_first = true },
-				markdown = { "prettierd", "prettier", stop_after_first = true },
+				-- markdown = { "prettierd", "prettier", stop_after_first = true },
 				graphql = { "prettierd", "prettier", stop_after_first = true },
 
 				-- yaml

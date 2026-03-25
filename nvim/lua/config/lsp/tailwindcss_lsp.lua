@@ -62,7 +62,7 @@ vim.lsp.config("tailwindcss", {
 	settings = {
 		tailwindCSS = {
 			validate = true,
-			classFunctions = { "clsx", "cn", "cva" },
+			classFunctions = { "clsx", "cn", "cva", "tw", "tw\\.[a-z-]+" },
 			classAttributes = {
 				"class",
 				"className",

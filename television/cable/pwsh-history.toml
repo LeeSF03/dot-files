@@ -1,0 +1,8 @@
+[metadata]
+name = "pwsh-history"
+description = "A channel to select from your powershell history"
+
+[source]
+command = "Get-Content (Get-PSReadLineOption).HistorySavePath | Select-Object -Last 500"
+no_sort = true
+frecency = false

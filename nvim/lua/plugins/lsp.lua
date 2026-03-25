@@ -60,8 +60,11 @@ return {
 					["<C-e>"] = { "hide" },
 					["<C-y>"] = { "select_and_accept" },
 
-					["<C-u>"] = { "scroll_documentation_up", "fallback" },
-					["<C-d>"] = { "scroll_documentation_down", "fallback" },
+					["<C-k>"] = { "scroll_documentation_up", "fallback" },
+					["<C-j>"] = { "scroll_documentation_down", "fallback" },
+
+					["<C-l>"] = { "scroll_signature_up", "fallback" },
+					["<C-h>"] = { "scroll_signature_down", "fallback" },
 				},
 				completion = {
 					menu = {

@@ -8,9 +8,10 @@ return {
 	keys = {
     -- stylua: ignore start
     { "M",          function() require("config.harpoon").toggle_mark_and_shift() end,                  desc = "Toggle Harpoon Mark"   },
-    { "<leader>mm", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = "Harpoon Quick Menu"    },
     { "mp",         function() require("config.harpoon").select_previous_harpooned_file() end,         desc = "Previous Harpoon File" },
     { "mn",         function() require("config.harpoon").select_next_harpooned_file() end,             desc = "Next Harpoon File"     },
+
+    { "<leader>mm", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list(), { border = "rounded"}) end, desc = "Harpoon Quick Menu"    },
 
     { "<leader>1",  function() require("config.harpoon").select_index(1)  end },
     { "<leader>2",  function() require("config.harpoon").select_index(2)  end },
@@ -21,7 +22,7 @@ return {
     { "<leader>7",  function() require("config.harpoon").select_index(7)  end },
     { "<leader>8",  function() require("config.harpoon").select_index(8)  end },
     { "<leader>9",  function() require("config.harpoon").select_index(9)  end },
-    { "<leader>0",  function() require("config.harpoon").select_index(10) end },
+    -- { "<leader>0",  function() require("config.harpoon").select_index(10) end },
 		-- stylua: ignore end
 	},
 }
