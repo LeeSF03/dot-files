@@ -1,0 +1,1185 @@
+
+sourcing "nvim_exec2()"
+line 1:     amenu     PopUp.Open\ in\ web\ browser  gx
+line 2:     anoremenu PopUp.Inspect                 <Cmd>Inspect<CR>
+line 3:     anoremenu PopUp.Go\ to\ definition      <Cmd>lua vim.lsp.buf.definition()<CR>
+line 4:     anoremenu PopUp.Show\ Diagnostics       <Cmd>lua vim.diagnostic.open_float()<CR>
+line 5:     anoremenu PopUp.Show\ All\ Diagnostics  <Cmd>lua vim.diagnostic.setqflist()<CR>
+line 6:     anoremenu PopUp.Configure\ Diagnostics  <Cmd>help vim.diagnostic.config()<CR>
+line 7:     anoremenu PopUp.-1-                     <Nop>
+line 8:     vnoremenu PopUp.Cut                     "+x
+line 9:     vnoremenu PopUp.Copy                    "+y
+line 10:     anoremenu PopUp.Paste                   "+gP
+line 11:     vnoremenu PopUp.Paste                   "+P
+line 12:     vnoremenu PopUp.Delete                  "_x
+line 13:     nnoremenu PopUp.Select\ All             ggVG
+line 14:     vnoremenu PopUp.Select\ All             gg0oG$
+line 15:     inoremenu PopUp.Select\ All             <C-Home><C-O>VG
+line 16:     anoremenu PopUp.-2-                     <Nop>
+line 17:     anoremenu PopUp.How-to\ disable\ mouse  <Cmd>help disable-mouse<CR>
+line 18:   
+finished sourcing nvim_exec2()
+Searching for "ftplugin.vim" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\ftplugin.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\ftplugin.vim"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\ftplugin.vim"
+sourcing "D:\Program Files\Neovim\share\nvim\runtime\ftplugin.vim"
+line 1: " Vim support file to switch on loading plugins for file types
+line 2: "
+line 3: " Maintainer:^IThe Vim Project <https://github.com/vim/vim>
+line 4: " Last change:^I2023 Aug 10
+line 5: " Former Maintainer:^IBram Moolenaar <Bram@vim.org>
+line 6: 
+line 7: if exists("did_load_ftplugin")
+line 8:   finish
+line 9: endif
+line 10: let did_load_ftplugin = 1
+line 11: 
+line 12: augroup filetypeplugin
+line 13:   au FileType * call s:LoadFTPlugin()
+line 14: 
+line 15:   func! s:LoadFTPlugin()
+line 39: augroup END
+finished sourcing D:\Program Files\Neovim\share\nvim\runtime\ftplugin.vim
+Searching for "D:\Program Files\Neovim\lib\nvim\ftplugin.vim"
+Searching for "indent.vim" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\indent.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\indent.vim"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\indent.vim"
+sourcing "D:\Program Files\Neovim\share\nvim\runtime\indent.vim"
+line 1: " Vim support file to switch on loading indent files for file types
+line 2: "
+line 3: " Maintainer:^IThe Vim Project <https://github.com/vim/vim>
+line 4: " Last Change:^I2023 Aug 10
+line 5: " Former Maintainer:^IBram Moolenaar <Bram@vim.org>
+line 6: 
+line 7: if exists("did_indent_on")
+line 8:   finish
+line 9: endif
+line 10: let did_indent_on = 1
+line 11: 
+line 12: augroup filetypeindent
+line 13:   au FileType * call s:LoadIndent()
+line 14:   func! s:LoadIndent()
+line 33: augroup END
+finished sourcing D:\Program Files\Neovim\share\nvim\runtime\indent.vim
+Searching for "D:\Program Files\Neovim\lib\nvim\indent.vim"
+could not source "$VIM/sysinit.vim"
+sourcing "C:\Users\shuen\.config\nvim\init.lua"
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/filetype.lua
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/filetype.lua"
+line 0: sourcing "nvim_exec2() called at D:\Program Files\Neovim\share/nvim/runtime/filetype.lua:0"
+line 1:   augroup filetypedetect
+line 2:   runtime! ftdetect/*.{vim,lua}
+Searching for "ftdetect/*.{vim,lua}" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\ftdetect/*.{vim,lua}"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\ftdetect/*.{vim,lua}"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\lazy.nvim\ftdetect/*.{vim,lua}"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\ftdetect/*.{vim,lua}"
+Searching for "D:\Program Files\Neovim\lib\nvim\ftdetect/*.{vim,lua}"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\readme\ftdetect/*.{vim,lua}"
+not found in runtime path: "ftdetect/*.{vim,lua}"
+line 3:   augroup END
+finished sourcing nvim_exec2() called at D:\Program Files\Neovim\share/nvim/runtime/filetype.lua:0
+continuing in D:\Program Files\Neovim\share/nvim/runtime/filetype.lua
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/filetype.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+Executing ColorSchemePre Autocommands for "*"
+autocommand <Lua 83: ~/AppData/Local/nvim-data/lazy/lazy.nvim/lua/lazy/core/loader.lua:31>
+
+line 0: sourcing "nvim_exec2() called at ColorSchemePre Autocommands for "*":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at ColorSchemePre Autocommands for "*":0
+continuing in ColorSchemePre Autocommands for "*"
+line 0: sourcing "nvim_exec2() called at ColorSchemePre Autocommands for "*":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at ColorSchemePre Autocommands for "*":0
+continuing in ColorSchemePre Autocommands for "*"
+Executing: 
+Searching for "colors/catppuccin-mocha.*" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\colors/catppuccin-mocha.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\colors/catppuccin-mocha.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\lazy.nvim\colors/catppuccin-mocha.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\colors/catppuccin-mocha.*"
+line 0: sourcing "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\colors\catppuccin-mocha.lua"
+finished sourcing C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\colors\catppuccin-mocha.lua
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/filetypes.lua
+line 1: sourcing "C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/filetypes.lua"
+finished sourcing C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/filetypes.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/nvim-treesitter.lua
+line 1: sourcing "C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/nvim-treesitter.lua"
+finished sourcing C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/nvim-treesitter.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/query_predicates.lua
+line 1: sourcing "C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/query_predicates.lua"
+finished sourcing C:/Users/shuen/AppData/Local/nvim-data/lazy/nvim-treesitter/plugin/query_predicates.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/editorconfig.lua
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/editorconfig.lua"
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/editorconfig.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/gzip.vim
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/gzip.vim"
+line 1: " Vim plugin for editing compressed files.
+line 2: " Maintainer:^IThe Vim Project <https://github.com/vim/vim>
+line 3: " Last Change:^I2025 Feb 28
+line 4: " Former Maintainer:^IBram Moolenaar <Bram@vim.org>
+line 5: 
+line 6: " Exit quickly when:
+line 7: " - this plugin was already loaded
+line 8: " - when 'compatible' is set
+line 9: " - some autocommands are already taking care of compressed files
+line 10: if exists("loaded_gzip") || &cp || exists("#BufReadPre#*.gz")
+line 11:   finish
+line 12: endif
+line 13: let loaded_gzip = 1
+line 14: 
+line 15: augroup gzip
+line 16:   " Remove all gzip autocommands
+line 17:   au!
+line 18: 
+line 19:   " Enable editing of gzipped files.
+line 20:   " The functions are defined in autoload/gzip.vim.
+line 21:   "
+line 22:   " Set binary mode before reading the file.
+line 23:   autocmd BufReadPre,FileReadPre^I*.gz,*.bz2,*.bz3,*.Z,*.lzma,*.xz,*.lz,*.zst,*.br,*.lzo,*.lz4 setlocal bin
+line 24: 
+line 25:   " Use "gzip -d" and similar commands, gunzip isn't always available.
+line 26:   autocmd BufReadPost,FileReadPost^I*.br call gzip#read("brotli -d --rm")
+line 27:   autocmd BufReadPost,FileReadPost^I*.bz2 call gzip#read("bzip2 -d")
+line 28:   autocmd BufReadPost,FileReadPost^I*.bz3 call gzip#read("bzip3 -d")
+line 29:   autocmd BufReadPost,FileReadPost^I*.gz  call gzip#read("gzip -dn")
+line 30:   autocmd BufReadPost,FileReadPost^I*.lz  call gzip#read("lzip -d")
+line 31:   autocmd BufReadPost,FileReadPost^I*.lz4 call gzip#read("lz4 -d -q --rm")
+line 32:   autocmd BufReadPost,FileReadPost^I*.lzma call gzip#read("lzma -d")
+line 33:   autocmd BufReadPost,FileReadPost^I*.lzo call gzip#read("lzop -d -U")
+line 34:   autocmd BufReadPost,FileReadPost^I*.xz  call gzip#read("xz -d")
+line 35:   autocmd BufReadPost,FileReadPost^I*.Z   call gzip#read("uncompress")
+line 36:   autocmd BufReadPost,FileReadPost^I*.zst call gzip#read("zstd -d --rm")
+line 37: 
+line 38:   autocmd BufWritePost,FileWritePost^I*.br  call gzip#write("brotli --rm")
+line 39:   autocmd BufWritePost,FileWritePost^I*.bz2 call gzip#write("bzip2")
+line 40:   autocmd BufWritePost,FileWritePost^I*.bz3 call gzip#write("bzip3")
+line 41:   autocmd BufWritePost,FileWritePost^I*.gz  call gzip#write("gzip")
+line 42:   autocmd BufWritePost,FileWritePost^I*.lz  call gzip#write("lzip")
+line 43:   autocmd BufWritePost,FileWritePost^I*.lz4  call gzip#write("lz4 -q --rm")
+line 44:   autocmd BufWritePost,FileWritePost^I*.lzma call gzip#write("lzma -z")
+line 45:   autocmd BufWritePost,FileWritePost^I*.lzo  call gzip#write("lzop -U")
+line 46:   autocmd BufWritePost,FileWritePost^I*.xz  call gzip#write("xz -z")
+line 47:   autocmd BufWritePost,FileWritePost^I*.Z   call gzip#write("compress -f")
+line 48:   autocmd BufWritePost,FileWritePost^I*.zst  call gzip#write("zstd --rm")
+line 49: 
+line 50:   autocmd FileAppendPre^I^I^I*.br call gzip#appre("brotli -d --rm")
+line 51:   autocmd FileAppendPre^I^I^I*.bz2 call gzip#appre("bzip2 -d")
+line 52:   autocmd FileAppendPre^I^I^I*.bz3 call gzip#appre("bzip3 -d")
+line 53:   autocmd FileAppendPre^I^I^I*.gz  call gzip#appre("gzip -dn")
+line 54:   autocmd FileAppendPre^I^I^I*.lz   call gzip#appre("lzip -d")
+line 55:   autocmd FileAppendPre^I^I^I*.lz4 call gzip#appre("lz4 -d -q --rm")
+line 56:   autocmd FileAppendPre^I^I^I*.lzma call gzip#appre("lzma -d")
+line 57:   autocmd FileAppendPre^I^I^I*.lzo call gzip#appre("lzop -d -U")
+line 58:   autocmd FileAppendPre^I^I^I*.xz   call gzip#appre("xz -d")
+line 59:   autocmd FileAppendPre^I^I^I*.Z   call gzip#appre("uncompress")
+line 60:   autocmd FileAppendPre^I^I^I*.zst call gzip#appre("zstd -d --rm")
+line 61: 
+line 62:   autocmd FileAppendPost^I^I*.br call gzip#write("brotli --rm")
+line 63:   autocmd FileAppendPost^I^I*.bz2 call gzip#write("bzip2")
+line 64:   autocmd FileAppendPost^I^I*.bz3 call gzip#write("bzip3")
+line 65:   autocmd FileAppendPost^I^I*.gz  call gzip#write("gzip")
+line 66:   autocmd FileAppendPost^I^I*.lz call gzip#write("lzip")
+line 67:   autocmd FileAppendPost^I^I*.lz4 call gzip#write("lz4 --rm")
+line 68:   autocmd FileAppendPost^I^I*.lzma call gzip#write("lzma -z")
+line 69:   autocmd FileAppendPost^I^I*.lzo call gzip#write("lzop -U")
+line 70:   autocmd FileAppendPost^I^I*.xz call gzip#write("xz -z")
+line 71:   autocmd FileAppendPost^I^I*.Z   call gzip#write("compress -f")
+line 72:   autocmd FileAppendPost^I^I*.zst call gzip#write("zstd --rm")
+line 73: augroup END
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/gzip.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/man.lua
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/man.lua"
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/man.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/matchit.vim
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/matchit.vim"
+line 1: " Nvim: load the matchit plugin by default.
+line 2: if !exists("g:loaded_matchit") && stridx(&packpath, $VIMRUNTIME) >= 0
+line 3:   packadd matchit
+Searching for "pack/*/start/matchit" in "D:\Program Files\Neovim\share/nvim/runtime"
+Searching for "D:\Program Files\Neovim\share/nvim/runtime\pack/*/start/matchit"
+not found in 'packpath': "pack/*/start/matchit"
+Searching for "pack/*/opt/matchit" in "D:\Program Files\Neovim\share/nvim/runtime"
+Searching for "D:\Program Files\Neovim\share/nvim/runtime\pack/*/opt/matchit"
+line 3: sourcing "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\matchit\plugin\matchit.vim"
+line 1: "  matchit.vim: (global plugin) Extended "%" matching
+line 2: "  Maintainer:  Christian Brabandt
+line 3: "  Version:     1.21
+line 4: "  Last Change: 2024 May 20
+line 5: "  Repository:  https://github.com/chrisbra/matchit
+line 6: "  Previous URL:http://www.vim.org/script.php?script_id=39
+line 7: "  Previous Maintainer:  Benji Fisher PhD   <benji@member.AMS.org>
+line 8: 
+line 9: " Documentation:
+line 10: "  The documentation is in a separate file: ../doc/matchit.txt
+line 11: 
+line 12: " Credits:
+line 13: "  Vim editor by Bram Moolenaar (Thanks, Bram!)
+line 14: "  Original script and design by Raul Segura Acevedo
+line 15: "  Support for comments by Douglas Potts
+line 16: "  Support for back references and other improvements by Benji Fisher
+line 17: "  Support for many languages by Johannes Zellner
+line 18: "  Suggestions for improvement, bug reports, and support for additional
+line 19: "  languages by Jordi-Albert Batalla, Neil Bird, Servatius Brandt, Mark
+line 20: "  Collett, Stephen Wall, Dany St-Amant, Yuheng Xie, and Johannes Zellner.
+line 21: 
+line 22: " Debugging:
+line 23: "  If you'd like to try the built-in debugging commands...
+line 24: "   :MatchDebug      to activate debugging for the current buffer
+line 25: "  This saves the values of several key script variables as buffer-local
+line 26: "  variables.  See the MatchDebug() function, below, for details.
+line 27: 
+line 28: " TODO:  I should think about multi-line patterns for b:match_words.
+line 29: "   This would require an option:  how many lines to scan (default 1).
+line 30: "   This would be useful for Python, maybe also for *ML.
+line 31: " TODO:  Maybe I should add a menu so that people will actually use some of
+line 32: "   the features that I have implemented.
+line 33: " TODO:  Eliminate the MultiMatch function.  Add yet another argument to
+line 34: "   Match_wrapper() instead.
+line 35: " TODO:  Allow :let b:match_words = '\(\(foo\)\(bar\)\):\3\2:end\1'
+line 36: " TODO:  Make backrefs safer by using '\V' (very no-magic).
+line 37: " TODO:  Add a level of indirection, so that custom % scripts can use my
+line 38: "   work but extend it.
+line 39: 
+line 40: " Allow user to prevent loading and prevent duplicate loading.
+line 41: if exists("g:loaded_matchit") || &cp
+line 42:   finish
+line 43: endif
+line 44: let g:loaded_matchit = 1
+line 45: 
+line 46: let s:save_cpo = &cpo
+line 47: set cpo&vim
+line 48: 
+line 49: fun MatchEnable()
+line 89: 
+line 90: fun MatchDisable()
+line 108: 
+line 109: " Call this function to turn on debugging information.  Every time the main
+line 110: " script is run, buffer variables will be saved.  These can be used directly
+line 111: " or viewed using the menu items below.
+line 112: if !exists(":MatchDebug")
+line 113:   command! -nargs=0 MatchDebug call matchit#Match_debug()
+line 114: endif
+line 115: if !exists(":MatchDisable")
+line 116:   command! -nargs=0 MatchDisable :call MatchDisable()
+line 117: endif
+line 118: if !exists(":MatchEnable")
+line 119:   command! -nargs=0 MatchEnable :call MatchEnable()
+line 120: endif
+line 121: 
+line 122: call MatchEnable()
+calling MatchEnable()
+
+line 1:   nnoremap <silent> <Plug>(MatchitNormalForward)     :<C-U>call matchit#Match_wrapper('',1,'n')<CR>
+line 2:   nnoremap <silent> <Plug>(MatchitNormalBackward)    :<C-U>call matchit#Match_wrapper('',0,'n')<CR>
+line 3:   xnoremap <silent> <Plug>(MatchitVisualForward)     :<C-U>call matchit#Match_wrapper('',1,'v')<CR>:if col("''") != col("$") \| exe ":normal! m'" \| endif<cr>gv``
+line 5:   xnoremap <silent> <Plug>(MatchitVisualBackward)    :<C-U>call matchit#Match_wrapper('',0,'v')<CR>m'gv``
+line 6:   onoremap <silent> <Plug>(MatchitOperationForward)  :<C-U>call matchit#Match_wrapper('',1,'o')<CR>
+line 7:   onoremap <silent> <Plug>(MatchitOperationBackward) :<C-U>call matchit#Match_wrapper('',0,'o')<CR>
+line 8: 
+line 9:   " Analogues of [{ and ]} using matching patterns:
+line 10:   nnoremap <silent> <Plug>(MatchitNormalMultiBackward)    :<C-U>call matchit#MultiMatch("bW", "n")<CR>
+line 11:   nnoremap <silent> <Plug>(MatchitNormalMultiForward)     :<C-U>call matchit#MultiMatch("W",  "n")<CR>
+line 12:   xnoremap <silent> <Plug>(MatchitVisualMultiBackward)    :<C-U>call matchit#MultiMatch("bW", "n")<CR>m'gv``
+line 13:   xnoremap <silent> <Plug>(MatchitVisualMultiForward)     :<C-U>call matchit#MultiMatch("W",  "n")<CR>m'gv``
+line 14:   onoremap <silent> <Plug>(MatchitOperationMultiBackward) :<C-U>call matchit#MultiMatch("bW", "o")<CR>
+line 15:   onoremap <silent> <Plug>(MatchitOperationMultiForward)  :<C-U>call matchit#MultiMatch("W",  "o")<CR>
+line 16: 
+line 17:   " text object:
+line 18:   xmap <silent> <Plug>(MatchitVisualTextObject) <Plug>(MatchitVisualMultiBackward)o<Plug>(MatchitVisualMultiForward)
+line 19: 
+line 20:   if !exists("g:no_plugin_maps")
+line 21:     nmap <silent> %  <Plug>(MatchitNormalForward)
+line 22:     nmap <silent> g% <Plug>(MatchitNormalBackward)
+line 23:     xmap <silent> %  <Plug>(MatchitVisualForward)
+line 24:     xmap <silent> g% <Plug>(MatchitVisualBackward)
+line 25:     omap <silent> %  <Plug>(MatchitOperationForward)
+line 26:     omap <silent> g% <Plug>(MatchitOperationBackward)
+line 27: 
+line 28:     " Analogues of [{ and ]} using matching patterns:
+line 29:     nmap <silent> [% <Plug>(MatchitNormalMultiBackward)
+line 30:     nmap <silent> ]% <Plug>(MatchitNormalMultiForward)
+line 31:     xmap <silent> [% <Plug>(MatchitVisualMultiBackward)
+line 32:     xmap <silent> ]% <Plug>(MatchitVisualMultiForward)
+line 33:     omap <silent> [% <Plug>(MatchitOperationMultiBackward)
+line 34:     omap <silent> ]% <Plug>(MatchitOperationMultiForward)
+line 35: 
+line 36:     " Text object
+line 37:     xmap a% <Plug>(MatchitVisualTextObject)
+line 38:   endif
+MatchEnable returning #0
+
+continuing in D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\matchit\plugin\matchit.vim
+
+line 123: 
+line 124: let &cpo = s:save_cpo
+line 125: unlet s:save_cpo
+line 126: 
+line 127: " vim:sts=2:sw=2:et:
+finished sourcing D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\matchit\plugin\matchit.vim
+continuing in D:\Program Files\Neovim\share/nvim/runtime/plugin/matchit.vim
+line 3: augroup filetypedetect
+line 3: augroup END
+line 4: endif
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/matchit.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/matchparen.vim
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/matchparen.vim"
+line 1: " Vim plugin for showing matching parens
+line 2: " Maintainer:^IThe Vim Project <https://github.com/vim/vim>
+line 3: " Last Change:^I2025 Apr 08
+line 4: " Former Maintainer:^IBram Moolenaar <Bram@vim.org>
+line 5: 
+line 6: " Exit quickly when:
+line 7: " - this plugin was already loaded (or disabled)
+line 8: " - when 'compatible' is set
+line 9: " - Vim has no support for :defer
+line 10: if exists("g:loaded_matchparen") || &cp || exists(":defer") != 2
+line 12:   finish
+line 13: endif
+line 14: let g:loaded_matchparen = 1
+line 15: 
+line 16: if !exists("g:matchparen_timeout")
+line 17:   let g:matchparen_timeout = 300
+line 18: endif
+line 19: if !exists("g:matchparen_insert_timeout")
+line 20:   let g:matchparen_insert_timeout = 60
+line 21: endif
+line 22: if !exists("g:matchparen_disable_cursor_hl")
+line 23:   let g:matchparen_disable_cursor_hl = 0
+line 24: endif
+line 25: 
+line 26: augroup matchparen
+line 27:   " Replace all matchparen autocommands
+line 28:   autocmd! CursorMoved,CursorMovedI,WinEnter,WinScrolled * call s:Highlight_Matching_Pair()
+line 29:   autocmd! BufWinEnter * autocmd SafeState * ++once call s:Highlight_Matching_Pair()
+line 30:   autocmd! WinLeave,BufLeave * call s:Remove_Matches()
+line 31:   autocmd! TextChanged,TextChangedI * call s:Highlight_Matching_Pair()
+line 32:   autocmd! TextChangedP * call s:Remove_Matches()
+line 33: augroup END
+line 34: 
+line 35: " Skip the rest if it was already done.
+line 36: if exists("*s:Highlight_Matching_Pair")
+line 37:   finish
+line 38: endif
+line 39: 
+line 40: let s:cpo_save = &cpo
+line 41: set cpo-=C
+line 42: 
+line 43: " The function that is invoked (very often) to define a ":match" highlighting
+line 44: " for any matching paren.
+line 45: func s:Highlight_Matching_Pair()
+line 202: 
+line 203: func s:Remove_Matches()
+line 211: 
+line 212: " Define commands that will disable and enable the plugin.
+line 213: command DoMatchParen call s:DoMatchParen()
+line 214: command NoMatchParen call s:NoMatchParen()
+line 215: 
+line 216: func s:NoMatchParen()
+line 223: 
+line 224: func s:DoMatchParen()
+line 230: 
+line 231: let &cpo = s:cpo_save
+line 232: unlet s:cpo_save
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/matchparen.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/net.lua
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/net.lua"
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/net.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/netrwPlugin.vim
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/netrwPlugin.vim"
+line 1: " Load the netrw package.
+line 2: 
+line 3: if &cp || exists("g:loaded_netrw") || exists("g:loaded_netrwPlugin")
+line 4:   finish
+line 5: endif
+line 6: 
+line 7: packadd netrw
+Searching for "pack/*/start/netrw" in "D:\Program Files\Neovim\share/nvim/runtime"
+Searching for "D:\Program Files\Neovim\share/nvim/runtime\pack/*/start/netrw"
+not found in 'packpath': "pack/*/start/netrw"
+Searching for "pack/*/opt/netrw" in "D:\Program Files\Neovim\share/nvim/runtime"
+Searching for "D:\Program Files\Neovim\share/nvim/runtime\pack/*/opt/netrw"
+line 7: sourcing "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\netrw\plugin\netrwPlugin.vim"
+line 1: " Creator: Charles E Campbell
+line 2: " Previous Maintainer: Luca Saccarola <github.e41mv@aleeas.com>
+line 3: " Maintainer: This runtime file is looking for a new maintainer.
+line 4: " Copyright:    Copyright (C) 1999-2021 Charles E. Campbell {{{
+line 5: "               Permission is hereby granted to use and distribute this code,
+line 6: "               with or without modifications, provided that this copyright
+line 7: "               notice is copied with it. Like anything else that's free,
+line 8: "               netrw.vim, netrwPlugin.vim, and netrwSettings.vim are provided
+line 9: "               *as is* and comes with no warranty of any kind, either
+line 10: "               expressed or implied. By using this plugin, you agree that
+line 11: "               in no event will the copyright holder be liable for any damages
+line 12: "               resulting from the use of this software. }}}
+line 13: 
+line 14: if &cp || exists("g:loaded_netrwPlugin")
+line 15:     finish
+line 16: endif
+line 17: 
+line 18: let g:loaded_netrwPlugin = "v184"
+line 19: 
+line 20: let s:keepcpo = &cpo
+line 21: set cpo&vim
+line 22: 
+line 23: " Local Browsing Autocmds: {{{
+line 24: 
+line 25: augroup FileExplorer
+line 26:     au!
+line 27:     au BufLeave * if &ft != "netrw"|let w:netrw_prvfile= expand("%:p")|endif
+line 28:     au BufEnter * sil call s:LocalBrowse(expand("<amatch>"))
+line 29:     au VimEnter * sil call s:VimEnter(expand("<amatch>"))
+line 30:     if has("win32")
+line 31:         au BufEnter .* sil call s:LocalBrowse(expand("<amatch>"))
+line 32:     endif
+line 33: augroup END
+line 34: 
+line 35: " }}}
+line 36: " Network Browsing Reading Writing: {{{
+line 37: 
+line 38: augroup Network
+line 39:     au!
+line 40:     au BufReadCmd file://* call netrw#FileUrlEdit(expand("<amatch>"))
+line 41:     au BufReadCmd ftp://*,rcp://*,scp://*,dav://*,davs://*,rsync://*,sftp://* exe "sil doau BufReadPre ".fnameescape(expand("<amatch>"))|call netrw#Nread(2,expand("<amatch>"))|exe "sil doau BufReadPost ".fnameescape(expand("<amatch>"))
+line 42:     au FileReadCmd ftp://*,rcp://*,scp://*,file://*,dav://*,davs://*,rsync://*,sftp://* exe "sil doau FileReadPre ".fnameescape(expand("<amatch>"))|call netrw#Nread(1,expand("<amatch>"))|exe "sil doau FileReadPost ".fnameescape(expand("<amatch>"))
+line 43:     au BufWriteCmd ftp://*,rcp://*,scp://*,http://*,file://*,dav://*,davs://*,rsync://*,sftp://* exe "sil doau BufWritePre ".fnameescape(expand("<amatch>"))|exe 'Nwrite '.fnameescape(expand("<amatch>"))|exe "sil doau BufWritePost ".fnameescape(expand("<amatch>"))
+line 44:     au FileWriteCmd ftp://*,rcp://*,scp://*,http://*,file://*,dav://*,davs://*,rsync://*,sftp://* exe "sil doau FileWritePre ".fnameescape(expand("<amatch>"))|exe "'[,']".'Nwrite '.fnameescape(expand("<amatch>"))|exe "sil doau FileWritePost ".fnameescape(expand("<amatch>"))
+line 45:     try
+line 46:         au SourceCmd   ftp://*,rcp://*,scp://*,http://*,file://*,https://*,dav://*,davs://*,rsync://*,sftp://* exe 'Nsource '.fnameescape(expand("<amatch>"))
+line 47:     catch /^Vim\%((\a\+)\)\=:E216/
+line 48:         au SourcePre   ftp://*,rcp://*,scp://*,http://*,file://*,https://*,dav://*,davs://*,rsync://*,sftp://* exe 'Nsource '.fnameescape(expand("<amatch>"))
+line 49:     endtry
+line 50: augroup END
+line 51: 
+line 52: " }}}
+line 53: " Commands: :Nread, :Nwrite, :NetUserPass {{{
+line 54: 
+line 55: command! -count=1 -nargs=* Nread let s:svpos= winsaveview()<bar>call netrw#NetRead(<count>,<f-args>)<bar>call winrestview(s:svpos)
+line 56: command! -range=% -nargs=* Nwrite let s:svpos= winsaveview()<bar><line1>,<line2>call netrw#NetWrite(<f-args>)<bar>call winrestview(s:svpos)
+line 57: command! -nargs=* NetUserPass call netrw#NetUserPass(<f-args>)
+line 58: command! -nargs=* Nsource let s:svpos= winsaveview()<bar>call netrw#NetSource(<f-args>)<bar>call winrestview(s:svpos)
+line 59: command! -nargs=? Ntree call netrw#SetTreetop(1,<q-args>)
+line 60: 
+line 61: " }}}
+line 62: " Commands: :Explore, :Sexplore, Hexplore, Vexplore, Lexplore {{{
+line 63: 
+line 64: command! -nargs=* -bar -bang -count=0 -complete=dir Explore call netrw#Explore(<count>, 0, 0+<bang>0, <q-args>)
+line 65: command! -nargs=* -bar -bang -count=0 -complete=dir Sexplore call netrw#Explore(<count>, 1, 0+<bang>0, <q-args>)
+line 66: command! -nargs=* -bar -bang -count=0 -complete=dir Hexplore call netrw#Explore(<count>, 1, 2+<bang>0, <q-args>)
+line 67: command! -nargs=* -bar -bang -count=0 -complete=dir Vexplore call netrw#Explore(<count>, 1, 4+<bang>0, <q-args>)
+line 68: command! -nargs=* -bar -count=0 -complete=dir Texplore call netrw#Explore(<count>, 0, 6, <q-args>)
+line 69: command! -nargs=* -bar -bang -count=0 -complete=dir Lexplore call netrw#Lexplore(<count>, <bang>0, <q-args>)
+line 70: command! -nargs=* -bar -bang Nexplore call netrw#Explore(-1, 0, 0, <q-args>)
+line 71: command! -nargs=* -bar -bang Pexplore call netrw#Explore(-2, 0, 0, <q-args>)
+line 72: 
+line 73: " }}}
+line 74: " Maps: {{{
+line 75: 
+line 76: if exists("g:netrw_usetab") && g:netrw_usetab
+line 77:     if maparg('<c-tab>','n') == ""
+line 78:         nmap <unique> <c-tab> <Plug>NetrwShrink
+line 79:     endif
+line 80:     nno <silent> <Plug>NetrwShrink :call netrw#Shrink()<cr>
+line 81: endif
+line 82: 
+line 83: " }}}
+line 84: " LocalBrowse: invokes netrw#LocalBrowseCheck() on directory buffers {{{
+line 85: 
+line 86: function! s:LocalBrowse(dirname)
+line 118: 
+line 119: " }}}
+line 120: " s:VimEnter: after all vim startup stuff is done, this function is called. {{{
+line 121: "             Its purpose: to look over all windows and run s:LocalBrowse() on
+line 122: "             them, which checks if they're directories and will create a directory
+line 123: "             listing when appropriate.
+line 124: "             It also sets s:vimentered, letting s:LocalBrowse() know that s:VimEnter()
+line 125: "             has already been called.
+line 126: function! s:VimEnter(dirname)
+line 144: 
+line 145: " }}}
+line 146: " Deprecated: {{{
+line 147: 
+line 148: function NetUserPass(...)
+line 159: 
+line 160: " }}}
+line 161: 
+line 162: let &cpo= s:keepcpo
+line 163: unlet s:keepcpo
+line 164: 
+line 165: " vim:ts=8 sts=4 sw=4 et fdm=marker
+finished sourcing D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\netrw\plugin\netrwPlugin.vim
+continuing in D:\Program Files\Neovim\share/nvim/runtime/plugin/netrwPlugin.vim
+line 7: augroup filetypedetect
+line 7: augroup END
+line 8: 
+line 9: " vim:ts=8 sts=2 sw=2 et
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/netrwPlugin.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/osc52.lua
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/osc52.lua"
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/osc52.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/rplugin.vim
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/rplugin.vim"
+line 1: if exists('g:loaded_remote_plugins')
+line 2:   finish
+line 3: endif
+line 4: let g:loaded_remote_plugins = '/path/to/manifest'
+line 5: 
+line 6: " Get the path to the rplugin manifest file.
+line 7: function! s:GetManifestPath() abort
+line 26: 
+line 27: " Old manifest file based on known script locations.
+line 28: function! s:GetOldManifestPaths() abort
+line 43: 
+line 44: function! s:GetManifest() abort
+line 57: 
+line 58: function! s:LoadRemotePlugins() abort
+line 64: 
+line 65: command! -bar UpdateRemotePlugins call remote#host#UpdateRemotePlugins()
+line 66: 
+line 67: if index(v:argv, "--clean") < 0
+line 68:   call s:LoadRemotePlugins()
+calling <SNR>36_LoadRemotePlugins()
+
+line 1:   let g:loaded_remote_plugins = s:GetManifest()
+calling <SNR>36_GetManifest()
+
+line 1:   let manifest = s:GetManifestPath()
+calling <SNR>36_GetManifestPath()
+
+line 1:   let manifest_base = ''
+line 2: 
+line 3:   if exists('$NVIM_RPLUGIN_MANIFEST')
+line 4:     return fnamemodify($NVIM_RPLUGIN_MANIFEST, ':p')
+line 5:   endif
+line 6: 
+line 7:   let dest = stdpath('data')
+line 8:   if !empty(dest)
+line 9:     if !isdirectory(dest)
+line 10:       if getftype(dest) != "link"
+line 11:         call mkdir(dest, 'p', 0700)
+line 12:       endif
+line 13:     endif
+line 14:     let manifest_base = dest
+line 15:   endif
+line 16: 
+line 17:   return manifest_base.'/rplugin.vim'
+<SNR>36_GetManifestPath returning 'C:\Users\shuen\AppData\Local\nvim-data/rplugin.vim'
+
+continuing in <SNR>36_GetManifest
+
+line 2:   if !filereadable(manifest)
+line 3:     " Check if an old manifest file exists and move it to the new location.
+line 4:     for old_manifest in s:GetOldManifestPaths()
+calling <SNR>36_GetOldManifestPaths()
+
+line 1:   let prefix = exists('$MYVIMRC') ? $MYVIMRC : matchstr(get(split(execute('scriptnames'), '\n'), 0, ''), '\f\+$')
+line 4:   let origpath = fnamemodify(expand(prefix, 1), ':h').'/.'.fnamemodify(prefix, ':t').'-rplugin~'
+line 6:   if !has('win32')
+line 7:     return [origpath]
+line 8:   endif
+line 9:   " Windows used to use $APPLOCALDATA/nvim but stdpath('data') is
+line 10:   " $XDG_DATA_DIR/nvim-data
+line 11:   let pseudostdpath = exists('$LOCALAPPDATA') ? '$LOCALAPPDATA' : '~/AppData/Local'
+line 12:   let pseudostdpath = fnamemodify(expand(pseudostdpath), ':p')
+line 13:   return [substitute(pseudostdpath, '[/\\]\=$', '/', '') . 'nvim/rplugin.vim', origpath]
+<SNR>36_GetOldManifestPaths returning ['C:\Users\shuen\AppData\Local/nvim/rp...shuen\.config\nvim/.init.lua-rplugin~']
+
+continuing in <SNR>36_GetManifest
+
+line 5:       if filereadable(old_manifest)
+line 6:         call rename(old_manifest, manifest)
+line 7:         break
+line 8:       endif
+line 9:     endfor
+line 4:     for old_manifest in s:GetOldManifestPaths()
+line 5:       if filereadable(old_manifest)
+line 6:         call rename(old_manifest, manifest)
+line 7:         break
+line 8:       endif
+line 9:     endfor
+line 4:     for old_manifest in s:GetOldManifestPaths()
+line 5:       if filereadable(old_manifest)
+line 6:         call rename(old_manifest, manifest)
+line 7:         break
+line 8:       endif
+line 9:     endfor
+line 10:   endif
+line 11:   return manifest
+<SNR>36_GetManifest returning 'C:\Users\shuen\AppData\Local\nvim-data/rplugin.vim'
+
+continuing in <SNR>36_LoadRemotePlugins
+
+line 2:   if filereadable(g:loaded_remote_plugins)
+line 3:     execute 'source' fnameescape(g:loaded_remote_plugins)
+line 4:   endif
+<SNR>36_LoadRemotePlugins returning #0
+
+continuing in D:\Program Files\Neovim\share/nvim/runtime/plugin/rplugin.vim
+
+line 69: endif
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/rplugin.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/shada.lua
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/shada.lua"
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/shada.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/spellfile.lua
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/spellfile.lua"
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/spellfile.lua
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/tarPlugin.vim
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/tarPlugin.vim"
+line 1: " tarPlugin.vim -- a Vim plugin for browsing tarfiles
+line 2: "
+line 3: " Original was copyright (c) 2002, Michael C. Toren <mct@toren.net>
+line 4: " Modified by Charles E. Campbell
+line 5: " Distributed under the GNU General Public License.
+line 6: "
+line 7: " Updates are available from <http://michael.toren.net/code/>.  If you
+line 8: " find this script useful, or have suggestions for improvements, please
+line 9: " let me know.
+line 10: " Also look there for further comments and documentation.
+line 11: "
+line 12: " This part only sets the autocommands.  The functions are in autoload/tar.vim.
+line 13: " ---------------------------------------------------------------------
+line 14: "  Load Once: {{{1
+line 15: if &cp || exists("g:loaded_tarPlugin")
+line 16:  finish
+line 17: endif
+line 18: let g:loaded_tarPlugin = "v32"
+line 19: let s:keepcpo          = &cpo
+line 20: set cpo&vim
+line 21: 
+line 22: " ---------------------------------------------------------------------
+line 23: "  Public Interface: {{{1
+line 24: augroup tar
+line 25:   au!
+line 26:   au BufReadCmd   tarfile::*^Icall tar#Read(expand("<amatch>"))
+line 27:   au FileReadCmd  tarfile::*^Icall tar#Read(expand("<amatch>"))
+line 28:   au BufWriteCmd  tarfile::*^Icall tar#Write(expand("<amatch>"))
+line 29:   au FileWriteCmd tarfile::*^Icall tar#Write(expand("<amatch>"))
+line 30: 
+line 31:   if has("unix")
+line 32:    au BufReadCmd   tarfile::*/*^Icall tar#Read(expand("<amatch>"))
+line 33:    au FileReadCmd  tarfile::*/*^Icall tar#Read(expand("<amatch>"))
+line 34:    au BufWriteCmd  tarfile::*/*^Icall tar#Write(expand("<amatch>"))
+line 35:    au FileWriteCmd tarfile::*/*^Icall tar#Write(expand("<amatch>"))
+line 36:   endif
+line 37: 
+line 38:   au BufReadCmd   *.lrp^I^I^Icall tar#Browse(expand("<amatch>"))
+line 39:   au BufReadCmd   *.tar^I^I^Icall tar#Browse(expand("<amatch>"))
+line 40:   au BufReadCmd   *.tar.bz2^I^Icall tar#Browse(expand("<amatch>"))
+line 41:   au BufReadCmd   *.tar.bz3^I^Icall tar#Browse(expand("<amatch>"))
+line 42:   au BufReadCmd   *.tar.gz^I^Icall tar#Browse(expand("<amatch>"))
+line 43:   au BufReadCmd   *.tar.lz4^I^Icall tar#Browse(expand("<amatch>"))
+line 44:   au BufReadCmd   *.tar.lzma^I^Icall tar#Browse(expand("<amatch>"))
+line 45:   au BufReadCmd   *.tar.xz^I^Icall tar#Browse(expand("<amatch>"))
+line 46:   au BufReadCmd   *.tar.Z^I^Icall tar#Browse(expand("<amatch>"))
+line 47:   au BufReadCmd   *.tar.zst^I^Icall tar#Browse(expand("<amatch>"))
+line 48:   au BufReadCmd   *.tbz^I^I^Icall tar#Browse(expand("<amatch>"))
+line 49:   au BufReadCmd   *.tgz^I^I^Icall tar#Browse(expand("<amatch>"))
+line 50:   au BufReadCmd   *.tlz4^I^Icall tar#Browse(expand("<amatch>"))
+line 51:   au BufReadCmd   *.txz^I^I^Icall tar#Browse(expand("<amatch>"))
+line 52:   au BufReadCmd   *.tzst^I^Icall tar#Browse(expand("<amatch>"))
+line 53: augroup END
+line 54: 
+line 55: " ---------------------------------------------------------------------
+line 56: " Restoration And Modelines: {{{1
+line 57: " vim: fdm=marker
+line 58: let &cpo= s:keepcpo
+line 59: unlet s:keepcpo
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/tarPlugin.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/tutor.vim
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/tutor.vim"
+line 1: " Tutor:^INew Style Tutor Plugin :h vim-tutor-mode
+line 2: " Maintainer:^IThis runtime file is looking for a new maintainer.
+line 3: " Contributors:^IPhạm Bình An <phambinhanctb2004@gmail.com>
+line 4: " Original Author: Felipe Morales <hel.sheep@gmail.com>
+line 5: " Date: 2025 May 12
+line 6: 
+line 7: if exists('g:loaded_tutor_mode_plugin') || &compatible
+line 8:     finish
+line 9: endif
+line 10: let g:loaded_tutor_mode_plugin = 1
+line 11: 
+line 12: command! -nargs=? -complete=custom,tutor#TutorCmdComplete Tutor call tutor#TutorCmd(<q-args>)
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/tutor.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: source D:\Program Files\Neovim\share/nvim/runtime/plugin/zipPlugin.vim
+line 1: sourcing "D:\Program Files\Neovim\share/nvim/runtime/plugin/zipPlugin.vim"
+line 1: " zipPlugin.vim: Handles browsing zipfiles
+line 2: "            PLUGIN PORTION
+line 3: " Date:^I^I^IDec 07, 2021
+line 4: " Maintainer:^IThis runtime file is looking for a new maintainer.
+line 5: " Former Maintainer:^ICharles E Campbell
+line 6: " Last Change:
+line 7: " 2025 Apr 02 by Vim Project: add *.whl to list of zip extensions (#17038)
+line 8: " 2025 Oct 06 by MultisampledNight: add *.pkpass to list of zip extensions (#18501)
+line 9: " License:^I^IVim License  (see vim's :help license)
+line 10: " Copyright:    Copyright (C) 2005-2016 Charles E. Campbell {{{1
+line 11: "               Permission is hereby granted to use and distribute this code,
+line 12: "               with or without modifications, provided that this copyright
+line 13: "               notice is copied with it. Like anything else that's free,
+line 14: "               zipPlugin.vim is provided *as is* and comes with no warranty
+line 15: "               of any kind, either expressed or implied. By using this
+line 16: "               plugin, you agree that in no event will the copyright
+line 17: "               holder be liable for any damages resulting from the use
+line 18: "               of this software.
+line 19: "
+line 20: " (James 4:8 WEB) Draw near to God, and he will draw near to you.
+line 21: " Cleanse your hands, you sinners; and purify your hearts, you double-minded.
+line 22: " ---------------------------------------------------------------------
+line 23: " Load Once: {{{1
+line 24: if &cp || exists("g:loaded_zipPlugin")
+line 25:  finish
+line 26: endif
+line 27: let g:loaded_zipPlugin = "v33"
+line 28: let s:keepcpo          = &cpo
+line 29: set cpo&vim
+line 30: 
+line 31: " ---------------------------------------------------------------------
+line 32: " Options: {{{1
+line 33: if !exists("g:zipPlugin_ext")
+line 34:  let g:zipPlugin_ext='*.aar,*.apk,*.celzip,*.crtx,*.docm,*.docx,*.dotm,*.dotx,*.ear,*.epub,*.gcsx,*.glox,*.gqsx,*.ja,*.jar,*.kmz,*.odb,*.odc,*.odf,*.odg,*.odi,*.odm,*.odp,*.ods,*.odt,*.otc,*.otf,*.otg,*.oth,*.oti,*.otp,*.ots,*.ott,*.oxt,*.pkpass,*.potm,*.potx,*.ppam,*.ppsm,*.ppsx,*.pptm,*.pptx,*.sldx,*.thmx,*.vdw,*.war,*.whl,*.wsz,*.xap,*.xlam,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.xpi,*.zip'
+line 35: endif
+line 36: 
+line 37: " ---------------------------------------------------------------------
+line 38: " Public Interface: {{{1
+line 39: augroup zip
+line 40:  au!
+line 41:  au BufReadCmd   zipfile:*^Icall zip#Read(expand("<amatch>"), 1)
+line 42:  au FileReadCmd  zipfile:*^Icall zip#Read(expand("<amatch>"), 0)
+line 43:  au BufWriteCmd  zipfile:*^Icall zip#Write(expand("<amatch>"))
+line 44:  au FileWriteCmd zipfile:*^Icall zip#Write(expand("<amatch>"))
+line 45: 
+line 46:  if has("unix")
+line 47:   au BufReadCmd   zipfile:*/*^Icall zip#Read(expand("<amatch>"), 1)
+line 48:   au FileReadCmd  zipfile:*/*^Icall zip#Read(expand("<amatch>"), 0)
+line 49:   au BufWriteCmd  zipfile:*/*^Icall zip#Write(expand("<amatch>"))
+line 50:   au FileWriteCmd zipfile:*/*^Icall zip#Write(expand("<amatch>"))
+line 51:  endif
+line 52: 
+line 53:  exe "au BufReadCmd ".g:zipPlugin_ext.' call zip#Browse(expand("<amatch>"))'
+line 53: au BufReadCmd *.aar,*.apk,*.celzip,*.crtx,*.docm,*.docx,*.dotm,*.dotx,*.ear,*.epub,*.gcsx,*.glox,*.gqsx,*.ja,*.jar,*.kmz,*.odb,*.odc,*.odf,*.odg,*.odi,*.odm,*.odp,*.ods,*.odt,*.otc,*.otf,*.otg,*.oth,*.oti,*.otp,*.ots,*.ott,*.oxt,*.pkpass,*.potm,*.potx,*.ppam,*.ppsm,*.ppsx,*.pptm,*.pptx,*.sldx,*.thmx,*.vdw,*.war,*.whl,*.wsz,*.xap,*.xlam,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.xpi,*.zip call zip#Browse(expand("<amatch>"))
+line 54: augroup END
+line 55: 
+line 56: " ---------------------------------------------------------------------
+line 57: "  Restoration And Modelines: {{{1
+line 58: "  vim: fdm=marker
+line 59: let &cpo= s:keepcpo
+line 60: unlet s:keepcpo
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/plugin/zipPlugin.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+Executing User Autocommands for "LazyDone"
+autocommand <Lua 82: ~/AppData/Local/nvim-data/lazy/lazy.nvim/lua/lazy/core/util.lua:183>
+
+Executing: 
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set expandtab
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set tabstop=2
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set softtabstop=2
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set shiftwidth=2
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set number
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set relativenumber
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: autocmd InsertEnter * :set norelativenumber
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: autocmd InsertLeave * :set relativenumber
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set noshowmode
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set equalalways
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set spell
+Searching for "spell/en.utf-8.spl" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\spell/en.utf-8.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\spell/en.utf-8.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\lazy.nvim\spell/en.utf-8.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\nvim-treesitter\spell/en.utf-8.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\spell/en.utf-8.spl"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\spell/en.utf-8.spl"
+Reading spell file "D:\Program Files\Neovim\share\nvim\runtime\spell\en.utf-8.spl"
+Searching for "spell/en.utf-8.add.spl" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\spell/en.utf-8.add.spl"
+Reading spell file "C:\Users\shuen\.config\nvim\spell\en.utf-8.add.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\spell/en.utf-8.add.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\lazy.nvim\spell/en.utf-8.add.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\nvim-treesitter\spell/en.utf-8.add.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\spell/en.utf-8.add.spl"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\spell/en.utf-8.add.spl"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\netrw\spell/en.utf-8.add.spl"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\matchit\spell/en.utf-8.add.spl"
+Searching for "D:\Program Files\Neovim\lib\nvim\spell/en.utf-8.add.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\readme\spell/en.utf-8.add.spl"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\after\spell/en.utf-8.add.spl"
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set spelllang=en_us
+Searching for "spell/en.*" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\spell/en.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\spell/en.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\lazy.nvim\spell/en.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\nvim-treesitter\spell/en.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\spell/en.*"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\spell/en.*"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\netrw\spell/en.*"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\matchit\spell/en.*"
+Searching for "D:\Program Files\Neovim\lib\nvim\spell/en.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\readme\spell/en.*"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\after\spell/en.*"
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set guicursor=n-v-c-i:block
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set belloff=all
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set noerrorbells
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set novisualbell
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: packadd cfilter
+Searching for "pack/*/start/cfilter" in "D:\Program Files\Neovim\share/nvim/runtime"
+Searching for "D:\Program Files\Neovim\share/nvim/runtime\pack/*/start/cfilter"
+not found in 'packpath': "pack/*/start/cfilter"
+Searching for "pack/*/opt/cfilter" in "D:\Program Files\Neovim\share/nvim/runtime"
+Searching for "D:\Program Files\Neovim\share/nvim/runtime\pack/*/opt/cfilter"
+line 1: sourcing "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\cfilter\plugin\cfilter.vim"
+line 1: " cfilter.vim: Plugin to filter entries from a quickfix/location list
+line 2: " Last Change: Aug 23, 2018
+line 3: " Maintainer: Yegappan Lakshmanan (yegappan AT yahoo DOT com)
+line 4: " Version: 1.1
+line 5: "
+line 6: " Commands to filter the quickfix list:
+line 7: "   :Cfilter[!] /{pat}/
+line 8: "       Create a new quickfix list from entries matching {pat} in the current
+line 9: "       quickfix list. Both the file name and the text of the entries are
+line 10: "       matched against {pat}. If ! is supplied, then entries not matching
+line 11: "       {pat} are used. The pattern can be optionally enclosed using one of
+line 12: "       the following characters: ', ", /. If the pattern is empty, then the
+line 13: "       last used search pattern is used.
+line 14: "   :Lfilter[!] /{pat}/
+line 15: "       Same as :Cfilter but operates on the current location list.
+line 16: "
+line 17: if exists("loaded_cfilter")
+line 18:     finish
+line 19: endif
+line 20: let loaded_cfilter = 1
+line 21: 
+line 22: func s:Qf_filter(qf, searchpat, bang)
+line 60: 
+line 61: com! -nargs=+ -bang Cfilter call s:Qf_filter(1, <q-args>, <q-bang>)
+line 62: com! -nargs=+ -bang Lfilter call s:Qf_filter(0, <q-args>, <q-bang>)
+finished sourcing D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\cfilter\plugin\cfilter.vim
+continuing in nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+line 1: augroup filetypedetect
+line 1: augroup END
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+line 0: sourcing "nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0"
+line 1: set shortmess+=S
+finished sourcing nvim_exec2() called at C:\Users\shuen\.config\nvim\init.lua:0
+continuing in C:\Users\shuen\.config\nvim\init.lua
+finished sourcing C:\Users\shuen\.config\nvim\init.lua
+Searching for "filetype.lua filetype.vim" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\filetype.lua"
+Searching for "C:\Users\shuen\.config\nvim\filetype.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\filetype.lua"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\filetype.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\lazy.nvim\filetype.lua"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\lazy.nvim\filetype.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\nvim-treesitter\filetype.lua"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\nvim-treesitter\filetype.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\filetype.lua"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\filetype.vim"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\filetype.lua"
+sourcing "D:\Program Files\Neovim\share\nvim\runtime\filetype.lua"
+finished sourcing D:\Program Files\Neovim\share\nvim\runtime\filetype.lua
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\filetype.vim"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\cfilter\filetype.lua"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\cfilter\filetype.vim"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\netrw\filetype.lua"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\netrw\filetype.vim"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\matchit\filetype.lua"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\pack\dist\opt\matchit\filetype.vim"
+Searching for "D:\Program Files\Neovim\lib\nvim\filetype.lua"
+Searching for "D:\Program Files\Neovim\lib\nvim\filetype.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\readme\filetype.lua"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\readme\filetype.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\after\filetype.lua"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\after\filetype.vim"
+Executing: so $VIMRUNTIME/syntax/syntax.vim
+sourcing "D:\Program Files\Neovim\share/nvim/runtime/syntax/syntax.vim"
+line 1: " Vim syntax support file
+line 2: " Maintainer:^IThe Vim Project <https://github.com/vim/vim>
+line 3: " Last Change:^I2023 Aug 10
+line 4: " Former Maintainer:^IBram Moolenaar <Bram@vim.org>
+line 5: 
+line 6: " This file is used for ":syntax on".
+line 7: " It installs the autocommands and starts highlighting for all buffers.
+line 8: 
+line 9: if !has("syntax")
+line 10:   finish
+line 11: endif
+line 12: 
+line 13: " If Syntax highlighting appears to be on already, turn it off first, so that
+line 14: " any leftovers are cleared.
+line 15: if exists("syntax_on") || exists("syntax_manual")
+line 16:   so <sfile>:p:h/nosyntax.vim
+line 17: endif
+line 18: 
+line 19: " Load the Syntax autocommands and set the default methods for highlighting.
+line 20: runtime syntax/synload.vim
+Searching for "syntax/synload.vim" in runtime path
+Searching for "C:\Users\shuen\.config\nvim\syntax/synload.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\site\syntax/synload.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\lazy.nvim\syntax/synload.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\nvim-treesitter\syntax/synload.vim"
+Searching for "C:\Users\shuen\AppData\Local\nvim-data\lazy\catppuccin\syntax/synload.vim"
+Searching for "D:\Program Files\Neovim\share\nvim\runtime\syntax/synload.vim"
+line 20: sourcing "D:\Program Files\Neovim\share\nvim\runtime\syntax\synload.vim"
+line 1: " Vim syntax support file
+line 2: " Maintainer:^IThe Vim Project <https://github.com/vim/vim>
+line 3: " Last Change:^I2023 Aug 10
+line 4: " Former Maintainer:^IBram Moolenaar <Bram@vim.org>
+line 5: 
+line 6: " This file sets up for syntax highlighting.
+line 7: " It is loaded from "syntax.vim" and "manual.vim".
+line 8: " 1. Set the default highlight groups.
+line 9: " 2. Install Syntax autocommands for all the available syntax files.
+line 10: 
+line 11: if !has("syntax")
+line 12:   finish
+line 13: endif
+line 14: 
+line 15: " let others know that syntax has been switched on
+line 16: let syntax_on = 1
+line 17: 
+line 18: " Line continuation is used here, remove 'C' from 'cpoptions'
+line 19: let s:cpo_save = &cpo
+line 20: set cpo&vim
+line 21: 
+line 22: " First remove all old syntax autocommands.
+line 23: au! Syntax
+line 24: 
+line 25: au Syntax *^I^Icall s:SynSet()
+line 26: 
+line 27: fun! s:SynSet()
+line 58: 
+line 59: 
+line 60: " Handle adding doxygen to other languages (C, C++, C#, IDL, java, php, DataScript)
+line 61: au Syntax c,cpp,cs,idl,java,php,datascript if (exists('b:load_doxygen_syntax') && b:load_doxygen_syntax)^I|| (exists('g:load_doxygen_syntax') && g:load_doxygen_syntax)   | runtime! syntax/doxygen.vim | endif
+line 66: 
+line 67: 
+line 68: " Source the user-specified syntax highlighting file
+line 69: if exists("mysyntaxfile")
+line 70:   let s:fname = expand(mysyntaxfile)
+line 71:   if filereadable(s:fname)
+line 72:     execute "source " . fnameescape(s:fname)
+line 73:   endif
+line 74: endif
+line 75: 
+line 76: " Restore 'cpoptions'
+line 77: let &cpo = s:cpo_save
+line 78: unlet s:cpo_save
+finished sourcing D:\Program Files\Neovim\share\nvim\runtime\syntax\synload.vim
+continuing in D:\Program Files\Neovim\share/nvim/runtime/syntax/syntax.vim
+line 21: 
+line 22: " Load the FileType autocommands if not done yet.
+line 23: if exists("did_load_filetypes")
+line 24:   let s:did_ft = 1
+line 25: else
+line 26:   filetype on
+line 27:   let s:did_ft = 0
+line 28: endif
+line 29: 
+line 30: " Set up the connection between FileType and Syntax autocommands.
+line 31: " This makes the syntax automatically set when the file type is detected
+line 32: " unless treesitter highlighting is enabled.
+line 33: " Avoid an error when 'verbose' is set and <amatch> expansion fails.
+line 34: augroup syntaxset
+line 35:   au! FileType *^Iif !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+line 36: augroup END
+line 37: 
+line 38: " Execute the syntax autocommands for the each buffer.
+line 39: " If the filetype wasn't detected yet, do that now.
+line 40: " Always do the syntaxset autocommands, for buffers where the 'filetype'
+line 41: " already was set manually (e.g., help buffers).
+line 42: doautoall syntaxset FileType
+Executing FileType Autocommands for "*"
+autocommand if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+
+Executing: if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  endif
+line 43: if !s:did_ft
+line 44:   doautoall filetypedetect BufRead
+line 45: endif
+finished sourcing D:\Program Files\Neovim\share/nvim/runtime/syntax/syntax.vim
+Reading ShaDa file "C:\Users\shuen\AppData\Local\nvim-data\shada\main.shada" info marks oldfiles
+Executing BufWinEnter Autocommands for "*"
+autocommand autocmd SafeState * ++once call s:Highlight_Matching_Pair()
+
+Executing: autocmd SafeState * ++once call s:Highlight_Matching_Pair()
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 172: ~/.config/nvim/lua/plugins/treesitter.lua:68>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand sil call s:LocalBrowse(expand("<amatch>"))
+
+Executing: sil call s:LocalBrowse(expand("<amatch>"))
+calling <SNR>34_LocalBrowse('')
+
+line 1:     " do not trigger in the terminal
+line 2:     " https://github.com/vim/vim/issues/16463
+line 3:     if &buftype ==# 'terminal'
+line 4:         return
+line 5:     endif
+line 6: 
+line 7:     if !exists("s:vimentered")
+line 8:         " If s:vimentered doesn't exist, then the VimEnter event hasn't fired.  It will,
+line 9:         " and so s:VimEnter() will then be calling this routine, but this time with s:vimentered defined.
+line 10:         return
+<SNR>34_LocalBrowse returning #0
+
+continuing in BufEnter Autocommands for "*"
+
+Executing: qa
+Writing ShaDa file "C:\Users\shuen\AppData\Local\nvim-data\shada\main.shada"

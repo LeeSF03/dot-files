@@ -74,26 +74,44 @@
           "type": "python"
         },
         {
+          "style": "plain",
+          "template": "\ued0d {{ .Full }} ",
+          "type": "node",
           "foreground": "green",
           "properties": {
             "cache_duration": "none",
             "display_mode": "files",
-            "extensions": [
-              "*.js",
-              "*.ts",
-              "package.json",
-              ".nvmrc",
-              "pnpm-workspace.yaml",
-              ".pnpmfile.cjs",
-              ".vue"
-            ],
+            "extensions": ["*.js", "*.ts", "package.json", ".nvmrc", ".vue"],
             "fetch_virtual_env": true,
             "fetch_version": true,
             "folder_name_fallback": false
-          },
+          }
+        },
+        {
+          "type": "bun",
           "style": "plain",
-          "template": "\ued0d {{ .Full }} ",
-          "type": "node"
+          "foreground": "#f5e0dc",
+          "template": " {{ .Full }} ",
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "files",
+            "extensions": ["bun.lockb", "bun.lock"]
+          }
+        },
+        {
+          "type": "pnpm",
+          "style": "plain",
+          "foreground": "#f9e2af",
+          "template": " {{ .Full }} ",
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "files",
+            "extensions": [
+              "pnpm-workspace.yaml",
+              "pnpm-lock.yaml",
+              ".pnpmfile.cjs"
+            ]
+          }
         },
         {
           "style": "plain",
@@ -114,7 +132,7 @@
             "revert_icon": "\uf0e2 ",
             "tag_icon": "\uf412 "
           },
-          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }}",
           "foreground": "p:lavender",
           "type": "git",
           "style": "plain"

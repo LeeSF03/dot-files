@@ -137,6 +137,26 @@ function ll {
 
 # yazi shell wrapper https://yazi-rs.github.io/docs/quick-start
 function y {
+  param (
+    [switch]$a,
+    [switch]$h
+  )
+
+  $helpMessage = @"
+-a     Anchor to current directory (go back to current directory after exit)
+"@
+
+  if ($h) {
+    yazi --help
+    Write-Output $helpMessage
+    return
+  }
+
+  if ($a) {
+    yazi $args
+    return
+  }
+
   $tmp = [System.IO.Path]::GetTempFileName()
   yazi $args --cwd-file="$tmp"
   $cwd = Get-Content -Path $tmp
@@ -153,19 +173,27 @@ function ff {
     [switch]$clear,
     [switch]$h
   )
+  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko", "vyse", "kayo", "skye", "waylay", "breach", "veto")
 
-  $helpMessage = @"
+  if ($h) {
+    $agentList = $agents | Sort-Object
+    $chunkSize = 5
+    $lines = for ($i = 0; $i -lt $agentList.Count; $i += $chunkSize) {
+        "       " + ($agentList[$i..($i + $chunkSize - 1)] -join ", ")
+    }
+
+    $helpMessage = @"
 Usage: ff [agent] [-h]
 
-agent  Valorant agent name
+agent  Valorant agent name. Available agents:
+$($lines -join "`n")
+
 -h     Show help
 "@
 
-  if ($h) {
     Write-Output $helpMessage
     return
   }
-  $agents = @("chamber", "clove", "fade", "iso", "jett", "neon", "omen", "phoenix", "reyna", "sage", "viper", "yoru", "cypher", "sova", "raze", "killjoy", "brimstone", "deadlock", "tejo", "gecko", "vyse", "kayo", "skye", "waylay", "breach", "veto")
 
   $logo_root = "$HOME\.config\fastfetch\images"
 
@@ -189,77 +217,6 @@ agent  Valorant agent name
     --logo-padding-right 3 --logo-padding-top 4 --logo-padding-left 3
 }
 
-# Functions alias for fzf integraion with vscode and yazi
-function fz {
-  param (
-    [switch]$y,
-    [switch]$c,
-    [switch]$b,
-    [switch]$h
-  )
-  if ($h) {
-    Write-Output "
-Usage: fz [-y] [-c] [-b] [-h]
-
--y     Open in yazi
--c     Open in VS Code
--b     Preview with bat
--h     Show help
-"
-    return
-  }
-  $file = $(fzf)
-  if ($null -ne $file) {
-    $cwd = $(Get-Location)
-    $path = "$cwd\$file"
-    if ($y) {
-      Write-Output "Opening $path in yazi"
-      $target_dir = $(Split-Path -Path $file)
-      z $target_dir
-      y
-    }
-    elseif ($c) {
-      Write-Output "Opening $path in VS Code"
-      code $path
-    }
-    elseif ($b) {
-      bat $path
-    }
-    else {
-      Write-Output $(Get-Item $path)
-    }
-  }
-}
-
-# Functions alias for fzf integration with ripgrep and vscode
-function frg {
-  param (
-    [switch]$h
-  )
-  if ($h) {
-    Write-Output "
-Usage: frg <search term> [-h]
--h     Show help
-"
-    return
-  }
-
-  $search = $args[0]
-  if (!$search) {
-    $search = ""
-  }
-  $rg_prefix = "rg --column --line-number --no-heading --color=always --smart-case "
-  fzf --ansi `
-    --color "hl:-1,hl+:-1:reverse" `
-    --bind "ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" `
-    --bind "start:reload:$rg_prefix || true" `
-    --bind "change:reload:$rg_prefix {q} || true" `
-    --bind "enter:become(code -g {1}:{2})" `
-    --delimiter : `
-    --preview "bat --color always {1} --theme=CatppuccinMocha --highlight-line {2}" `
-    --preview-window '+{2}+3/3,~3'
-}
-
 function lg {
   lazygit $args
 }
@@ -273,12 +230,8 @@ function clk {
 }
 
 # Functions alias for onefetch
-function gitfetch {
+function one {
   onefetch --text-colors 4 5 7 5 7 7 --no-color-palette --nerd-fonts $args
-}
-
-function gf {
-  gitfetch
 }
 
 #Functions for git log --all --decorate --oneline --graph
@@ -288,11 +241,6 @@ function glog {
 
 function hlq {
   harlequin --theme catppuccin-mocha
-}
-
-#Functions for spotify_player
-function spot {
-  spotify_player
 }
 
 # #Functions for Get-Command
@@ -341,6 +289,9 @@ function docker-desktop {
 
 # Initialize oh-my-posh
 oh-my-posh init pwsh --config "C:\Users\shuen\.config\oh-my-posh\themes\catppuccin_mocha.omp.json" | Invoke-Expression
+
+# Initialize television cli powershell integration
+. $HOME/.config/television/shell/integration.ps1
 
 # Initialize zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })

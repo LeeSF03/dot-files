@@ -17,6 +17,8 @@ vim.cmd("packadd cfilter")
 vim.cmd("set shortmess+=S")
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.g.editorconfig = true
+vim.g.coq_settings = { ["autostart"] = "shut up" }
 
 -- Diagnostic settings
 vim.diagnostic.config({ virtual_text = true })
@@ -72,11 +74,11 @@ acmd("FileType", {
 	desc = "Quickfix Delete Item",
 })
 
-local timer = vim.uv.new_timer()
+local deferred_load_timer = vim.uv.new_timer()
 acmd({ "CursorMoved", "InsertCharPre", "TextChanged", "CmdlineChanged" }, {
 	callback = function()
-		timer:stop()
-		timer:start(
+		deferred_load_timer:stop()
+		deferred_load_timer:start(
 			800,
 			0,
 			vim.schedule_wrap(function()
@@ -85,3 +87,20 @@ acmd({ "CursorMoved", "InsertCharPre", "TextChanged", "CmdlineChanged" }, {
 		)
 	end,
 })
+
+-- Vim.notfiy
+local notify_timer = vim.uv.new_timer()
+local vim_notify = vim.notify
+
+vim.notify = function(msg, level, opts)
+	notify_timer:stop()
+
+	vim_notify(msg, level, opts)
+	notify_timer:start(
+		5000,
+		0,
+		vim.schedule_wrap(function()
+			vim.cmd("echo ''")
+		end)
+	)
+end

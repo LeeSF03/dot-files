@@ -129,6 +129,7 @@ config.max_fps = 120
 -- Font
 config.font = wezterm.font_with_fallback({ "FiraCode Nerd Font" })
 config.font_size = 10.0
+config.warn_about_missing_glyphs = false
 
 -- Window
 config.window_decorations = "RESIZE" -- removes close, minimize and so on
@@ -147,7 +148,6 @@ config.scrollback_lines = 3000
 -- disables the 'modern' look of the tab bar
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
--- config.hide_tab_bar_if_only_one_tab = true
 config.hide_tab_bar_if_only_one_tab = true
 config.status_update_interval = 1000
 config.tab_max_width = 60
@@ -327,17 +327,85 @@ local function scroll(direction, key)
 	}
 end
 
-local show_tab_bar = true
-wezterm.on("toggle-tab-bar", function(window, _)
-	show_tab_bar = not show_tab_bar
+local tab_counts = {}
+local manual_override = {} -- per window: nil | true | false
+local function apply(window)
+	local mux_window = window:mux_window()
+	if not mux_window then
+		return
+	end
 
-	window:set_config_overrides({
-		hide_tab_bar_if_only_one_tab = not show_tab_bar,
-		enable_tab_bar = show_tab_bar,
-	})
+	local window_id = mux_window:window_id()
+	local count = #mux_window:tabs()
+
+	local overrides = window:get_config_overrides() or {}
+
+	if manual_override[window_id] ~= nil then
+		-- Manual override takes priority
+		overrides.enable_tab_bar = manual_override[window_id]
+		overrides.hide_tab_bar_if_only_one_tab = not manual_override[window_id]
+	else
+		-- Auto behavior
+		if count <= 1 then
+			overrides.enable_tab_bar = false
+			overrides.hide_tab_bar_if_only_one_tab = true
+		else
+			overrides.enable_tab_bar = true
+			overrides.hide_tab_bar_if_only_one_tab = false
+		end
+	end
+
+	window:set_config_overrides(overrides)
+end
+
+wezterm.on("toggle-tab-bar", function(window, _)
+	local mux_window = window:mux_window()
+	if not mux_window then
+		return
+	end
+
+	local window_id = mux_window:window_id()
+
+	local current = manual_override[window_id]
+
+	if current == nil then
+		-- derive from current actual state
+		local overrides = window:get_config_overrides() or {}
+		current = overrides.enable_tab_bar ~= false
+	end
+
+	manual_override[window_id] = not current
+
+	apply(window)
 end)
 
-config.warn_about_missing_glyphs = false
+-- Detect tab changes
+wezterm.on("update-status", function(window, _)
+	local mux_window = window:mux_window()
+	if not mux_window then
+		return
+	end
+
+	local window_id = mux_window:window_id()
+	local count = #mux_window:tabs()
+	local prev = tab_counts[window_id]
+
+	if prev ~= count then
+		-- Reset manual override when tabs change
+		manual_override[window_id] = nil
+
+		apply(window)
+	end
+
+	tab_counts[window_id] = count
+end)
+
+wezterm.on("mux-window-closed", function(mux_window)
+	local window_id = mux_window:window_id()
+
+	tab_counts[window_id] = nil
+	manual_override[window_id] = nil
+end)
 
 -- Keys
 config.leader = {

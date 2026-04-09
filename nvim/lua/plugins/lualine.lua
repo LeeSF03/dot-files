@@ -172,12 +172,12 @@ return {
 			table.insert(lualine_c, "selectioncount")
 
 			require("lualine").setup({
-				options = {
-					icons_enabled = true,
-					theme = "catppuccin",
-					component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" },
-					disabled_filetypes = {
+					options = {
+						icons_enabled = true,
+						theme = "auto",
+						component_separators = { left = "", right = "" },
+						section_separators = { left = "", right = "" },
+						disabled_filetypes = {
 						statusline = { "dashboard", "lazy", "harpoon", "lazygit", "TelescopePrompt" },
 						winbar = { "dashboard", "lazy", "harpoon", "lazygit", "TelescopePrompt" },
 					},
