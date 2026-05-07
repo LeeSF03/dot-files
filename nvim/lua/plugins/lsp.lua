@@ -48,8 +48,12 @@ return {
 	},
 	{
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot" },
-		build = "cargo build --release",
+		dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot", "saghen/blink.lib" },
+		build = function()
+			-- build the fuzzy matcher, wait up to 60 seconds
+			-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+			require("blink.cmp").build():wait(60000)
+		end,
 		event = { "InsertEnter", "CmdlineEnter" },
 		opts_extend = { "sources.default" },
 		config = function()
@@ -162,7 +166,7 @@ return {
 					},
 				},
 			})
-      -- stylua: ignore start
+	     -- stylua: ignore start
 			vim.api.nvim_set_hl(0, "BlinkCmpMenu",                { bg = "#1e1e2e"                   })
 			vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder",          { fg = "#89b4fa", bg = "#1e1e2e" })
 			vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch",          { fg = "#f38ba8"                   })

@@ -57,7 +57,7 @@ return {
             desc = " Lazy                                      ",
             icon = "󰒲 ", key = "l", key_format = key_format
           },
-          { 
+          {
             action = function() vim.api.nvim_input("<CMD>qa<CR>") end,
             desc = " Quit                                      ",
             icon = " ", key = "q", key_format = key_format

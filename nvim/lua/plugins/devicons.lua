@@ -5,6 +5,7 @@ return {
 		-- It will load when other plugins that depend on it are loaded, such as telescope and dashboard
 		event = "InsertEnter",
 		opts = {
+			variant = "dark",
       -- stylua: ignore start
       override_by_filename = {
         [".env.production"] =  { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
@@ -13,6 +14,7 @@ return {
         [".env.test"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
         [".env.prod"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
         [".env.dev"] =         { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.example"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
 
         [".env.local"] =             { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
         [".env.production.local"] =  { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
@@ -21,6 +23,52 @@ return {
         [".env.test.local"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
         [".env.prod.local"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
         [".env.dev.local"] =         { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.example.local"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+
+        [".env.database"] =             { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.production.database"] =  { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.development.database"] = { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.preview.database"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.test.database"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.prod.database"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.dev.database"] =         { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.example.database"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+
+        [".env.db"] =             { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.production.db"] =  { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.development.db"] = { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.preview.db"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.test.db"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.prod.db"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.dev.db"] =         { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.example.db"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+
+        [".env.hosting"] =             { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.production.hosting"] =  { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.development.hosting"] = { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.preview.hosting"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.test.hosting"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.prod.hosting"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.dev.hosting"] =         { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.example.hosting"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+
+        [".env.host"] =             { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.production.host"] =  { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.development.host"] = { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.preview.host"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.test.host"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.prod.host"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.dev.host"] =         { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.example.host"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+
+        [".env.web"] =             { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.production.web"] =  { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.development.web"] = { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.preview.web"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.test.web"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.prod.web"] =        { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.dev.web"] =         { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
+        [".env.example.web"] =     { icon = "", color = "#FAF743", cterm_color = "227", name = "Env" },
 
         ["docker-compose.production.yaml"] =  { icon = "󰡨", color = "#458EE6", cterm_color = "68", name = "DockerCompose" },
         ["docker-compose.development.yaml"] = { icon = "󰡨", color = "#458EE6", cterm_color = "68", name = "DockerCompose" },

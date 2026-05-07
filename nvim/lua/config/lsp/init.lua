@@ -22,7 +22,10 @@ require(filepath .. "tailwindcss_lsp")
 -- require(filepath .. "docker_lsp")
 
 -- Yaml Language Server
--- require(filepath .. "yaml_lsp")
+require(filepath .. "yaml_lsp")
+
+-- Helm Language Server
+require(filepath .. "helm_lsp")
 
 -- Nginx Language Server
 -- require(filepath .. "nginx_lsp")

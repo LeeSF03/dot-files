@@ -48,7 +48,7 @@ vim.filetype.add({
 		["compose.yaml"] = "yaml.docker-compose",
 	},
 	pattern = {
-		["%.env%.[%w_.-]+"] = "sh",
+		[".*%.env%.*"] = "env",
 		["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
 		["compose.*%.ya?ml"] = "yaml.docker-compose",
 		[".*%.xml"] = "xml",

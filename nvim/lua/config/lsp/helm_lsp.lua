@@ -58,37 +58,47 @@
 ---   }
 --- })
 --- ```
-vim.lsp.config("yamlls", {
-	cmd = function(dispatchers, config)
-		local cmd = "yaml-language-server"
-		if (config or {}).root_dir then
-			local local_cmd = vim.fs.joinpath(config.root_dir, "node_modules/.bin", cmd)
-			if vim.fn.executable(local_cmd) == 1 then
-				cmd = local_cmd
-			end
-		end
-		return vim.lsp.rpc.start({ cmd, "--stdio" }, dispatchers)
-	end,
-	filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
-	root_markers = { ".git" },
-	---@type lspconfig.settings.yamlls
+
+vim.lsp.config("helm_ls", {
+	cmd = { "helm-ls", "serve" },
+	filetypes = { "helm", "yaml.helm-values" },
+	root_markers = { "Chart.yaml" },
 	settings = {
-		-- https://github.com/redhat-developer/vscode-redhat-telemetry#how-to-disable-telemetry-reporting
-		redhat = { telemetry = { enabled = false } },
-		-- formatting disabled by default in yaml-language-server; enable it
-		yaml = {
-			format = { enable = true },
-			schemas = {
-				["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+		["helm-ls"] = {
+			logLevel = "info",
+			valuesFiles = {
+				mainValuesFile = "values.yaml",
+				lintOverlayValuesFile = "values.lint.yaml",
+				additionalValuesFilesGlobPattern = "values*.yaml",
+			},
+			helmLint = {
+				enabled = true,
+				ignoredMessages = {},
+			},
+			yamlls = {
+				enabled = true,
+				enabledForFilesGlob = "*.{yaml,yml}",
+				diagnosticsLimit = 50,
+				showDiagnosticsDirectly = false,
+				path = "yaml-language-server", -- or something like { "node", "yaml-language-server.js" }
+				initTimeoutSeconds = 3,
+				config = {
+					schemas = {
+						kubernetes = "templates/**",
+					},
+					completion = true,
+					hover = true,
+					-- any other config from https://github.com/redhat-developer/yaml-language-server#language-server-settings
+				},
 			},
 		},
 	},
-	on_init = function(client)
-		--- https://github.com/neovim/nvim-lspconfig/pull/4016
-		--- Since formatting is disabled by default if you check `client:supports_method('textDocument/formatting')`
-		--- during `LspAttach` it will return `false`. This hack sets the capability to `true` to facilitate
-		--- autocmd's which check this capability
-		client.server_capabilities.documentFormattingProvider = true
-	end,
+	capabilities = {
+		workspace = {
+			didChangeWatchedFiles = {
+				dynamicRegistration = true,
+			},
+		},
+	},
 })
-vim.lsp.enable("yamlls")
+vim.lsp.enable("helm_ls")

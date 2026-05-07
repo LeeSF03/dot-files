@@ -17,10 +17,10 @@ vim.api.nvim_set_hl(0, "GitConflictIncomingLabel", { fg = colors.base, bg = colo
 vim.api.nvim_set_hl(0, "GitConflictAncestorLabel", { fg = colors.text, bg = colors.surface1, bold = true })
 
 -- Content blocks (solid background colors)
-vim.api.nvim_set_hl(0, "GitConflictCurrent",  { bg = "#2e1e21",     fg = colors.text }) -- darker red variant
-vim.api.nvim_set_hl(0, "GitConflictIncoming", { bg = "#22322b",     fg = colors.text }) -- darker green variant
-vim.api.nvim_set_hl(0, "GitConflictAncestor", { bg = colors.surface1, fg = colors.text }) -- close to background
-vim.api.nvim_set_hl(0, "GitConflictBase",     { bg = colors.surface0, fg = colors.text }) -- neutral gray
+-- vim.api.nvim_set_hl(0, "GitConflictCurrent",  { bg = "#2e1e21",     fg = colors.text }) -- darker red variant
+-- vim.api.nvim_set_hl(0, "GitConflictIncoming", { bg = "#22322b",     fg = colors.text }) -- darker green variant
+-- vim.api.nvim_set_hl(0, "GitConflictAncestor", { bg = colors.surface1, fg = colors.text }) -- close to background
+-- vim.api.nvim_set_hl(0, "GitConflictBase",     { bg = colors.surface0, fg = colors.text }) -- neutral gray
 -- stylua: ignore end
 
 return {
@@ -31,4 +31,5 @@ return {
 		current = "GitConflictCurrent",
 		incoming = "GitConflictIncoming",
 	},
+	opts = {},
 }
