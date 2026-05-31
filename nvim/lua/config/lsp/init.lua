@@ -18,8 +18,14 @@ require(filepath .. "tailwindcss_lsp")
 -- Go Language Server
 -- require(filepath .. "go_lsp")
 
+-- Rust Language Server
+require(filepath .. "rust_lsp")
+
 -- Docker Language Server
 -- require(filepath .. "docker_lsp")
+
+-- Terraform Language Server
+require(filepath .. "terraform_lsp")
 
 -- Yaml Language Server
 require(filepath .. "yaml_lsp")
@@ -40,7 +46,7 @@ require(filepath .. "helm_lsp")
 -- require(filepath .. "php_lsp")
 
 -- Python Language Server
--- require(filepath .. "python_lsp")
+require(filepath .. "python_lsp")
 
 -- SQL Language Server
 -- require(filepath .. "sql_lsp")

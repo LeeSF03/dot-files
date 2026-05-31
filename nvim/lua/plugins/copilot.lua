@@ -4,6 +4,9 @@ return {
 		cmd = "Copilot",
 		event = "InsertEnter",
 		opts = {
+			should_attach = function(_, _)
+				return false
+			end,
 			suggestion = { enabled = false },
 			panel = {
 				enabled = false,
